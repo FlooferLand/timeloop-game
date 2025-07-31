@@ -1,4 +1,4 @@
-@tool extends Node2D
+@tool class_name RoomBounds extends Node2D
 
 @export var right: int:
 	set(value):

@@ -24,5 +24,5 @@ shape = SubResource("CapsuleShape2D_453mm")
 debug_color = Color(0, 0.6, 0.701961, 0.180392)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -449)
+position = Vector2(0, -480)
 position_smoothing_enabled = true

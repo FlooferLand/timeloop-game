@@ -1,50 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsgdbtff22sua"]
+[gd_scene load_steps=6 format=3 uid="uid://bsgdbtff22sua"]
 
-[ext_resource type="Texture2D" uid="uid://cpt0s8f13fl1h" path="res://assets/textures/prototype/square.svg" id="1_bh0mt"]
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_ul1gn"]
+[ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_ul1gn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ul1gn"]
+shader = ExtResource("2_ul1gn")
+shader_parameter/tile = Vector2(1.11198, 0.926852)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emli7"]
+shader = ExtResource("2_ul1gn")
+shader_parameter/tile = Vector2(1.11198, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3j2cw"]
+shader = ExtResource("2_ul1gn")
+shader_parameter/tile = Vector2(1.11198, 0.7)
 
 [node name="Reception" instance=ExtResource("1_ul1gn")]
 
-[node name="PLACEHOLDER" type="Node2D" parent="." index="0"]
-
-[node name="Square" type="Sprite2D" parent="PLACEHOLDER" index="0"]
-modulate = Color(0.124083, 0.124083, 0.124083, 1)
-scale = Vector2(133.688, 76.3125)
-texture = ExtResource("1_bh0mt")
-centered = false
-offset = Vector2(0, -16)
-
-[node name="Square2" type="Sprite2D" parent="PLACEHOLDER" index="1"]
-modulate = Color(0.0748453, 0.0748453, 0.0748453, 1)
-position = Vector2(1709.5, -83)
-scale = Vector2(42.3125, 10.75)
-texture = ExtResource("1_bh0mt")
-
-[node name="Square3" type="Sprite2D" parent="PLACEHOLDER" index="2"]
-modulate = Color(0.0748453, 0.0748453, 0.0748453, 1)
-position = Vector2(1710, -165)
-scale = Vector2(47, 4.5)
-texture = ExtResource("1_bh0mt")
-
-[node name="Square4" type="Sprite2D" parent="PLACEHOLDER" index="3"]
-modulate = Color(0.0748453, 0.0748453, 0.0748453, 1)
-position = Vector2(2120, -611)
-scale = Vector2(2.75, 76.25)
-texture = ExtResource("1_bh0mt")
-
-[node name="Square6" type="Sprite2D" parent="PLACEHOLDER" index="4"]
-modulate = Color(0.0748453, 0.0748453, 0.0748453, 1)
-position = Vector2(1064.72, -1195)
-rotation = 1.5708
-scale = Vector2(2.75, 132.34)
-texture = ExtResource("1_bh0mt")
-
-[node name="Square5" type="Sprite2D" parent="PLACEHOLDER" index="5"]
-modulate = Color(0.0748453, 0.0748453, 0.0748453, 1)
-position = Vector2(24, -611)
-scale = Vector2(2.75, 76.25)
-texture = ExtResource("1_bh0mt")
-
-[node name="Bounds" parent="." index="1"]
+[node name="Bounds" parent="." index="0"]
 right = 2135
-top = 1216
+top = 1001
+
+[node name="AutoRoom" parent="." index="1"]
+size = Vector2(2135, 1001)
+
+[node name="Background" parent="AutoRoom" index="0"]
+material = SubResource("ShaderMaterial_ul1gn")
+position = Vector2(0, -1001)
+scale = Vector2(1.11198, 0.926852)
+
+[node name="Ceiling" parent="AutoRoom" index="1"]
+material = SubResource("ShaderMaterial_emli7")
+position = Vector2(0, -1001)
+scale = Vector2(1.11198, 1)
+
+[node name="Floor" parent="AutoRoom" index="2"]
+material = SubResource("ShaderMaterial_3j2cw")
+scale = Vector2(1.11198, 0.7)
+
+[node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
+position = Vector2(0, -1001)
+
+[node name="Collision" parent="AutoRoom/LeftWall" index="1"]
+position = Vector2(76.5, -461)
+
+[node name="Sprite" parent="AutoRoom/RightWall" index="0"]
+position = Vector2(1982, -1001)

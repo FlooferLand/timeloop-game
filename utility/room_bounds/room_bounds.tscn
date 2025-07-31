@@ -3,5 +3,6 @@
 [ext_resource type="Script" uid="uid://bns2u7fmm5xg3" path="res://utility/room_bounds/room_bounds.gd" id="1_gtqkm"]
 
 [node name="RoomBounds" type="Node2D"]
+z_index = 5
 script = ExtResource("1_gtqkm")
 metadata/_edit_lock_ = true

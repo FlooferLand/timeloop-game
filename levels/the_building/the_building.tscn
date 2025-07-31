@@ -14,6 +14,7 @@ normal = Vector2(0, -40)
 [node name="RoomManager" type="Node2D" parent="." node_paths=PackedStringArray("default")]
 script = ExtResource("3_iudyd")
 default = NodePath("Reception")
+metadata/_edit_lock_ = true
 
 [node name="Reception" parent="RoomManager" instance=ExtResource("2_34hto")]
 
