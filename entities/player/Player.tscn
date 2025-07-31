@@ -3,17 +3,19 @@
 [ext_resource type="Script" uid="uid://cmqr6suouga2w" path="res://entities/player/player.gd" id="1_453mm"]
 [ext_resource type="SpriteFrames" uid="uid://cp6sjtqr30yt2" path="res://entities/player/textures/sprite_frames.tres" id="1_mab2k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mab2k"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_453mm"]
+radius = 94.0
+height = 250.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_453mm")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mab2k")
-
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.8, 0.8)
 sprite_frames = ExtResource("1_mab2k")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_453mm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true

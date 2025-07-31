@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://douk4eknvrii7"]
+
+[ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_hixpo"]
+[ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="3_iudyd"]
+[ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer 1.mp3" id="3_l6iex"]
+[ext_resource type="AudioStream" uid="uid://cug1tj8j48w8s" path="res://assets/music/ambiance/layer 2.mp3" id="4_34hto"]
+[ext_resource type="AudioStream" uid="uid://d3u4jmj2sfh" path="res://assets/music/ambiance/layer 3.mp3" id="5_i0mvv"]
+[ext_resource type="AudioStream" uid="uid://0vptpdtfstgl" path="res://assets/music/ambiance/layer 4.mp3" id="6_txmlv"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_n3i2y"]
+clip_count = 4
+clip_0/name = &"Layer 1"
+clip_0/stream = ExtResource("3_l6iex")
+clip_0/auto_advance = 0
+clip_1/name = &"Layer 2"
+clip_1/stream = ExtResource("4_34hto")
+clip_1/auto_advance = 0
+clip_2/name = &"Layer 3"
+clip_2/stream = ExtResource("5_i0mvv")
+clip_2/auto_advance = 0
+clip_3/name = &"Layer 4"
+clip_3/stream = ExtResource("6_txmlv")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 1
+}
+}
+
+[node name="TheBuilding" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_hixpo")]
+position = Vector2(1139, -233)
+
+[node name="RoomManager" type="Node2D" parent="."]
+script = ExtResource("3_iudyd")
+
+[node name="TODO" type="Node" parent="RoomManager"]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_n3i2y")
+bus = &"Music"
