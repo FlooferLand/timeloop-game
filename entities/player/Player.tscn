@@ -4,18 +4,25 @@
 [ext_resource type="SpriteFrames" uid="uid://cp6sjtqr30yt2" path="res://entities/player/textures/sprite_frames.tres" id="1_mab2k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_453mm"]
-radius = 94.0
+radius = 48.0
 height = 250.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_453mm")
+sprite = NodePath("Sprite")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, 32)
 scale = Vector2(0.8, 0.8)
 sprite_frames = ExtResource("1_mab2k")
+animation = &"idle"
+offset = Vector2(0, -250)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -128)
 shape = SubResource("CapsuleShape2D_453mm")
+debug_color = Color(0, 0.6, 0.701961, 0.180392)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -449)
 position_smoothing_enabled = true

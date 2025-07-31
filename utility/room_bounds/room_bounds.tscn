@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://kuhv8701w14f"]
+
+[ext_resource type="Script" uid="uid://bns2u7fmm5xg3" path="res://utility/room_bounds/room_bounds.gd" id="1_gtqkm"]
+
+[node name="RoomBounds" type="Node2D"]
+script = ExtResource("1_gtqkm")
+metadata/_edit_lock_ = true

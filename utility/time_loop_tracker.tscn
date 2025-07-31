@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://c10ykaa58hgny"]
+
+[ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer 1.mp3" id="1_c273m"]
+[ext_resource type="AudioStream" uid="uid://cug1tj8j48w8s" path="res://assets/music/ambiance/layer 2.mp3" id="2_vnco5"]
+[ext_resource type="AudioStream" uid="uid://d3u4jmj2sfh" path="res://assets/music/ambiance/layer 3.mp3" id="3_m85eb"]
+[ext_resource type="AudioStream" uid="uid://0vptpdtfstgl" path="res://assets/music/ambiance/layer 4.mp3" id="4_vwq27"]
+[ext_resource type="Script" uid="uid://b0lffjqolvayy" path="res://levels/the_building/time_loop_tracker.gd" id="5_1onlb"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_turvd"]
+clip_count = 4
+clip_0/name = &"Layer 1"
+clip_0/stream = ExtResource("1_c273m")
+clip_0/auto_advance = 0
+clip_1/name = &"Layer 2"
+clip_1/stream = ExtResource("2_vnco5")
+clip_1/auto_advance = 0
+clip_2/name = &"Layer 3"
+clip_2/stream = ExtResource("3_m85eb")
+clip_2/auto_advance = 0
+clip_3/name = &"Layer 4"
+clip_3/stream = ExtResource("4_vwq27")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 1,
+"to_time": 1
+}
+}
+
+[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "counter_label")]
+script = ExtResource("5_1onlb")
+music = NodePath("Music")
+counter_label = NodePath("Control/Counter")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_turvd")
+bus = &"Music"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Counter" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 304.0
+offset_bottom = 56.0
+text = "Time left: 10 seconds"

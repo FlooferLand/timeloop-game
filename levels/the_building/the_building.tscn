@@ -1,45 +1,51 @@
-[gd_scene load_steps=8 format=3 uid="uid://douk4eknvrii7"]
+[gd_scene load_steps=7 format=3 uid="uid://douk4eknvrii7"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_hixpo"]
+[ext_resource type="PackedScene" uid="uid://bsgdbtff22sua" path="res://rooms/reception/reception.tscn" id="2_34hto"]
+[ext_resource type="PackedScene" uid="uid://dci7alk3h5rg2" path="res://entities/room_transition/room_transition.tscn" id="3_i0mvv"]
 [ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="3_iudyd"]
-[ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer 1.mp3" id="3_l6iex"]
-[ext_resource type="AudioStream" uid="uid://cug1tj8j48w8s" path="res://assets/music/ambiance/layer 2.mp3" id="4_34hto"]
-[ext_resource type="AudioStream" uid="uid://d3u4jmj2sfh" path="res://assets/music/ambiance/layer 3.mp3" id="5_i0mvv"]
-[ext_resource type="AudioStream" uid="uid://0vptpdtfstgl" path="res://assets/music/ambiance/layer 4.mp3" id="6_txmlv"]
+[ext_resource type="PackedScene" uid="uid://c10ykaa58hgny" path="res://utility/time_loop_tracker.tscn" id="5_iudyd"]
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_n3i2y"]
-clip_count = 4
-clip_0/name = &"Layer 1"
-clip_0/stream = ExtResource("3_l6iex")
-clip_0/auto_advance = 0
-clip_1/name = &"Layer 2"
-clip_1/stream = ExtResource("4_34hto")
-clip_1/auto_advance = 0
-clip_2/name = &"Layer 3"
-clip_2/stream = ExtResource("5_i0mvv")
-clip_2/auto_advance = 0
-clip_3/name = &"Layer 4"
-clip_3/stream = ExtResource("6_txmlv")
-clip_3/auto_advance = 0
-_transitions = {
-Vector2i(-1, -1): {
-"fade_beats": 1.0,
-"fade_mode": 3,
-"from_time": 1,
-"to_time": 1
-}
-}
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_34hto"]
+normal = Vector2(0, -40)
 
 [node name="TheBuilding" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_hixpo")]
-position = Vector2(1139, -233)
-
-[node name="RoomManager" type="Node2D" parent="."]
+[node name="RoomManager" type="Node2D" parent="." node_paths=PackedStringArray("default")]
 script = ExtResource("3_iudyd")
+default = NodePath("Reception")
 
-[node name="TODO" type="Node" parent="RoomManager"]
+[node name="Reception" parent="RoomManager" instance=ExtResource("2_34hto")]
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamInteractive_n3i2y")
-bus = &"Music"
+[node name="RoomTransition" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("3_i0mvv")]
+position = Vector2(2141, 0)
+room_a = NodePath("../Reception")
+room_b = NodePath("../Reception2")
+
+[node name="Reception2" parent="RoomManager" instance=ExtResource("2_34hto")]
+position = Vector2(2139, 0)
+
+[node name="Player" parent="." node_paths=PackedStringArray("current_room") instance=ExtResource("1_hixpo")]
+position = Vector2(1073, 0)
+current_room = NodePath("../RoomManager/Reception")
+
+[node name="TimeLoopTracker" parent="." instance=ExtResource("5_iudyd")]
+
+[node name="Physics" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Physics"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/Floor"]
+position = Vector2(1073, 0)
+shape = SubResource("WorldBoundaryShape2D_34hto")
+
+[node name="ClearColor" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="ClearColor"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
