@@ -1,0 +1,64 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://b8hnlut0v4ocq"]
+
+[ext_resource type="Texture2D" uid="uid://dqs0oakpioe0f" path="res://assets/textures/npcs/receptionist.png" id="1_ydngn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj4tg"]
+atlas = ExtResource("1_ydngn")
+region = Rect2(0, 0, 452, 380)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsrsb"]
+atlas = ExtResource("1_ydngn")
+region = Rect2(452, 0, 452, 380)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5ohy"]
+atlas = ExtResource("1_ydngn")
+region = Rect2(1356, 0, 452, 380)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q52pt"]
+atlas = ExtResource("1_ydngn")
+region = Rect2(1808, 0, 452, 380)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mne4k"]
+atlas = ExtResource("1_ydngn")
+region = Rect2(904, 0, 452, 380)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj4tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsrsb")
+}],
+"loop": true,
+"name": &"crazy_talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5ohy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q52pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5ohy")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mne4k")
+}],
+"loop": true,
+"name": &"tired",
+"speed": 5.0
+}]

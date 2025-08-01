@@ -51,10 +51,14 @@ func advance() -> void:
 		char_name_label.clear_character()
 	
 	# Playing dialog actions
-	if current.additional is DialogPlaySoundAction:
-		var action := current.additional as DialogPlaySoundAction
-		additional_audio_player.stream = action.sound
-		additional_audio_player.play()
+	for additional in current.additional:
+		if additional is DialogPlaySoundAction:
+			var action := additional as DialogPlaySoundAction
+			additional_audio_player.stream = action.sound
+			additional_audio_player.play()
+		elif additional is DialogChangeAnimationAction:
+			var action := additional as DialogChangeAnimationAction
+			manager.action_change_animation.emit(action.anim_name)
 	
 	# Looking at all the dialog content types
 	if current is DialogTextEntry:

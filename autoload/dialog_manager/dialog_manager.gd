@@ -1,7 +1,9 @@
 ## Acts as an interface for DialogBox
 class_name DialogManagerType extends CanvasLayer
 
-signal dialog_closed
+signal dialog_closed  ## Called when the dialog is closed
+signal action_change_animation(anim_name: String)  ## Called by the change animation action
+signal update_speaking(speaking: bool)  ## Called when speech dialog is started or stopped
 
 @export var dialog_box: DialogBox
 
@@ -24,3 +26,4 @@ func close() -> void:
 	player_ref.is_looking = false
 	player_ref.mouse_locked = true
 	dialog_closed.emit()
+	update_speaking.emit(false)

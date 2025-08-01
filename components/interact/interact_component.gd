@@ -9,9 +9,7 @@ signal on_player_interact(player: Player)
 	get(): return size
 	set(value):
 		size = value.max(Vector2.ZERO)
-		await ready
-		var shape := (collision.shape as RectangleShape2D)
-		shape.size = size
+		call_deferred("_update_size")
 
 var player_hovering := false
 
@@ -30,6 +28,10 @@ func start_hover(player: Player):
 func stop_hover(player: Player):
 	player_hovering = false
 	queue_redraw()
+
+func _update_size():
+	var shape := (collision.shape as RectangleShape2D)
+	shape.size = size
 
 func _draw() -> void:
 	if player_hovering:

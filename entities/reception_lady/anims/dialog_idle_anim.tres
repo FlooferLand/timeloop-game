@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogChangeAnimationAction" load_steps=2 format=3 uid="uid://w3ymr8rfxhbi"]
+
+[ext_resource type="Script" uid="uid://8tvjx86gyflj" path="res://components/dialog/resources/actions/dialog_change_animation_action.gd" id="1_xrmvy"]
+
+[resource]
+script = ExtResource("1_xrmvy")
+anim_name = "idle"
+metadata/_custom_type_script = "uid://8tvjx86gyflj"

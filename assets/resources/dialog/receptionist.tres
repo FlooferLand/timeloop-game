@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=19 format=3 uid="uid://cs0ncr7aau2f3"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_lrvu3"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_pey5j"]
+[ext_resource type="Resource" uid="uid://b6652sj7d1hiv" path="res://assets/resources/characters/receptionist.tres" id="3_chrxt"]
+[ext_resource type="Resource" uid="uid://k231jpddifos" path="res://entities/reception_lady/anims/dialog_talk_anim.tres" id="3_v4tl7"]
+[ext_resource type="Script" uid="uid://bbph4e2hp6jcj" path="res://components/dialog/resources/entries/dialog_character_act_entry.gd" id="5_n2xei"]
+[ext_resource type="Resource" uid="uid://hj8i2l11d18x" path="res://entities/reception_lady/anims/dialog_tired_anim.tres" id="6_0ng1n"]
+[ext_resource type="Script" uid="uid://dp7tw8e87q0l2" path="res://components/dialog/resources/actions/dialog_play_sound_action.gd" id="6_n2xei"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="6_v4tl7"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="7_0ng1n"]
+[ext_resource type="AudioStream" uid="uid://hv5t6jgngypj" path="res://assets/sfx/quick_keyboard_taps.wav" id="7_v4tl7"]
+[ext_resource type="Resource" uid="uid://w3ymr8rfxhbi" path="res://entities/reception_lady/anims/dialog_idle_anim.tres" id="9_ash0v"]
+[ext_resource type="Resource" uid="uid://cdcmqi76lfdno" path="res://entities/reception_lady/anims/dialog_crazy_talk_anim.tres" id="11_v4tl7"]
+
+[sub_resource type="Resource" id="Resource_0ng1n"]
+script = ExtResource("6_v4tl7")
+text = "Hello dear!
+Are you new to the company? I don't recall seeing you here."
+character = ExtResource("3_chrxt")
+additional = Array[ExtResource("2_pey5j")]([ExtResource("3_v4tl7")])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_en7hc"]
+script = ExtResource("6_v4tl7")
+text = "Hmm.. Let me check, let me check.."
+character = ExtResource("3_chrxt")
+additional = Array[ExtResource("2_pey5j")]([ExtResource("6_0ng1n")])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_ash0v"]
+script = ExtResource("6_n2xei")
+sound = ExtResource("7_v4tl7")
+metadata/_custom_type_script = "uid://dp7tw8e87q0l2"
+
+[sub_resource type="Resource" id="Resource_es8m1"]
+script = ExtResource("5_n2xei")
+text = "She types aggressively at her computer"
+character = ExtResource("3_chrxt")
+additional = Array[ExtResource("2_pey5j")]([SubResource("Resource_ash0v"), ExtResource("9_ash0v")])
+metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
+
+[sub_resource type="Resource" id="Resource_dl5ps"]
+script = ExtResource("6_v4tl7")
+text = "Hmm.. Nope!
+I suppose you're quite an odd-looking intern then.
+"
+character = ExtResource("3_chrxt")
+additional = Array[ExtResource("2_pey5j")]([ExtResource("3_v4tl7")])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_n2xei"]
+script = ExtResource("6_v4tl7")
+text = "Check in with the manager and stop pestering me."
+character = ExtResource("3_chrxt")
+additional = Array[ExtResource("2_pey5j")]([ExtResource("11_v4tl7")])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[resource]
+script = ExtResource("7_0ng1n")
+entries = Array[ExtResource("1_lrvu3")]([SubResource("Resource_0ng1n"), SubResource("Resource_en7hc"), SubResource("Resource_es8m1"), SubResource("Resource_dl5ps"), SubResource("Resource_n2xei")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
