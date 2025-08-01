@@ -18,11 +18,11 @@ sprite = NodePath("Sprite")
 footstep_comp = NodePath("FootstepComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(-8, 32)
+position = Vector2(-4.76837e-07, 1.90735e-06)
 scale = Vector2(0.8, 0.8)
 sprite_frames = ExtResource("1_mab2k")
 animation = &"idle"
-offset = Vector2(0, -250)
+offset = Vector2(-10, -210)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -128)

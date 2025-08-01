@@ -67,6 +67,11 @@ func _process(delta: float) -> void:
 	elif move_direction.x > 0 and facing == Facing.Left:
 		facing = Facing.Right
 		change_direction.emit(facing)
+	
+	# Body tilt
+	var body_tilt_amount := 0.03 if not sprinting else 0.05
+	var body_tilt := (PI * body_tilt_amount if walking else 0.0) * (1.0 if facing == Facing.Right else -1.0)
+	sprite.rotation = lerp(sprite.rotation, body_tilt, (4.0 if walking else 20.0) * delta)
 
 func _physics_process(delta: float) -> void:
 	var motion := Vector2.ZERO
