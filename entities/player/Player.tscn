@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dytk4odemy15w"]
 
 [ext_resource type="Script" uid="uid://cmqr6suouga2w" path="res://entities/player/player.gd" id="1_453mm"]
-[ext_resource type="SpriteFrames" uid="uid://cp6sjtqr30yt2" path="res://entities/player/textures/sprite_frames.tres" id="1_mab2k"]
+[ext_resource type="SpriteFrames" uid="uid://cr1jr04f0k0wn" path="res://assets/textures/player/with_arms.tres" id="2_eaotn"]
 [ext_resource type="Script" uid="uid://crlgghljmgr5c" path="res://entities/player/player_interaction.gd" id="3_l3c03"]
 [ext_resource type="PackedScene" uid="uid://0fxhnnybdyae" path="res://components/footstep/FootstepComponent.tscn" id="4_eaotn"]
 
@@ -20,8 +20,8 @@ footstep_comp = NodePath("FootstepComponent")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4.76837e-07, 1.90735e-06)
 scale = Vector2(0.8, 0.8)
-sprite_frames = ExtResource("1_mab2k")
-animation = &"idle"
+sprite_frames = ExtResource("2_eaotn")
+animation = &"walk"
 offset = Vector2(-10, -210)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -31,7 +31,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.180392)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -480)
-position_smoothing_enabled = true
 
 [node name="PlayerInteraction" type="Area2D" parent="." node_paths=PackedStringArray("player", "collision")]
 collision_layer = 2

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ian2wydsjnpt"
-path="res://.godot/imported/PlayerSprite.png-8f2872a3a51dd52913c42f58f87dc78e.ctex"
+path="res://.godot/imported/armless.png-bbe347795995b8497f7f833a8269219c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/player/textures/PlayerSprite.png"
-dest_files=["res://.godot/imported/PlayerSprite.png-8f2872a3a51dd52913c42f58f87dc78e.ctex"]
+source_file="res://assets/textures/player/armless.png"
+dest_files=["res://.godot/imported/armless.png-bbe347795995b8497f7f833a8269219c.ctex"]
 
 [params]
 
