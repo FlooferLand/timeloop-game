@@ -64,7 +64,7 @@ metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Floor" type="Sprite2D" parent="AutoRoom"]
 material = SubResource("ShaderMaterial_7we7q")
-position = Vector2(0, -139.65)
+position = Vector2(0, -67)
 scale = Vector2(0.520833, 1)
 texture = ExtResource("8_t3ekj")
 centered = false

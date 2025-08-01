@@ -3,19 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_ul1gn"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_ul1gn"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_3j2cw"]
-[ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="3_emli7"]
+[ext_resource type="Texture2D" uid="uid://7uhyh2mnjrtx" path="res://assets/textures/props/receptionist_desk.png" id="5_dnklr"]
 [ext_resource type="PackedScene" uid="uid://dfb4gv115aot7" path="res://entities/reception_lady/receptionist.tscn" id="5_kwhvp"]
 [ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="6_c1m58"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnklr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv13q"]
 shader = ExtResource("2_ul1gn")
 shader_parameter/tile = Vector2(1.11198, 0.926852)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv13q"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2j8p"]
 shader = ExtResource("2_ul1gn")
 shader_parameter/tile = Vector2(1.11198, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2j8p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cyumd"]
 shader = ExtResource("2_ul1gn")
 shader_parameter/tile = Vector2(1.11198, 1)
 
@@ -38,17 +38,17 @@ size = Vector2(2135, 1001)
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_dnklr")
+material = SubResource("ShaderMaterial_xv13q")
 position = Vector2(0, -1001)
 scale = Vector2(1.11198, 0.926852)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_xv13q")
+material = SubResource("ShaderMaterial_h2j8p")
 position = Vector2(0, -1001)
 scale = Vector2(1.11198, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_h2j8p")
+material = SubResource("ShaderMaterial_cyumd")
 scale = Vector2(1.11198, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
@@ -70,8 +70,8 @@ shape = SubResource("RectangleShape2D_23kdh")
 position = Vector2(1472, -208)
 
 [node name="Table" type="Sprite2D" parent="Entities" index="1"]
-position = Vector2(1512, -136)
-texture = ExtResource("3_emli7")
+position = Vector2(1464, -120)
+texture = ExtResource("5_dnklr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Entities" index="2"]
 position = Vector2(1280, -296)
