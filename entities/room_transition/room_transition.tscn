@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dci7alk3h5rg2"]
+[gd_scene load_steps=5 format=3 uid="uid://dci7alk3h5rg2"]
 
 [ext_resource type="Script" uid="uid://f1vyfu2qw48o" path="res://entities/room_transition/room_transition.gd" id="1_ncpy4"]
+[ext_resource type="SpriteFrames" uid="uid://dt2e1awr8c4sy" path="res://assets/textures/room/door.tres" id="2_co6km"]
+[ext_resource type="AudioStream" uid="uid://dmmbq0ipv5kmw" path="res://assets/sfx/door/door_interactive.tres" id="3_ri6yg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wuww"]
 size = Vector2(128, 385)
 
-[node name="RoomTransition" type="Node2D" node_paths=PackedStringArray("area")]
+[node name="RoomTransition" type="Node2D" node_paths=PackedStringArray("area", "door", "door_audio_player")]
 z_index = 1
 script = ExtResource("1_ncpy4")
 area = NodePath("Area2D")
+door = NodePath("Door")
+door_audio_player = NodePath("DoorAudioPlayer")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -16,3 +20,14 @@ area = NodePath("Area2D")
 position = Vector2(0, -192.5)
 shape = SubResource("RectangleShape2D_4wuww")
 debug_color = Color(0, 0.640436, 0.343844, 0.54902)
+
+[node name="Door" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.90735e-06, -192)
+scale = Vector2(0.791498, 0.791498)
+sprite_frames = ExtResource("2_co6km")
+animation = &"open"
+
+[node name="DoorAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ri6yg")
+volume_db = 2.0
+bus = &"SFX"

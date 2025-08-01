@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcog8dn15y63q"]
+[gd_scene load_steps=13 format=3 uid="uid://dcog8dn15y63q"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_hvhyj"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_11oro"]
@@ -8,17 +8,25 @@
 [ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="5_l4tfm"]
 [ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="7_m6cqc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8vixk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkdb5"]
 shader = ExtResource("2_11oro")
 shader_parameter/tile = Vector2(1.16146, 0.925926)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4tfm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onjh0"]
 shader = ExtResource("2_11oro")
 shader_parameter/tile = Vector2(1.16146, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gw336"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2a4ax"]
 shader = ExtResource("2_11oro")
 shader_parameter/tile = Vector2(1.16146, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4hpm"]
+resource_local_to_scene = true
+size = Vector2(153, 594)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xr6xk"]
+resource_local_to_scene = true
+size = Vector2(153, 594)
 
 [node name="OfficeArea1" instance=ExtResource("1_hvhyj")]
 
@@ -31,15 +39,15 @@ closed_left = false
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_8vixk")
+material = SubResource("ShaderMaterial_gkdb5")
 scale = Vector2(1.16146, 0.925926)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_l4tfm")
+material = SubResource("ShaderMaterial_onjh0")
 scale = Vector2(1.16146, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_gw336")
+material = SubResource("ShaderMaterial_2a4ax")
 scale = Vector2(1.16146, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
@@ -47,6 +55,7 @@ texture = ExtResource("3_11oro")
 
 [node name="Collision" parent="AutoRoom/LeftWall" index="1"]
 position = Vector2(76.5, -703)
+shape = SubResource("RectangleShape2D_x4hpm")
 
 [node name="Sprite" parent="AutoRoom/RightWall" index="0"]
 position = Vector2(2077, -1000)
@@ -54,6 +63,7 @@ texture = ExtResource("3_11oro")
 
 [node name="Collision" parent="AutoRoom/RightWall" index="1"]
 position = Vector2(2153.5, -703)
+shape = SubResource("RectangleShape2D_xr6xk")
 
 [node name="PhotocopyMachine" type="Node2D" parent="Entities" index="0"]
 position = Vector2(384, -7)
