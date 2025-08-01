@@ -2,8 +2,9 @@
 class_name TimeLoopManagerType extends Node
 
 signal reset()
+signal time_advanced(new_hour: int)
 
-const MAX_TIME := 10  # 60
+const MAX_TIME := 60
 const START_PM := 1
 const END_PM := 7
 
@@ -12,7 +13,12 @@ var time: int = 0
 
 func _process(delta: float) -> void:
 	counter += delta
-	time = int(remap(counter, 0, MAX_TIME, START_PM, END_PM))
+	
+	var new_time := int(remap(counter, 0, MAX_TIME, START_PM, END_PM))
+	if new_time > time:
+		time_advanced.emit(new_time)
+	time = new_time
+	
 	if time > END_PM:
 		time = 0
 		counter = 0
