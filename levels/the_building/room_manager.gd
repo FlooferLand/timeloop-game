@@ -8,6 +8,8 @@ signal room_changed(old: Room, new: Room)
 @export var default: Room
 
 var _active: Room
+var trans_old: Tween = null
+var trans_new: Tween = null
 
 var active: Room:
 	get: return _active
@@ -24,19 +26,31 @@ func change(new: Room) -> void:
 	var old := _active
 	_active = new
 	
-	var trans_old := create_tween()
-	trans_old.tween_property(old, "modulate", Color.BLACK, 0.4)
+	if trans_old != null:
+		old.modulate = Color.WHITE
+		old.visible = true
+		trans_old.kill()
+		trans_old = null
+	trans_old = old.create_tween()
+	trans_old.tween_property(old, "modulate", Color.BLACK, 0.1)
 	trans_old.tween_callback(func():
 		old.visible = false
 		room_changed.emit(old, new)
 		trans_old.kill()
+		trans_old = null
 	)
 	
-	var trans_new := create_tween()
-	trans_new.tween_property(new, "modulate", Color.WHITE, 0.2)
+	if trans_new != null:
+		new.modulate = Color.WHITE
+		new.visible = true
+		trans_new.kill()
+		trans_new = null
+	trans_new = new.create_tween()
+	trans_new.tween_property(new, "modulate", Color.WHITE, 0.3)
 	trans_new.tween_callback(func():
 		new.visible = true
 		trans_new.kill()
+		trans_new = null
 	)
 
 ## Time loop thingy!!
