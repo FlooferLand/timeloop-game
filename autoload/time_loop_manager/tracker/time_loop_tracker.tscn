@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c10ykaa58hgny"]
+[gd_scene load_steps=11 format=3 uid="uid://c10ykaa58hgny"]
 
 [ext_resource type="Script" uid="uid://b0lffjqolvayy" path="res://autoload/time_loop_manager/tracker/time_loop_tracker.gd" id="1_ncppg"]
 [ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer 1.mp3" id="2_v6hoe"]
@@ -29,6 +29,13 @@ Vector2i(-1, -1): {
 }
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncppg"]
+bg_color = Color(0, 0, 0, 0.329412)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [sub_resource type="LabelSettings" id="LabelSettings_vnco5"]
 font_size = 32
 outline_size = 12
@@ -57,7 +64,7 @@ shadow_offset = Vector2(3, 3)
 [node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "counter_label")]
 script = ExtResource("1_ncppg")
 music = NodePath("Music")
-counter_label = NodePath("Control/VBoxContainer/HBoxContainer/Counter")
+counter_label = NodePath("Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Counter")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_turvd")
@@ -72,26 +79,44 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
-offset_right = 416.0
-offset_bottom = 176.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Notice" type="Label" parent="Control/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ncppg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Notice" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Time loop will trigger at 7 PM"
 label_settings = SubResource("LabelSettings_vnco5")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Text" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Text" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Current time:"
 label_settings = SubResource("LabelSettings_c273m")
 
-[node name="Counter" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Counter" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "1 PM"
 label_settings = SubResource("LabelSettings_m85eb")
