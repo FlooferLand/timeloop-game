@@ -1,4 +1,4 @@
-@tool class_name RoomTransition extends Node2D
+@tool class_name RoomBridge extends Node2D
 
 @export var room_a: Room
 @export var room_b: Room
