@@ -5,6 +5,9 @@ const RoomManagerScene := preload("uid://byw5ec70c2cga")
 ## Triggered when the room is done changing
 signal room_changed(old: Room, new: Room)
 
+@export var player: Player
+
+@export_group("Local")
 @export var default: Room
 
 var _active: Room
@@ -16,7 +19,7 @@ var active: Room:
 	set(value): change(value)
 
 func _enter_tree() -> void:
-	default.active = true
+	default.visible = true
 	for thing in get_children():
 		if thing is Room or RoomTransition:
 			thing.set("manager", self)
@@ -49,6 +52,7 @@ func change(new: Room) -> void:
 	trans_new.tween_property(new, "modulate", Color.WHITE, 0.3)
 	trans_new.tween_callback(func():
 		new.visible = true
+		new.camera.make_current()
 		trans_new.kill()
 		trans_new = null
 	)
@@ -62,7 +66,7 @@ func time_loop_reset() -> void:
 	
 	# Adding the new stuffs
 	var virtual := RoomManagerScene.instantiate()
-	default.active = true
+	default.visible = true
 	for item in virtual.get_children():
 		virtual.remove_child(item)
 		add_child(item)

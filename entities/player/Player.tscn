@@ -29,10 +29,6 @@ position = Vector2(0, -128)
 shape = SubResource("CapsuleShape2D_453mm")
 debug_color = Color(0, 0.6, 0.701961, 0.180392)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -480)
-position_smoothing_enabled = true
-
 [node name="PlayerInteraction" type="Area2D" parent="." node_paths=PackedStringArray("player", "collision")]
 collision_layer = 2
 collision_mask = 2
