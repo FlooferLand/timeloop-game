@@ -21,10 +21,12 @@ func _on_area_entered(area: Area2D) -> void:
 	var parent := area.get_parent()
 	if parent is InteractComponent:
 		hovering = parent
+		hovering.start_hover(player)
 
 func _on_area_exited(area: Area2D) -> void:
 	var parent := area.get_parent()
 	if parent is InteractComponent and parent == hovering:
+		hovering.stop_hover(player)
 		hovering = null
 
 func _input(event: InputEvent) -> void:

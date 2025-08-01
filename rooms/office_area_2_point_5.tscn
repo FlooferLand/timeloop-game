@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://drc6x5q8d2sdd"]
+
+[ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_m6jxw"]
+[ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_v0vrs"]
+[ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_v0vrs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0vrs"]
+shader = ExtResource("2_v0vrs")
+shader_parameter/tile = Vector2(0.78125, 0.925926)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcwye"]
+shader = ExtResource("2_v0vrs")
+shader_parameter/tile = Vector2(0.78125, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afmt6"]
+shader = ExtResource("2_v0vrs")
+shader_parameter/tile = Vector2(0.78125, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmjwp"]
+resource_local_to_scene = true
+size = Vector2(153, 594)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4nue"]
+resource_local_to_scene = true
+size = Vector2(153, 594)
+
+[node name="OfficeArea2Point5" instance=ExtResource("1_m6jxw")]
+
+[node name="Bounds" parent="." index="0"]
+right = 1500
+
+[node name="AutoRoom" parent="." index="1"]
+size = Vector2(1500, 1000)
+closed_left = false
+closed_right = false
+
+[node name="Background" parent="AutoRoom" index="0"]
+material = SubResource("ShaderMaterial_v0vrs")
+scale = Vector2(0.78125, 0.925926)
+
+[node name="Ceiling" parent="AutoRoom" index="1"]
+material = SubResource("ShaderMaterial_kcwye")
+scale = Vector2(0.78125, 1)
+
+[node name="Floor" parent="AutoRoom" index="2"]
+material = SubResource("ShaderMaterial_afmt6")
+scale = Vector2(0.78125, 1)
+
+[node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
+texture = ExtResource("3_v0vrs")
+
+[node name="Collision" parent="AutoRoom/LeftWall" index="1"]
+position = Vector2(76.5, -703)
+shape = SubResource("RectangleShape2D_qmjwp")
+
+[node name="Sprite" parent="AutoRoom/RightWall" index="0"]
+position = Vector2(1347, -1000)
+texture = ExtResource("3_v0vrs")
+
+[node name="Collision" parent="AutoRoom/RightWall" index="1"]
+position = Vector2(1423.5, -703)
+shape = SubResource("RectangleShape2D_g4nue")

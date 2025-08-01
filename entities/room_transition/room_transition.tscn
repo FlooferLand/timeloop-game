@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wuww"]
 size = Vector2(128, 385)
 
-[node name="Transition" type="Node2D" node_paths=PackedStringArray("area")]
+[node name="RoomTransition" type="Node2D" node_paths=PackedStringArray("area")]
 z_index = 1
 script = ExtResource("1_ncpy4")
 area = NodePath("Area2D")
@@ -15,3 +15,4 @@ area = NodePath("Area2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -192.5)
 shape = SubResource("RectangleShape2D_4wuww")
+debug_color = Color(0, 0.640436, 0.343844, 0.54902)

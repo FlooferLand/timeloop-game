@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0fxhnnybdyae"]
+
+[ext_resource type="Script" uid="uid://2bxrq75lx3c4" path="res://components/footstep/footstep_component.gd" id="1_67fvk"]
+[ext_resource type="AudioStream" uid="uid://dedfgkygu0wht" path="res://assets/sfx/footsteps/footsteps.tres" id="2_c6dkf"]
+
+[node name="FootstepComponent" type="Node2D"]
+script = ExtResource("1_67fvk")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_c6dkf")
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4

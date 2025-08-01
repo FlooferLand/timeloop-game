@@ -1,4 +1,5 @@
-class_name Room extends Node2D
+class_name Room
+extends Node2D
 
 var manager: RoomManager  # Injected by RoomManager
 var active := false

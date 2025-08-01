@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dytk4odemy15w"]
+[gd_scene load_steps=7 format=3 uid="uid://dytk4odemy15w"]
 
 [ext_resource type="Script" uid="uid://cmqr6suouga2w" path="res://entities/player/player.gd" id="1_453mm"]
 [ext_resource type="SpriteFrames" uid="uid://cp6sjtqr30yt2" path="res://entities/player/textures/sprite_frames.tres" id="1_mab2k"]
 [ext_resource type="Script" uid="uid://crlgghljmgr5c" path="res://entities/player/player_interaction.gd" id="3_l3c03"]
+[ext_resource type="PackedScene" uid="uid://0fxhnnybdyae" path="res://components/footstep/FootstepComponent.tscn" id="4_eaotn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_453mm"]
 radius = 48.0
@@ -11,9 +12,10 @@ height = 250.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_453mm"]
 size = Vector2(209, 294)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "footstep_comp")]
 script = ExtResource("1_453mm")
 sprite = NodePath("Sprite")
+footstep_comp = NodePath("FootstepComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, 32)
@@ -41,6 +43,8 @@ collision = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteraction"]
 position = Vector2(103, -146)
 shape = SubResource("RectangleShape2D_453mm")
+
+[node name="FootstepComponent" parent="." instance=ExtResource("4_eaotn")]
 
 [connection signal="area_entered" from="PlayerInteraction" to="PlayerInteraction" method="_on_area_entered"]
 [connection signal="area_exited" from="PlayerInteraction" to="PlayerInteraction" method="_on_area_exited"]

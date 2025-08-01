@@ -1,15 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://douk4eknvrii7"]
+[gd_scene load_steps=13 format=3 uid="uid://douk4eknvrii7"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_hixpo"]
-[ext_resource type="PackedScene" uid="uid://bsgdbtff22sua" path="res://rooms/reception/reception.tscn" id="2_34hto"]
+[ext_resource type="PackedScene" uid="uid://bsgdbtff22sua" path="res://rooms/reception.tscn" id="2_34hto"]
 [ext_resource type="PackedScene" uid="uid://dci7alk3h5rg2" path="res://entities/room_transition/room_transition.tscn" id="3_i0mvv"]
 [ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="3_iudyd"]
+[ext_resource type="PackedScene" uid="uid://dcog8dn15y63q" path="res://rooms/office_area_1.tscn" id="4_l6iex"]
+[ext_resource type="PackedScene" uid="uid://vhrg6s1mauso" path="res://rooms/office_area_2.tscn" id="5_i0mvv"]
 [ext_resource type="PackedScene" uid="uid://c10ykaa58hgny" path="res://utility/time_loop_tracker.tscn" id="5_iudyd"]
+[ext_resource type="PackedScene" uid="uid://drc6x5q8d2sdd" path="res://rooms/office_area_2_point_5.tscn" id="6_txmlv"]
+[ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="7_34hto"]
+[ext_resource type="PackedScene" uid="uid://5x1ua3w8qe8f" path="res://rooms/office_area_3.tscn" id="7_jjsyt"]
+[ext_resource type="PackedScene" uid="uid://bb68hsv18n5jd" path="res://rooms/managers_office.tscn" id="8_0ws2b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_34hto"]
 normal = Vector2(0, -40)
 
 [node name="TheBuilding" type="Node2D"]
+
+[node name="TODO- Auto-add transitions in AutoRoom" type="Node" parent="."]
 
 [node name="RoomManager" type="Node2D" parent="." node_paths=PackedStringArray("default")]
 script = ExtResource("3_iudyd")
@@ -21,14 +29,45 @@ metadata/_edit_lock_ = true
 [node name="RoomTransition" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("3_i0mvv")]
 position = Vector2(2141, 0)
 room_a = NodePath("../Reception")
-room_b = NodePath("../Reception2")
+room_b = NodePath("../OfficeArea1")
 
-[node name="Reception2" parent="RoomManager" instance=ExtResource("2_34hto")]
-position = Vector2(2139, 0)
+[node name="OfficeArea1" parent="RoomManager" instance=ExtResource("4_l6iex")]
+position = Vector2(2135, 0)
 
-[node name="Player" parent="." node_paths=PackedStringArray("current_room") instance=ExtResource("1_hixpo")]
+[node name="RoomTransition2" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("3_i0mvv")]
+position = Vector2(4365, 0)
+room_a = NodePath("../OfficeArea1")
+room_b = NodePath("../OfficeArea2")
+
+[node name="OfficeArea2" parent="RoomManager" instance=ExtResource("5_i0mvv")]
+position = Vector2(4365, 0)
+
+[node name="RoomTransition3" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("3_i0mvv")]
+position = Vector2(6375, 0)
+room_a = NodePath("../OfficeArea2")
+room_b = NodePath("../OfficeArea2Point5")
+
+[node name="OfficeArea2Point5" parent="RoomManager" instance=ExtResource("6_txmlv")]
+position = Vector2(6375, 0)
+
+[node name="RoomTransition4" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("3_i0mvv")]
+position = Vector2(7875, 0)
+room_a = NodePath("../OfficeArea2Point5")
+room_b = NodePath("../OfficeArea3")
+
+[node name="OfficeArea3" parent="RoomManager" instance=ExtResource("7_jjsyt")]
+position = Vector2(7875, 0)
+
+[node name="RoomTransition5" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("3_i0mvv")]
+position = Vector2(10875, 0)
+room_a = NodePath("../OfficeArea2Point5")
+room_b = NodePath("../ManagersOffice")
+
+[node name="ManagersOffice" parent="RoomManager" instance=ExtResource("8_0ws2b")]
+position = Vector2(10875, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_hixpo")]
 position = Vector2(1073, 0)
-current_room = NodePath("../RoomManager/Reception")
 
 [node name="TimeLoopTracker" parent="." instance=ExtResource("5_iudyd")]
 
@@ -40,14 +79,4 @@ current_room = NodePath("../RoomManager/Reception")
 position = Vector2(1073, 0)
 shape = SubResource("WorldBoundaryShape2D_34hto")
 
-[node name="ClearColor" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="ClearColor"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="ClearColor" parent="." instance=ExtResource("7_34hto")]

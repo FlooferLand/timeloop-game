@@ -57,7 +57,7 @@ func advance() -> void:
 		content_label.type(entry.text, entry.character.sound)
 	elif current is DialogCharacterActsEntry:
 		var entry := current as DialogCharacterActsEntry
-		content_label.type(entry.text)
+		content_label.set_fast("[i][color=gray]%s[/color][/i]" % entry.text)
 	elif current is DialogTextCollection:
 		advance_text_collection()
 		return

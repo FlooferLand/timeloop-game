@@ -14,6 +14,10 @@ func _ready() -> void:
 			char_audio_player.play()
 	)
 
+func set_fast(what: String) -> void:
+	visible_characters = -1
+	text = what
+
 func type(what: String, char_sound: AudioStreamWAV = null) -> void:
 	visible_characters = 0
 	text = what

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsgdbtff22sua"]
+[gd_scene load_steps=12 format=3 uid="uid://bsgdbtff22sua"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_ul1gn"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_ul1gn"]
@@ -7,17 +7,25 @@
 [ext_resource type="PackedScene" uid="uid://dfb4gv115aot7" path="res://entities/reception_lady/reception_lady.tscn" id="5_kwhvp"]
 [ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="6_c1m58"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1m58"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnklr"]
 shader = ExtResource("2_ul1gn")
 shader_parameter/tile = Vector2(1.11198, 0.926852)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s8hpp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xv13q"]
 shader = ExtResource("2_ul1gn")
 shader_parameter/tile = Vector2(1.11198, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pi3yr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2j8p"]
 shader = ExtResource("2_ul1gn")
 shader_parameter/tile = Vector2(1.11198, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyumd"]
+resource_local_to_scene = true
+size = Vector2(153, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23kdh"]
+resource_local_to_scene = true
+size = Vector2(153, 594)
 
 [node name="Reception" instance=ExtResource("1_ul1gn")]
 
@@ -30,18 +38,18 @@ size = Vector2(2135, 1001)
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_c1m58")
+material = SubResource("ShaderMaterial_dnklr")
 position = Vector2(0, -1001)
 scale = Vector2(1.11198, 0.926852)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_s8hpp")
+material = SubResource("ShaderMaterial_xv13q")
 position = Vector2(0, -1001)
 scale = Vector2(1.11198, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
 modulate = Color(0.607302, 0.607302, 0.607302, 1)
-material = SubResource("ShaderMaterial_pi3yr")
+material = SubResource("ShaderMaterial_h2j8p")
 scale = Vector2(1.11198, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
@@ -49,6 +57,7 @@ position = Vector2(0, -1001)
 
 [node name="Collision" parent="AutoRoom/LeftWall" index="1"]
 position = Vector2(76.5, -461)
+shape = SubResource("RectangleShape2D_cyumd")
 
 [node name="Sprite" parent="AutoRoom/RightWall" index="0"]
 position = Vector2(1982, -1001)
@@ -56,6 +65,7 @@ texture = ExtResource("3_3j2cw")
 
 [node name="Collision" parent="AutoRoom/RightWall" index="1"]
 position = Vector2(2058.5, -704)
+shape = SubResource("RectangleShape2D_23kdh")
 
 [node name="ReceptionLady" parent="Entities" index="0" instance=ExtResource("5_kwhvp")]
 position = Vector2(1472, -56)

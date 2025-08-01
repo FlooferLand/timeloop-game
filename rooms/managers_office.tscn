@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://bb68hsv18n5jd"]
+
+[ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_4qtyc"]
+[ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_nwxry"]
+[ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="3_nwxry"]
+[ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_o0yjw"]
+[ext_resource type="Texture2D" uid="uid://bsv0yaep3pwxa" path="res://assets/textures/props/Computer1.png" id="4_qiwgo"]
+[ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="5_fic25"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o0yjw"]
+shader = ExtResource("2_nwxry")
+shader_parameter/tile = Vector2(0.78125, 0.925926)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdvba"]
+shader = ExtResource("2_nwxry")
+shader_parameter/tile = Vector2(0.78125, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oigr5"]
+shader = ExtResource("2_nwxry")
+shader_parameter/tile = Vector2(0.78125, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_memf8"]
+resource_local_to_scene = true
+size = Vector2(153, 594)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6lna"]
+resource_local_to_scene = true
+size = Vector2(153, 1080)
+
+[node name="ManagersOffice" instance=ExtResource("1_4qtyc")]
+
+[node name="Bounds" parent="." index="0"]
+right = 1500
+
+[node name="AutoRoom" parent="." index="1"]
+size = Vector2(1500, 1000)
+closed_left = false
+
+[node name="Background" parent="AutoRoom" index="0"]
+material = SubResource("ShaderMaterial_o0yjw")
+scale = Vector2(0.78125, 0.925926)
+
+[node name="Ceiling" parent="AutoRoom" index="1"]
+material = SubResource("ShaderMaterial_xdvba")
+scale = Vector2(0.78125, 1)
+
+[node name="Floor" parent="AutoRoom" index="2"]
+material = SubResource("ShaderMaterial_oigr5")
+scale = Vector2(0.78125, 1)
+
+[node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
+texture = ExtResource("3_o0yjw")
+
+[node name="Collision" parent="AutoRoom/LeftWall" index="1"]
+position = Vector2(76.5, -703)
+shape = SubResource("RectangleShape2D_memf8")
+
+[node name="Sprite" parent="AutoRoom/RightWall" index="0"]
+position = Vector2(1347, -1000)
+
+[node name="Collision" parent="AutoRoom/RightWall" index="1"]
+position = Vector2(1423.5, -460)
+shape = SubResource("RectangleShape2D_u6lna")
+
+[node name="Desk" type="Sprite2D" parent="Entities" index="0"]
+position = Vector2(824, -120)
+scale = Vector2(0.613027, 1)
+texture = ExtResource("3_nwxry")
+
+[node name="Computer" type="Sprite2D" parent="Entities" index="1"]
+position = Vector2(752, -264)
+texture = ExtResource("4_qiwgo")
+
+[node name="Chair" type="Sprite2D" parent="Entities" index="2"]
+position = Vector2(529.626, -141.25)
+scale = Vector2(1.09364, 1.09364)
+texture = ExtResource("5_fic25")

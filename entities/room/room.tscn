@@ -10,22 +10,24 @@
 [ext_resource type="Texture2D" uid="uid://dgryl0yli2wop" path="res://assets/textures/room/floor.png" id="8_t3ekj"]
 [ext_resource type="Texture2D" uid="uid://ckp6mlimrl7qn" path="res://assets/textures/room/wall_closed.png" id="9_v2uyr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vouxh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2uyr"]
 shader = ExtResource("4_vouxh")
 shader_parameter/tile = Vector2(0.520833, 0.925926)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vouxh"]
+shader = ExtResource("4_vouxh")
+shader_parameter/tile = Vector2(0.520833, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7we7q"]
 shader = ExtResource("4_vouxh")
 shader_parameter/tile = Vector2(0.520833, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqp6b"]
-shader = ExtResource("4_vouxh")
-shader_parameter/tile = Vector2(0.520833, 1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eocep"]
+resource_local_to_scene = true
 size = Vector2(153, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1drqm"]
+resource_local_to_scene = true
 size = Vector2(153, 1080)
 
 [node name="Room" type="Node2D"]
@@ -43,7 +45,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="AutoRoom"]
-material = SubResource("ShaderMaterial_vouxh")
+material = SubResource("ShaderMaterial_v2uyr")
 position = Vector2(0, -1000)
 scale = Vector2(0.520833, 0.925926)
 texture = ExtResource("5_7we7q")
@@ -52,7 +54,7 @@ script = ExtResource("6_oqp6b")
 metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Ceiling" type="Sprite2D" parent="AutoRoom"]
-material = SubResource("ShaderMaterial_7we7q")
+material = SubResource("ShaderMaterial_vouxh")
 position = Vector2(0, -1000)
 scale = Vector2(0.520833, 1)
 texture = ExtResource("7_hgt0f")
@@ -61,7 +63,7 @@ script = ExtResource("6_oqp6b")
 metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Floor" type="Sprite2D" parent="AutoRoom"]
-material = SubResource("ShaderMaterial_oqp6b")
+material = SubResource("ShaderMaterial_7we7q")
 position = Vector2(0, -139.65)
 scale = Vector2(0.520833, 1)
 texture = ExtResource("8_t3ekj")

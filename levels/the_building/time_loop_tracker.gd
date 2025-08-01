@@ -29,4 +29,4 @@ func _process(delta: float) -> void:
 		print("TIME LOOP!")
 	if stage > music_playback.get_current_clip_index():
 		music_playback.switch_to_clip(stage)
-	counter_label.text = "Time left: %s" % (MAX_TIME - counter)
+	counter_label.text = "Time left: %s seconds" % int(MAX_TIME - counter)

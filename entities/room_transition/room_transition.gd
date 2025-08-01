@@ -22,6 +22,8 @@ func _ready() -> void:
 			player = null
 			set_process(false)
 	)
+	if room_a == null or room_b == null:
+		push_error("Room transition item is null (you stoopit)")
 
 ## Called while the player is in the transition
 func _process(delta: float) -> void:

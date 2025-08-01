@@ -49,6 +49,11 @@ mouse_filter = 2
 
 [node name="Counter" type="Label" parent="Control"]
 layout_mode = 0
-offset_right = 304.0
+offset_right = 592.0
 offset_bottom = 56.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
 text = "Time left: 10 seconds"

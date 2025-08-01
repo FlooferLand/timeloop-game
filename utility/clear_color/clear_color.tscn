@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd0ri4elgqxxc"]
+
+[ext_resource type="Script" uid="uid://cbbkf6ewh2oh6" path="res://utility/clear_color/clear_color.gd" id="1_n0ewg"]
+
+[node name="ClearColor" type="Node"]
+script = ExtResource("1_n0ewg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -10
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

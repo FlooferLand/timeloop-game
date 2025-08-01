@@ -4,10 +4,14 @@ enum Facing { Left, Right }
 signal change_direction(facing: Facing)
 
 const SPEED := 600.0
+const SPRINT_MULTIPLIER := 1.6
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@export var sprite: AnimatedSprite2D
 @export var current_room: Room
+
+@export_group("Local")
+@export var sprite: AnimatedSprite2D
+@export var footstep_comp: FootstepComponent
 
 var move_direction := Vector2.ZERO
 var facing := Facing.Right
@@ -21,6 +25,8 @@ var mouse_locked := true:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		else:
 			Input.mouse_mode = Input.MouseMode.MOUSE_MODE_VISIBLE
+var walking := false  ## True even when sprinting
+var sprinting := false
 
 func _ready() -> void:
 	(DialogManager as DialogManagerType).player_ref = self
@@ -33,10 +39,19 @@ func _process(delta: float) -> void:
 	move_direction = Vector2.ZERO
 	if can_move:
 		move_direction = Vector2.RIGHT * Input.get_axis("walk_left", "walk_right")
+		sprinting = Input.is_action_pressed("sprint")
+	walking = move_direction.length() > 0
+	
+	# Footsteps
+	if walking and not footstep_comp.is_playing():
+		footstep_comp.play()
+	elif not walking:
+		footstep_comp.stop()
+	footstep_comp.set_speed(SPRINT_MULTIPLIER if sprinting else 1.0)
 	
 	# Animations
-	if move_direction.length() > 0:
-		sprite.play("walk")
+	if walking:
+		sprite.play("walk", SPRINT_MULTIPLIER if sprinting else 1.0)
 	elif is_looking:
 		sprite.animation = "look"
 	else:
@@ -52,7 +67,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var motion := Vector2.ZERO
 	
-	motion += move_direction * SPEED
+	motion += move_direction * (SPEED * SPRINT_MULTIPLIER if sprinting else SPEED)
 	if not is_on_floor():
 		motion.y += gravity
 	
