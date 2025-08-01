@@ -49,7 +49,6 @@ scale = Vector2(1.11198, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
 material = SubResource("ShaderMaterial_h2j8p")
-position = Vector2(0, -139.65)
 scale = Vector2(1.11198, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]

@@ -1,6 +1,11 @@
 ## For player interaction; Handled by the player
 @tool class_name InteractComponent extends Node2D
 
+enum Type {
+	Interact = 0,
+	Talk
+}
+
 signal on_player_interact(player: Player)
 
 @onready var collision: CollisionShape2D = $Area2D/Collision
@@ -10,6 +15,18 @@ signal on_player_interact(player: Player)
 	set(value):
 		size = value.max(Vector2.ZERO)
 		call_deferred("_update_size")
+
+@export var info_offset: Vector2i = Vector2.ZERO:
+	get(): return info_offset
+	set(value):
+		info_offset = value
+		queue_redraw()
+
+@export var type: Type:
+	get(): return type
+	set(value):
+		type = value
+		queue_redraw()
 
 var player_hovering := false
 
@@ -34,10 +51,18 @@ func _update_size():
 	shape.size = size
 
 func _draw() -> void:
-	if player_hovering:
+	if player_hovering or Engine.is_editor_hint():
 		const font_size := 48
-		const text := "Interact"
 		var font := ThemeDB.fallback_font
+		var text: String
+		match type:
+			Type.Interact:
+				text = "Interact"
+			Type.Talk:
+				text = "Talk"
+		
 		var total_size_w := font.get_string_size(text, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size).x
-		draw_string(
-			font, Vector2.ZERO - Vector2(total_size_w/2, 0.0), text, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size)
+		var pos := info_offset - Vector2i(total_size_w/2, 0.0)
+		
+		draw_string(font, pos + Vector2i(2,2), text, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size, Color.BLACK)
+		draw_string(font, pos, text, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size, Color.WHITE)
