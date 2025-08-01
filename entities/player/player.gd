@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 	if can_move:
 		move_direction = Vector2.RIGHT * Input.get_axis("walk_left", "walk_right")
 		sprinting = Input.is_action_pressed("sprint")
-	walking = move_direction.length() > 0
+	walking = (move_direction.length() > 0 and velocity.length() > 0)
 	
 	# Footsteps
 	if walking and not footstep_comp.is_playing():
@@ -75,8 +75,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	var motion := Vector2.ZERO
+	var speed := (SPEED * SPRINT_MULTIPLIER if sprinting else SPEED)
 	
-	motion += move_direction * (SPEED * SPRINT_MULTIPLIER if sprinting else SPEED)
+	motion += move_direction * speed
 	if not is_on_floor():
 		motion.y += gravity
 	

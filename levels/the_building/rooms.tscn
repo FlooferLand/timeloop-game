@@ -50,7 +50,7 @@ position = Vector2(7875, 0)
 
 [node name="RoomTransition5" parent="." node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("3_bp6sx")]
 position = Vector2(10875, 0)
-room_a = NodePath("../OfficeArea2Point5")
+room_a = NodePath("../OfficeArea3")
 room_b = NodePath("../ManagersOffice")
 
 [node name="ManagersOffice" parent="." instance=ExtResource("8_3ccg5")]
