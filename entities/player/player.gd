@@ -7,8 +7,6 @@ const SPEED := 600.0
 const SPRINT_MULTIPLIER := 1.6
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@export var current_room: Room
-
 @export_group("Local")
 @export var sprite: AnimatedSprite2D
 @export var footstep_comp: FootstepComponent

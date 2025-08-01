@@ -4,7 +4,7 @@ class_name TimeLoopManagerType extends Node
 signal reset()
 signal time_advanced(new_hour: int)
 
-const MAX_TIME := 60
+const MAX_TIME := 60  ## Real world seconds
 const START_PM := 1
 const END_PM := 7
 
