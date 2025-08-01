@@ -23,6 +23,7 @@ buses/default_bus_layout="uid://bwk2y74m3iwl1"
 [autoload]
 
 DialogManager="*res://autoload/dialog_manager/dialog_manager.tscn"
+TimeLoopManager="*res://autoload/time_loop_manager/time_loop_manager.gd"
 
 [debug]
 

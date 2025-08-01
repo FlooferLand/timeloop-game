@@ -13,6 +13,8 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var sprite: AnimatedSprite2D
 @export var footstep_comp: FootstepComponent
 
+var _initial_position: Vector2
+
 var move_direction := Vector2.ZERO
 var facing := Facing.Right
 var can_move := true
@@ -30,9 +32,13 @@ var sprinting := false
 
 func _ready() -> void:
 	(DialogManager as DialogManagerType).player_ref = self
+	_initial_position = global_position
 	mouse_locked = true
 	change_direction.connect(func(facing: Facing):
 		sprite.flip_h = (facing == Facing.Left)
+	)
+	TimeLoopManager.reset.connect(func():
+		global_position = _initial_position
 	)
 
 func _process(delta: float) -> void:

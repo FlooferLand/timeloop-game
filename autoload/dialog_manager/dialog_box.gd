@@ -16,20 +16,25 @@ func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
 
+func _reset() -> void:
+	content_label.text = ""
+	inner_index = 0
+	entry_index = 0
+	data = null
+	current = null
+
 func present(data: DialogData) -> void:
+	_reset()
 	self.data = data
-	self.entry_index = 0
 	set_process(true)
 	set_process_input(true)
 	advance()
 
 func close() -> void:
-	self.data = null
+	_reset()
 	set_process(false)
 	set_process_input(false)
-	content_label.text = ""
-	data = null
-	current = null
+	additional_audio_player.stop()
 
 func advance() -> void:
 	if entry_index >= data.entries.size():

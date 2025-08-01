@@ -7,11 +7,11 @@ signal on_dialog_closed()
 var active := false
 
 func start() -> void:
-	DialogManager.present(dialog_data)
+	(DialogManager as DialogManagerType).present(dialog_data)
 	active = true
 
 func _ready() -> void:
-	DialogManager.dialog_closed.connect(func():
+	(DialogManager as DialogManagerType).dialog_closed.connect(func():
 		if active:
 			active = false
 			on_dialog_closed.emit()

@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://c10ykaa58hgny"]
+
+[ext_resource type="Script" uid="uid://b0lffjqolvayy" path="res://autoload/time_loop_manager/tracker/time_loop_tracker.gd" id="1_ncppg"]
+[ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer 1.mp3" id="2_v6hoe"]
+[ext_resource type="AudioStream" uid="uid://cug1tj8j48w8s" path="res://assets/music/ambiance/layer 2.mp3" id="3_yttw0"]
+[ext_resource type="AudioStream" uid="uid://d3u4jmj2sfh" path="res://assets/music/ambiance/layer 3.mp3" id="4_1efh4"]
+[ext_resource type="AudioStream" uid="uid://0vptpdtfstgl" path="res://assets/music/ambiance/layer 4.mp3" id="5_g5no1"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_turvd"]
+clip_count = 4
+clip_0/name = &"Layer 1"
+clip_0/stream = ExtResource("2_v6hoe")
+clip_0/auto_advance = 0
+clip_1/name = &"Layer 2"
+clip_1/stream = ExtResource("3_yttw0")
+clip_1/auto_advance = 0
+clip_2/name = &"Layer 3"
+clip_2/stream = ExtResource("4_1efh4")
+clip_2/auto_advance = 0
+clip_3/name = &"Layer 4"
+clip_3/stream = ExtResource("5_g5no1")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.1,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+}
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnco5"]
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c273m"]
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m85eb"]
+font_size = 36
+font_color = Color(0.584314, 0.870588, 1, 1)
+outline_size = 12
+outline_color = Color(0.180392, 0, 0.454902, 1)
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 0.501961)
+shadow_offset = Vector2(3, 3)
+
+[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "counter_label")]
+script = ExtResource("1_ncppg")
+music = NodePath("Music")
+counter_label = NodePath("Control/VBoxContainer/HBoxContainer/Counter")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamInteractive_turvd")
+bus = &"Music"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 416.0
+offset_bottom = 176.0
+
+[node name="Notice" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Time loop will trigger at 7 PM"
+label_settings = SubResource("LabelSettings_vnco5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Text" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Current time:"
+label_settings = SubResource("LabelSettings_c273m")
+
+[node name="Counter" type="Label" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "1 PM"
+label_settings = SubResource("LabelSettings_m85eb")

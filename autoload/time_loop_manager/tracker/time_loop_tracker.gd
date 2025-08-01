@@ -6,12 +6,9 @@ extends CanvasLayer
 @export var music: AudioStreamPlayer
 @export var counter_label: Label
 
-const MAX_TIME := 60
-
 var music_stream: AudioStreamInteractive
 var music_playback: AudioStreamPlaybackInteractive
 var music_stages := 0.0
-var counter := 0.0
 
 func _ready() -> void:
 	music.play()
@@ -21,12 +18,9 @@ func _ready() -> void:
 	music_stages = music_stream.clip_count
 
 func _process(delta: float) -> void:
-	counter += delta
-	var stage: int = remap(counter, 0, MAX_TIME, 0, music_stages)
-	if stage > music_stages:
-		stage = 0
-		counter = MAX_TIME
-		print("TIME LOOP!")
-	if stage > music_playback.get_current_clip_index():
+	var stage: int = remap(TimeLoopManager.counter, 0, TimeLoopManager.MAX_TIME, 0, music_stages)
+	if stage >= music_stages:
+		return
+	if music_playback.get_current_clip_index() != stage:
 		music_playback.switch_to_clip(stage)
-	counter_label.text = "Time left: %s seconds" % int(MAX_TIME - counter)
+	counter_label.text = "%s PM" % TimeLoopManager.time

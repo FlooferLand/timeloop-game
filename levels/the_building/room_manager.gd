@@ -1,5 +1,7 @@
 class_name RoomManager extends Node2D
 
+const RoomManagerScene := preload("uid://byw5ec70c2cga")
+
 ## Triggered when the room is done changing
 signal room_changed(old: Room, new: Room)
 
@@ -36,3 +38,18 @@ func change(new: Room) -> void:
 		new.visible = true
 		trans_new.kill()
 	)
+
+## Time loop thingy!!
+func time_loop_reset() -> void:
+	# Cleanup
+	for child in get_children():
+		child.queue_free()
+	await get_tree().process_frame
+	
+	# Adding the new stuffs
+	var virtual := RoomManagerScene.instantiate()
+	default.active = true
+	for item in virtual.get_children():
+		virtual.remove_child(item)
+		add_child(item)
+	virtual.queue_free()

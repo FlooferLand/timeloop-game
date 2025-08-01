@@ -21,7 +21,7 @@ footstep_comp = NodePath("FootstepComponent")
 position = Vector2(-8, 32)
 scale = Vector2(0.8, 0.8)
 sprite_frames = ExtResource("1_mab2k")
-animation = &"look"
+animation = &"idle"
 offset = Vector2(0, -250)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -43,6 +43,7 @@ collision = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerInteraction"]
 position = Vector2(103, -146)
 shape = SubResource("RectangleShape2D_453mm")
+debug_color = Color(0.372549, 0.615686, 0, 0.109804)
 
 [node name="FootstepComponent" parent="." instance=ExtResource("4_eaotn")]
 
