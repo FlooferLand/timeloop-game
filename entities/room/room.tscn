@@ -4,29 +4,29 @@
 [ext_resource type="PackedScene" uid="uid://kuhv8701w14f" path="res://utility/room_bounds/room_bounds.tscn" id="2_4i010"]
 [ext_resource type="Script" uid="uid://ddtsyruyvs1fb" path="res://entities/room/auto_room.gd" id="3_v2uyr"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="4_vouxh"]
-[ext_resource type="Texture2D" uid="uid://bssq1h0ad12n8" path="res://assets/textures/background.png" id="5_7we7q"]
+[ext_resource type="Texture2D" uid="uid://bssq1h0ad12n8" path="res://assets/textures/room/background.png" id="5_7we7q"]
 [ext_resource type="Script" uid="uid://c68vouwqotsv6" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gd" id="6_oqp6b"]
-[ext_resource type="Texture2D" uid="uid://bpi1arstt0631" path="res://assets/textures/ceiling.png" id="7_hgt0f"]
-[ext_resource type="Texture2D" uid="uid://dgryl0yli2wop" path="res://assets/textures/floor.png" id="8_t3ekj"]
-[ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/wall.png" id="9_vouxh"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2uyr"]
-shader = ExtResource("4_vouxh")
-shader_parameter/tile = Vector2(0.520833, 0.925926)
+[ext_resource type="Texture2D" uid="uid://bpi1arstt0631" path="res://assets/textures/room/ceiling.png" id="7_hgt0f"]
+[ext_resource type="Texture2D" uid="uid://dgryl0yli2wop" path="res://assets/textures/room/floor.png" id="8_t3ekj"]
+[ext_resource type="Texture2D" uid="uid://ckp6mlimrl7qn" path="res://assets/textures/room/wall_closed.png" id="9_v2uyr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vouxh"]
 shader = ExtResource("4_vouxh")
-shader_parameter/tile = Vector2(0.520833, 1)
+shader_parameter/tile = Vector2(0.520833, 0.925926)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7we7q"]
 shader = ExtResource("4_vouxh")
-shader_parameter/tile = Vector2(0.520833, 0.7)
+shader_parameter/tile = Vector2(0.520833, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqp6b"]
+shader = ExtResource("4_vouxh")
+shader_parameter/tile = Vector2(0.520833, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eocep"]
-size = Vector2(153, 594)
+size = Vector2(153, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1drqm"]
-size = Vector2(153, 594)
+size = Vector2(153, 1080)
 
 [node name="Room" type="Node2D"]
 script = ExtResource("1_m1w56")
@@ -39,13 +39,11 @@ top = 1000
 script = ExtResource("3_v2uyr")
 bounds = NodePath("../Bounds")
 size = Vector2(1000, 1000)
-closed_left = false
-closed_right = false
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="Background" type="Sprite2D" parent="AutoRoom"]
-material = SubResource("ShaderMaterial_v2uyr")
+material = SubResource("ShaderMaterial_vouxh")
 position = Vector2(0, -1000)
 scale = Vector2(0.520833, 0.925926)
 texture = ExtResource("5_7we7q")
@@ -54,7 +52,7 @@ script = ExtResource("6_oqp6b")
 metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Ceiling" type="Sprite2D" parent="AutoRoom"]
-material = SubResource("ShaderMaterial_vouxh")
+material = SubResource("ShaderMaterial_7we7q")
 position = Vector2(0, -1000)
 scale = Vector2(0.520833, 1)
 texture = ExtResource("7_hgt0f")
@@ -63,9 +61,9 @@ script = ExtResource("6_oqp6b")
 metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Floor" type="Sprite2D" parent="AutoRoom"]
-material = SubResource("ShaderMaterial_7we7q")
-position = Vector2(0, -95.55)
-scale = Vector2(0.520833, 0.7)
+material = SubResource("ShaderMaterial_oqp6b")
+position = Vector2(0, -139.65)
+scale = Vector2(0.520833, 1)
 texture = ExtResource("8_t3ekj")
 centered = false
 script = ExtResource("6_oqp6b")
@@ -75,30 +73,27 @@ metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Sprite" type="Sprite2D" parent="AutoRoom/LeftWall"]
 position = Vector2(0, -1000)
-texture = ExtResource("9_vouxh")
+texture = ExtResource("9_v2uyr")
 centered = false
 region_enabled = true
 region_rect = Rect2(153, 0, 153, 1080)
 
 [node name="Collision" type="CollisionShape2D" parent="AutoRoom/LeftWall"]
-position = Vector2(76.5, -703)
+position = Vector2(76.5, -460)
 shape = SubResource("RectangleShape2D_eocep")
 
 [node name="RightWall" type="StaticBody2D" parent="AutoRoom"]
 
 [node name="Sprite" type="Sprite2D" parent="AutoRoom/RightWall"]
 position = Vector2(847, -1000)
-texture = ExtResource("9_vouxh")
+texture = ExtResource("9_v2uyr")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 153, 1080)
 
 [node name="Collision" type="CollisionShape2D" parent="AutoRoom/RightWall"]
-position = Vector2(923.5, -703)
+position = Vector2(923.5, -460)
 shape = SubResource("RectangleShape2D_1drqm")
-
-[node name="Props" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="Entities" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

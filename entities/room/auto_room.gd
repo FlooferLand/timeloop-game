@@ -31,7 +31,6 @@ const wall_tex := preload("uid://3w4s4tny4h66")
 func _enter_tree() -> void:
 	set_physics_process(false)
 	if not Engine.is_editor_hint():
-		recalculate()
 		set_process(false)
 
 ## Only called in the editor
@@ -48,7 +47,7 @@ func recalculate() -> void:
 	ceiling.scale = Vector2(size.x / ceil_tex_size.x, 1.0)
 	
 	# Floor
-	var floor_height := 0.7
+	var floor_height := 1.0
 	var floor_tex_size := ceiling.texture.get_size()
 	floor.position = Vector2(0, -(floor_tex_size.y * (floor_height - 0.05)))
 	floor.scale = Vector2(size.x / floor_tex_size.x, floor_height)

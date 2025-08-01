@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://b6652sj7d1hiv"]
+
+[ext_resource type="Script" uid="uid://cno0sr4oj821j" path="res://scripts/resources/character_data.gd" id="1_3kkna"]
+[ext_resource type="AudioStream" uid="uid://83dyg7ale5q2" path="res://assets/sfx/char_blips/reception_lady.wav" id="2_oklhj"]
+
+[resource]
+script = ExtResource("1_3kkna")
+name = "Reception Lady"
+sound = ExtResource("2_oklhj")
+metadata/_custom_type_script = "uid://cno0sr4oj821j"

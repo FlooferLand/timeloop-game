@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=5 format=3 uid="uid://2gnahq1dg4ue"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_r6lu8"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_ascl0"]
+[ext_resource type="Script" uid="uid://c2c64doslfxei" path="res://components/dialog/resources/entries/dialog_text_collection.gd" id="2_w1mnd"]
+
+[sub_resource type="Resource" id="Resource_ynwdh"]
+script = ExtResource("2_w1mnd")
+texts = Array[String](["me when mousie go \"Squeak!\"", ":3 >w<", "DotMousie is cutie"])
+metadata/_custom_type_script = "uid://c2c64doslfxei"
+
+[resource]
+script = ExtResource("2_ascl0")
+entries = Array[ExtResource("1_r6lu8")]([SubResource("Resource_ynwdh")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
