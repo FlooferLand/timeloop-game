@@ -10,7 +10,7 @@ func _ready() -> void:
 	player.can_move = false
 	play("intro_cutscene")
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if following_player:
 		cutscene_target.global_position = player.global_position - (Vector2.DOWN * (get_viewport().get_visible_rect().size.y / 2))
 

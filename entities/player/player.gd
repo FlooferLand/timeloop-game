@@ -7,6 +7,8 @@ const SPEED := 600.0
 const SPRINT_MULTIPLIER := 1.6
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@export var footstep_sounds: AudioStreamRandomizer = null
+
 @export_group("Local")
 @export var sprite: AnimatedSprite2D
 @export var footstep_comp: FootstepComponent
@@ -30,6 +32,10 @@ var sprinting := false
 
 func _ready() -> void:
 	(DialogManager as DialogManagerType).player_ref = self
+	if footstep_sounds != null:
+		footstep_comp.sounds = footstep_sounds
+	else:
+		push_error("Footstep sounds is null!")
 	_initial_position = global_position
 	mouse_locked = true
 	change_direction.connect(func(facing: Facing):

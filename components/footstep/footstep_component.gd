@@ -2,6 +2,11 @@ class_name FootstepComponent
 extends Node2D
 
 @export var is_local := false
+@export var sounds: AudioStreamRandomizer:
+	set(value):
+		sounds = value
+		if audio_player != null:
+			audio_player.stream = sounds
 
 @onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
 @onready var timer: Timer = $Timer
@@ -11,6 +16,7 @@ var _initial_wait_time: float
 
 func _ready() -> void:
 	_initial_wait_time = timer.wait_time
+	audio_player.stream = sounds
 	timer.timeout.connect(func():
 		audio_player.play()
 	)

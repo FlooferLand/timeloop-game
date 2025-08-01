@@ -8,6 +8,6 @@ func _enter_tree() -> void:
 	if not Engine.is_editor_hint():
 		make_current()
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if target == null: return
 	global_position = global_position.lerp(target.global_position, 4.0 * delta)

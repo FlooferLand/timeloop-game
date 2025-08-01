@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjgtv4eflexi6"]
+[gd_scene load_steps=14 format=3 uid="uid://cjgtv4eflexi6"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_34vd1"]
 [ext_resource type="Texture2D" uid="uid://dbjitvlj33phh" path="res://assets/textures/outside/background_outside1.png" id="1_nl86o"]
@@ -8,9 +8,35 @@
 [ext_resource type="Texture2D" uid="uid://vq8ca6dyp1iq" path="res://assets/textures/outside/background_outside3.png" id="3_13u0a"]
 [ext_resource type="Script" uid="uid://bpl3ey64myglp" path="res://levels/outside/outside_camera.gd" id="4_7jqtv"]
 [ext_resource type="Script" uid="uid://bbw5tlpcwsivl" path="res://levels/outside/cutscene_animator.gd" id="6_6s53q"]
+[ext_resource type="AudioStream" uid="uid://dfulo5h10bbeg" path="res://assets/sfx/footsteps/gravel.tres" id="6_cv2l2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jqtv"]
 normal = Vector2(0, -40)
+
+[sub_resource type="Animation" id="Animation_6s53q"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera/CutsceneTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(48, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera/CutsceneTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-944, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_oqetn"]
 resource_name = "intro_cutscene"
@@ -53,31 +79,6 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-944, -0.25, 0, 0.25, 0, -155, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2.06545)
-}
-
-[sub_resource type="Animation" id="Animation_6s53q"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera/CutsceneTarget:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(48, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera/CutsceneTarget:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-944, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vqf0"]
@@ -126,6 +127,7 @@ texture = ExtResource("2_oqetn")
 
 [node name="Player" parent="." instance=ExtResource("1_34vd1")]
 position = Vector2(500, 0)
+footstep_sounds = ExtResource("6_cv2l2")
 
 [node name="Physics" type="Node2D" parent="."]
 
@@ -141,7 +143,7 @@ shape = SubResource("WorldBoundaryShape2D_7jqtv")
 position = Vector2(48, -944)
 
 [node name="OutsideCamera" type="Camera2D" parent="Camera" node_paths=PackedStringArray("target")]
-position = Vector2(496, -155)
+position = Vector2(48, -944)
 zoom = Vector2(0.8, 0.8)
 limit_left = -1150
 limit_top = -2100
