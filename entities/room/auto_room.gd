@@ -1,4 +1,4 @@
-@tool class_name AutoRoom extends Node
+@tool extends Node
 
 const wall_closed_tex := preload("uid://ckp6mlimrl7qn")
 const wall_tex := preload("uid://3w4s4tny4h66")
@@ -8,8 +8,6 @@ const wall_tex := preload("uid://3w4s4tny4h66")
 @onready var background: TileableSprite2D = $Background
 @onready var ceiling: TileableSprite2D = $Ceiling
 @onready var floor: TileableSprite2D = $Floor
-@onready var centre_marker: Marker2D = $Centre
-@onready var camera: Camera2D = $Camera
 
 @onready var left_wall_shape: CollisionShape2D = $LeftWall/Collision
 @onready var right_wall_shape: CollisionShape2D = $RightWall/Collision
@@ -34,9 +32,6 @@ func _enter_tree() -> void:
 	set_physics_process(false)
 	if not Engine.is_editor_hint():
 		set_process(false)
-
-func _ready() -> void:
-	camera.global_position = centre_marker.global_position
 
 ## Only called in the editor
 func _process(delta: float) -> void:
@@ -86,8 +81,3 @@ func recalculate() -> void:
 		right_wall_rect.size = Vector2(wall_side_size.x, wall_side_size.y * 0.55)
 		right_wall_shape.position = right_wall_spr.position + Vector2(wall_side_size.x / 2, right_wall_rect.size.y / 2)
 	#endregion
-	
-	# Centre
-	centre_marker.position = Vector2(0, -size.y) \
-		.lerp(Vector2(size.x, 200), 0.5)
-	

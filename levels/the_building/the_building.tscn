@@ -16,8 +16,7 @@ normal = Vector2(0, -40)
 [node name="TimeLoopResponder" type="Node2D" parent="."]
 script = ExtResource("1_iudyd")
 
-[node name="RoomManager" parent="TimeLoopResponder" node_paths=PackedStringArray("player") instance=ExtResource("1_8k4rm")]
-player = NodePath("../../Player")
+[node name="RoomManager" parent="TimeLoopResponder" instance=ExtResource("1_8k4rm")]
 
 [node name="Player" parent="." instance=ExtResource("1_hixpo")]
 position = Vector2(500, 0)

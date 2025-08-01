@@ -97,11 +97,5 @@ region_rect = Rect2(0, 0, 153, 1080)
 position = Vector2(923.5, -460)
 shape = SubResource("RectangleShape2D_1drqm")
 
-[node name="Centre" type="Marker2D" parent="AutoRoom"]
-position = Vector2(500, -400)
-
-[node name="Camera" type="Camera2D" parent="AutoRoom"]
-position = Vector2(500, -400)
-
 [node name="Entities" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
