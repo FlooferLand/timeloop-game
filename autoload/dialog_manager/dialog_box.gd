@@ -81,23 +81,22 @@ func advance() -> void:
 	# Advancing
 	if entry_index + 1 <= data.entries.size():
 		entry_index += 1
-	else:
-		manager.close()
 
 func advance_text_collection() -> void:
 	var collection := current as DialogTextCollection
+	if inner_index >= collection.texts.size():
+		entry_index += 1
+		inner_index = 0
+		advance()
+		return
 	var entry := DialogTextEntry.new()
 	entry.text = collection.texts[inner_index]
 	entry.character = collection.character
 	content_label.type(entry.text, entry.character.sound)
 	
 	# Advancing
-	if inner_index + 1 < collection.texts.size():
+	if inner_index + 1 <= collection.texts.size():
 		inner_index += 1
-	elif entry_index + 1 < data.entries.size():
-		entry_index += 1
-	else:
-		manager.close()
 
 #region Only enabled while doing dialog
 func _process(delta: float) -> void:

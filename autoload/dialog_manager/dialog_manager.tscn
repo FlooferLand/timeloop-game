@@ -87,3 +87,8 @@ wait_time = 0.05
 volume_db = -10.0
 max_polyphony = 2
 bus = &"Speech"
+
+[node name="CensorAudio" type="AudioStreamPlayer" parent="Root/DialogBox/MarginContainer/Content"]
+volume_db = -10.0
+max_polyphony = 2
+bus = &"Speech"

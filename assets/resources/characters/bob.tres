@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3 uid="uid://dmg7wnxojwant"]
+
+[ext_resource type="Script" uid="uid://cno0sr4oj821j" path="res://scripts/resources/character_data.gd" id="1_tti6g"]
+[ext_resource type="AudioStream" uid="uid://dp8j3407itml6" path="res://assets/sfx/char_blips/bob.wav" id="2_806tp"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_806tp"]
+random_pitch = 1.05
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("2_806tp")
+
+[resource]
+script = ExtResource("1_tti6g")
+name = "Bob"
+sound = SubResource("AudioStreamRandomizer_806tp")
+metadata/_custom_type_script = "uid://cno0sr4oj821j"

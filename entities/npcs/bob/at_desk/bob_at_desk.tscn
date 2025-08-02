@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfxblen2v7nr3"]
+
+[ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="1_fekxo"]
+[ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="2_egl2v"]
+[ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="3_sdhka"]
+[ext_resource type="SpriteFrames" uid="uid://thjoaaci232" path="res://assets/textures/npcs/bob.tres" id="4_3rw3g"]
+[ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="4_egl2v"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="5_gsjqu"]
+[ext_resource type="Resource" uid="uid://c4je7uey3he7n" path="res://assets/resources/dialog/bob_at_desk.tres" id="5_jwlf0"]
+[ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="6_3rw3g"]
+
+[node name="Bob\'s Desk" type="Node2D"]
+
+[node name="Bob" type="AnimatedSprite2D" parent="."]
+position = Vector2(-207, -223)
+sprite_frames = ExtResource("4_3rw3g")
+animation = &"at_desk"
+
+[node name="PersonDialogComponent" parent="Bob" instance=ExtResource("4_egl2v")]
+
+[node name="InteractComponent" parent="Bob/PersonDialogComponent" instance=ExtResource("5_gsjqu")]
+size = Vector2i(225, 440)
+info_offset = Vector2i(0, 105)
+
+[node name="DialogComponent" parent="Bob/PersonDialogComponent" instance=ExtResource("6_3rw3g")]
+dialog_data = ExtResource("5_jwlf0")
+
+[node name="Chair" type="Sprite2D" parent="."]
+position = Vector2(-228, -133)
+texture = ExtResource("1_fekxo")
+
+[node name="Desk" type="Sprite2D" parent="."]
+position = Vector2(33, -97)
+scale = Vector2(0.387931, 1)
+texture = ExtResource("2_egl2v")
+
+[node name="Computer" type="Sprite2D" parent="."]
+position = Vector2(32, -248)
+texture = ExtResource("3_sdhka")
