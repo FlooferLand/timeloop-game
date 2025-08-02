@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://bhr4q0orih75a"
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_0mb5f")]
 position = Vector2(0, -264)
 size = Vector2i(210, 535)
-info_offset = Vector2i(0, -210)
+info_offset = Vector2i(0, 30)
 type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
