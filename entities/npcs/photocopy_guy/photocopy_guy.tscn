@@ -1,24 +1,24 @@
 [gd_scene load_steps=7 format=3 uid="uid://35ipjt80ngg6"]
 
-[ext_resource type="Texture2D" uid="uid://bwm8k844la4dx" path="res://assets/textures/npcs/textures/photocopy_guy.png" id="1_cdc2i"]
-[ext_resource type="Script" uid="uid://o2cya2edxaig" path="res://entities/npcs/photocopy_guy/photocopy_guy.gd" id="1_tm5rs"]
-[ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="2_dnxbn"]
-[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_0mb5f"]
-[ext_resource type="Resource" uid="uid://dlkyo0251r1da" path="res://assets/resources/dialog/photocopy_guy.tres" id="4_0mb5f"]
-[ext_resource type="Script" uid="uid://bhr4q0orih75a" path="res://components/dialog/dialog_component.gd" id="4_dnxbn"]
+[ext_resource type="Script" uid="uid://o2cya2edxaig" path="res://entities/npcs/photocopy_guy/photocopy_guy.gd" id="1_xk4ol"]
+[ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="3_cjftj"]
+[ext_resource type="Script" uid="uid://bhr4q0orih75a" path="res://components/dialog/dialog_component.gd" id="4_o8yce"]
+[ext_resource type="Resource" uid="uid://dlkyo0251r1da" path="res://assets/resources/dialog/photocopy_guy.tres" id="5_uhe0y"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="6_cue6s"]
+[ext_resource type="Texture2D" uid="uid://bwm8k844la4dx" path="res://assets/textures/npcs/textures/photocopy_guy.png" id="7_5vfgo"]
 
-[node name="Photoguy at desk" type="Node2D"]
-script = ExtResource("1_tm5rs")
+[node name="Photocopy Guy" type="Node2D"]
+script = ExtResource("1_xk4ol")
 metadata/_edit_group_ = true
 
-[node name="PersonDialogComponent" parent="." instance=ExtResource("2_dnxbn")]
+[node name="PersonDialogComponent" parent="." instance=ExtResource("3_cjftj")]
 
 [node name="DialogComponent" type="Node2D" parent="PersonDialogComponent"]
-script = ExtResource("4_dnxbn")
-dialog_data = ExtResource("4_0mb5f")
+script = ExtResource("4_o8yce")
+dialog_data = ExtResource("5_uhe0y")
 metadata/_custom_type_script = "uid://bhr4q0orih75a"
 
-[node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_0mb5f")]
+[node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("6_cue6s")]
 position = Vector2(0, -264)
 size = Vector2i(210, 535)
 info_offset = Vector2i(0, 30)
@@ -26,4 +26,4 @@ type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -264)
-texture = ExtResource("1_cdc2i")
+texture = ExtResource("7_5vfgo")

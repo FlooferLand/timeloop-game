@@ -14,10 +14,11 @@ var target: Marker2D = null:
 		target = value
 		arrived = false
 var arrived := false
+var paused := false
 var velocity := Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
-	if target == null or arrived:
+	if target == null or arrived or paused:
 		return
 	var target_pos := target.global_position
 	
@@ -35,6 +36,9 @@ func _physics_process(delta: float) -> void:
 	parent.global_position += velocity
 
 func _process(delta: float) -> void:
+	if sprite == null:
+		return
+	
 	# Animation
 	if velocity.length() > 0:
 		sprite.play("walk")

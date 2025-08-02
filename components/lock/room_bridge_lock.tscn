@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhpo3tsj8j3vr"]
+
+[ext_resource type="Script" uid="uid://dttxqgoonwc3n" path="res://components/lock/room_bridge_lock.gd" id="1_mhqxr"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="2_f03ys"]
+
+[node name="RoomBridgeLock" type="Node2D"]
+script = ExtResource("1_mhqxr")
+
+[node name="InteractComponent" parent="." instance=ExtResource("2_f03ys")]
+position = Vector2(0, -176)
+size = Vector2i(145, 350)
+info_offset = Vector2i(0, 30)
+type = 2

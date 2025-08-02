@@ -1,18 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dci7alk3h5rg2"]
+[gd_scene load_steps=7 format=3 uid="uid://dci7alk3h5rg2"]
 
 [ext_resource type="Script" uid="uid://f1vyfu2qw48o" path="res://entities/room_transition/room_bridge.gd" id="1_rpe8w"]
 [ext_resource type="SpriteFrames" uid="uid://dt2e1awr8c4sy" path="res://assets/textures/room/door.tres" id="2_yfabk"]
 [ext_resource type="AudioStream" uid="uid://dmmbq0ipv5kmw" path="res://assets/sfx/door/door_interactive.tres" id="3_1h3si"]
+[ext_resource type="Script" uid="uid://daphskllu3yrj" path="res://entities/room_transition/room_bridge_draw.gd" id="4_yfabk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wuww"]
 size = Vector2(128, 385)
 
-[node name="RoomBridge" type="Node2D" node_paths=PackedStringArray("area", "door", "door_audio_player")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfabk"]
+size = Vector2(95.225, 385)
+
+[node name="RoomBridge" type="Node2D" node_paths=PackedStringArray("area", "door", "door_audio_player", "locking_body_collision", "drawer")]
 z_index = 1
 script = ExtResource("1_rpe8w")
 area = NodePath("Area2D")
 door = NodePath("Door")
 door_audio_player = NodePath("DoorAudioPlayer")
+locking_body_collision = NodePath("LockingBody/CollisionShape2D")
+drawer = NodePath("RoomBridgeDraw")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -20,6 +26,14 @@ door_audio_player = NodePath("DoorAudioPlayer")
 position = Vector2(0, -192.5)
 shape = SubResource("RectangleShape2D_4wuww")
 debug_color = Color(0, 0.640436, 0.343844, 0.54902)
+
+[node name="LockingBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LockingBody"]
+position = Vector2(0, -192.5)
+shape = SubResource("RectangleShape2D_yfabk")
+disabled = true
+debug_color = Color(0.983466, 0, 0.347172, 0.54902)
 
 [node name="Door" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.90735e-06, -192)
@@ -31,3 +45,9 @@ animation = &"open"
 stream = ExtResource("3_1h3si")
 volume_db = 2.0
 bus = &"SFX"
+
+[node name="RoomBridgeDraw" type="Node2D" parent="." node_paths=PackedStringArray("bridge")]
+z_index = 2
+position = Vector2(-160, -160)
+script = ExtResource("4_yfabk")
+bridge = NodePath("..")

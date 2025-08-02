@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dcog8dn15y63q"]
+[gd_scene load_steps=13 format=3 uid="uid://dcog8dn15y63q"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_hvhyj"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_11oro"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_11oro"]
 [ext_resource type="Texture2D" uid="uid://p1g5jwonv7qd" path="res://assets/textures/props/photocopy.png" id="4_8vixk"]
 [ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="5_l4tfm"]
+[ext_resource type="PackedScene" uid="uid://35ipjt80ngg6" path="res://entities/npcs/photocopy_guy/photocopy_guy.tscn" id="5_onjh0"]
 [ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="7_m6cqc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gkdb5"]
@@ -72,7 +73,10 @@ metadata/_edit_group_ = true
 position = Vector2(0, -232)
 texture = ExtResource("4_8vixk")
 
-[node name="Bob\'s Desk" type="Node2D" parent="Entities" index="1"]
+[node name="Photocopy Guy" parent="Entities" index="1" instance=ExtResource("5_onjh0")]
+position = Vector2(697, -33)
+
+[node name="Bob\'s Desk" type="Node2D" parent="Entities" index="2"]
 z_index = 1
 position = Vector2(1728, -33)
 

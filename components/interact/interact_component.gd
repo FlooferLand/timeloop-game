@@ -3,7 +3,8 @@
 
 enum Type {
 	Interact = 0,
-	Talk
+	Talk,
+	Unlock
 }
 
 signal on_player_interact(player: Player)
@@ -32,6 +33,10 @@ signal on_player_interact(player: Player)
 var player_hovering := false
 var displaying_info := false
 var current_player: Player = null
+var _postfix := ""
+
+func set_postfix(postfix: String = ""):
+	_postfix = postfix
 
 ## Called by the player when interacting
 func player_interact(player: Player):

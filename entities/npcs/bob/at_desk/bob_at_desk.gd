@@ -15,10 +15,13 @@ func _ready() -> void:
 	TimeManager.time_advanced.connect(func(new_hour: int):
 		match new_hour:
 			4:
-				walking_bob = WalkingBobScene.instantiate()
-				walking_bob.global_position = bob_desk_pos.global_position
-				walking_bob.desk_self = self
-				walking_bob.go_complain(bob_complain_target)
-				bob_container.add_child(walking_bob)
-				bob_sprite.visible = false
+				get_tree().create_timer(2.0).timeout.connect(_get_up_and_leave)
 	)
+
+func _get_up_and_leave() -> void:
+	walking_bob = WalkingBobScene.instantiate()
+	walking_bob.global_position = bob_desk_pos.global_position
+	walking_bob.desk_self = self
+	walking_bob.go_complain(bob_complain_target)
+	bob_container.add_child(walking_bob)
+	bob_sprite.visible = false

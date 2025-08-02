@@ -3,11 +3,18 @@
 @export var room_a: Room
 @export var room_b: Room
 @export var has_door: bool = true
+@export var locked := false:
+	get(): return locked
+	set(value):
+		locked = value
+		call_deferred("_update_lock")
 
 @export_group("Local")
 @export var area: Area2D
 @export var door: AnimatedSprite2D
 @export var door_audio_player: AudioStreamPlayer2D
+@export var locking_body_collision: CollisionShape2D
+@export var drawer: RoomBridgeDraw
 
 var door_audio_playback: AudioStreamPlaybackInteractive
 var manager: RoomManager  # Injected by RoomManager
@@ -18,6 +25,7 @@ var anim_await_exit := false
 func _ready() -> void:
 	set_physics_process(false)
 	set_process(false)
+	_update_lock()
 	door.animation = "open"
 	door.frame = 0
 	if Engine.is_editor_hint():
@@ -28,6 +36,9 @@ func _ready() -> void:
 	area.body_entered.connect(func(body):
 		if body is Player:
 			player = body
+			if locked:
+				queue_redraw()
+				return
 			if has_door:
 				if not door_audio_player.playing:
 					door_audio_player.play()
@@ -40,8 +51,11 @@ func _ready() -> void:
 	)
 	area.body_exited.connect(func(body):
 		if body is Player:
-			anim_await_exit = true
 			player = null
+			if locked:
+				queue_redraw()
+				return
+			anim_await_exit = true
 			set_process(false)
 	)
 	if has_door:
@@ -67,3 +81,10 @@ func _process(delta: float) -> void:
 		manager.change(room_b)
 	elif dir < 0 and manager.active != room_a:
 		manager.change(room_a)
+
+func _draw() -> void:
+	drawer.queue_redraw()
+
+func _update_lock():
+	locking_body_collision.disabled = not locked
+	queue_redraw()

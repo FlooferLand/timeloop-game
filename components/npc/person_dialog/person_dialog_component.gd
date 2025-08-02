@@ -6,6 +6,7 @@ signal on_dialog_closed
 
 @export var sprite: AnimatedSprite2D = null
 @export var future_dialogs: Array[DialogData] = []
+@export var walk_comp: PersonWalkComponent = null
 
 var interact_comp: InteractComponent = null
 var dialog_comp: DialogComponent = null
@@ -34,13 +35,18 @@ func _ready() -> void:
 			dialog_comp.dialog_data = future_dialogs[dialog_index]
 		dialog_comp.start()
 		interact_comp.hide_info()
+		if walk_comp != null:
+			walk_comp.paused = true
 	)
 	dialog_comp.on_dialog_closed.connect(func():
 		on_dialog_closed.emit()
 		sprite_play("idle")
 		if dialog_index + 1 < future_dialogs.size() and interact_counter > 1:
 			dialog_index += 1
+			interact_comp.set_postfix("again")
 		interact_comp.show_info()
+		if walk_comp != null:
+			walk_comp.paused = false
 	)
 	dialog_comp.change_animation.connect(func(anim_name: String):
 		if not dialog_comp.active:

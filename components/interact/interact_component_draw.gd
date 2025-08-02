@@ -12,6 +12,10 @@ func _draw() -> void:
 				text = "Interact"
 			InteractComponent.Type.Talk:
 				text = "Talk"
+			InteractComponent.Type.Unlock:
+				text = "Unlock"
+		if not interact_comp._postfix.is_empty():
+			text = "%s %s" % [text, interact_comp._postfix]
 		
 		var total_size_w := font.get_string_size(text, HORIZONTAL_ALIGNMENT_CENTER, -1, font_size).x
 		var pos := interact_comp.info_offset - Vector2i(total_size_w / 2, 0.0)
