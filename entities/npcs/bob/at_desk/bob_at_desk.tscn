@@ -21,6 +21,7 @@ animation = &"at_desk"
 [node name="InteractComponent" parent="Bob/PersonDialogComponent" instance=ExtResource("5_gsjqu")]
 size = Vector2i(225, 440)
 info_offset = Vector2i(0, 105)
+type = 1
 
 [node name="DialogComponent" parent="Bob/PersonDialogComponent" instance=ExtResource("6_3rw3g")]
 dialog_data = ExtResource("5_jwlf0")

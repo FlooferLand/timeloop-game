@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc38fra8hueyr"]
+[gd_scene load_steps=6 format=3 uid="uid://cc38fra8hueyr"]
 
 [ext_resource type="Script" uid="uid://yvmdomqm4rjw" path="res://autoload/dialog_manager/dialog_manager.gd" id="1_nq256"]
 [ext_resource type="Script" uid="uid://byw82dn2iehsh" path="res://autoload/dialog_manager/character_name.gd" id="2_41pd0"]
 [ext_resource type="Script" uid="uid://cs1qrxr4mqns2" path="res://autoload/dialog_manager/dialog_box.gd" id="2_ob87f"]
 [ext_resource type="Script" uid="uid://b70ndbwty6i1d" path="res://autoload/dialog_manager/dialog_label.gd" id="3_73toe"]
+[ext_resource type="AudioStream" uid="uid://ddchiw2oo2nkt" path="res://assets/sfx/censor.wav" id="5_w4tom"]
 
 [node name="DialogManager" type="CanvasLayer" node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_nq256")
@@ -66,7 +67,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 10
 
-[node name="Content" type="RichTextLabel" parent="Root/DialogBox/MarginContainer" node_paths=PackedStringArray("char_timer", "char_audio_player")]
+[node name="Content" type="RichTextLabel" parent="Root/DialogBox/MarginContainer" node_paths=PackedStringArray("char_timer", "char_audio_player", "censor_audio_player")]
 layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/bold_italics_font_size = 40
@@ -75,10 +76,11 @@ theme_override_font_sizes/mono_font_size = 40
 theme_override_font_sizes/normal_font_size = 40
 theme_override_font_sizes/bold_font_size = 40
 bbcode_enabled = true
-text = "Error!"
+text = "<null>"
 script = ExtResource("3_73toe")
 char_timer = NodePath("CharTimer")
 char_audio_player = NodePath("CharAudio")
+censor_audio_player = NodePath("CensorAudio")
 
 [node name="CharTimer" type="Timer" parent="Root/DialogBox/MarginContainer/Content"]
 wait_time = 0.05
@@ -89,6 +91,6 @@ max_polyphony = 2
 bus = &"Speech"
 
 [node name="CensorAudio" type="AudioStreamPlayer" parent="Root/DialogBox/MarginContainer/Content"]
-volume_db = -10.0
-max_polyphony = 2
-bus = &"Speech"
+stream = ExtResource("5_w4tom")
+volume_db = -8.0
+bus = &"SFX"

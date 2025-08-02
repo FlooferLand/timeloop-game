@@ -40,6 +40,7 @@ func close() -> void:
 	set_process(false)
 	set_process_input(false)
 	additional_audio_player.stop()
+	content_label.stop()
 
 func advance() -> void:
 	if entry_index >= data.entries.size():

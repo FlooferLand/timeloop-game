@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://c4je7uey3he7n"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=8 format=3 uid="uid://c4je7uey3he7n"]
 
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_nt7el"]
 [ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_vo7hh"]
@@ -8,12 +8,21 @@
 
 [sub_resource type="Resource" id="Resource_mihhc"]
 script = ExtResource("4_u0f2k")
-texts = Array[String](["Oi man, these kids on Reddit so stupid these days.", "Look at this one, climbing on top of the eiffel tower are ya? Oh fuck off"])
+texts = Array[String](["Oi man, these kids on Reddit so stupid these days.", "Look at this bastard, climbing on top of the eiffel tower are ya? Oh fuck off"])
+character = ExtResource("3_qbp2p")
+additional = Array[ExtResource("2_vo7hh")]([])
+metadata/_custom_type_script = "uid://c2c64doslfxei"
+
+[sub_resource type="Resource" id="Resource_nt7el"]
+script = ExtResource("4_u0f2k")
+texts = Array[String](["I can't with these twats these days, like what the fuck.
+Why is this chair so comfortable, I demand a shittier chair.
+What do you mean I get these for free? What am I on dole??", "I miss London, the airs too fresh"])
 character = ExtResource("3_qbp2p")
 additional = Array[ExtResource("2_vo7hh")]([])
 metadata/_custom_type_script = "uid://c2c64doslfxei"
 
 [resource]
 script = ExtResource("5_y717x")
-entries = Array[ExtResource("1_nt7el")]([SubResource("Resource_mihhc")])
+entries = Array[ExtResource("1_nt7el")]([SubResource("Resource_mihhc"), SubResource("Resource_nt7el")])
 metadata/_custom_type_script = "uid://bljc8yqis8nnu"
