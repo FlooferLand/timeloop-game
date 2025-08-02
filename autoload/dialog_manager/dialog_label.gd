@@ -17,10 +17,6 @@ func _ready() -> void:
 			char_audio_player.play()
 	)
 
-func set_fast(what: String) -> void:
-	visible_characters = -1
-	text = what
-
 ## A char_sound of null usually means the character is acting (not speaking)
 func type(what: String, char_sound: AudioStream = null) -> void:
 	visible_characters = 0
@@ -36,4 +32,14 @@ func type(what: String, char_sound: AudioStream = null) -> void:
 		char_audio_player.stream = stream
 	else:
 		char_audio_player.stream = null
-		
+
+## Sets the text all at once, skipping the typewriter effect
+func set_fast(what: String) -> void:
+	visible_characters = -1
+	text = what
+	
+## Essentially set_fast, but this skips to the current dialog's end instead of setting a new one
+func skip_to_end() -> void:
+	visible_characters = -1
+	char_timer.stop()
+	dialog_manager.update_speaking.emit(false)

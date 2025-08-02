@@ -14,6 +14,7 @@ height = 250.0
 size = Vector2(209, 294)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "footstep_comp")]
+z_index = 2
 script = ExtResource("1_453mm")
 footstep_sounds = ExtResource("2_g3lhm")
 sprite = NodePath("Sprite")

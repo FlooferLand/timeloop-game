@@ -12,9 +12,14 @@ var inner_index: int = 0
 var data: DialogData = null
 var current: DialogEntry = null
 
+var speaking := false
+
 func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
+	manager.update_speaking.connect(func(speaking: bool):
+		self.speaking = speaking
+	)
 
 func _reset() -> void:
 	content_label.text = ""
@@ -106,5 +111,8 @@ func _gui_input(event: InputEvent) -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("advance_dialog") and manager.visible:
-		advance()
+		if speaking:
+			content_label.skip_to_end()
+		else:
+			advance()
 #endregion
