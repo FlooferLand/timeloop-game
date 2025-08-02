@@ -1,4 +1,4 @@
-@tool extends Node2D
+@tool class_name InteractComponentDraw extends Node2D
 
 @export var interact_comp: InteractComponent
 

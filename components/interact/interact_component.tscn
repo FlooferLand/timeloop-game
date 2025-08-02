@@ -17,9 +17,7 @@ collision_mask = 2
 [node name="Collision" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_h4gas")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 5
-
-[node name="InteractComponentDraw" type="Node2D" parent="CanvasLayer" node_paths=PackedStringArray("interact_comp")]
+[node name="InteractComponentDraw" type="Node2D" parent="." node_paths=PackedStringArray("interact_comp")]
+z_index = 5
 script = ExtResource("2_f6yxh")
-interact_comp = NodePath("../..")
+interact_comp = NodePath("..")
