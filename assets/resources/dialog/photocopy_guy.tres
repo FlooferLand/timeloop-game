@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=8 format=3 uid="uid://dlkyo0251r1da"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=9 format=3 uid="uid://dlkyo0251r1da"]
 
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_nwl0a"]
 [ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_fkcau"]
@@ -20,7 +20,15 @@ character = ExtResource("3_dv08q")
 additional = Array[ExtResource("2_fkcau")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
+[sub_resource type="Resource" id="Resource_mo6b0"]
+script = ExtResource("3_7xvka")
+text = "And what, did you think I'm being paid to copy my photos?
+Nuh uh, this is far more important than my job."
+character = ExtResource("3_dv08q")
+additional = Array[ExtResource("2_fkcau")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
 [resource]
 script = ExtResource("2_gt3n2")
-entries = Array[ExtResource("1_nwl0a")]([SubResource("Resource_dv08q"), SubResource("Resource_7xvka")])
+entries = Array[ExtResource("1_nwl0a")]([SubResource("Resource_dv08q"), SubResource("Resource_7xvka"), SubResource("Resource_mo6b0")])
 metadata/_custom_type_script = "uid://bljc8yqis8nnu"
