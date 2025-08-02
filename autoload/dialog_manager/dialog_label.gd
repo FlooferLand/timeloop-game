@@ -64,8 +64,6 @@ func type(what: String, char_sound: AudioStream = null) -> void:
 			cusses_in_text[found + cuss.length()] = ""
 			var literal_cuss := text.substr(found, cuss.length())
 			text = text.replace(literal_cuss, "#".repeat(literal_cuss.length()))
-	for shit in cusses_in_text.keys():
-		print("%s: \"%s\"" % [shit, cusses_in_text[shit]])
 	
 	if char_sound != null:
 		if visible_characters == 0:
