@@ -64,7 +64,7 @@ position = Vector2(1933.5, -703)
 shape = SubResource("RectangleShape2D_q6g01")
 
 [node name="Piper" parent="Entities" index="0" instance=ExtResource("4_uffxh")]
-position = Vector2(1416, -240)
+position = Vector2(1416, -8)
 
 [node name="TheManager" parent="Entities" index="1" instance=ExtResource("5_a7dy4")]
 position = Vector2(584, -264)

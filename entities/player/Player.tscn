@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dytk4odemy15w"]
+[gd_scene load_steps=11 format=3 uid="uid://dytk4odemy15w"]
 
 [ext_resource type="Script" uid="uid://cmqr6suouga2w" path="res://entities/player/player.gd" id="1_453mm"]
 [ext_resource type="SpriteFrames" uid="uid://cr1jr04f0k0wn" path="res://assets/textures/player/with_arms.tres" id="2_eaotn"]
 [ext_resource type="AudioStream" uid="uid://dedfgkygu0wht" path="res://assets/sfx/footsteps/carpet.tres" id="2_g3lhm"]
 [ext_resource type="Script" uid="uid://crlgghljmgr5c" path="res://entities/player/player_interaction.gd" id="3_l3c03"]
 [ext_resource type="PackedScene" uid="uid://0fxhnnybdyae" path="res://components/footstep/FootstepComponent.tscn" id="4_eaotn"]
+[ext_resource type="PackedScene" uid="uid://bab5ojxf5h83c" path="res://components/inventory/inventory_component.tscn" id="6_4pwj0"]
+[ext_resource type="Script" uid="uid://2veea5m8nnax" path="res://entities/player/inventory_ui/inventory_ui.gd" id="7_fmb3c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_453mm"]
 radius = 48.0
@@ -13,12 +15,16 @@ height = 250.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_453mm"]
 size = Vector2(209, 294)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "footstep_comp")]
+[sub_resource type="LabelSettings" id="LabelSettings_fmb3c"]
+font_size = 32
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "footstep_comp", "inventory_comp")]
 z_index = 2
 script = ExtResource("1_453mm")
 footstep_sounds = ExtResource("2_g3lhm")
 sprite = NodePath("Sprite")
 footstep_comp = NodePath("FootstepComponent")
+inventory_comp = NodePath("InventoryComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4.76837e-07, 1.90735e-06)
@@ -50,6 +56,39 @@ debug_color = Color(0.372549, 0.615686, 0, 0.109804)
 
 [node name="FootstepComponent" parent="." instance=ExtResource("4_eaotn")]
 is_local = true
+
+[node name="InventoryComponent" parent="." instance=ExtResource("6_4pwj0")]
+
+[node name="InventoryUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("inventory_comp", "slot_container")]
+layer = 10
+script = ExtResource("7_fmb3c")
+inventory_comp = NodePath("../InventoryComponent")
+slot_container = NodePath("MarginContainer/VBoxContainer/Slots")
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 896.0
+offset_right = -1216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryUI/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InventoryUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+label_settings = SubResource("LabelSettings_fmb3c")
+
+[node name="Slots" type="HBoxContainer" parent="InventoryUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [connection signal="area_entered" from="PlayerInteraction" to="PlayerInteraction" method="_on_area_entered"]
 [connection signal="area_exited" from="PlayerInteraction" to="PlayerInteraction" method="_on_area_exited"]

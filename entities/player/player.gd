@@ -12,6 +12,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export_group("Local")
 @export var sprite: AnimatedSprite2D
 @export var footstep_comp: FootstepComponent
+@export var inventory_comp: InventoryComponent
 
 var _initial_position: Vector2
 

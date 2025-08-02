@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cuedwcqlfvub0"]
+
+[ext_resource type="Texture2D" uid="uid://0j722honbyne" path="res://assets/resources/items/pipers_document/paper.png" id="1_vj8e4"]
+[ext_resource type="Script" uid="uid://chw53fkpmev11" path="res://components/inventory/types/inventory_item.gd" id="2_knek4"]
+
+[resource]
+script = ExtResource("2_knek4")
+id = 1
+name = "Piper's Document"
+image = ExtResource("1_vj8e4")
+metadata/_custom_type_script = "uid://chw53fkpmev11"
