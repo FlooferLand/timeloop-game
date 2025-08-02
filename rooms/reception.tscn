@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_ul1gn"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_3j2cw"]
 [ext_resource type="Texture2D" uid="uid://7uhyh2mnjrtx" path="res://assets/textures/props/receptionist_desk.png" id="5_dnklr"]
-[ext_resource type="PackedScene" uid="uid://dfb4gv115aot7" path="res://entities/reception_lady/receptionist.tscn" id="5_kwhvp"]
+[ext_resource type="PackedScene" uid="uid://dfb4gv115aot7" path="res://entities/npcs/reception_lady/receptionist.tscn" id="5_kwhvp"]
 [ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="6_c1m58"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnklr"]

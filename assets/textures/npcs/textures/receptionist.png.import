@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyaordbdyngl3"
-path="res://.godot/imported/manager.png-8460fcd78f1194459ca7fc61c82e6742.ctex"
+uid="uid://dqs0oakpioe0f"
+path="res://.godot/imported/receptionist.png-d4e31f7700b68dc4d13784812aff1861.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/npcs/manager.png"
-dest_files=["res://.godot/imported/manager.png-8460fcd78f1194459ca7fc61c82e6742.ctex"]
+source_file="res://assets/textures/npcs/textures/receptionist.png"
+dest_files=["res://.godot/imported/receptionist.png-d4e31f7700b68dc4d13784812aff1861.ctex"]
 
 [params]
 

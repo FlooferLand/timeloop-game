@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqs0oakpioe0f"
-path="res://.godot/imported/receptionist.png-e1437787230176e4d4d21e895aa2a0a9.ctex"
+uid="uid://bwm8k844la4dx"
+path="res://.godot/imported/photocopy_guy.png-bf3debe85bcefd9949f4f80b7d413744.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/npcs/receptionist.png"
-dest_files=["res://.godot/imported/receptionist.png-e1437787230176e4d4d21e895aa2a0a9.ctex"]
+source_file="res://assets/textures/npcs/textures/photocopy_guy.png"
+dest_files=["res://.godot/imported/photocopy_guy.png-bf3debe85bcefd9949f4f80b7d413744.ctex"]
 
 [params]
 

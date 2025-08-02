@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://35ipjt80ngg6"]
+
+[ext_resource type="Texture2D" uid="uid://bwm8k844la4dx" path="res://assets/textures/npcs/textures/photocopy_guy.png" id="1_cdc2i"]
+
+[node name="PhotocopyGuy" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -264)
+texture = ExtResource("1_cdc2i")

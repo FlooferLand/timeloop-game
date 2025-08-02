@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3844hrdr6dxm"
-path="res://.godot/imported/piper.png-55bde864cc21572954c2d4848b7b1a06.ctex"
+uid="uid://cyaordbdyngl3"
+path="res://.godot/imported/manager.png-d4dd7cfdb116f3813a6b8e2aad3cefe0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/npcs/piper.png"
-dest_files=["res://.godot/imported/piper.png-55bde864cc21572954c2d4848b7b1a06.ctex"]
+source_file="res://assets/textures/npcs/textures/manager.png"
+dest_files=["res://.godot/imported/manager.png-d4dd7cfdb116f3813a6b8e2aad3cefe0.ctex"]
 
 [params]
 
