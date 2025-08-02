@@ -5,6 +5,7 @@ class_name DialogBox extends PanelContainer
 @export var content_label: DialogContentLabel
 @export var char_name_label: DialogCharNameLabel
 @export var additional_audio_player: AudioStreamPlayer
+@export var hint_label: Label
 
 var entry_index: int = 0
 var inner_index: int = 0
@@ -19,7 +20,9 @@ func _ready() -> void:
 	set_process_input(false)
 	manager.update_speaking.connect(func(speaking: bool):
 		self.speaking = speaking
+		hint_label.visible = not speaking
 	)
+	_reset()
 
 func _reset() -> void:
 	content_label.text = ""
@@ -27,6 +30,7 @@ func _reset() -> void:
 	entry_index = 0
 	data = null
 	current = null
+	hint_label.visible = false
 
 func present(data: DialogData) -> void:
 	_reset()
