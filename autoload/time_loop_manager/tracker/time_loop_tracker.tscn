@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c10ykaa58hgny"]
+[gd_scene load_steps=17 format=3 uid="uid://c10ykaa58hgny"]
 
 [ext_resource type="Script" uid="uid://b0lffjqolvayy" path="res://autoload/time_loop_manager/tracker/time_loop_tracker.gd" id="1_ncppg"]
 [ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer 1.mp3" id="2_v6hoe"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://d3u4jmj2sfh" path="res://assets/music/ambiance/layer 3.mp3" id="4_1efh4"]
 [ext_resource type="AudioStream" uid="uid://0vptpdtfstgl" path="res://assets/music/ambiance/layer 4.mp3" id="5_g5no1"]
 [ext_resource type="AudioStream" uid="uid://d4bfnl8bjdjrf" path="res://assets/sfx/timeloop_reset.wav" id="6_v6hoe"]
+[ext_resource type="AudioStream" uid="uid://bseh0c1j442uc" path="res://assets/sfx/time_chime.wav" id="7_yttw0"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_turvd"]
 clip_count = 4
@@ -167,13 +168,14 @@ _data = {
 &"time_loop_reset": SubResource("Animation_v6hoe")
 }
 
-[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "reset_layer", "reset_anim", "counter_label")]
+[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "reset_layer", "reset_anim", "counter_label", "chime_audio_player")]
 layer = 20
 script = ExtResource("1_ncppg")
 music = NodePath("Music")
 reset_layer = NodePath("Reset")
 reset_anim = NodePath("Reset/AnimationPlayer")
 counter_label = NodePath("Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Counter")
+chime_audio_player = NodePath("Chime")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_turvd")
@@ -259,4 +261,8 @@ libraries = {
 }
 
 [node name="ResetSound" type="AudioStreamPlayer" parent="Reset"]
+bus = &"SFX"
+
+[node name="Chime" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_yttw0")
 bus = &"SFX"

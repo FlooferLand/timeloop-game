@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	
 	var new_time_float := remap(counter, 0, MAX_TIME, START_PM, END_PM)
 	var new_time := int(new_time_float)
-	if new_time > time:
+	if new_time > time and new_time != END_PM:
 		time_advanced.emit(new_time)
 	time = new_time
 	

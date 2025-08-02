@@ -7,10 +7,12 @@ extends CanvasLayer
 @export var reset_layer: CanvasLayer
 @export var reset_anim: AnimationPlayer
 @export var counter_label: Label
+@export var chime_audio_player: AudioStreamPlayer
 
 var music_stream: AudioStreamInteractive
 var music_playback: AudioStreamPlaybackInteractive
 var music_stages := 0.0
+var time_manager: TimeManagerType
 
 func _ready() -> void:
 	music.play()
@@ -19,11 +21,18 @@ func _ready() -> void:
 	music_playback.switch_to_clip(0)
 	music_stages = music_stream.clip_count
 	reset_layer.visible = false
-	(TimeManager as TimeManagerType).prereset.connect(func():
+	time_manager = (TimeManager as TimeManagerType)
+	time_manager.prereset.connect(func():
 		reset_anim.play("time_loop_prereset")
 	)
-	(TimeManager as TimeManagerType).reset.connect(func():
+	time_manager.reset.connect(func():
 		reset_anim.play("time_loop_reset")
+	)
+	time_manager.time_advanced.connect(func(new_hour: int):
+		if new_hour == time_manager.START_PM:
+			return
+		chime_audio_player.volume_linear = remap(new_hour, time_manager.START_PM+1, time_manager.END_PM, 0.15, 1.0)
+		chime_audio_player.play()
 	)
 
 func _process(delta: float) -> void:

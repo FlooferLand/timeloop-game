@@ -35,16 +35,18 @@ var current_player: Player = null
 
 ## Called by the player when interacting
 func player_interact(player: Player):
-	on_player_interact.emit(player)
-	current_player = player
-	queue_redraw()
+	if is_visible_in_tree():
+		on_player_interact.emit(player)
+		current_player = player
+		queue_redraw()
 
 ## Called by the player when they can interact with this component
 func player_enter(player: Player):
-	player_hovering = true
-	displaying_info = true
-	current_player = player
-	queue_redraw()
+	if is_visible_in_tree():
+		player_hovering = true
+		displaying_info = true
+		current_player = player
+		queue_redraw()
 
 ## Called by the player when they can no longer interact with this component
 func player_leave(player: Player):

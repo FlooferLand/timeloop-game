@@ -9,6 +9,8 @@ Art by DotMouse
 
 Programming and music by FlooferLand
 
+Sound effects are from the public domain
+
 Made using the Godot game engine
 
 

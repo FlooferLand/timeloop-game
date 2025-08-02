@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhy8a74fxl1iw"]
+[gd_scene load_steps=12 format=3 uid="uid://dhy8a74fxl1iw"]
 
 [ext_resource type="Script" uid="uid://br8rjbtnetts7" path="res://levels/the_building/timeloop_container.gd" id="1_s5u2e"]
 [ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="2_tugbd"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcog8dn15y63q" path="res://rooms/office_area_1.tscn" id="5_rb8h4"]
 [ext_resource type="PackedScene" uid="uid://vhrg6s1mauso" path="res://rooms/office_area_2.tscn" id="6_lr6kg"]
 [ext_resource type="PackedScene" uid="uid://drc6x5q8d2sdd" path="res://rooms/office_area_2_point_5.tscn" id="7_npdv2"]
+[ext_resource type="PackedScene" uid="uid://35ipjt80ngg6" path="res://entities/npcs/photocopy_guy/photocopy_guy.tscn" id="7_vvtyu"]
 [ext_resource type="PackedScene" uid="uid://5x1ua3w8qe8f" path="res://rooms/office_area_3.tscn" id="8_x7lok"]
 [ext_resource type="PackedScene" uid="uid://bb68hsv18n5jd" path="res://rooms/managers_office.tscn" id="9_6mlxv"]
 [ext_resource type="PackedScene" uid="uid://dfxblen2v7nr3" path="res://entities/npcs/bob/at_desk/bob_at_desk.tscn" id="10_3qcp8"]
@@ -35,10 +36,13 @@ room_b = NodePath("../OfficeArea1")
 [node name="OfficeArea1" parent="RoomManager" instance=ExtResource("5_rb8h4")]
 position = Vector2(2135, 0)
 
-[node name="Bob\'s Desk" parent="RoomManager/OfficeArea1" node_paths=PackedStringArray("bob_complain_target", "bob_container") instance=ExtResource("10_3qcp8")]
-position = Vector2(1489, -31)
+[node name="Bob at desk" parent="RoomManager/OfficeArea1" node_paths=PackedStringArray("bob_complain_target", "bob_container") instance=ExtResource("10_3qcp8")]
+position = Vector2(1713, -31)
 bob_complain_target = NodePath("../../Reception/BobComplainTarget")
 bob_container = NodePath("../../../Entities")
+
+[node name="Photoguy at desk" parent="RoomManager/OfficeArea1" instance=ExtResource("7_vvtyu")]
+position = Vector2(865, -33)
 
 [node name="RoomBridge2" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
 position = Vector2(4365, 0)
