@@ -1,9 +1,12 @@
 ## Acts as an interface for DialogBox
 class_name DialogManagerType extends CanvasLayer
 
+# NOTE: These signals should not be listened to from globally
+
 signal dialog_closed  ## Called when the dialog is closed
-signal action_change_animation(anim_name: String)  ## Called by the change animation action
 signal update_speaking(speaking: bool)  ## Called when speech dialog is started or stopped
+signal action_change_animation(anim_name: String)  ## Called by the change animation action
+signal action_event(event_name: String)  ## Called by the event action
 
 @export var dialog_box: DialogBox
 

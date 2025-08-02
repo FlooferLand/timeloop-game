@@ -50,9 +50,11 @@ func advance() -> void:
 	assert(current != null, "current was null")
 	
 	# Setting a character if there is one
+	var character: CharacterData = null
 	if current is DialogEntryWithCharacter:
 		var entry := current as DialogEntryWithCharacter
 		char_name_label.set_character(entry.character)
+		character = entry.character
 	else:
 		char_name_label.clear_character()
 	
@@ -65,11 +67,15 @@ func advance() -> void:
 		elif additional is DialogChangeAnimationAction:
 			var action := additional as DialogChangeAnimationAction
 			manager.action_change_animation.emit(action.anim_name)
+		elif additional is DialogEventAction:
+			var action := additional as DialogEventAction
+			manager.action_event.emit(action.event_name)
 	
 	# Looking at all the dialog content types
+	var pitch_variety = 1.0 if character == null else character.pitch_variety
 	if current is DialogTextEntry:
 		var entry := current as DialogTextEntry
-		content_label.type(entry.text, entry.character.sound)
+		content_label.type(entry.text, entry.character.sound, pitch_variety)
 	elif current is DialogCharacterActsEntry:
 		var entry := current as DialogCharacterActsEntry
 		content_label.set_fast("[i][color=gray]%s[/color][/i]" % entry.text)
@@ -93,7 +99,7 @@ func advance_text_collection() -> void:
 	var entry := DialogTextEntry.new()
 	entry.text = collection.texts[inner_index]
 	entry.character = collection.character
-	content_label.type(entry.text, entry.character.sound)
+	content_label.type(entry.text, entry.character.sound, entry.character.pitch_variety)
 	
 	# Advancing
 	if inner_index + 1 <= collection.texts.size():

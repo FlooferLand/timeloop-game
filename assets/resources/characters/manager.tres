@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://cyv71gs3b0jwd"]
+
+[ext_resource type="Script" uid="uid://cno0sr4oj821j" path="res://scripts/resources/character_data.gd" id="1_7nx6i"]
+[ext_resource type="AudioStream" uid="uid://2xokmnwbh1y" path="res://assets/sfx/char_blips/manager.wav" id="2_6mjha"]
+
+[resource]
+script = ExtResource("1_7nx6i")
+name = "The Manager"
+sound = ExtResource("2_6mjha")
+pitch_variety = 0.5
+metadata/_custom_type_script = "uid://cno0sr4oj821j"

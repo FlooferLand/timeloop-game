@@ -44,7 +44,7 @@ func _ready() -> void:
 	)
 
 ## A char_sound of null usually means the character is not speaking (acting, etc)
-func type(what: String, char_sound: AudioStream = null) -> void:
+func type(what: String, char_sound: AudioStream = null, pitch_variety := 1.0) -> void:
 	cusses_in_text.clear()
 	visible_characters = 0
 	text = what
@@ -69,7 +69,7 @@ func type(what: String, char_sound: AudioStream = null) -> void:
 		if visible_characters == 0:
 			dialog_manager.update_speaking.emit(true)
 		var stream := AudioStreamRandomizer.new()
-		stream.random_pitch = 1.2
+		stream.random_pitch = 1.0 + (0.15 * pitch_variety)
 		stream.add_stream(0, char_sound)
 		char_audio_player.stream = stream
 	else:

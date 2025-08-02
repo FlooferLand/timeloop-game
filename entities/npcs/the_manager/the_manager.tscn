@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://scrjmwipapoq"]
+
+[ext_resource type="SpriteFrames" uid="uid://bdms1r5t6j7dy" path="res://assets/textures/npcs/manager.tres" id="1_6mplh"]
+[ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="2_rvytt"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_sfnjn"]
+[ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="4_68oo1"]
+[ext_resource type="Resource" uid="uid://diucvgxnrjcoa" path="res://assets/resources/dialog/manager/wut.tres" id="5_sfnjn"]
+
+[node name="TheManager" type="Node2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_6mplh")
+animation = &"idle"
+
+[node name="PersonDialogComponent" parent="." instance=ExtResource("2_rvytt")]
+
+[node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_sfnjn")]
+
+[node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("4_68oo1")]
+dialog_data = ExtResource("5_sfnjn")
