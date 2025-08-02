@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://diucvgxnrjcoa"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=8 format=3 uid="uid://diucvgxnrjcoa"]
 
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_57acp"]
 [ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_clcjc"]
@@ -13,7 +13,14 @@ character = ExtResource("3_f33i1")
 additional = Array[ExtResource("2_rwlug")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
+[sub_resource type="Resource" id="Resource_rwlug"]
+script = ExtResource("4_7xd02")
+text = "I have lost one of my belongings and I am very bummed about it."
+character = ExtResource("3_f33i1")
+additional = Array[ExtResource("2_rwlug")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
 [resource]
 script = ExtResource("2_clcjc")
-entries = Array[ExtResource("1_57acp")]([SubResource("Resource_jktdp")])
+entries = Array[ExtResource("1_57acp")]([SubResource("Resource_jktdp"), SubResource("Resource_rwlug")])
 metadata/_custom_type_script = "uid://bljc8yqis8nnu"

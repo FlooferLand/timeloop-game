@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhy8a74fxl1iw"]
+[gd_scene load_steps=11 format=3 uid="uid://dhy8a74fxl1iw"]
 
 [ext_resource type="Script" uid="uid://br8rjbtnetts7" path="res://levels/the_building/timeloop_container.gd" id="1_s5u2e"]
 [ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="2_tugbd"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dci7alk3h5rg2" path="res://entities/room_transition/room_bridge.tscn" id="4_fidhy"]
 [ext_resource type="PackedScene" uid="uid://dcog8dn15y63q" path="res://rooms/office_area_1.tscn" id="5_rb8h4"]
 [ext_resource type="PackedScene" uid="uid://vhrg6s1mauso" path="res://rooms/office_area_2.tscn" id="6_lr6kg"]
+[ext_resource type="PackedScene" uid="uid://scrjmwipapoq" path="res://entities/npcs/the_manager/the_manager.tscn" id="8_12vld"]
+[ext_resource type="PackedScene" uid="uid://myo2rpycaysv" path="res://levels/the_building/storage_closet.tscn" id="9_3qcp8"]
 [ext_resource type="PackedScene" uid="uid://bb68hsv18n5jd" path="res://rooms/managers_office.tscn" id="9_6mlxv"]
 [ext_resource type="PackedScene" uid="uid://dfxblen2v7nr3" path="res://entities/npcs/bob/at_desk/bob_at_desk.tscn" id="10_3qcp8"]
 
@@ -46,14 +48,29 @@ room_b = NodePath("../OfficeArea2")
 [node name="OfficeArea2" parent="RoomManager" instance=ExtResource("6_lr6kg")]
 position = Vector2(4365, 0)
 
-[node name="RoomBridge3" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+[node name="TheManager" parent="RoomManager/OfficeArea2" node_paths=PackedStringArray("managers_desk_target") instance=ExtResource("8_12vld")]
+position = Vector2(584, -264)
+managers_desk_target = NodePath("../../ManagersOffice/ManagersChair")
+
+[node name="RoomBridge4" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
 position = Vector2(6375, 0)
 room_a = NodePath("../OfficeArea2")
+room_b = NodePath("../StorageCloset")
+
+[node name="StorageCloset" parent="RoomManager" instance=ExtResource("9_3qcp8")]
+position = Vector2(6375, -1)
+
+[node name="RoomBridge3" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+position = Vector2(7575, 0)
+room_a = NodePath("../StorageCloset")
 room_b = NodePath("../ManagersOffice")
 locked = true
 
 [node name="ManagersOffice" parent="RoomManager" instance=ExtResource("9_6mlxv")]
-position = Vector2(6375, 0)
+position = Vector2(7575, 0)
+
+[node name="ManagersChair" type="Marker2D" parent="RoomManager/ManagersOffice"]
+position = Vector2(536, 0)
 
 [node name="Entities" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

@@ -1,18 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://scrjmwipapoq"]
+[gd_scene load_steps=8 format=3 uid="uid://scrjmwipapoq"]
 
 [ext_resource type="SpriteFrames" uid="uid://bdms1r5t6j7dy" path="res://assets/textures/npcs/manager.tres" id="1_6mplh"]
+[ext_resource type="Script" uid="uid://brstoeriyvsiv" path="res://entities/npcs/the_manager/the_manager.gd" id="1_8536a"]
+[ext_resource type="PackedScene" uid="uid://c03s31rm4w41p" path="res://components/npc/walk/person_walk_component.tscn" id="2_qky8j"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="2_rvytt"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_sfnjn"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="4_68oo1"]
 [ext_resource type="Resource" uid="uid://diucvgxnrjcoa" path="res://assets/resources/dialog/manager/wut.tres" id="5_sfnjn"]
 
-[node name="TheManager" type="Node2D"]
+[node name="TheManager" type="Node2D" node_paths=PackedStringArray("walk_comp")]
+script = ExtResource("1_8536a")
+walk_comp = NodePath("PersonWalkComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_6mplh")
 animation = &"idle"
 
-[node name="PersonDialogComponent" parent="." instance=ExtResource("2_rvytt")]
+[node name="PersonWalkComponent" parent="." node_paths=PackedStringArray("sprite", "parent") instance=ExtResource("2_qky8j")]
+sprite = NodePath("../Sprite")
+parent = NodePath("..")
+
+[node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("walk_comp") instance=ExtResource("2_rvytt")]
+walk_comp = NodePath("../PersonWalkComponent")
 
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_sfnjn")]
 size = Vector2i(200, 515)

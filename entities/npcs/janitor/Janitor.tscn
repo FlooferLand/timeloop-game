@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu08u46kkb0vl"]
+
+[ext_resource type="Script" uid="uid://c1h777m5cvby6" path="res://entities/npcs/janitor/janitor.gd" id="1_ax2v2"]
+[ext_resource type="SpriteFrames" uid="uid://bdms1r5t6j7dy" path="res://assets/textures/npcs/manager.tres" id="1_d6kt3"]
+[ext_resource type="Script" uid="uid://bamg300jchjgd" path="res://components/npc/person_dialog/person_dialog_component.gd" id="1_fwiau"]
+[ext_resource type="Script" uid="uid://bhr4q0orih75a" path="res://components/dialog/dialog_component.gd" id="2_d6kt3"]
+[ext_resource type="Script" uid="uid://ddhtc4rkusvq0" path="res://components/interact/interact_component.gd" id="3_ax2v2"]
+
+[node name="Janitor" type="Node2D"]
+script = ExtResource("1_ax2v2")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(4.33177e-07, 0.34898, 0.460924, 1)
+position = Vector2(0, -272)
+sprite_frames = ExtResource("1_d6kt3")
+animation = &"idle"
+
+[node name="PersonDialogComponent" type="Node2D" parent="."]
+script = ExtResource("1_fwiau")
+metadata/_custom_type_script = "uid://bamg300jchjgd"
+
+[node name="DialogComponent" type="Node2D" parent="PersonDialogComponent"]
+script = ExtResource("2_d6kt3")
+metadata/_custom_type_script = "uid://bhr4q0orih75a"
+
+[node name="InteractComponent" type="Node2D" parent="PersonDialogComponent"]
+script = ExtResource("3_ax2v2")
+metadata/_custom_type_script = "uid://ddhtc4rkusvq0"

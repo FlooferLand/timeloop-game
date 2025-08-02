@@ -1,14 +1,89 @@
-[gd_scene load_steps=5 format=3 uid="uid://bf7rxnp4ms8us"]
+[gd_scene load_steps=10 format=3 uid="uid://bf7rxnp4ms8us"]
 
 [ext_resource type="Script" uid="uid://bcwrjmnhg01g" path="res://entities/npcs/bob/walking/walking_bob.gd" id="1_57x3b"]
 [ext_resource type="PackedScene" uid="uid://c03s31rm4w41p" path="res://components/npc/walk/person_walk_component.tscn" id="1_rf7k0"]
 [ext_resource type="SpriteFrames" uid="uid://thjoaaci232" path="res://assets/textures/npcs/bob.tres" id="2_57x3b"]
-[ext_resource type="AudioStream" uid="uid://dk1e4se5v5k5l" path="res://assets/sfx/bob_meanie.mp3" id="4_3772x"]
+[ext_resource type="AudioStream" uid="uid://b28bc65rlwt26" path="res://assets/sfx/bob_meanie.mp3" id="4_3772x"]
+[ext_resource type="AudioStream" uid="uid://ddchiw2oo2nkt" path="res://assets/sfx/censor.wav" id="5_2oldp"]
+[ext_resource type="SpriteFrames" uid="uid://d2bisv4g865yo" path="res://assets/textures/anger/anger.tres" id="6_t7ye5"]
 
-[node name="WalkingBob" type="Node2D" node_paths=PackedStringArray("walk_comp", "complain_audio_player")]
+[sub_resource type="Animation" id="Animation_57x3b"]
+resource_name = "complain"
+length = 7.3
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ComplainAudio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 6.61602,
+"start_offset": 0.0,
+"stream": ExtResource("4_3772x")
+}, {
+"end_offset": 0.14,
+"start_offset": 0.806089,
+"stream": ExtResource("4_3772x")
+}],
+"times": PackedFloat32Array(0, 0.789423)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aux")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.32631,
+"start_offset": 0.0,
+"stream": ExtResource("5_2oldp")
+}],
+"times": PackedFloat32Array(0.6)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AngerMark:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_t7ye5"]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngerMark:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3772x"]
+_data = {
+&"RESET": SubResource("Animation_t7ye5"),
+&"complain": SubResource("Animation_57x3b")
+}
+
+[node name="WalkingBob" type="Node2D" node_paths=PackedStringArray("walk_comp", "anim_player", "anger_mark")]
 script = ExtResource("1_57x3b")
 walk_comp = NodePath("PersonWalkComponent")
-complain_audio_player = NodePath("ComplainAudioPlayer")
+anim_player = NodePath("AnimationPlayer")
+anger_mark = NodePath("AngerMark")
 
 [node name="PersonWalkComponent" parent="." node_paths=PackedStringArray("sprite", "parent") instance=ExtResource("1_rf7k0")]
 sprite = NodePath("../Sprite")
@@ -19,6 +94,25 @@ position = Vector2(0, -176)
 sprite_frames = ExtResource("2_57x3b")
 animation = &"idle"
 
-[node name="ComplainAudioPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_3772x")
+[node name="ComplainAudio" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -224)
+volume_db = 4.0
+pitch_scale = 0.8
 bus = &"Speech"
+
+[node name="Aux" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -224)
+pitch_scale = 0.8
+bus = &"Speech"
+
+[node name="AngerMark" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(16, -328)
+scale = Vector2(0.6, 0.6)
+sprite_frames = ExtResource("6_t7ye5")
+speed_scale = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3772x")
+}
