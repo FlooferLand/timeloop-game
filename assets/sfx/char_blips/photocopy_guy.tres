@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://stx4kiptpa8t"]
+
+[ext_resource type="AudioStream" uid="uid://qfcbhh45mnme" path="res://assets/sfx/char_blips/photocopy_guy/photocopy_guy_1.wav" id="1_artjg"]
+[ext_resource type="AudioStream" uid="uid://dp01j6daxht2w" path="res://assets/sfx/char_blips/photocopy_guy/photocopy_guy_2.wav" id="2_6qy8l"]
+[ext_resource type="AudioStream" uid="uid://dp1rg5uw6pqpq" path="res://assets/sfx/char_blips/photocopy_guy/photocopy_guy_3.wav" id="3_jje2m"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_artjg")
+stream_1/stream = ExtResource("2_6qy8l")
+stream_2/stream = ExtResource("3_jje2m")

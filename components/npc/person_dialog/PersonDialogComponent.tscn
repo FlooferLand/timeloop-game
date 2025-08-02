@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs55pod1i0345"]
+
+[ext_resource type="Script" uid="uid://bamg300jchjgd" path="res://components/npc/person_dialog/person_dialog_component.gd" id="1_oefss"]
+
+[node name="PersonDialogComponent" type="Node2D"]
+script = ExtResource("1_oefss")

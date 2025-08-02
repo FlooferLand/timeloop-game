@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://bme1mtxijpdam"]
+
+[ext_resource type="Script" uid="uid://cno0sr4oj821j" path="res://scripts/resources/character_data.gd" id="1_f13cc"]
+[ext_resource type="AudioStream" uid="uid://stx4kiptpa8t" path="res://assets/sfx/char_blips/photocopy_guy.tres" id="2_ms2b7"]
+
+[resource]
+script = ExtResource("1_f13cc")
+name = "Photocopy Guy"
+sound = ExtResource("2_ms2b7")
+metadata/_custom_type_script = "uid://cno0sr4oj821j"

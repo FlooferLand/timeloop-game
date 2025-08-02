@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=8 format=3 uid="uid://dlkyo0251r1da"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_nwl0a"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_fkcau"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_gt3n2"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="3_7xvka"]
+[ext_resource type="Resource" uid="uid://bme1mtxijpdam" path="res://assets/resources/characters/photocopy_guy.tres" id="3_dv08q"]
+
+[sub_resource type="Resource" id="Resource_dv08q"]
+script = ExtResource("3_7xvka")
+text = "Man I sure do love copying photos."
+character = ExtResource("3_dv08q")
+additional = Array[ExtResource("2_fkcau")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_7xvka"]
+script = ExtResource("3_7xvka")
+text = "All my coworkers are getting replaced by robots, and yet I still copy photos because they're too lazy to open them app on their phone since they still gotta [i]eventually[/i] go to the photocopy machine to pick the photo up when its done."
+character = ExtResource("3_dv08q")
+additional = Array[ExtResource("2_fkcau")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[resource]
+script = ExtResource("2_gt3n2")
+entries = Array[ExtResource("1_nwl0a")]([SubResource("Resource_dv08q"), SubResource("Resource_7xvka")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

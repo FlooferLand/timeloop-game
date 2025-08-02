@@ -22,7 +22,7 @@ func set_fast(what: String) -> void:
 	text = what
 
 ## A char_sound of null usually means the character is acting (not speaking)
-func type(what: String, char_sound: AudioStreamWAV = null) -> void:
+func type(what: String, char_sound: AudioStream = null) -> void:
 	visible_characters = 0
 	text = what
 	char_timer.start()
