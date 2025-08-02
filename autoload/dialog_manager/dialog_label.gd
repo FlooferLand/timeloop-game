@@ -1,4 +1,6 @@
-class_name DialogLabel extends RichTextLabel
+class_name DialogContentLabel extends RichTextLabel
+
+const SILENT_CHARS := [" ", ".", ",", "-", "'", "\""]
 
 @export var char_timer: Timer
 @export var char_audio_player: AudioStreamPlayer
@@ -12,12 +14,16 @@ func _ready() -> void:
 			char_timer.stop()
 			dialog_manager.update_speaking.emit(false)
 			return
+		var char := text[visible_characters]
+		if char in SILENT_CHARS:
+			visible_characters += 1
+			return
 		visible_characters += 1
 		if char_audio_player.stream != null:
 			char_audio_player.play()
 	)
 
-## A char_sound of null usually means the character is acting (not speaking)
+## A char_sound of null usually means the character is not speaking (acting, etc)
 func type(what: String, char_sound: AudioStream = null) -> void:
 	visible_characters = 0
 	text = what

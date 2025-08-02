@@ -2,7 +2,7 @@
 class_name DialogBox extends PanelContainer
 
 @export var manager: DialogManagerType
-@export var content_label: DialogLabel
+@export var content_label: DialogContentLabel
 @export var char_name_label: DialogCharNameLabel
 @export var additional_audio_player: AudioStreamPlayer
 
