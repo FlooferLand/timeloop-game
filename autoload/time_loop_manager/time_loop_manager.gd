@@ -1,10 +1,10 @@
 ## Handles time, space, and flying blue police call boxes
-class_name TimeLoopManagerType extends Node
+class_name TimeManagerType extends Node
 
 signal reset()
 signal time_advanced(new_hour: int)
 
-const MAX_TIME := 60  ## Real world seconds
+const MAX_TIME := 25  ## Real world seconds
 const START_PM := 1
 const END_PM := 7
 

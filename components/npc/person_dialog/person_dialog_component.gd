@@ -5,11 +5,14 @@ signal on_dialog_opened
 signal on_dialog_closed
 
 @export var sprite: AnimatedSprite2D = null
+@export var future_dialogs: Array[DialogData] = []
 
 var interact_comp: InteractComponent = null
 var dialog_comp: DialogComponent = null
 
 var speaking := false
+var dialog_index := 0
+var interact_counter := 0
 
 func _enter_tree() -> void:
 	for child in get_children():
@@ -26,13 +29,22 @@ func _ready() -> void:
 	sprite_play("idle")
 	interact_comp.on_player_interact.connect(func(player: Player):
 		on_dialog_opened.emit()
+		interact_counter += 1
+		if future_dialogs.size() > 0 and interact_counter > 1:
+			dialog_comp.dialog_data = future_dialogs[dialog_index]
 		dialog_comp.start()
+		interact_comp.hide_info()
 	)
 	dialog_comp.on_dialog_closed.connect(func():
 		on_dialog_closed.emit()
 		sprite_play("idle")
+		if dialog_index + 1 < future_dialogs.size() and interact_counter > 1:
+			dialog_index += 1
+		interact_comp.show_info()
 	)
 	dialog_comp.change_animation.connect(func(anim_name: String):
+		if not dialog_comp.active:
+			return
 		if speaking:
 			sprite_play(anim_name)
 		elif sprite != null:
@@ -40,6 +52,8 @@ func _ready() -> void:
 			sprite.frame = 0
 	)
 	dialog_comp.update_speaking.connect(func(speaking: bool):
+		if not dialog_comp.active:
+			return
 		self.speaking = speaking
 		if not speaking and sprite != null:
 			sprite_stop()

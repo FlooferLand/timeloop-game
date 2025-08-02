@@ -15,6 +15,8 @@ animation = &"idle"
 [node name="PersonDialogComponent" parent="." instance=ExtResource("2_rvytt")]
 
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_sfnjn")]
+size = Vector2i(200, 515)
+type = 1
 
 [node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("4_68oo1")]
 dialog_data = ExtResource("5_sfnjn")

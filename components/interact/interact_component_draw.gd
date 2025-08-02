@@ -3,7 +3,7 @@
 @export var interact_comp: InteractComponent
 
 func _draw() -> void:
-	if interact_comp.player_hovering or Engine.is_editor_hint():
+	if interact_comp.displaying_info or Engine.is_editor_hint():
 		const font_size := 48
 		var font := ThemeDB.fallback_font
 		var text: String

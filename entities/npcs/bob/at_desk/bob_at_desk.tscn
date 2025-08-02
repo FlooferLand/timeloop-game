@@ -1,15 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfxblen2v7nr3"]
+[gd_scene load_steps=8 format=3 uid="uid://dfxblen2v7nr3"]
 
+[ext_resource type="Script" uid="uid://ctpo8whosbred" path="res://entities/npcs/bob/at_desk/bob_at_desk.gd" id="1_3rw3g"]
 [ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="1_fekxo"]
-[ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="2_egl2v"]
-[ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="3_sdhka"]
 [ext_resource type="SpriteFrames" uid="uid://thjoaaci232" path="res://assets/textures/npcs/bob.tres" id="4_3rw3g"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="4_egl2v"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="5_gsjqu"]
 [ext_resource type="Resource" uid="uid://c4je7uey3he7n" path="res://assets/resources/dialog/bob_at_desk.tres" id="5_jwlf0"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="6_3rw3g"]
 
-[node name="Bob\'s Desk" type="Node2D"]
+[node name="Bob\'s Desk" type="Node2D" node_paths=PackedStringArray("bob_sprite", "bob_desk_pos")]
+script = ExtResource("1_3rw3g")
+bob_sprite = NodePath("Bob")
+bob_desk_pos = NodePath("BobTransPos")
 
 [node name="Bob" type="AnimatedSprite2D" parent="."]
 position = Vector2(-207, -223)
@@ -30,11 +32,5 @@ dialog_data = ExtResource("5_jwlf0")
 position = Vector2(-228, -133)
 texture = ExtResource("1_fekxo")
 
-[node name="Desk" type="Sprite2D" parent="."]
-position = Vector2(33, -97)
-scale = Vector2(0.387931, 1)
-texture = ExtResource("2_egl2v")
-
-[node name="Computer" type="Sprite2D" parent="."]
-position = Vector2(32, -248)
-texture = ExtResource("3_sdhka")
+[node name="BobTransPos" type="Marker2D" parent="."]
+position = Vector2(-224, 0)

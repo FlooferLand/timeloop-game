@@ -1,0 +1,45 @@
+[gd_scene load_steps=15 format=3 uid="uid://b1cv7inyidclk"]
+
+[ext_resource type="Script" uid="uid://drxu2ye338c12" path="res://entities/npcs/piper/piper.gd" id="1_1vr3r"]
+[ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="1_pkrj1"]
+[ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="2_83hmt"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_hkg0d"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_5s4qf"]
+[ext_resource type="Resource" uid="uid://bnm7jgo5k84kr" path="res://assets/resources/dialog/piper/would_you_like_papers.tres" id="3_8jtkn"]
+[ext_resource type="Resource" uid="uid://cmff68qwpcf5b" path="res://assets/resources/dialog/piper.tres" id="3_hkg0d"]
+[ext_resource type="SpriteFrames" uid="uid://kwdsanhac8kq" path="res://assets/textures/npcs/piper.tres" id="4_83hmt"]
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="5_60xdq"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="6_g3rkf"]
+[ext_resource type="Resource" uid="uid://rwjtgevhdoyl" path="res://assets/resources/characters/piper.tres" id="7_g3rkf"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="7_hptnw"]
+
+[sub_resource type="Resource" id="Resource_b4xg6"]
+script = ExtResource("7_hptnw")
+text = "Hmm..? Is the paper too heavy for you too?"
+character = ExtResource("7_g3rkf")
+additional = Array[ExtResource("6_g3rkf")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_bhed7"]
+script = ExtResource("2_hkg0d")
+entries = Array[ExtResource("5_60xdq")]([SubResource("Resource_b4xg6")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
+
+[node name="Piper" type="Node2D" node_paths=PackedStringArray("dialog_comp")]
+script = ExtResource("1_1vr3r")
+dialog_comp = NodePath("PersonDialogComponent/DialogComponent")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("4_83hmt")
+animation = &"idle"
+
+[node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_pkrj1")]
+sprite = NodePath("../Sprite")
+future_dialogs = Array[ExtResource("2_hkg0d")]([ExtResource("3_8jtkn"), SubResource("Resource_bhed7")])
+
+[node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("2_83hmt")]
+dialog_data = ExtResource("3_hkg0d")
+
+[node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_5s4qf")]
+info_offset = Vector2i(0, 45)
+type = 1

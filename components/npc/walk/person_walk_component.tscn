@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c03s31rm4w41p"]
+
+[ext_resource type="Script" uid="uid://ckbiwbjeewmyj" path="res://components/npc/walk/person_walk_component.gd" id="1_0tru7"]
+
+[node name="PersonWalkComponent" type="Node2D"]
+script = ExtResource("1_0tru7")

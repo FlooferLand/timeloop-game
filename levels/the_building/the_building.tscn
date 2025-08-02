@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://douk4eknvrii7"]
+[gd_scene load_steps=6 format=3 uid="uid://douk4eknvrii7"]
 
-[ext_resource type="PackedScene" uid="uid://byw5ec70c2cga" path="res://levels/the_building/rooms.tscn" id="1_8k4rm"]
+[ext_resource type="PackedScene" uid="uid://dhy8a74fxl1iw" path="res://levels/the_building/timeloop_container.tscn" id="1_8k4rm"]
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_hixpo"]
-[ext_resource type="Script" uid="uid://br8rjbtnetts7" path="res://levels/the_building/time_loop_responder.gd" id="1_iudyd"]
 [ext_resource type="PackedScene" uid="uid://c10ykaa58hgny" path="res://autoload/time_loop_manager/tracker/time_loop_tracker.tscn" id="3_8k4rm"]
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="7_34hto"]
 
@@ -11,12 +10,7 @@ normal = Vector2(0, -40)
 
 [node name="TheBuilding" type="Node2D"]
 
-[node name="TODO- Auto-add transitions in AutoRoom" type="Node" parent="."]
-
-[node name="TimeLoopResponder" type="Node2D" parent="."]
-script = ExtResource("1_iudyd")
-
-[node name="RoomManager" parent="TimeLoopResponder" instance=ExtResource("1_8k4rm")]
+[node name="TimeLoopContainer" parent="." instance=ExtResource("1_8k4rm")]
 
 [node name="Player" parent="." instance=ExtResource("1_hixpo")]
 position = Vector2(500, 0)

@@ -18,9 +18,9 @@ func _ready() -> void:
 	music_stages = music_stream.clip_count
 
 func _process(delta: float) -> void:
-	var stage: int = remap(TimeLoopManager.counter, 0, TimeLoopManager.MAX_TIME, 0, music_stages)
+	var stage: int = remap(TimeManager.counter, 0, TimeManager.MAX_TIME, 0, music_stages)
 	if stage >= music_stages:
 		return
 	if music_playback.get_current_clip_index() != stage:
 		music_playback.switch_to_clip(stage)
-	counter_label.text = "%s PM" % TimeLoopManager.time
+	counter_label.text = "%s PM" % TimeManager.time

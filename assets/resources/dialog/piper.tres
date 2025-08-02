@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=11 format=3 uid="uid://cmff68qwpcf5b"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_3mpax"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_h4jjp"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_t2s6c"]
+[ext_resource type="Resource" uid="uid://rwjtgevhdoyl" path="res://assets/resources/characters/piper.tres" id="3_31jsf"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="5_31jsf"]
+[ext_resource type="Script" uid="uid://dp7tw8e87q0l2" path="res://components/dialog/resources/actions/dialog_play_sound_action.gd" id="5_38cdc"]
+[ext_resource type="AudioStream" uid="uid://8p2x4wnd2qhg" path="res://assets/sfx/paper.tres" id="6_fwgpa"]
+
+[sub_resource type="Resource" id="Resource_8ceja"]
+script = ExtResource("5_31jsf")
+text = "Oh god.. How am I expected to handle these papers again?"
+character = ExtResource("3_31jsf")
+additional = Array[ExtResource("2_h4jjp")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_fwgpa"]
+script = ExtResource("5_38cdc")
+sound = ExtResource("6_fwgpa")
+metadata/_custom_type_script = "uid://dp7tw8e87q0l2"
+
+[sub_resource type="Resource" id="Resource_l4emk"]
+script = ExtResource("5_31jsf")
+text = "I don't even have any arms.."
+character = ExtResource("3_31jsf")
+additional = Array[ExtResource("2_h4jjp")]([SubResource("Resource_fwgpa")])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[resource]
+script = ExtResource("2_t2s6c")
+entries = Array[ExtResource("1_3mpax")]([SubResource("Resource_8ceja"), SubResource("Resource_l4emk")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

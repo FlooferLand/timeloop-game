@@ -41,7 +41,7 @@ func _ready() -> void:
 	change_direction.connect(func(facing: Facing):
 		sprite.flip_h = (facing == Facing.Left)
 	)
-	TimeLoopManager.reset.connect(func():
+	TimeManager.reset.connect(func():
 		global_position = _initial_position
 	)
 

@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://8p2x4wnd2qhg"]
+
+[ext_resource type="AudioStream" uid="uid://b1s3s4jo8t4nk" path="res://assets/sfx/paper/paper_1.wav" id="1_7ru1x"]
+[ext_resource type="AudioStream" uid="uid://dqddhoof8faqr" path="res://assets/sfx/paper/paper_2.wav" id="2_bset1"]
+
+[resource]
+random_pitch = 1.1
+random_volume_offset_db = 2.0
+streams_count = 2
+stream_0/stream = ExtResource("1_7ru1x")
+stream_1/stream = ExtResource("2_bset1")

@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhy8a74fxl1iw"]
+
+[ext_resource type="Script" uid="uid://br8rjbtnetts7" path="res://levels/the_building/timeloop_container.gd" id="1_s5u2e"]
+[ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="2_tugbd"]
+[ext_resource type="PackedScene" uid="uid://bsgdbtff22sua" path="res://rooms/reception.tscn" id="3_i8olb"]
+[ext_resource type="PackedScene" uid="uid://dci7alk3h5rg2" path="res://entities/room_transition/room_bridge.tscn" id="4_fidhy"]
+[ext_resource type="PackedScene" uid="uid://dcog8dn15y63q" path="res://rooms/office_area_1.tscn" id="5_rb8h4"]
+[ext_resource type="PackedScene" uid="uid://vhrg6s1mauso" path="res://rooms/office_area_2.tscn" id="6_lr6kg"]
+[ext_resource type="PackedScene" uid="uid://drc6x5q8d2sdd" path="res://rooms/office_area_2_point_5.tscn" id="7_npdv2"]
+[ext_resource type="PackedScene" uid="uid://5x1ua3w8qe8f" path="res://rooms/office_area_3.tscn" id="8_x7lok"]
+[ext_resource type="PackedScene" uid="uid://bb68hsv18n5jd" path="res://rooms/managers_office.tscn" id="9_6mlxv"]
+[ext_resource type="PackedScene" uid="uid://dfxblen2v7nr3" path="res://entities/npcs/bob/at_desk/bob_at_desk.tscn" id="10_3qcp8"]
+
+[node name="TimeLoopContainer" type="Node2D"]
+editor_description = "Everything inside is temporary and will be reset from the script once the timeloop resets"
+script = ExtResource("1_s5u2e")
+
+[node name="TODO- Auto-add transitions in AutoRoom" type="Node" parent="."]
+
+[node name="RoomManager" type="Node2D" parent="." node_paths=PackedStringArray("default")]
+script = ExtResource("2_tugbd")
+default = NodePath("Reception")
+metadata/_edit_lock_ = true
+
+[node name="Reception" parent="RoomManager" instance=ExtResource("3_i8olb")]
+
+[node name="BobComplainTarget" type="Marker2D" parent="RoomManager/Reception"]
+position = Vector2(1120, 4)
+
+[node name="RoomBridge" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+position = Vector2(2141, 0)
+room_a = NodePath("../Reception")
+room_b = NodePath("../OfficeArea1")
+
+[node name="OfficeArea1" parent="RoomManager" instance=ExtResource("5_rb8h4")]
+position = Vector2(2135, 0)
+
+[node name="Bob\'s Desk" parent="RoomManager/OfficeArea1" node_paths=PackedStringArray("bob_complain_target", "bob_container") instance=ExtResource("10_3qcp8")]
+position = Vector2(1489, -31)
+bob_complain_target = NodePath("../../Reception/BobComplainTarget")
+bob_container = NodePath("../../../Entities")
+
+[node name="RoomBridge2" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+position = Vector2(4365, 0)
+room_a = NodePath("../OfficeArea1")
+room_b = NodePath("../OfficeArea2")
+
+[node name="OfficeArea2" parent="RoomManager" instance=ExtResource("6_lr6kg")]
+position = Vector2(4365, 0)
+
+[node name="RoomBridge3" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+position = Vector2(6375, 0)
+room_a = NodePath("../OfficeArea2")
+room_b = NodePath("../OfficeArea2Point5")
+
+[node name="OfficeArea2Point5" parent="RoomManager" instance=ExtResource("7_npdv2")]
+position = Vector2(6375, 0)
+
+[node name="RoomBridge4" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+position = Vector2(7875, 0)
+room_a = NodePath("../OfficeArea2Point5")
+room_b = NodePath("../OfficeArea3")
+
+[node name="OfficeArea3" parent="RoomManager" instance=ExtResource("8_x7lok")]
+position = Vector2(7875, 0)
+
+[node name="RoomBridge5" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+position = Vector2(10875, 0)
+room_a = NodePath("../OfficeArea3")
+room_b = NodePath("../ManagersOffice")
+
+[node name="ManagersOffice" parent="RoomManager" instance=ExtResource("9_6mlxv")]
+position = Vector2(10875, 0)
+
+[node name="Entities" type="Node2D" parent="."]
+metadata/_edit_lock_ = true

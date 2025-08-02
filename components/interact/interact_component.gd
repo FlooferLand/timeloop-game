@@ -30,21 +30,31 @@ signal on_player_interact(player: Player)
 		queue_redraw()
 
 var player_hovering := false
+var displaying_info := false
 
 ## Called by the player when interacting
 func player_interact(player: Player):
 	on_player_interact.emit(player)
-	player_hovering = false
 	queue_redraw()
 
 ## Called by the player when they can interact with this component
 func start_hover(player: Player):
 	player_hovering = true
+	displaying_info = true
 	queue_redraw()
 
 ## Called by the player when they can no longer interact with this component
 func stop_hover(player: Player):
 	player_hovering = false
+	displaying_info = false
+	queue_redraw()
+
+func show_info():
+	displaying_info = true
+	queue_redraw()
+
+func hide_info():
+	displaying_info = false
 	queue_redraw()
 
 func _update_size():

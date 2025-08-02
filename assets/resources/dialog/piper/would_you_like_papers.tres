@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=14 format=3 uid="uid://bnm7jgo5k84kr"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_34uhy"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_cuhrb"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_s2fve"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="3_inf7f"]
+[ext_resource type="Resource" uid="uid://rwjtgevhdoyl" path="res://assets/resources/characters/piper.tres" id="3_xusud"]
+[ext_resource type="Script" uid="uid://507n7nsnlly4" path="res://components/dialog/resources/actions/dialog_event_action.gd" id="5_f8o7c"]
+[ext_resource type="Script" uid="uid://bbph4e2hp6jcj" path="res://components/dialog/resources/entries/dialog_character_act_entry.gd" id="5_xusud"]
+[ext_resource type="Script" uid="uid://dp7tw8e87q0l2" path="res://components/dialog/resources/actions/dialog_play_sound_action.gd" id="6_31lhj"]
+[ext_resource type="AudioStream" uid="uid://8p2x4wnd2qhg" path="res://assets/sfx/paper.tres" id="7_tj8ei"]
+
+[sub_resource type="Resource" id="Resource_xusud"]
+script = ExtResource("3_inf7f")
+text = "Oh.. You'd like to help?
+I need to get one of these to the manager
+"
+character = ExtResource("3_xusud")
+additional = Array[ExtResource("2_cuhrb")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_lhdvo"]
+script = ExtResource("5_f8o7c")
+event_name = "give_document"
+metadata/_custom_type_script = "uid://507n7nsnlly4"
+
+[sub_resource type="Resource" id="Resource_id6oi"]
+script = ExtResource("6_31lhj")
+sound = ExtResource("7_tj8ei")
+metadata/_custom_type_script = "uid://dp7tw8e87q0l2"
+
+[sub_resource type="Resource" id="Resource_f8o7c"]
+script = ExtResource("5_xusud")
+text = "Piper gives you a document"
+character = ExtResource("3_xusud")
+additional = Array[ExtResource("2_cuhrb")]([SubResource("Resource_lhdvo"), SubResource("Resource_id6oi")])
+metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
+
+[resource]
+script = ExtResource("2_s2fve")
+entries = Array[ExtResource("1_34uhy")]([SubResource("Resource_xusud"), SubResource("Resource_f8o7c")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

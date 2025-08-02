@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=3 format=3 uid="uid://rwjtgevhdoyl"]
+
+[ext_resource type="Script" uid="uid://cno0sr4oj821j" path="res://scripts/resources/character_data.gd" id="1_wn476"]
+[ext_resource type="AudioStream" uid="uid://cfy1s5er7tmba" path="res://assets/sfx/char_blips/piper.wav" id="2_o4s2v"]
+
+[resource]
+script = ExtResource("1_wn476")
+name = "Piper"
+sound = ExtResource("2_o4s2v")
+metadata/_custom_type_script = "uid://cno0sr4oj821j"

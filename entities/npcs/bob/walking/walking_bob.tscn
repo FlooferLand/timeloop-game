@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf7rxnp4ms8us"]
+
+[ext_resource type="Script" uid="uid://bcwrjmnhg01g" path="res://entities/npcs/bob/walking/walking_bob.gd" id="1_57x3b"]
+[ext_resource type="PackedScene" uid="uid://c03s31rm4w41p" path="res://components/npc/walk/person_walk_component.tscn" id="1_rf7k0"]
+[ext_resource type="SpriteFrames" uid="uid://thjoaaci232" path="res://assets/textures/npcs/bob.tres" id="2_57x3b"]
+[ext_resource type="AudioStream" uid="uid://dk1e4se5v5k5l" path="res://assets/sfx/bob_meanie.mp3" id="4_3772x"]
+
+[node name="WalkingBob" type="Node2D" node_paths=PackedStringArray("walk_comp", "complain_audio_player")]
+script = ExtResource("1_57x3b")
+walk_comp = NodePath("PersonWalkComponent")
+complain_audio_player = NodePath("ComplainAudioPlayer")
+
+[node name="PersonWalkComponent" parent="." node_paths=PackedStringArray("sprite", "parent") instance=ExtResource("1_rf7k0")]
+sprite = NodePath("../Sprite")
+parent = NodePath("..")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -176)
+sprite_frames = ExtResource("2_57x3b")
+animation = &"idle"
+
+[node name="ComplainAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3772x")
+bus = &"Speech"

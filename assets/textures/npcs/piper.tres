@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://kwdsanhac8kq"]
+
+[ext_resource type="Texture2D" uid="uid://d3844hrdr6dxm" path="res://assets/textures/npcs/textures/piper.png" id="1_4uwls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmaeb"]
+atlas = ExtResource("1_4uwls")
+region = Rect2(0, 0, 380, 645)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xj6e"]
+atlas = ExtResource("1_4uwls")
+region = Rect2(760, 0, 380, 645)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj8br"]
+atlas = ExtResource("1_4uwls")
+region = Rect2(380, 0, 380, 645)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq83a"]
+atlas = ExtResource("1_4uwls")
+region = Rect2(1140, 0, 380, 645)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmaeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xj6e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj8br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xj6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq83a")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 5.0
+}]
