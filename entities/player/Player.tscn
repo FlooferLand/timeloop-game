@@ -63,17 +63,16 @@ inventory_comp = NodePath("../InventoryComponent")
 slot_container = NodePath("MarginContainer/VBoxContainer/Slots")
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryUI"]
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = 896.0
-offset_right = -1216.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+offset_top = -184.0
+offset_right = 704.0
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InventoryUI/MarginContainer"]
 layout_mode = 2
