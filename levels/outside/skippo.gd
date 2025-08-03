@@ -23,4 +23,5 @@ func _input(event: InputEvent) -> void:
 					continue
 				if stopping.has_method("stop"):
 					stopping.call("stop")
+			await get_tree().process_frame
 			get_tree().change_scene_to_packed(BuildingScene)
