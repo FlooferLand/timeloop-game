@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=12 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="2_eff74"]
 [ext_resource type="Script" uid="uid://btk1lh5vs5ovv" path="res://levels/title_screen/spaceship.gd" id="3_me0mb"]
 [ext_resource type="SpriteFrames" uid="uid://bl1ulu1buo0pr" path="res://assets/textures/spaceship/spaceship.tres" id="3_xkaxa"]
+[ext_resource type="Theme" uid="uid://dr2r7k6nk8smc" path="res://assets/ui.theme" id="5_xkaxa"]
 [ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
 [ext_resource type="AudioStream" uid="uid://dybu3wnhekijb" path="res://assets/sfx/navcom/radio_quick_noise.wav" id="7_gw2jj"]
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
@@ -13,7 +14,7 @@
 font_size = 64
 font_color = Color(0.360784, 0.584314, 1, 1)
 shadow_size = 18
-shadow_color = Color(0.227451, 0, 1, 0.176471)
+shadow_color = Color(0.227451, 0, 1, 0.462745)
 shadow_offset = Vector2(4, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0u665"]
@@ -58,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_xkaxa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -84,7 +86,6 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 48
 text = "Respond"
-flat = true
 
 [node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -92,7 +93,6 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 48
 text = "Ignore"
-flat = true
 
 [node name="Credits" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
