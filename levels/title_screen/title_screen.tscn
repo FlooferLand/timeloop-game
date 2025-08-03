@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eff74"]
-font_size = 48
+font_size = 100
 font_color = Color(0.360784, 0.584314, 1, 1)
 shadow_size = 18
 shadow_color = Color(0.227451, 0, 1, 0.176471)
@@ -66,8 +66,17 @@ offset_top = 200.0
 offset_right = 568.0
 offset_bottom = 664.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="TitleName" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/TitleName"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 488.0
+offset_bottom = 71.0
+size_flags_stretch_ratio = 1.64
+theme_override_font_sizes/font_size = 100
 text = "Time at the office"
 label_settings = SubResource("LabelSettings_eff74")
 horizontal_alignment = 1
