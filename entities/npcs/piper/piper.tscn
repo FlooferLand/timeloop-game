@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1cv7inyidclk"]
+[gd_scene load_steps=15 format=3 uid="uid://b1cv7inyidclk"]
 
 [ext_resource type="Script" uid="uid://drxu2ye338c12" path="res://entities/npcs/piper/piper.gd" id="1_1vr3r"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="1_pkrj1"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_hkg0d"]
 [ext_resource type="Resource" uid="uid://cuedwcqlfvub0" path="res://assets/resources/items/pipers_document/pipers_document.tres" id="2_hptnw"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_5s4qf"]
-[ext_resource type="Resource" uid="uid://bnm7jgo5k84kr" path="res://assets/resources/dialog/piper/p_would_you_like_papers.tres" id="3_8jtkn"]
 [ext_resource type="Resource" uid="uid://cmff68qwpcf5b" path="res://assets/resources/dialog/piper/p_initial.tres" id="3_hkg0d"]
 [ext_resource type="SpriteFrames" uid="uid://kwdsanhac8kq" path="res://assets/textures/npcs/piper.tres" id="4_83hmt"]
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="5_60xdq"]
@@ -39,7 +38,7 @@ animation = &"idle"
 
 [node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_pkrj1")]
 sprite = NodePath("../Sprite")
-future_dialogs = Array[ExtResource("2_hkg0d")]([ExtResource("3_8jtkn"), SubResource("Resource_bhed7")])
+future_dialogs = Array[ExtResource("2_hkg0d")]([SubResource("Resource_bhed7")])
 
 [node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("2_83hmt")]
 dialog_data = ExtResource("3_hkg0d")
