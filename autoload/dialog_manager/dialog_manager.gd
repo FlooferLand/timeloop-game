@@ -3,6 +3,7 @@ class_name DialogManagerType extends CanvasLayer
 
 # NOTE: These signals should not be listened to from globally
 
+signal dialog_opened  ## Called when the dialog is opened
 signal dialog_closed  ## Called when the dialog is closed
 signal update_speaking(speaking: bool)  ## Called when speech dialog is started or stopped
 signal action_change_animation(anim_name: String)  ## Called by the change animation action
@@ -21,6 +22,7 @@ func present(data: DialogData) -> void:
 	player_ref.can_move = false
 	player_ref.is_looking = true
 	player_ref.mouse_locked = false
+	dialog_opened.emit()
 
 func close() -> void:
 	dialog_box.close()
