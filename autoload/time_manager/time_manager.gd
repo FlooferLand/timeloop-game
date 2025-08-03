@@ -58,4 +58,7 @@ func start() -> void:
 ## Stops all time (real-
 func stop() -> void:
 	running = false
+	counter = 0.0
+	time = 0
+	_called_prereset = false
 	time_stopped.emit()
