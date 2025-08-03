@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="2_rvytt"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_sfnjn"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="4_68oo1"]
-[ext_resource type="Resource" uid="uid://diucvgxnrjcoa" path="res://assets/resources/dialog/manager/wut.tres" id="5_sfnjn"]
+[ext_resource type="Resource" uid="uid://diucvgxnrjcoa" path="res://assets/resources/dialog/manager/m_wut.tres" id="5_sfnjn"]
 
 [node name="TheManager" type="Node2D" node_paths=PackedStringArray("walk_comp")]
 script = ExtResource("1_8536a")

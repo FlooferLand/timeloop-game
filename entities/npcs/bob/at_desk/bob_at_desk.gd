@@ -4,6 +4,7 @@ class_name BobAtDesk extends Node2D
 @export var bob_container: Node2D
 
 @export_group("Local")
+@export var after_prank_dialog: DialogData
 @export var bob_sprite: AnimatedSprite2D
 @export var bob_desk_pos: Marker2D
 @export var dialog_comp: PersonDialogComponent
@@ -26,3 +27,10 @@ func _get_up_and_leave() -> void:
 	walking_bob.go_complain(bob_complain_target)
 	bob_container.add_child(walking_bob)
 	bob_sprite.visible = false
+
+func set_pranked(pranked: bool) -> void:
+	if not pranked:
+		return
+	bob_sprite.animation = "at_desk_bucketed"
+	dialog_comp.set_sprite_postfix("bucketed")
+	dialog_comp.dialog_comp.dialog_data = after_prank_dialog

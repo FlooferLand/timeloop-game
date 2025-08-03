@@ -1,17 +1,66 @@
-[gd_scene load_steps=7 format=3 uid="uid://35ipjt80ngg6"]
+[gd_scene load_steps=20 format=3 uid="uid://35ipjt80ngg6"]
 
 [ext_resource type="Script" uid="uid://o2cya2edxaig" path="res://entities/npcs/photocopy_guy/photocopy_guy.gd" id="1_xk4ol"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="3_cjftj"]
 [ext_resource type="Script" uid="uid://bhr4q0orih75a" path="res://components/dialog/dialog_component.gd" id="4_o8yce"]
-[ext_resource type="Resource" uid="uid://dlkyo0251r1da" path="res://assets/resources/dialog/photoguy/initial.tres" id="5_uhe0y"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="4_twje7"]
+[ext_resource type="Resource" uid="uid://dlkyo0251r1da" path="res://assets/resources/dialog/photoguy/pg_initial.tres" id="5_uhe0y"]
+[ext_resource type="Resource" uid="uid://cs0kqlbgm2kvh" path="res://assets/resources/dialog/photoguy/pg_nuhuhh.tres" id="5_vjg1r"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="6_cue6s"]
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="6_uay24"]
 [ext_resource type="Texture2D" uid="uid://bwm8k844la4dx" path="res://assets/textures/npcs/textures/photocopy_guy.png" id="7_5vfgo"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="7_83ilc"]
+[ext_resource type="Resource" uid="uid://bme1mtxijpdam" path="res://assets/resources/characters/photocopy_guy.tres" id="8_qbixg"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="9_76n7d"]
+[ext_resource type="Script" uid="uid://c2c64doslfxei" path="res://components/dialog/resources/entries/dialog_text_collection.gd" id="10_83ilc"]
+
+[sub_resource type="Resource" id="Resource_83ilc"]
+script = ExtResource("9_76n7d")
+text = "Anyway uhh.."
+character = ExtResource("8_qbixg")
+additional = Array[ExtResource("7_83ilc")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_qbixg"]
+script = ExtResource("4_twje7")
+entries = Array[ExtResource("6_uay24")]([SubResource("Resource_83ilc")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
+
+[sub_resource type="Resource" id="Resource_76n7d"]
+script = ExtResource("10_83ilc")
+texts = Array[String](["They call me the photocopy guy, the way i uhh.. photo the copies..", ".. I meant copy the photos", "Fuck"])
+character = ExtResource("8_qbixg")
+additional = Array[ExtResource("7_83ilc")]([])
+metadata/_custom_type_script = "uid://c2c64doslfxei"
+
+[sub_resource type="Resource" id="Resource_ushtw"]
+script = ExtResource("4_twje7")
+entries = Array[ExtResource("6_uay24")]([SubResource("Resource_76n7d")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
+
+[sub_resource type="Resource" id="Resource_rp6bq"]
+script = ExtResource("9_76n7d")
+text = ".."
+character = ExtResource("8_qbixg")
+additional = Array[ExtResource("7_83ilc")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_477qy"]
+script = ExtResource("4_twje7")
+entries = Array[ExtResource("6_uay24")]([SubResource("Resource_rp6bq")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 
 [node name="Photocopy Guy" type="Node2D"]
 script = ExtResource("1_xk4ol")
-metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -283)
+texture = ExtResource("7_5vfgo")
 
 [node name="PersonDialogComponent" parent="." instance=ExtResource("3_cjftj")]
+future_dialogs = Array[ExtResource("4_twje7")]([ExtResource("5_vjg1r"), SubResource("Resource_qbixg"), SubResource("Resource_ushtw"), SubResource("Resource_477qy")])
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="DialogComponent" type="Node2D" parent="PersonDialogComponent"]
 script = ExtResource("4_o8yce")
@@ -23,7 +72,3 @@ position = Vector2(0, -264)
 size = Vector2i(210, 535)
 info_offset = Vector2i(0, 30)
 type = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -264)
-texture = ExtResource("7_5vfgo")

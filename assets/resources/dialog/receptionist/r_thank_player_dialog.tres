@@ -46,7 +46,7 @@ metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
 
 [sub_resource type="Resource" id="Resource_dhsue"]
 script = ExtResource("11_nu2qk")
-texts = Array[String](["The manager accidentally left it here at my desk and I kept forgetting to give it back cause I'm exhausted, he's probably looking for it"])
+texts = Array[String](["The manager accidentally left it here at my desk and I kept forgetting to give it back cause I'm exhausted"])
 character = ExtResource("4_dhsue")
 additional = Array[ExtResource("2_ktde3")]([])
 metadata/_custom_type_script = "uid://c2c64doslfxei"

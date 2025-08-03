@@ -5,34 +5,48 @@ extends Node2D
 @export_group("Local")
 @export var bnnuy_item: InventoryItem
 @export var thank_player_dialog: DialogData
-@export var after_dialog: DialogData
+@export var after_happy_dialog: DialogData
+@export var sad_dialog: DialogData
 @export var dialog_comp: PersonDialogComponent
 @export var interact_comp: InteractComponent
 @export var ambient: AudioStreamPlayer2D
+@export var exclaim: ExclaimComponent
 
+@onready var time_manager := TimeManager as TimeManagerType
 @onready var dialog_manager := DialogManager as DialogManagerType
 
 var speaking := false
+
+var awaiting_gift := false
 var gave_plushie := false
 
 func _ready() -> void:
 	dialog_comp.on_dialog_opened.connect(func():
 		ambient.stop()
+		if awaiting_gift:
+			exclaim.disable()
 	)
 	dialog_comp.on_dialog_closed.connect(func():
 		ambient.play()
 		if gave_plushie:
 			var dialog := dialog_comp.dialog_comp
-			dialog.dialog_data = after_dialog
+			dialog.dialog_data = after_happy_dialog
 	)
 	bob_prank.dude_got_pranked.connect(func():
 		var dialog := dialog_comp.dialog_comp
 		dialog.dialog_data = thank_player_dialog
-		# TODO: Show exclamation mark here
+		awaiting_gift = true
+		exclaim.enable()
 	)
 	dialog_manager.action_event.connect(func(event_name: String):
 		if event_name == "give_bnnuy" and dialog_comp.dialog_comp.active:
 			interact_comp.current_player.inventory_comp.add_item(bnnuy_item)
 			gave_plushie = true
-	)	
+			awaiting_gift = false
+	)
+	time_manager.time_advanced.connect(func(new_hour: int):
+		if new_hour == TimeTable.BOB_GO_HARASS_RECEPTIONIST:
+			var dialog := dialog_comp.dialog_comp
+			dialog.dialog_data = sad_dialog
+	)
 	

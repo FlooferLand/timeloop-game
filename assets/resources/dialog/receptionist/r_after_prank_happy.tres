@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://satf46q53fo4"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_gcd2y"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_1ejfj"]
+[ext_resource type="Resource" uid="uid://b6652sj7d1hiv" path="res://assets/resources/characters/receptionist.tres" id="3_skunm"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="4_ecs2l"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="5_bcput"]
+
+[sub_resource type="Resource" id="Resource_7smqe"]
+script = ExtResource("4_ecs2l")
+text = "Thank you by the way, that was hilarious"
+character = ExtResource("3_skunm")
+additional = Array[ExtResource("2_1ejfj")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[resource]
+script = ExtResource("5_bcput")
+entries = Array[ExtResource("1_gcd2y")]([SubResource("Resource_7smqe")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

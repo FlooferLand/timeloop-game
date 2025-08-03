@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://d327k40jl6c24"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_6p27s"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_yv0se"]
+[ext_resource type="Resource" uid="uid://bme1mtxijpdam" path="res://assets/resources/characters/photocopy_guy.tres" id="3_1kbto"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="4_p67av"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="5_bbr33"]
+
+[sub_resource type="Resource" id="Resource_mtokl"]
+script = ExtResource("4_p67av")
+text = "I think I forgot my computer password..
+Man.."
+character = ExtResource("3_1kbto")
+additional = Array[ExtResource("2_yv0se")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[resource]
+script = ExtResource("5_bbr33")
+entries = Array[ExtResource("1_6p27s")]([SubResource("Resource_mtokl")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

@@ -1,16 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn1c1mniy4ja3"]
 
 [ext_resource type="Script" uid="uid://ddhtc4rkusvq0" path="res://components/interact/interact_component.gd" id="1_h4gas"]
-[ext_resource type="Script" uid="uid://foqlhuxwjln3" path="res://components/interact/interact_component_draw.gd" id="2_f6yxh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4gas"]
 resource_local_to_scene = true
 size = Vector2(100, 100)
 
-[node name="InteractComponent" type="Node2D" node_paths=PackedStringArray("collision", "comp_draw")]
+[sub_resource type="LabelSettings" id="LabelSettings_f6yxh"]
+font_size = 38
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.662745)
+
+[node name="InteractComponent" type="Node2D" node_paths=PackedStringArray("collision", "label")]
 script = ExtResource("1_h4gas")
 collision = NodePath("Area2D/Collision")
-comp_draw = NodePath("InteractComponentDraw")
+label = NodePath("Label")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -19,7 +23,18 @@ collision_mask = 2
 [node name="Collision" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_h4gas")
 
-[node name="InteractComponentDraw" type="Node2D" parent="." node_paths=PackedStringArray("interact_comp")]
-z_index = 2
-script = ExtResource("2_f6yxh")
-interact_comp = NodePath("..")
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -53.0
+offset_right = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Interact"
+label_settings = SubResource("LabelSettings_f6yxh")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

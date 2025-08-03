@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://xkbfm2wlmmqr"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_sa6oi"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_oymtv"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_xvmax"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="3_1nkwf"]
+[ext_resource type="Resource" uid="uid://dmg7wnxojwant" path="res://assets/resources/characters/bob.tres" id="3_dvexd"]
+
+[sub_resource type="Resource" id="Resource_dvexd"]
+script = ExtResource("3_1nkwf")
+text = "..."
+character = ExtResource("3_dvexd")
+additional = Array[ExtResource("2_xvmax")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[resource]
+script = ExtResource("2_oymtv")
+entries = Array[ExtResource("1_sa6oi")]([SubResource("Resource_dvexd")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

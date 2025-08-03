@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bt4gtsagonweu" path="res://assets/textures/props/bucket.png" id="3_54uem"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="4_i7qav"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="5_uqg5o"]
-[ext_resource type="Resource" uid="uid://cov6xwp5jt7f6" path="res://assets/resources/dialog/janitor/bucket_stealer.tres" id="6_52878"]
+[ext_resource type="Resource" uid="uid://cov6xwp5jt7f6" path="res://assets/resources/dialog/janitor/j_bucket_stealer.tres" id="6_52878"]
 
 [node name="Bucket" type="Node2D" node_paths=PackedStringArray("interact_comp", "dialog_comp")]
 script = ExtResource("1_dlhpo")

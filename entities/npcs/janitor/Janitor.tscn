@@ -37,8 +37,8 @@ animation = &"idle"
 [node name="PersonDialogComponent" parent="." instance=ExtResource("3_ax2v2")]
 
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("5_x3pcm")]
-position = Vector2(0, -224)
-size = Vector2i(95, 445)
+position = Vector2(72, -224)
+size = Vector2i(180, 445)
 type = 1
 
 [node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("4_28mwi")]

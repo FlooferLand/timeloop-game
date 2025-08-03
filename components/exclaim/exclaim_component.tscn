@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://brmrynj2yk7an"]
+
+[ext_resource type="Script" uid="uid://b87usnc6v8fpu" path="res://components/exclaim/exclaim_component.gd" id="1_rj261"]
+[ext_resource type="Texture2D" uid="uid://c5uiowbachk0x" path="res://assets/textures/exclamationmark.png" id="2_3p2nq"]
+
+[node name="ExclaimComponent" type="Node2D"]
+script = ExtResource("1_rj261")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -200)
+texture = ExtResource("2_3p2nq")

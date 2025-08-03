@@ -7,6 +7,7 @@ class_name WalkingBob extends Node2D
 @export var prank_detector: Area2D
 
 var desk_self: BobAtDesk
+var got_pranked := false
 
 func _ready() -> void:
 	position.y = 0  ## Hackiest fix known to alien-kind
@@ -29,8 +30,7 @@ func _ready() -> void:
 				anger_mark.play()
 			desk_self.bob_desk_pos:  ## Arrived back at his desk
 				desk_self.bob_sprite.visible = true
-				desk_self.bob_sprite.animation = "at_desk_bucketed"
-				desk_self.dialog_comp.set_sprite_postfix("bucketed")
+				desk_self.set_pranked(got_pranked)
 				queue_free()
 	)
 	prank_detector.area_entered.connect(func(area: Area2D):
@@ -42,6 +42,7 @@ func _ready() -> void:
 				walk_comp.set_sprite_postfix("bucketed")
 				anim_player.play("get_bucketed")
 				prank.triggered()
+				got_pranked = true
 	)
 
 func go_complain(target: Marker2D) -> void:

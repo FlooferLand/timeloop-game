@@ -1,25 +1,58 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfxblen2v7nr3"]
+[gd_scene load_steps=19 format=3 uid="uid://dfxblen2v7nr3"]
 
 [ext_resource type="Script" uid="uid://ctpo8whosbred" path="res://entities/npcs/bob/at_desk/bob_at_desk.gd" id="1_3rw3g"]
 [ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="1_fekxo"]
+[ext_resource type="Resource" uid="uid://xkbfm2wlmmqr" path="res://assets/resources/dialog/bob/b_after_prank.tres" id="2_jwlf0"]
 [ext_resource type="SpriteFrames" uid="uid://thjoaaci232" path="res://assets/textures/npcs/bob.tres" id="4_3rw3g"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="4_egl2v"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="5_gsjqu"]
-[ext_resource type="Resource" uid="uid://c4je7uey3he7n" path="res://assets/resources/dialog/bob_at_desk.tres" id="5_jwlf0"]
+[ext_resource type="Resource" uid="uid://c4je7uey3he7n" path="res://assets/resources/dialog/bob/b_at_desk.tres" id="5_jwlf0"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="5_sx6u0"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="6_3rw3g"]
+[ext_resource type="Resource" uid="uid://byf6y4q88emtf" path="res://assets/resources/dialog/bob/b_after_init.tres" id="6_kt00c"]
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="6_n2s6q"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="7_wamxo"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="8_mihhc"]
+[ext_resource type="Resource" uid="uid://dmg7wnxojwant" path="res://assets/resources/characters/bob.tres" id="8_n2s6q"]
+
+[sub_resource type="Resource" id="Resource_n2s6q"]
+script = ExtResource("8_mihhc")
+text = ".."
+character = ExtResource("8_n2s6q")
+additional = Array[ExtResource("7_wamxo")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_wamxo"]
+script = ExtResource("5_sx6u0")
+entries = Array[ExtResource("6_n2s6q")]([SubResource("Resource_n2s6q")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
+
+[sub_resource type="Resource" id="Resource_mihhc"]
+script = ExtResource("8_mihhc")
+text = "I'm gonna bully you soon if you don't get out my face"
+character = ExtResource("8_n2s6q")
+additional = Array[ExtResource("7_wamxo")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_31jij"]
+script = ExtResource("5_sx6u0")
+entries = Array[ExtResource("6_n2s6q")]([SubResource("Resource_mihhc")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 
 [node name="Bob at desk" type="Node2D" node_paths=PackedStringArray("bob_sprite", "bob_desk_pos", "dialog_comp")]
 script = ExtResource("1_3rw3g")
+after_prank_dialog = ExtResource("2_jwlf0")
 bob_sprite = NodePath("Bob")
 bob_desk_pos = NodePath("BobTransPos")
 dialog_comp = NodePath("Bob/PersonDialogComponent")
 
 [node name="Bob" type="AnimatedSprite2D" parent="."]
-position = Vector2(-207, -223)
+position = Vector2(-207, -274)
 sprite_frames = ExtResource("4_3rw3g")
 animation = &"at_desk"
 
 [node name="PersonDialogComponent" parent="Bob" instance=ExtResource("4_egl2v")]
+future_dialogs = Array[ExtResource("5_sx6u0")]([ExtResource("6_kt00c"), SubResource("Resource_wamxo"), SubResource("Resource_31jij")])
 
 [node name="InteractComponent" parent="Bob/PersonDialogComponent" instance=ExtResource("5_gsjqu")]
 size = Vector2i(225, 440)
