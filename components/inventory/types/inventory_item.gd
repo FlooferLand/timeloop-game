@@ -4,7 +4,8 @@ enum Id {
 	None,
 	PipersDocument,
 	WaterBucket,
-	ManagersPlushie
+	ManagersPlushie,
+	ElevatorKey
 }
 
 @export var id: Id

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://qxfna03xvt6b"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_y5j5r"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_3khg2"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_nihsl"]
+[ext_resource type="Resource" uid="uid://cyv71gs3b0jwd" path="res://assets/resources/characters/manager.tres" id="3_dx4ld"]
+[ext_resource type="Script" uid="uid://c2c64doslfxei" path="res://components/dialog/resources/entries/dialog_text_collection.gd" id="4_dwre2"]
+
+[sub_resource type="Resource" id="Resource_odu18"]
+script = ExtResource("4_dwre2")
+texts = Array[String](["Can't you see that I'm busy?", "Talk to me while I'm on break, I can't be bothered to deal with any of you right now"])
+character = ExtResource("3_dx4ld")
+additional = Array[ExtResource("2_3khg2")]([])
+metadata/_custom_type_script = "uid://c2c64doslfxei"
+
+[resource]
+script = ExtResource("2_nihsl")
+entries = Array[ExtResource("1_y5j5r")]([SubResource("Resource_odu18")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

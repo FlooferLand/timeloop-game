@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dhy8a74fxl1iw" path="res://levels/the_building/timeloop_container.tscn" id="1_8k4rm"]
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_hixpo"]
-[ext_resource type="PackedScene" uid="uid://c10ykaa58hgny" path="res://autoload/time_loop_manager/tracker/time_loop_tracker.tscn" id="3_8k4rm"]
+[ext_resource type="PackedScene" uid="uid://c10ykaa58hgny" path="res://autoload/time_manager/tracker/time_loop_tracker.tscn" id="3_8k4rm"]
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="7_34hto"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_34hto"]

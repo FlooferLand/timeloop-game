@@ -1,11 +1,11 @@
 [gd_scene load_steps=18 format=3 uid="uid://c10ykaa58hgny"]
 
-[ext_resource type="Script" uid="uid://b0lffjqolvayy" path="res://autoload/time_loop_manager/tracker/time_loop_tracker.gd" id="1_ncppg"]
+[ext_resource type="Script" uid="uid://b0lffjqolvayy" path="res://autoload/time_manager/tracker/time_loop_tracker.gd" id="1_ncppg"]
 [ext_resource type="Texture2D" uid="uid://dvowsljsh6aje" path="res://assets/textures/overlay.png" id="6_1efh4"]
 [ext_resource type="AudioStream" uid="uid://d4bfnl8bjdjrf" path="res://assets/sfx/timeloop_reset.wav" id="6_v6hoe"]
 [ext_resource type="AudioStream" uid="uid://bseh0c1j442uc" path="res://assets/sfx/time_chime.wav" id="7_yttw0"]
 [ext_resource type="AudioStream" uid="uid://bcprqbc5ccbuq" path="res://assets/music/ambiance.tres" id="8_1efh4"]
-[ext_resource type="Script" uid="uid://44ucjhsivlep" path="res://autoload/time_loop_manager/tracker/nav_com.gd" id="9_g5no1"]
+[ext_resource type="Script" uid="uid://44ucjhsivlep" path="res://autoload/time_manager/tracker/nav_com.gd" id="9_g5no1"]
 [ext_resource type="AudioStream" uid="uid://b636m0baf0lo8" path="res://assets/sfx/navcom/navcom_timeloop_approach.wav" id="10_x0ite"]
 [ext_resource type="AudioStream" uid="uid://dy2mf1knbv1jj" path="res://assets/sfx/navcom/navcom_timeloop_reset.wav" id="11_xil3r"]
 

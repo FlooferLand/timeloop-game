@@ -6,7 +6,7 @@ signal reset()  ## Called when the time loop does a time loopy
 signal time_advanced(new_hour: int)  ## Called when the time advances by an hour
 signal dev_time_speedup(enabled: bool)  ## For development only
 
-const MAX_TIME := 70  ## Real world seconds
+const MAX_TIME := 75  ## Real world seconds
 const START_PM := 1
 const END_PM := 7
 

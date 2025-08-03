@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dr26l7u7mgcre"]
+
+[ext_resource type="Texture2D" uid="uid://d4c6e7cqw6ojm" path="res://assets/textures/elevator_key.png" id="1_3bxfk"]
+[ext_resource type="Script" uid="uid://chw53fkpmev11" path="res://components/inventory/types/inventory_item.gd" id="1_7hy5l"]
+
+[resource]
+script = ExtResource("1_7hy5l")
+id = 4
+name = "Elevator Key"
+image = ExtResource("1_3bxfk")
+metadata/_custom_type_script = "uid://chw53fkpmev11"

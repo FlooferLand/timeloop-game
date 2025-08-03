@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=22 format=3 uid="uid://b6rfrnukoraej"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_k6bho"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_ohv5f"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_ua83y"]
+[ext_resource type="Resource" uid="uid://cyv71gs3b0jwd" path="res://assets/resources/characters/manager.tres" id="3_gllix"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="4_v2lny"]
+[ext_resource type="Script" uid="uid://bbph4e2hp6jcj" path="res://components/dialog/resources/entries/dialog_character_act_entry.gd" id="5_gllix"]
+[ext_resource type="Script" uid="uid://dp7tw8e87q0l2" path="res://components/dialog/resources/actions/dialog_play_sound_action.gd" id="5_u6d0b"]
+[ext_resource type="AudioStream" uid="uid://0utmplsjxer7" path="res://assets/sfx/confetti.wav" id="6_an6ew"]
+[ext_resource type="AudioStream" uid="uid://b4u6qmv0p5blx" path="res://assets/sfx/keys.wav" id="8_an6ew"]
+[ext_resource type="Script" uid="uid://507n7nsnlly4" path="res://components/dialog/resources/actions/dialog_event_action.gd" id="9_igbn1"]
+[ext_resource type="Script" uid="uid://c2c64doslfxei" path="res://components/dialog/resources/entries/dialog_text_collection.gd" id="10_qe4m0"]
+
+[sub_resource type="Resource" id="Resource_u6d0b"]
+script = ExtResource("4_v2lny")
+text = "Oh my.. Is that my bunny Napkins Junior III??"
+character = ExtResource("3_gllix")
+additional = Array[ExtResource("2_ohv5f")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_igbn1"]
+script = ExtResource("5_u6d0b")
+sound = ExtResource("6_an6ew")
+metadata/_custom_type_script = "uid://dp7tw8e87q0l2"
+
+[sub_resource type="Resource" id="Resource_jxv0a"]
+script = ExtResource("9_igbn1")
+event_name = "steal_the_bnnuy"
+metadata/_custom_type_script = "uid://507n7nsnlly4"
+
+[sub_resource type="Resource" id="Resource_v2lny"]
+script = ExtResource("5_gllix")
+text = "He grabs the plush bunny from your hands using the strength of 2 Hulks"
+character = ExtResource("3_gllix")
+additional = Array[ExtResource("2_ohv5f")]([SubResource("Resource_igbn1"), SubResource("Resource_jxv0a")])
+metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
+
+[sub_resource type="Resource" id="Resource_an6ew"]
+script = ExtResource("4_v2lny")
+text = "I've been looking for them everywhere.
+How can I thank you for this?"
+character = ExtResource("3_gllix")
+additional = Array[ExtResource("2_ohv5f")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_qe4m0"]
+script = ExtResource("4_v2lny")
+text = ".. Actually, I do have one thing."
+character = ExtResource("3_gllix")
+additional = Array[ExtResource("2_ohv5f")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_rxqay"]
+script = ExtResource("5_u6d0b")
+sound = ExtResource("8_an6ew")
+metadata/_custom_type_script = "uid://dp7tw8e87q0l2"
+
+[sub_resource type="Resource" id="Resource_7jqu1"]
+script = ExtResource("9_igbn1")
+event_name = "give_elevator_keys"
+metadata/_custom_type_script = "uid://507n7nsnlly4"
+
+[sub_resource type="Resource" id="Resource_ffu7a"]
+script = ExtResource("5_gllix")
+text = "Gives you the keys to the elevator room"
+character = ExtResource("3_gllix")
+additional = Array[ExtResource("2_ohv5f")]([SubResource("Resource_rxqay"), SubResource("Resource_7jqu1")])
+metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
+
+[sub_resource type="Resource" id="Resource_bf8k0"]
+script = ExtResource("10_qe4m0")
+texts = Array[String](["Now you may go and see the man upstairs, which is the boss of-course.", "I'm pretty sure you are an intern, so you may feel free to ask him for a pay raise now.
+Of-course, you should tell him I sent you."])
+character = ExtResource("3_gllix")
+additional = Array[ExtResource("2_ohv5f")]([])
+metadata/_custom_type_script = "uid://c2c64doslfxei"
+
+[resource]
+script = ExtResource("2_ua83y")
+entries = Array[ExtResource("1_k6bho")]([SubResource("Resource_u6d0b"), SubResource("Resource_v2lny"), SubResource("Resource_an6ew"), SubResource("Resource_qe4m0"), SubResource("Resource_ffu7a"), SubResource("Resource_bf8k0")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
