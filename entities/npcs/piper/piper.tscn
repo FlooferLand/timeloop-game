@@ -11,18 +11,18 @@
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="5_60xdq"]
 [ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="6_g3rkf"]
 [ext_resource type="Resource" uid="uid://rwjtgevhdoyl" path="res://assets/resources/characters/piper.tres" id="7_g3rkf"]
-[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="7_hptnw"]
+[ext_resource type="Script" uid="uid://bbph4e2hp6jcj" path="res://components/dialog/resources/entries/dialog_character_act_entry.gd" id="9_g3rkf"]
 
-[sub_resource type="Resource" id="Resource_b4xg6"]
-script = ExtResource("7_hptnw")
-text = "Hmm..? Is the paper too heavy for you too?"
+[sub_resource type="Resource" id="Resource_hptnw"]
+script = ExtResource("9_g3rkf")
+text = "Struggles under the 50 ton business documents weighing on her head"
 character = ExtResource("7_g3rkf")
 additional = Array[ExtResource("6_g3rkf")]([])
-metadata/_custom_type_script = "uid://dusduojuy6ico"
+metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
 
-[sub_resource type="Resource" id="Resource_bhed7"]
+[sub_resource type="Resource" id="Resource_b4xg6"]
 script = ExtResource("2_hkg0d")
-entries = Array[ExtResource("5_60xdq")]([SubResource("Resource_b4xg6")])
+entries = Array[ExtResource("5_60xdq")]([SubResource("Resource_hptnw")])
 metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 
 [node name="Piper" type="Node2D" node_paths=PackedStringArray("dialog_comp", "interact_comp")]
@@ -38,7 +38,7 @@ animation = &"idle"
 
 [node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_pkrj1")]
 sprite = NodePath("../Sprite")
-future_dialogs = Array[ExtResource("2_hkg0d")]([SubResource("Resource_bhed7")])
+future_dialogs = Array[ExtResource("2_hkg0d")]([SubResource("Resource_b4xg6")])
 
 [node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("2_83hmt")]
 dialog_data = ExtResource("3_hkg0d")

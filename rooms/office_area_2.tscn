@@ -12,15 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://3iv4mv1rj66w" path="res://assets/textures/props/desklamp.png" id="8_tliww"]
 [ext_resource type="Texture2D" uid="uid://dtk3yvovxhfe5" path="res://assets/textures/props/documents.png" id="9_k5m35"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nf4fi"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tliww"]
 shader = ExtResource("2_nn8ak")
 shader_parameter/tile = Vector2(1.04688, 0.925926)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6g01"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5m35"]
 shader = ExtResource("2_nn8ak")
 shader_parameter/tile = Vector2(1.04688, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dhmoq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ctqm"]
 shader = ExtResource("2_nn8ak")
 shader_parameter/tile = Vector2(1.04688, 1)
 
@@ -43,15 +43,15 @@ closed_left = false
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_nf4fi")
+material = SubResource("ShaderMaterial_tliww")
 scale = Vector2(1.04688, 0.925926)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_q6g01")
+material = SubResource("ShaderMaterial_k5m35")
 scale = Vector2(1.04688, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_dhmoq")
+material = SubResource("ShaderMaterial_1ctqm")
 scale = Vector2(1.04688, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
