@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjgtv4eflexi6"]
+[gd_scene load_steps=40 format=3 uid="uid://cjgtv4eflexi6"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_34vd1"]
 [ext_resource type="Texture2D" uid="uid://dbjitvlj33phh" path="res://assets/textures/outside/background_outside1.png" id="1_nl86o"]
@@ -13,12 +13,20 @@
 [ext_resource type="Script" uid="uid://bbw5tlpcwsivl" path="res://levels/outside/cutscene_animator.gd" id="6_6s53q"]
 [ext_resource type="AudioStream" uid="uid://dfulo5h10bbeg" path="res://assets/sfx/footsteps/gravel.tres" id="6_cv2l2"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="6_rck8i"]
+[ext_resource type="AudioStream" uid="uid://bpu1yxvq5xc8n" path="res://assets/sfx/spaceship_land_short.mp3" id="12_eb0xd"]
+[ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="13_b08j6"]
+[ext_resource type="AudioStream" uid="uid://dt3nybtxx4feb" path="res://assets/sfx/door/door_open_1.wav" id="14_5q5nc"]
+[ext_resource type="SpriteFrames" uid="uid://bl1ulu1buo0pr" path="res://assets/textures/spaceship/spaceship.tres" id="14_lnf06"]
+[ext_resource type="AudioStream" uid="uid://bfy30r4rmfmln" path="res://assets/sfx/door/door_close_1.wav" id="15_yvt5h"]
+[ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="17_wgj81"]
+[ext_resource type="Script" uid="uid://nsjrhdwswjjr" path="res://levels/outside/skippo.gd" id="18_u1cip"]
+[ext_resource type="AudioStream" uid="uid://d2uc776b6rryi" path="res://assets/sfx/random/typewrite.tres" id="19_y3yg3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jqtv"]
 normal = Vector2(0, -40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cv2l2"]
-size = Vector2(176, 1475)
+size = Vector2(400, 1475)
 
 [sub_resource type="Animation" id="Animation_6s53q"]
 length = 0.001
@@ -78,10 +86,145 @@ tracks/4/keys = {
 "points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Spaceship:position:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(184, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Spaceship:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Spaceship:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Spaceship:scale:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Spaceship:scale:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Spaceship:modulate:r")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Spaceship:modulate:g")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Spaceship:modulate:b")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Spaceship:modulate:a")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Environment/Sky:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SpaceshipLandPoof:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Spaceship/SpaceshipAmbientPoof:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_oqetn"]
 resource_name = "intro_cutscene"
-length = 4.0
+length = 28.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -89,14 +232,11 @@ tracks/0/path = NodePath("CutsceneAnimator")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.3, 2.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(20.8667),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"switch_to_player"
-}, {
-"args": [],
-"method": &"switch_camera_to_player"
 }]
 }
 tracks/1/type = "bezier"
@@ -106,9 +246,9 @@ tracks/1/path = NodePath("Camera/CutsceneTarget:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(48, -0.25, 0, 0.25, 0, 496, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.06545)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-200, -0.25, 0, 0.25, 0, 232, -0.25, 0, 0.25, 0, -96, -0.25, 0, 0.25, 0, 933, -0.25, 0, 0.25, 0, 1261, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.73333, 12.7, 25.9333, 28)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -117,9 +257,9 @@ tracks/2/path = NodePath("Camera/CutsceneTarget:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-944, -0.25, 0, 0.25, 0, -155, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.06545)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-1688, -0.25, 0, 0.25, 0, -1117, -0.25, 0, 0.25, 0, -523, -0.25, 0, 0.25, 0, -395, -0.25, 0, 0.25, 0, -395, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.73333, 12.7, 25.9333, 28)
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -128,7 +268,7 @@ tracks/3/path = NodePath("Player:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.06667),
+"times": PackedFloat32Array(0, 21.0333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -141,8 +281,8 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.23077, 3.91411)
+"points": PackedFloat32Array(1.4, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 17.7333, 28)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -152,9 +292,210 @@ tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 2.23077, 3.91411)
+"points": PackedFloat32Array(1.4, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 17.7333, 28)
 }
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Spaceship:position:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(304, -0.25, 0, 0.25, 0, 236, -0.25, 0, 0.25, 0, 75, -0.25, 0, 0.25, 0, -27, -0.25, 0, 0.25, 0, -121.01, -0.25, 0, 0.25, 0, -64, -0.25, 0, 0.25, 0, 48, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.35365, 4.57393, 8.3, 10.9333, 14.2333, 16.2533, 16.9733)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Spaceship:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-1344, -0.25, 0, 0.25, 0, -1091, -0.25, 0, 0.25, 0, -880, -0.25, 0, 0.25, 0, -605, -0.25, 0, 0.25, 0, -521.583, -0.25, 0, 0.25, 0, -440, -0.25, 0, 0.25, 0, -88, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.35365, 4.57393, 8.3, 10.9333, 14.2333, 16.2533, 16.9733)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Spaceship:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0.261799, -0.25, 0, 0.25, 0, -0.220805, -0.25, 0, 0.25, 0, -0.0391685, -0.25, 0, 0.25, 0, 0.125931, -0.25, 0, 0.25, 0, -0.261799, -0.25, 0, 0.25, 0, 0.261799, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 3.83333, 8.3, 10.9333, 14.3733, 15.9533, 17.22)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Spaceship:scale:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 15.2867)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Spaceship:scale:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 15.2867)
+}
+tracks/11/type = "bezier"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Spaceship:modulate:r")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.792157, -0.25, 0, 0.25, 0, 0.646023, -0.25, 0, 0.25, 0, 0.147872, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 13.5661, 14.442, 15.3533, 16.6317, 17.0867, 17.42)
+}
+tracks/12/type = "bezier"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Spaceship:modulate:g")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.690196, -0.25, 0, 0.25, 0, 0.82496, -0.25, 0, 0.25, 0, 0.832924, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 13.5661, 14.442, 15.3533, 16.6317, 17.0867, 17.42)
+}
+tracks/13/type = "bezier"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Spaceship:modulate:b")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.354308, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 13.5661, 14.442, 15.3533, 16.6317, 17.0867, 17.42)
+}
+tracks/14/type = "bezier"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Spaceship:modulate:a")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.19, -0.25, 0, 0.25, 0, 0.1, -0.25, 0, 0.25, 0, 0.19, -0.25, 0, 0.25, 0, 0.4, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.05, -0.25, 0, 0.25, 0, 0.3, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.376471, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.74902, -0.25, 0, 0.25, 0, 0.74902, -0.25, 0, 0.25, 0, 0.709804, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.966667, 1.83333, 2.86667, 4.13333, 4.96667, 5.23333, 5.6, 5.9, 6.13333, 6.6, 6.86667, 8, 13.5661, 14.442, 15.3533, 16.6317, 17.0867, 17.42)
+}
+tracks/15/type = "audio"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Spaceship/SpaceshipLandAudio")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_eb0xd")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/15/use_blend = true
+tracks/16/type = "audio"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Spaceship/IntroIntercom")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_b08j6")
+}],
+"times": PackedFloat32Array(4)
+}
+tracks/16/use_blend = true
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Environment/Sky:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 8.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.205503, 0.341857, 0.529712, 1), Color(1, 1, 1, 1)]
+}
+tracks/18/type = "method"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Spaceship/Sprite")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(20.0333, 22.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"open"],
+"method": &"play"
+}, {
+"args": [&"close"],
+"method": &"play"
+}]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("SpaceshipLandPoof:emitting")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(16.9333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Spaceship/SpaceshipAmbientPoof:emitting")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 20, 22.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/21/type = "audio"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Spaceship/DoorAudio")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_5q5nc")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_yvt5h")
+}],
+"times": PackedFloat32Array(20.1, 22.2333)
+}
+tracks/21/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vqf0"]
 _data = {
@@ -162,11 +503,84 @@ _data = {
 &"intro_cutscene": SubResource("Animation_oqetn")
 }
 
+[sub_resource type="Curve" id="Curve_u1cip"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.302817, 0.918532), 0.56662, 0.56662, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_y3yg3"]
+curve = SubResource("Curve_u1cip")
+
+[sub_resource type="Curve" id="Curve_5q5nc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.255869, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yvt5h"]
+curve = SubResource("Curve_5q5nc")
+
+[sub_resource type="Curve" id="Curve_6mhyd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.171362, 0.93017), 0.774676, 0.774676, 0, 0, Vector2(0.673469, 0.715438), -1.40856, -1.40856, 0, 0, Vector2(1, 0.295882), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5q5nc"]
+curve = SubResource("Curve_6mhyd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvt5h"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(170, 200, 1)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 30, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5q5nc")
+color = Color(0.879885, 0.927937, 1, 0.352941)
+alpha_curve = SubResource("CurveTexture_y3yg3")
+emission_curve = SubResource("CurveTexture_yvt5h")
+hue_variation_min = -0.15
+hue_variation_max = 0.15
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.0
+
+[sub_resource type="Curve" id="Curve_wgj81"]
+_data = [Vector2(0.00583091, 1), 0.0, 0.0, 0, 0, Vector2(0.504373, 0.707949), -1.11962, -1.11962, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u1cip"]
+curve = SubResource("Curve_wgj81")
+
+[sub_resource type="Curve" id="Curve_y3yg3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.673469, 0.715438), -1.40856, -1.40856, 0, 0, Vector2(1, 0.460829), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6mhyd"]
+curve = SubResource("Curve_y3yg3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wgj81"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(180, 0.6, 1)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 30, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_6mhyd")
+color = Color(0.879885, 0.927937, 1, 0.352941)
+alpha_curve = SubResource("CurveTexture_u1cip")
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgj81"]
+font_size = 24
+font_color = Color(1, 1, 1, 0.192157)
+
 [node name="Intro" type="Node2D"]
 
 [node name="Environment" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Environment"]
+[node name="Sky" type="Sprite2D" parent="Environment"]
 position = Vector2(-1192, -2272)
 scale = Vector2(2.2375, 2.17778)
 texture = ExtResource("1_nl86o")
@@ -225,7 +639,6 @@ repeat_times = 3
 texture = ExtResource("2_oqetn")
 
 [node name="Player" parent="." instance=ExtResource("1_34vd1")]
-position = Vector2(500, 0)
 footstep_sounds = ExtResource("6_cv2l2")
 
 [node name="Physics" type="Node2D" parent="."]
@@ -241,7 +654,7 @@ position = Vector2(1073, 0)
 shape = SubResource("WorldBoundaryShape2D_7jqtv")
 
 [node name="LeftBoundary" type="StaticBody2D" parent="Physics"]
-position = Vector2(-1192, 0)
+position = Vector2(-720, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/LeftBoundary"]
 position = Vector2(0, -675.5)
@@ -260,7 +673,7 @@ shape = SubResource("RectangleShape2D_cv2l2")
 position = Vector2(48, -944)
 
 [node name="OutsideCamera" type="Camera2D" parent="Camera" node_paths=PackedStringArray("target")]
-position = Vector2(48, -944)
+position = Vector2(744.609, -418.435)
 zoom = Vector2(0.8, 0.8)
 limit_left = -1150
 limit_top = -2100
@@ -279,3 +692,77 @@ outside_camera = NodePath("../Camera/OutsideCamera")
 cutscene_target = NodePath("../Camera/CutsceneTarget")
 
 [node name="ClearColor" parent="." instance=ExtResource("2_nl86o")]
+
+[node name="Spaceship" type="Node2D" parent="."]
+position = Vector2(184, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Spaceship"]
+modulate = Color(1, 1, 1, 0.847059)
+position = Vector2(0, -248)
+sprite_frames = ExtResource("14_lnf06")
+animation = &"idle"
+
+[node name="SpaceshipLandAudio" type="AudioStreamPlayer2D" parent="Spaceship"]
+volume_db = 2.0
+bus = &"SFX"
+
+[node name="IntroIntercom" type="AudioStreamPlayer" parent="Spaceship"]
+volume_db = -6.0
+bus = &"Navcom Reverbed"
+
+[node name="DoorAudio" type="AudioStreamPlayer" parent="Spaceship"]
+volume_db = -7.0
+bus = &"SFX"
+
+[node name="SpaceshipAmbientPoof" type="GPUParticles2D" parent="Spaceship"]
+position = Vector2(0, -232)
+amount = 12
+texture = ExtResource("17_wgj81")
+lifetime = 2.0
+preprocess = 0.5
+explosiveness = 0.2
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yvt5h")
+
+[node name="SpaceshipLandPoof" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 12
+texture = ExtResource("17_wgj81")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_wgj81")
+
+[node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("skip_feedback")]
+script = ExtResource("18_u1cip")
+skip_feedback = NodePath("SkipFeedback")
+
+[node name="Control" type="Control" parent="Skippo"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Skippo/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -55.0
+offset_right = 592.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "Tap escape to skip"
+label_settings = SubResource("LabelSettings_wgj81")
+vertical_alignment = 2
+
+[node name="SkipFeedback" type="AudioStreamPlayer" parent="Skippo"]
+stream = ExtResource("19_y3yg3")
+volume_db = -16.0
+bus = &"SFX"

@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="5_0tdw7"]
 [ext_resource type="Resource" uid="uid://k231jpddifos" path="res://entities/npcs/reception_lady/anims/dialog_talk_anim.tres" id="6_1pgll"]
 [ext_resource type="Script" uid="uid://dp7tw8e87q0l2" path="res://components/dialog/resources/actions/dialog_play_sound_action.gd" id="7_8apgc"]
-[ext_resource type="AudioStream" uid="uid://0utmplsjxer7" path="res://assets/sfx/confetti.wav" id="8_xckdc"]
+[ext_resource type="AudioStream" uid="uid://0utmplsjxer7" path="res://assets/sfx/random/confetti.wav" id="8_xckdc"]
 [ext_resource type="Script" uid="uid://507n7nsnlly4" path="res://components/dialog/resources/actions/dialog_event_action.gd" id="9_ktde3"]
 [ext_resource type="Script" uid="uid://bbph4e2hp6jcj" path="res://components/dialog/resources/entries/dialog_character_act_entry.gd" id="9_v24en"]
 [ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="10_cht0j"]

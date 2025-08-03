@@ -1,6 +1,6 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://d2uc776b6rryi"]
 
-[ext_resource type="AudioStream" uid="uid://eh63rnr3a5da" path="res://assets/sfx/typewrite_raw.wav" id="1_7bboi"]
+[ext_resource type="AudioStream" uid="uid://eh63rnr3a5da" path="res://assets/sfx/random/typewrite_raw.wav" id="1_7bboi"]
 
 [resource]
 playback_mode = 2

@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="1_ue5om"]
 [ext_resource type="Script" uid="uid://dk0hw226c7pei" path="res://levels/ending/ending.gd" id="1_v4ub4"]
-[ext_resource type="AudioStream" uid="uid://d2uc776b6rryi" path="res://assets/sfx/typewrite.tres" id="3_slohg"]
+[ext_resource type="AudioStream" uid="uid://d2uc776b6rryi" path="res://assets/sfx/random/typewrite.tres" id="3_slohg"]
 [ext_resource type="Script" uid="uid://d181yals40776" path="res://levels/ending/time_loop_switch.gd" id="3_t2d02"]
 [ext_resource type="SpriteFrames" uid="uid://c2blbeutihvlp" path="res://assets/textures/time_loop_switch.tres" id="4_meo4a"]
-[ext_resource type="AudioStream" uid="uid://bs6be7i5hnrf1" path="res://assets/sfx/ending_sound.mp3" id="6_4qn2m"]
+[ext_resource type="AudioStream" uid="uid://bs6be7i5hnrf1" path="res://assets/sfx/random/ending_sound.mp3" id="6_4qn2m"]
 
 [sub_resource type="Animation" id="Animation_meo4a"]
 resource_name = "ending"

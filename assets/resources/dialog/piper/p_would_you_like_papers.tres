@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://507n7nsnlly4" path="res://components/dialog/resources/actions/dialog_event_action.gd" id="5_f8o7c"]
 [ext_resource type="Script" uid="uid://bbph4e2hp6jcj" path="res://components/dialog/resources/entries/dialog_character_act_entry.gd" id="5_xusud"]
 [ext_resource type="Script" uid="uid://dp7tw8e87q0l2" path="res://components/dialog/resources/actions/dialog_play_sound_action.gd" id="6_31lhj"]
-[ext_resource type="AudioStream" uid="uid://8p2x4wnd2qhg" path="res://assets/sfx/paper.tres" id="7_tj8ei"]
+[ext_resource type="AudioStream" uid="uid://8p2x4wnd2qhg" path="res://assets/sfx/random/paper.tres" id="7_tj8ei"]
 
 [sub_resource type="Resource" id="Resource_xusud"]
 script = ExtResource("3_inf7f")

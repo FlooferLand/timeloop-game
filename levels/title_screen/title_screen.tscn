@@ -1,67 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=11 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="2_eff74"]
-[ext_resource type="Texture2D" uid="uid://d0njdkb811b7l" path="res://assets/textures/spaceship/alien_door_thing.png" id="3_h0kaw"]
 [ext_resource type="Script" uid="uid://btk1lh5vs5ovv" path="res://levels/title_screen/spaceship.gd" id="3_me0mb"]
+[ext_resource type="SpriteFrames" uid="uid://bl1ulu1buo0pr" path="res://assets/textures/spaceship/spaceship.tres" id="3_xkaxa"]
 [ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
 [ext_resource type="AudioStream" uid="uid://dybu3wnhekijb" path="res://assets/sfx/navcom/radio_quick_noise.wav" id="7_gw2jj"]
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_me0mb"]
-atlas = ExtResource("3_h0kaw")
-region = Rect2(0, 0, 740, 537)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ypach"]
-atlas = ExtResource("3_h0kaw")
-region = Rect2(740, 0, 740, 537)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndbk7"]
-atlas = ExtResource("3_h0kaw")
-region = Rect2(1480, 0, 740, 537)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gw2jj"]
-atlas = ExtResource("3_h0kaw")
-region = Rect2(2220, 0, 740, 537)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0u665"]
-atlas = ExtResource("3_h0kaw")
-region = Rect2(2960, 0, 740, 537)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xkaxa"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_me0mb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ypach")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_me0mb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ypach")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ndbk7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gw2jj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0u665")
-}],
-"loop": true,
-"name": &"open",
-"speed": 8.0
-}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eff74"]
 font_size = 48
@@ -90,15 +36,16 @@ z_index = 1
 position = Vector2(-400, 258)
 rotation = 0.261799
 scale = Vector2(0.544693, 0.544693)
-sprite_frames = SubResource("SpriteFrames_xkaxa")
+sprite_frames = ExtResource("3_xkaxa")
 animation = &"idle"
+frame_progress = 0.897128
 script = ExtResource("3_me0mb")
 child = NodePath("Spaceship2")
 
 [node name="Spaceship2" type="AnimatedSprite2D" parent="Spaceship"]
 modulate = Color(0, 1, 1, 0.25098)
 z_as_relative = false
-sprite_frames = SubResource("SpriteFrames_xkaxa")
+sprite_frames = ExtResource("3_xkaxa")
 animation = &"idle"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -113,6 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
 offset_left = 80.0
 offset_top = 200.0
 offset_right = 568.0

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://0utmplsjxer7"
-path="res://.godot/imported/confetti.wav-c0da8dc8760cae0fbe289cdbc5e0271b.sample"
+uid="uid://dwuelx601ocus"
+path="res://.godot/imported/noise.wav-e494baa4a9c7869639ecbfe88586f896.sample"
 
 [deps]
 
-source_file="res://assets/sfx/confetti.wav"
-dest_files=["res://.godot/imported/confetti.wav-c0da8dc8760cae0fbe289cdbc5e0271b.sample"]
+source_file="res://assets/sfx/random/noise.wav"
+dest_files=["res://.godot/imported/noise.wav-e494baa4a9c7869639ecbfe88586f896.sample"]
 
 [params]
 
