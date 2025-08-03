@@ -7,6 +7,7 @@ extends Node2D
 @export var elevator_keys_item: InventoryItem
 @export var plushie_item: InventoryItem
 @export var received_plushie_dialog: DialogData
+@export var after_thank_you_dialog: DialogData
 @export var cant_talk_dialog: DialogData
 @export var walk_comp: PersonWalkComponent
 @export var person_dialog_comp: PersonDialogComponent
@@ -17,10 +18,11 @@ extends Node2D
 @onready var dialog_manager: DialogManagerType = DialogManager
 
 var can_receive_plushie := true
+var player_received_key := false
 
 func _ready() -> void:
 	interact_comp.interact_condition = func(player: Player) -> bool:
-		if player.inventory_comp.has_item(plushie_item.id) and can_receive_plushie:
+		if player.inventory_comp.has_item(plushie_item.id) and can_receive_plushie and not player_received_key:
 			dialog_comp.dialog_data = received_plushie_dialog
 		return true
 	dialog_manager.action_event.connect(func(event_name: String):
@@ -30,6 +32,8 @@ func _ready() -> void:
 					interact_comp.current_player.inventory_comp.remove_item(plushie_item)
 				"give_elevator_keys":
 					interact_comp.current_player.inventory_comp.add_item(elevator_keys_item)
+					dialog_comp.dialog_data = after_thank_you_dialog
+					player_received_key = true
 	)
 	time_manager.time_advanced.connect(func(new_hour: int):
 		if new_hour == TimeTable.MANAGER_GO_TO_DESK:

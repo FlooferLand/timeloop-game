@@ -45,7 +45,7 @@ func _ready() -> void:
 			awaiting_gift = false
 	)
 	time_manager.time_advanced.connect(func(new_hour: int):
-		if new_hour == TimeTable.BOB_GO_HARASS_RECEPTIONIST:
+		if new_hour == TimeTable.BOB_GO_HARASS_RECEPTIONIST and not (awaiting_gift or gave_plushie):
 			var dialog := dialog_comp.dialog_comp
 			dialog.dialog_data = sad_dialog
 	)

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://bxeuvhdtltoy3"]
+
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_hb05e"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_2ucpw"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_w4ny4"]
+[ext_resource type="Resource" uid="uid://dmg7wnxojwant" path="res://assets/resources/characters/bob.tres" id="3_l25gv"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="4_ksxxr"]
+
+[sub_resource type="Resource" id="Resource_qobfg"]
+script = ExtResource("4_ksxxr")
+text = "Man, I can't with this new receptionist anymore, what the fuck happened to the old one."
+character = ExtResource("3_l25gv")
+additional = Array[ExtResource("2_2ucpw")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[resource]
+script = ExtResource("2_w4ny4")
+entries = Array[ExtResource("1_hb05e")]([SubResource("Resource_qobfg")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"

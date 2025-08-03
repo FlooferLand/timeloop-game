@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 	
 	# Animation
 	var anim_name := ""
-	if velocity.length() > 0:
+	if velocity.length() > 0 and not paused:
 		anim_name = "walk"
 	else:
 		anim_name = "idle"

@@ -30,6 +30,6 @@ shape = SubResource("WorldBoundaryShape2D_34hto")
 
 [node name="DoorEnterSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_iudyd")
-volume_db = -16.0
+volume_db = -14.0
 autoplay = true
 bus = &"SFX"

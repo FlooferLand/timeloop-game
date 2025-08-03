@@ -13,6 +13,10 @@ func start() -> void:
 	(DialogManager as DialogManagerType).present(dialog_data)
 	active = true
 
+func stop() -> void:
+	(DialogManager as DialogManagerType).close()
+	active = false
+
 func _ready() -> void:
 	var diag_manager := (DialogManager as DialogManagerType)
 	diag_manager.dialog_closed.connect(func():

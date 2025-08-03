@@ -30,7 +30,7 @@ func _ready() -> void:
 				anger_mark.play()
 			desk_self.bob_desk_pos:  ## Arrived back at his desk
 				desk_self.bob_sprite.visible = true
-				desk_self.set_pranked(got_pranked)
+				desk_self.arrived_back(got_pranked)
 				queue_free()
 	)
 	prank_detector.area_entered.connect(func(area: Area2D):

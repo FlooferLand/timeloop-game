@@ -24,10 +24,11 @@ script = ExtResource("9_qcu8k")
 entries = Array[ExtResource("5_iheub")]([SubResource("Resource_j5uar")])
 metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 
-[node name="Janitor" type="Node2D" node_paths=PackedStringArray("sprite", "interact_comp")]
+[node name="Janitor" type="Node2D" node_paths=PackedStringArray("sprite", "interact_comp", "dialog_comp")]
 script = ExtResource("1_ax2v2")
 sprite = NodePath("Sprite")
 interact_comp = NodePath("PersonDialogComponent/InteractComponent")
+dialog_comp = NodePath("PersonDialogComponent/DialogComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -272)

@@ -1,9 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://vhrg6s1mauso"]
+[gd_scene load_steps=16 format=3 uid="uid://vhrg6s1mauso"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_pvj0r"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_nn8ak"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_nn8ak"]
-[ext_resource type="Texture2D" uid="uid://dc0rcr77ud06t" path="res://assets/textures/decor/poster2.png" id="4_a7dy4"]
 [ext_resource type="PackedScene" uid="uid://b1cv7inyidclk" path="res://entities/npcs/piper/piper.tscn" id="4_uffxh"]
 [ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="5_nf4fi"]
 [ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="5_ypaot"]
@@ -12,15 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://3iv4mv1rj66w" path="res://assets/textures/props/desklamp.png" id="8_tliww"]
 [ext_resource type="Texture2D" uid="uid://dtk3yvovxhfe5" path="res://assets/textures/props/documents.png" id="9_k5m35"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tliww"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ptjl"]
 shader = ExtResource("2_nn8ak")
 shader_parameter/tile = Vector2(1.04688, 0.925926)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5m35"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tliww"]
 shader = ExtResource("2_nn8ak")
 shader_parameter/tile = Vector2(1.04688, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ctqm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5m35"]
 shader = ExtResource("2_nn8ak")
 shader_parameter/tile = Vector2(1.04688, 1)
 
@@ -43,15 +42,15 @@ closed_left = false
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_tliww")
+material = SubResource("ShaderMaterial_2ptjl")
 scale = Vector2(1.04688, 0.925926)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_k5m35")
+material = SubResource("ShaderMaterial_tliww")
 scale = Vector2(1.04688, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_1ctqm")
+material = SubResource("ShaderMaterial_k5m35")
 scale = Vector2(1.04688, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
@@ -69,45 +68,38 @@ texture = ExtResource("3_nn8ak")
 position = Vector2(1933.5, -703)
 shape = SubResource("RectangleShape2D_q6g01")
 
-[node name="Poster" type="Sprite2D" parent="Decor" index="0"]
-modulate = Color(1, 1, 1, 0.572549)
-position = Vector2(1032, -464)
-rotation = -0.151421
-scale = Vector2(0.56, 0.56)
-texture = ExtResource("4_a7dy4")
-
-[node name="Chair" type="Sprite2D" parent="Decor" index="1"]
+[node name="Chair" type="Sprite2D" parent="Decor" index="0"]
 position = Vector2(664, -152)
 texture = ExtResource("5_ypaot")
 
-[node name="Postits" type="Sprite2D" parent="Decor" index="2"]
+[node name="Postits" type="Sprite2D" parent="Decor" index="1"]
 modulate = Color(1, 1, 1, 0.682353)
 position = Vector2(1092, -280)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_tliww")
 
-[node name="Chair2" type="Sprite2D" parent="Decor" index="3"]
+[node name="Chair2" type="Sprite2D" parent="Decor" index="2"]
 position = Vector2(1448, -156)
 texture = ExtResource("5_ypaot")
 flip_h = true
 
-[node name="Glass2" type="Sprite2D" parent="Decor" index="4"]
+[node name="Glass2" type="Sprite2D" parent="Decor" index="3"]
 position = Vector2(976, -258)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_tliww")
 
-[node name="Table" type="Sprite2D" parent="Decor" index="5"]
+[node name="Table" type="Sprite2D" parent="Decor" index="4"]
 position = Vector2(1080, -120)
 scale = Vector2(0.8, 1)
 texture = ExtResource("5_nf4fi")
 
-[node name="Glass3" type="Sprite2D" parent="Decor" index="6"]
+[node name="Glass3" type="Sprite2D" parent="Decor" index="5"]
 position = Vector2(1144, -202)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("9_k5m35")
 flip_h = true
 
-[node name="Glass" type="Sprite2D" parent="Decor" index="7"]
+[node name="Glass" type="Sprite2D" parent="Decor" index="6"]
 position = Vector2(808, -216)
 texture = ExtResource("7_2ptjl")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bb68hsv18n5jd"]
+[gd_scene load_steps=19 format=3 uid="uid://bb68hsv18n5jd"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_4qtyc"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_nwxry"]
@@ -12,16 +12,17 @@
 [ext_resource type="Texture2D" uid="uid://cbuw8on3ydiky" path="res://assets/textures/props/postit.png" id="7_u6lna"]
 [ext_resource type="Texture2D" uid="uid://3iv4mv1rj66w" path="res://assets/textures/props/desklamp.png" id="9_lkh5l"]
 [ext_resource type="Texture2D" uid="uid://dtk3yvovxhfe5" path="res://assets/textures/props/documents.png" id="11_fevpa"]
+[ext_resource type="Texture2D" uid="uid://dc0rcr77ud06t" path="res://assets/textures/decor/poster2.png" id="13_a84dp"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkh5l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujqss"]
 shader = ExtResource("2_nwxry")
 shader_parameter/tile = Vector2(0.78125, 0.925926)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a84dp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_imxjw"]
 shader = ExtResource("2_nwxry")
 shader_parameter/tile = Vector2(0.78125, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujqss"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brxlq"]
 shader = ExtResource("2_nwxry")
 shader_parameter/tile = Vector2(0.78125, 1)
 
@@ -43,15 +44,15 @@ size = Vector2(1500, 1000)
 closed_left = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_lkh5l")
+material = SubResource("ShaderMaterial_ujqss")
 scale = Vector2(0.78125, 0.925926)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_a84dp")
+material = SubResource("ShaderMaterial_imxjw")
 scale = Vector2(0.78125, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_ujqss")
+material = SubResource("ShaderMaterial_brxlq")
 scale = Vector2(0.78125, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
@@ -112,3 +113,10 @@ texture = ExtResource("5_fic25")
 position = Vector2(976, -208)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_fevpa")
+
+[node name="Poster" type="Sprite2D" parent="Decor" index="10"]
+modulate = Color(1, 1, 1, 0.780392)
+position = Vector2(1181, -447)
+rotation = 0.00540727
+scale = Vector2(0.441187, 0.441187)
+texture = ExtResource("13_a84dp")
