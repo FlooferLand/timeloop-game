@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://8udsm8obdxsy"]
+[gd_scene load_steps=15 format=3 uid="uid://8udsm8obdxsy"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_ss1i7"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_af8on"]
 [ext_resource type="Texture2D" uid="uid://n6o01xew4gqk" path="res://assets/textures/room/flat_floor.png" id="3_af8on"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="4_rfj78"]
 [ext_resource type="PackedScene" uid="uid://cmxopnp7u5pfj" path="res://entities/elevator_doors/elevator_doors.tscn" id="5_6ggty"]
+[ext_resource type="PackedScene" uid="uid://dnq052dj8057j" path="res://props/clock/clock.tscn" id="5_h3wxf"]
 [ext_resource type="Script" uid="uid://b5excc701a3fq" path="res://scripts/elevator_room_player_enter.gd" id="6_q5kue"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q5kue"]
@@ -72,6 +73,17 @@ texture = ExtResource("4_rfj78")
 [node name="Collision" parent="AutoRoom/RightWall" index="1"]
 position = Vector2(1423.5, -703)
 shape = SubResource("RectangleShape2D_g317h")
+
+[node name="Clock" parent="Decor" index="0" instance=ExtResource("5_h3wxf")]
+position = Vector2(936, -672)
+
+[node name="Clock2" parent="Decor" index="1" instance=ExtResource("5_h3wxf")]
+position = Vector2(1200, -512)
+rotation = -0.523598
+
+[node name="Clock3" parent="Decor" index="2" instance=ExtResource("5_h3wxf")]
+position = Vector2(960, -392)
+rotation = 0.523598
 
 [node name="ElevatorDoors" parent="Entities" index="0" instance=ExtResource("5_6ggty")]
 position = Vector2(504, -64)

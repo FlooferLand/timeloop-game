@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnq052dj8057j"]
+
+[ext_resource type="Texture2D" uid="uid://cg3epmm6drxy7" path="res://assets/textures/props/clock.png" id="1_0mbyv"]
+[ext_resource type="Script" uid="uid://ceyebjd1m0iwo" path="res://props/clock/clock.gd" id="1_uisk7"]
+
+[node name="Clock" type="Node2D"]
+z_index = 1
+script = ExtResource("1_uisk7")
+hand_color = Color(0.290196, 0.243137, 0.235294, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+texture = ExtResource("1_0mbyv")
