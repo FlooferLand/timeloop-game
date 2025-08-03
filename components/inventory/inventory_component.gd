@@ -15,6 +15,7 @@ func remove_item(item: InventoryItem) -> void:
 	var found_index: int = find_item_index(item.id)
 	if found_index != -1:
 		item_removed.emit(item)
+		print("Removing item of ID '%s', name '%s'" % [item.id, item.name])
 		_inv.remove_at(found_index)
 	else:
 		push_error("Failed to remove item '%s' from inventory" % item.name)
@@ -31,7 +32,7 @@ func find_item(id: InventoryItem.Id) -> InventoryItem:
 
 ## Returns -1 if no item was found
 func find_item_index(id: InventoryItem.Id) -> int:
-	for i in len(_inv):
+	for i in range(_inv.size()):
 		if _inv[i].id == id:
 			return i
 	return -1

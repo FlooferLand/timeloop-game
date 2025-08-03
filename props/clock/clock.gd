@@ -9,11 +9,12 @@ var current_hour := TimeManager.START_PM
 
 func _ready() -> void:
 	queue_redraw()
-	time_manager.time_advanced.connect(func(new_hour: int):
-		current_hour = new_hour
-		await get_tree().create_timer(randf() * 0.4).timeout
-		queue_redraw()
-	)
+	if not Engine.is_editor_hint():
+		time_manager.time_advanced.connect(func(new_hour: int):
+			current_hour = new_hour
+			await get_tree().create_timer(randf() * 0.4).timeout
+			queue_redraw()
+		)
 
 func _process(delta: float) -> void:
 	queue_redraw()

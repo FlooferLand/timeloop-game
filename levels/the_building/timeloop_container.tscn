@@ -31,6 +31,7 @@ position = Vector2(-1496, -1)
 [node name="RoomBridgeElevator" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
 room_a = NodePath("../ElevatorRoom")
 room_b = NodePath("../Reception")
+locked = true
 
 [node name="RoomBridgeLock" parent="RoomManager/RoomBridgeElevator" instance=ExtResource("5_8h0vr")]
 unlock_item = ExtResource("6_tef80")
