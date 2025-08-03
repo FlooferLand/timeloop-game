@@ -4,6 +4,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_f4euv"]
 font_size = 24
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.317647)
 
 [node name="InventoryItemSlot" type="Control" node_paths=PackedStringArray("name_label", "texture_rect")]
 custom_minimum_size = Vector2(144, 168)
