@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://myo2rpycaysv"]
+[gd_scene load_steps=10 format=3 uid="uid://myo2rpycaysv"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_m2vgi"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_kjyb1"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_kjyb1"]
+[ext_resource type="PackedScene" uid="uid://bu08u46kkb0vl" path="res://entities/npcs/janitor/Janitor.tscn" id="4_cdf0p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cdf0p"]
 shader = ExtResource("2_kjyb1")
@@ -60,3 +61,6 @@ texture = ExtResource("3_kjyb1")
 [node name="Collision" parent="AutoRoom/RightWall" index="1"]
 position = Vector2(1123.5, -703)
 shape = SubResource("RectangleShape2D_x7dmo")
+
+[node name="Janitor" parent="Entities" index="0" instance=ExtResource("4_cdf0p")]
+position = Vector2(744, 0)

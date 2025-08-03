@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="timeloop-game"
+config/name="Storms of Time"
 run/main_scene="uid://douk4eknvrii7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
@@ -81,6 +81,7 @@ sprint={
 [layer_names]
 
 2d_physics/layer_2="Interacting"
+2d_physics/layer_3="Prank"
 
 [physics]
 

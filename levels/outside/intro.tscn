@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjgtv4eflexi6"]
+[gd_scene load_steps=19 format=3 uid="uid://cjgtv4eflexi6"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_34vd1"]
 [ext_resource type="Texture2D" uid="uid://dbjitvlj33phh" path="res://assets/textures/outside/background_outside1.png" id="1_nl86o"]
@@ -6,12 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="2_nl86o"]
 [ext_resource type="Texture2D" uid="uid://chacbfyue37kp" path="res://assets/textures/outside/floor.png" id="2_oqetn"]
 [ext_resource type="Texture2D" uid="uid://vq8ca6dyp1iq" path="res://assets/textures/outside/background_outside3.png" id="3_13u0a"]
+[ext_resource type="Texture2D" uid="uid://bqwuil6n0m6n4" path="res://assets/textures/outside/background_outside_parallax.png" id="3_fl6cf"]
 [ext_resource type="Script" uid="uid://bpl3ey64myglp" path="res://levels/outside/outside_camera.gd" id="4_7jqtv"]
+[ext_resource type="Texture2D" uid="uid://bm5moqe0ydvka" path="res://assets/textures/outside/cutscene_building.png" id="4_kbpto"]
+[ext_resource type="Script" uid="uid://6k0ysgxw8vcv" path="res://levels/outside/building.gd" id="5_qvusp"]
 [ext_resource type="Script" uid="uid://bbw5tlpcwsivl" path="res://levels/outside/cutscene_animator.gd" id="6_6s53q"]
 [ext_resource type="AudioStream" uid="uid://dfulo5h10bbeg" path="res://assets/sfx/footsteps/gravel.tres" id="6_cv2l2"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="6_rck8i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jqtv"]
 normal = Vector2(0, -40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cv2l2"]
+size = Vector2(176, 1475)
 
 [sub_resource type="Animation" id="Animation_6s53q"]
 length = 0.001
@@ -35,6 +42,40 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(-944, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera/OutsideCamera:zoom:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera/OutsideCamera:zoom:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.8, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
 
@@ -80,6 +121,40 @@ tracks/2/keys = {
 "points": PackedFloat32Array(-944, -0.25, 0, 0.25, 0, -155, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2.06545)
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Player:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera/OutsideCamera:zoom:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.23077, 3.91411)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera/OutsideCamera:zoom:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.6, -0.25, 0, 0.25, 0, 0.6, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.23077, 3.91411)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vqf0"]
 _data = {
@@ -98,8 +173,8 @@ texture = ExtResource("1_nl86o")
 centered = false
 
 [node name="Clouds1" type="Parallax2D" parent="Environment"]
-scroll_scale = Vector2(0.6, 0.6)
-scroll_offset = Vector2(0, -512)
+scroll_scale = Vector2(0.3, 0.3)
+scroll_offset = Vector2(0, -300)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(30, 0)
 repeat_times = 3
@@ -107,15 +182,39 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="Environment/Clouds1"]
 texture = ExtResource("2_5vqf0")
 
+[node name="BackBuildings" type="Parallax2D" parent="Environment"]
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(0, 150)
+repeat_size = Vector2(1920, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/BackBuildings"]
+modulate = Color(0.923173, 0.923173, 0.923173, 1)
+texture = ExtResource("3_fl6cf")
+
 [node name="Clouds2" type="Parallax2D" parent="Environment"]
-scroll_scale = Vector2(0.65, 0.65)
-scroll_offset = Vector2(0, -600)
+scroll_scale = Vector2(0.4, 0.4)
+scroll_offset = Vector2(0, -400)
 repeat_size = Vector2(1920, 0)
 autoscroll = Vector2(30, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/Clouds2"]
 texture = ExtResource("3_13u0a")
+
+[node name="Building" type="Node2D" parent="Environment" node_paths=PackedStringArray("interact_comp")]
+position = Vector2(2056, 8)
+script = ExtResource("5_qvusp")
+interact_comp = NodePath("InteractComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Building"]
+position = Vector2(0, -536)
+texture = ExtResource("4_kbpto")
+
+[node name="InteractComponent" parent="Environment/Building" instance=ExtResource("6_rck8i")]
+position = Vector2(-152, -192)
+size = Vector2i(365, 360)
+info_offset = Vector2i(0, -185)
 
 [node name="Floor" type="Parallax2D" parent="Environment"]
 scroll_offset = Vector2(1920, 0)
@@ -130,12 +229,30 @@ position = Vector2(500, 0)
 footstep_sounds = ExtResource("6_cv2l2")
 
 [node name="Physics" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Floor" type="StaticBody2D" parent="Physics"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/Floor"]
 position = Vector2(1073, 0)
 shape = SubResource("WorldBoundaryShape2D_7jqtv")
+
+[node name="LeftBoundary" type="StaticBody2D" parent="Physics"]
+position = Vector2(-1192, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/LeftBoundary"]
+position = Vector2(0, -675.5)
+shape = SubResource("RectangleShape2D_cv2l2")
+
+[node name="RightBoundary" type="StaticBody2D" parent="Physics"]
+position = Vector2(3096, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Physics/RightBoundary"]
+position = Vector2(0, -675.5)
+shape = SubResource("RectangleShape2D_cv2l2")
 
 [node name="Camera" type="Node" parent="."]
 

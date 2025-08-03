@@ -1,28 +1,49 @@
-[gd_scene load_steps=6 format=3 uid="uid://bu08u46kkb0vl"]
+[gd_scene load_steps=14 format=3 uid="uid://bu08u46kkb0vl"]
 
 [ext_resource type="Script" uid="uid://c1h777m5cvby6" path="res://entities/npcs/janitor/janitor.gd" id="1_ax2v2"]
-[ext_resource type="SpriteFrames" uid="uid://bdms1r5t6j7dy" path="res://assets/textures/npcs/manager.tres" id="1_d6kt3"]
-[ext_resource type="Script" uid="uid://bamg300jchjgd" path="res://components/npc/person_dialog/person_dialog_component.gd" id="1_fwiau"]
-[ext_resource type="Script" uid="uid://bhr4q0orih75a" path="res://components/dialog/dialog_component.gd" id="2_d6kt3"]
-[ext_resource type="Script" uid="uid://ddhtc4rkusvq0" path="res://components/interact/interact_component.gd" id="3_ax2v2"]
+[ext_resource type="SpriteFrames" uid="uid://cc6hmb0w2uo2h" path="res://assets/textures/npcs/janitor.tres" id="2_iheub"]
+[ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="3_ax2v2"]
+[ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="4_28mwi"]
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="5_iheub"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="5_x3pcm"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="6_htrv4"]
+[ext_resource type="Resource" uid="uid://cgn6b13wbpq72" path="res://assets/resources/characters/janitor.tres" id="7_iheub"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="8_0lu2c"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="9_qcu8k"]
+[ext_resource type="PackedScene" uid="uid://cpr5lbb0xwafd" path="res://entities/npcs/janitor/bucket.tscn" id="11_htrv4"]
 
-[node name="Janitor" type="Node2D"]
+[sub_resource type="Resource" id="Resource_j5uar"]
+script = ExtResource("8_0lu2c")
+text = "What do you want? Can't you see I'm sweeping?"
+character = ExtResource("7_iheub")
+additional = Array[ExtResource("6_htrv4")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_1kq2h"]
+script = ExtResource("9_qcu8k")
+entries = Array[ExtResource("5_iheub")]([SubResource("Resource_j5uar")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
+
+[node name="Janitor" type="Node2D" node_paths=PackedStringArray("sprite", "interact_comp")]
 script = ExtResource("1_ax2v2")
+sprite = NodePath("Sprite")
+interact_comp = NodePath("PersonDialogComponent/InteractComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-modulate = Color(4.33177e-07, 0.34898, 0.460924, 1)
 position = Vector2(0, -272)
-sprite_frames = ExtResource("1_d6kt3")
+sprite_frames = ExtResource("2_iheub")
 animation = &"idle"
 
-[node name="PersonDialogComponent" type="Node2D" parent="."]
-script = ExtResource("1_fwiau")
-metadata/_custom_type_script = "uid://bamg300jchjgd"
+[node name="PersonDialogComponent" parent="." instance=ExtResource("3_ax2v2")]
 
-[node name="DialogComponent" type="Node2D" parent="PersonDialogComponent"]
-script = ExtResource("2_d6kt3")
-metadata/_custom_type_script = "uid://bhr4q0orih75a"
+[node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("5_x3pcm")]
+position = Vector2(0, -224)
+size = Vector2i(95, 445)
+type = 1
 
-[node name="InteractComponent" type="Node2D" parent="PersonDialogComponent"]
-script = ExtResource("3_ax2v2")
-metadata/_custom_type_script = "uid://ddhtc4rkusvq0"
+[node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("4_28mwi")]
+dialog_data = SubResource("Resource_1kq2h")
+
+[node name="Bucket" parent="." node_paths=PackedStringArray("janitor") instance=ExtResource("11_htrv4")]
+position = Vector2(-304, 0)
+janitor = NodePath("..")

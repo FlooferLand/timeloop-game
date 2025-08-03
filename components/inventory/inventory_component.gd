@@ -12,16 +12,29 @@ func add_item(item: InventoryItem) -> void:
 	item_added.emit(item)
 
 func remove_item(item: InventoryItem) -> void:
-	var found_index: int = -1
-	for i in len(_inv):
-		if _inv[i].id == item.id:
-			found_index = i
-			break
+	var found_index: int = find_item_index(item.id)
 	if found_index != -1:
 		item_removed.emit(item)
 		_inv.remove_at(found_index)
 	else:
 		push_error("Failed to remove item '%s' from inventory" % item.name)
+
+func has_item(id: InventoryItem.Id) -> bool:
+	return find_item(id) != null
+
+## Returns null if no item was found
+func find_item(id: InventoryItem.Id) -> InventoryItem:
+	var found := find_item_index(id)
+	if found != -1:
+		return _inv[found]
+	return null
+
+## Returns -1 if no item was found
+func find_item_index(id: InventoryItem.Id) -> int:
+	for i in len(_inv):
+		if _inv[i].id == id:
+			return i
+	return -1
 
 func size() -> int:
 	return _inv.size()

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://befr3srxsg1k4"]
+
+[ext_resource type="Script" uid="uid://chw53fkpmev11" path="res://components/inventory/types/inventory_item.gd" id="1_jc8bx"]
+[ext_resource type="Texture2D" uid="uid://bt4gtsagonweu" path="res://assets/textures/props/bucket.png" id="1_yq7s4"]
+
+[resource]
+script = ExtResource("1_jc8bx")
+id = 2
+name = "Water bucket"
+image = ExtResource("1_yq7s4")
+metadata/_custom_type_script = "uid://chw53fkpmev11"

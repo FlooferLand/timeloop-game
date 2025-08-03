@@ -8,10 +8,11 @@
 [ext_resource type="Resource" uid="uid://c4je7uey3he7n" path="res://assets/resources/dialog/bob_at_desk.tres" id="5_jwlf0"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="6_3rw3g"]
 
-[node name="Bob at desk" type="Node2D" node_paths=PackedStringArray("bob_sprite", "bob_desk_pos")]
+[node name="Bob at desk" type="Node2D" node_paths=PackedStringArray("bob_sprite", "bob_desk_pos", "dialog_comp")]
 script = ExtResource("1_3rw3g")
 bob_sprite = NodePath("Bob")
 bob_desk_pos = NodePath("BobTransPos")
+dialog_comp = NodePath("Bob/PersonDialogComponent")
 
 [node name="Bob" type="AnimatedSprite2D" parent="."]
 position = Vector2(-207, -223)

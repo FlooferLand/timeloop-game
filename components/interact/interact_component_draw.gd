@@ -3,7 +3,7 @@
 @export var interact_comp: InteractComponent
 
 func _draw() -> void:
-	if interact_comp.displaying_info or Engine.is_editor_hint():
+	if (interact_comp.displaying_info and interact_comp.can_interact) or Engine.is_editor_hint():
 		const font_size := 48
 		var font := ThemeDB.fallback_font
 		var text: String
@@ -14,6 +14,10 @@ func _draw() -> void:
 				text = "Talk"
 			InteractComponent.Type.Unlock:
 				text = "Unlock"
+			InteractComponent.Type.PickUp:
+				text = "Pick up"
+			InteractComponent.Type.Place:
+				text = "Place"
 		if not interact_comp._postfix.is_empty():
 			text = "%s %s" % [text, interact_comp._postfix]
 		

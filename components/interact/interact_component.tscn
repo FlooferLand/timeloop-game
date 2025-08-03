@@ -7,8 +7,10 @@
 resource_local_to_scene = true
 size = Vector2(100, 100)
 
-[node name="InteractComponent" type="Node2D"]
+[node name="InteractComponent" type="Node2D" node_paths=PackedStringArray("collision", "comp_draw")]
 script = ExtResource("1_h4gas")
+collision = NodePath("Area2D/Collision")
+comp_draw = NodePath("InteractComponentDraw")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpr5lbb0xwafd"]
+
+[ext_resource type="Script" uid="uid://cupv12xg4ko6u" path="res://entities/npcs/janitor/bucket.gd" id="1_dlhpo"]
+[ext_resource type="Resource" uid="uid://befr3srxsg1k4" path="res://assets/resources/items/water_bucket/water_bucket.tres" id="2_c40mv"]
+[ext_resource type="Texture2D" uid="uid://bt4gtsagonweu" path="res://assets/textures/props/bucket.png" id="3_54uem"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="4_i7qav"]
+[ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="5_uqg5o"]
+[ext_resource type="Resource" uid="uid://cov6xwp5jt7f6" path="res://assets/resources/dialog/janitor/bucket_stealer.tres" id="6_52878"]
+
+[node name="Bucket" type="Node2D" node_paths=PackedStringArray("interact_comp", "dialog_comp")]
+script = ExtResource("1_dlhpo")
+item = ExtResource("2_c40mv")
+interact_comp = NodePath("InteractComponent")
+dialog_comp = NodePath("DialogComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -72)
+texture = ExtResource("3_54uem")
+
+[node name="InteractComponent" parent="." instance=ExtResource("4_i7qav")]
+position = Vector2(0, -88)
+size = Vector2i(145, 185)
+info_offset = Vector2i(0, -60)
+type = 3
+
+[node name="DialogComponent" parent="." instance=ExtResource("5_uqg5o")]
+dialog_data = ExtResource("6_52878")

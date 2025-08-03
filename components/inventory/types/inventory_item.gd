@@ -2,7 +2,8 @@ class_name InventoryItem extends Resource
 
 enum Id {
 	None,
-	PipersDocument
+	PipersDocument,
+	WaterBucket
 }
 
 @export var id: Id

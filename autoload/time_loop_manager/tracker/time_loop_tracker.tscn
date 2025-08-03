@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c10ykaa58hgny"]
+[gd_scene load_steps=19 format=3 uid="uid://c10ykaa58hgny"]
 
 [ext_resource type="Script" uid="uid://b0lffjqolvayy" path="res://autoload/time_loop_manager/tracker/time_loop_tracker.gd" id="1_ncppg"]
 [ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer 1.mp3" id="2_v6hoe"]
 [ext_resource type="AudioStream" uid="uid://cug1tj8j48w8s" path="res://assets/music/ambiance/layer 2.mp3" id="3_yttw0"]
 [ext_resource type="AudioStream" uid="uid://d3u4jmj2sfh" path="res://assets/music/ambiance/layer 3.mp3" id="4_1efh4"]
 [ext_resource type="AudioStream" uid="uid://0vptpdtfstgl" path="res://assets/music/ambiance/layer 4.mp3" id="5_g5no1"]
+[ext_resource type="Texture2D" uid="uid://dvowsljsh6aje" path="res://assets/textures/overlay.png" id="6_1efh4"]
 [ext_resource type="AudioStream" uid="uid://d4bfnl8bjdjrf" path="res://assets/sfx/timeloop_reset.wav" id="6_v6hoe"]
 [ext_resource type="AudioStream" uid="uid://bseh0c1j442uc" path="res://assets/sfx/time_chime.wav" id="7_yttw0"]
 
@@ -63,6 +64,12 @@ shadow_size = 16
 shadow_color = Color(0, 0, 0, 0.501961)
 shadow_offset = Vector2(3, 3)
 
+[sub_resource type="LabelSettings" id="LabelSettings_1efh4"]
+font_size = 32
+font_color = Color(1, 0, 0, 1)
+shadow_size = 24
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_yttw0"]
 length = 0.001
 tracks/0/type = "value"
@@ -89,6 +96,29 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Vortex:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Vortex:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_1efh4"]
 resource_name = "time_loop_prereset"
@@ -112,10 +142,33 @@ tracks/1/path = NodePath("UI/ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5.83333, 7),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 5.83333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.262745), Color(0, 0, 0, 1)]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.262745)]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Vortex:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Vortex:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.137255)]
 }
 
 [sub_resource type="Animation" id="Animation_v6hoe"]
@@ -160,6 +213,30 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Vortex:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Vortex:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.88692]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yttw0"]
 _data = {
@@ -168,7 +245,7 @@ _data = {
 &"time_loop_reset": SubResource("Animation_v6hoe")
 }
 
-[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "reset_layer", "reset_anim", "counter_label", "chime_audio_player")]
+[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "reset_layer", "reset_anim", "counter_label", "chime_audio_player", "dev_time_speedup")]
 layer = 20
 script = ExtResource("1_ncppg")
 music = NodePath("Music")
@@ -176,6 +253,7 @@ reset_layer = NodePath("Reset")
 reset_anim = NodePath("Reset/AnimationPlayer")
 counter_label = NodePath("Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Counter")
 chime_audio_player = NodePath("Chime")
+dev_time_speedup = NodePath("Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DevTimeSpeedup")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamInteractive_turvd")
@@ -232,6 +310,12 @@ layout_mode = 2
 text = "1 PM"
 label_settings = SubResource("LabelSettings_m85eb")
 
+[node name="DevTimeSpeedup" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "*SPED UP"
+label_settings = SubResource("LabelSettings_1efh4")
+
 [node name="Reset" type="CanvasLayer" parent="."]
 layer = 10
 visible = false
@@ -254,6 +338,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="Vortex" type="TextureRect" parent="Reset/UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -420.0
+offset_bottom = 420.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(960, 960)
+texture = ExtResource("6_1efh4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Reset"]
 libraries = {

@@ -1,0 +1,159 @@
+[gd_scene load_steps=16 format=3 uid="uid://cu638cpwjak4k"]
+
+[ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
+[ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
+[ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="2_eff74"]
+[ext_resource type="Texture2D" uid="uid://d0njdkb811b7l" path="res://assets/textures/spaceship/alien_door_thing.png" id="3_h0kaw"]
+[ext_resource type="Script" uid="uid://btk1lh5vs5ovv" path="res://levels/title_screen/spaceship.gd" id="3_me0mb"]
+[ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
+[ext_resource type="AudioStream" uid="uid://dybu3wnhekijb" path="res://assets/sfx/navcom/radio_quick_noise.wav" id="7_gw2jj"]
+[ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me0mb"]
+atlas = ExtResource("3_h0kaw")
+region = Rect2(0, 0, 740, 537)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypach"]
+atlas = ExtResource("3_h0kaw")
+region = Rect2(740, 0, 740, 537)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndbk7"]
+atlas = ExtResource("3_h0kaw")
+region = Rect2(1480, 0, 740, 537)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw2jj"]
+atlas = ExtResource("3_h0kaw")
+region = Rect2(2220, 0, 740, 537)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0u665"]
+atlas = ExtResource("3_h0kaw")
+region = Rect2(2960, 0, 740, 537)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xkaxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me0mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypach")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me0mb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypach")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndbk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw2jj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0u665")
+}],
+"loop": true,
+"name": &"open",
+"speed": 8.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eff74"]
+font_size = 48
+font_color = Color(0.360784, 0.584314, 1, 1)
+shadow_size = 18
+shadow_color = Color(0.227451, 0, 1, 0.176471)
+shadow_offset = Vector2(4, 2)
+
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "radio_noise")]
+script = ExtResource("1_ypach")
+navcom_voice = NodePath("Navcom")
+radio_noise = NodePath("Noise")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_firn2")
+
+[node name="Spaceship" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("child")]
+z_index = 1
+position = Vector2(-400, 258)
+rotation = 0.261799
+scale = Vector2(0.544693, 0.544693)
+sprite_frames = SubResource("SpriteFrames_xkaxa")
+animation = &"idle"
+script = ExtResource("3_me0mb")
+child = NodePath("Spaceship2")
+
+[node name="Spaceship2" type="AnimatedSprite2D" parent="Spaceship"]
+modulate = Color(0, 1, 1, 0.25098)
+z_as_relative = false
+sprite_frames = SubResource("SpriteFrames_xkaxa")
+animation = &"idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_firn2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 568.0
+offset_bottom = 664.0
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Storms of Time"
+label_settings = SubResource("LabelSettings_eff74")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlayGame" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 48
+text = "Respond"
+flat = true
+
+[node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 48
+text = "Ignore"
+flat = true
+
+[node name="ClearColor" parent="." instance=ExtResource("2_eff74")]
+
+[node name="Navcom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ndbk7")
+bus = &"Navcom"
+
+[node name="Noise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gw2jj")
+bus = &"Navcom"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0u665")
+volume_db = -2.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

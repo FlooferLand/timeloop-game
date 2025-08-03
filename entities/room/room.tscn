@@ -97,5 +97,7 @@ region_rect = Rect2(0, 0, 153, 1080)
 position = Vector2(923.5, -460)
 shape = SubResource("RectangleShape2D_1drqm")
 
+[node name="Decor" type="Node2D" parent="."]
+
 [node name="Entities" type="Node2D" parent="."]
 metadata/_edit_lock_ = true

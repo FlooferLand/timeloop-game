@@ -4,13 +4,12 @@
 enum Type {
 	Interact = 0,
 	Talk,
-	Unlock
+	Unlock,
+	PickUp,
+	Place
 }
 
 signal on_player_interact(player: Player)
-
-@onready var collision: CollisionShape2D = $Area2D/Collision
-@onready var comp_draw: InteractComponentDraw = $InteractComponentDraw
 
 @export var size: Vector2i = Vector2.ONE * 100:
 	get(): return size
@@ -30,24 +29,34 @@ signal on_player_interact(player: Player)
 		type = value
 		queue_redraw()
 
+@export_group("Local")
+@export var collision: CollisionShape2D
+@export var comp_draw: InteractComponentDraw
+
 var player_hovering := false
 var displaying_info := false
 var current_player: Player = null
+var can_interact := true:
+	get(): return can_interact
+	set(value):
+		can_interact = value
+		queue_redraw()
 var _postfix := ""
+var interact_condition := func(player: Player) -> bool: return true
 
 func set_postfix(postfix: String = ""):
 	_postfix = postfix
 
 ## Called by the player when interacting
 func player_interact(player: Player):
-	if is_visible_in_tree():
+	if is_visible_in_tree() and can_interact and meets_condition(player):
 		on_player_interact.emit(player)
 		current_player = player
 		queue_redraw()
 
 ## Called by the player when they can interact with this component
 func player_enter(player: Player):
-	if is_visible_in_tree():
+	if is_visible_in_tree() and can_interact and meets_condition(player):
 		player_hovering = true
 		displaying_info = true
 		current_player = player
@@ -67,6 +76,9 @@ func show_info():
 func hide_info():
 	displaying_info = false
 	queue_redraw()
+
+func meets_condition(player: Player) -> bool:
+	return interact_condition.call(player)
 
 func _update_size():
 	var shape := (collision.shape as RectangleShape2D)

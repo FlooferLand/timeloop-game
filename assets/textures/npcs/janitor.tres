@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cc6hmb0w2uo2h"]
+
+[ext_resource type="Texture2D" uid="uid://bd63uhwinigl4" path="res://assets/textures/npcs/textures/janitor.png" id="1_21pyx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et25t"]
+atlas = ExtResource("1_21pyx")
+region = Rect2(1046, 0, 523, 549)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omk5y"]
+atlas = ExtResource("1_21pyx")
+region = Rect2(1569, 0, 523, 549)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4x1m"]
+atlas = ExtResource("1_21pyx")
+region = Rect2(0, 0, 523, 549)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q72fa"]
+atlas = ExtResource("1_21pyx")
+region = Rect2(523, 0, 523, 549)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et25t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omk5y")
+}],
+"loop": true,
+"name": &"asleep",
+"speed": 1.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4x1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q72fa")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]

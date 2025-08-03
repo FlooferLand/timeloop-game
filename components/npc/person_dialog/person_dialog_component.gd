@@ -14,6 +14,7 @@ var dialog_comp: DialogComponent = null
 var speaking := false
 var dialog_index := 0
 var interact_counter := 0
+var _sprite_postfix := ""
 
 func _enter_tree() -> void:
 	for child in get_children():
@@ -68,7 +69,8 @@ func _ready() -> void:
 
 func sprite_play(anim_name: String) -> void:
 	if sprite != null:
-		sprite.play(anim_name)
+		var postfix := ("_%s" % _sprite_postfix) if not _sprite_postfix.is_empty() else ""
+		sprite.play(anim_name + _sprite_postfix)
 
 func sprite_stop() -> void:
 	if sprite != null:
@@ -99,3 +101,6 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if dialog_comp == null:
 		warnings.append("You need to add a dialog component underneath")
 	return warnings
+
+func set_sprite_postfix(postfix: String) -> void:
+	_sprite_postfix = postfix

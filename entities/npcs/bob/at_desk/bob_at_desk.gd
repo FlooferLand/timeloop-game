@@ -6,6 +6,7 @@ class_name BobAtDesk extends Node2D
 @export_group("Local")
 @export var bob_sprite: AnimatedSprite2D
 @export var bob_desk_pos: Marker2D
+@export var dialog_comp: PersonDialogComponent
 
 const WalkingBobScene := preload("uid://bf7rxnp4ms8us")
 
@@ -14,7 +15,7 @@ var walking_bob: WalkingBob = null
 func _ready() -> void:
 	TimeManager.time_advanced.connect(func(new_hour: int):
 		match new_hour:
-			4:
+			TimeTable.BOB_GO_HARASS_RECEPTIONIST:
 				get_tree().create_timer(2.0).timeout.connect(_get_up_and_leave)
 	)
 
