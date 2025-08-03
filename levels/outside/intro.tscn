@@ -673,7 +673,7 @@ shape = SubResource("RectangleShape2D_cv2l2")
 position = Vector2(48, -944)
 
 [node name="OutsideCamera" type="Camera2D" parent="Camera" node_paths=PackedStringArray("target")]
-position = Vector2(744.609, -418.435)
+position = Vector2(48, -944)
 zoom = Vector2(0.8, 0.8)
 limit_left = -1150
 limit_top = -2100
@@ -735,9 +735,10 @@ explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_wgj81")
 
-[node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("skip_feedback")]
+[node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("skip_feedback", "to_stop")]
 script = ExtResource("18_u1cip")
 skip_feedback = NodePath("SkipFeedback")
+to_stop = [NodePath("../Spaceship/SpaceshipLandAudio"), NodePath("../Spaceship/DoorAudio"), NodePath("../Spaceship/IntroIntercom")]
 
 [node name="Control" type="Control" parent="Skippo"]
 layout_mode = 3
