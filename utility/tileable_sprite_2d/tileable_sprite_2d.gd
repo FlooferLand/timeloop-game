@@ -13,9 +13,6 @@ func _notification(what: int) -> void:
 		NOTIFICATION_LOCAL_TRANSFORM_CHANGED, NOTIFICATION_TRANSFORM_CHANGED:
 			_update()
 
-func _process(delta: float) -> void:
-	_update()
-
 func _update() -> void:
 	var size := texture.get_size()
 	var mat := material as ShaderMaterial

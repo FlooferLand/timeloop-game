@@ -16,9 +16,13 @@ func _enter_tree() -> void:
 		if sprite.animation == "turn_off":
 			ending_sound_player.play()
 			black_screen.visible = true
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	)
 	ending_sound_player.finished.connect(func():
 		get_tree().change_scene_to_packed(TitleScreenScene)
+	)
+	anim_player.animation_finished.connect(func(anim_name: String):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	)
 
 func _input(event: InputEvent) -> void:

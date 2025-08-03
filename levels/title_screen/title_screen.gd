@@ -4,6 +4,7 @@ extends Node2D
 @export var radio_noise: AudioStreamPlayer
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().create_timer(4.0).timeout.connect(func():
 		navcom_voice.play()
 	)

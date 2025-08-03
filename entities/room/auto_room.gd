@@ -30,8 +30,9 @@ const wall_tex := preload("uid://3w4s4tny4h66")
 
 func _enter_tree() -> void:
 	set_physics_process(false)
-	if not Engine.is_editor_hint():
-		set_process(false)
+	set_process(false)
+	if Engine.is_editor_hint():
+		set_process(true)
 
 ## Only called in the editor
 func _process(delta: float) -> void:

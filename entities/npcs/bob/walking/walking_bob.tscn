@@ -285,6 +285,7 @@ pitch_scale = 0.8
 bus = &"SFX"
 
 [node name="AngerMark" type="AnimatedSprite2D" parent="."]
+z_index = 2
 position = Vector2(16, -328)
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("6_t7ye5")
@@ -297,6 +298,7 @@ libraries = {
 
 [node name="Bucket" type="Sprite2D" parent="."]
 visible = false
+z_index = 2
 position = Vector2(32, -464)
 rotation = -2.35619
 texture = ExtResource("8_h0kaf")
