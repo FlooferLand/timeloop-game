@@ -2,11 +2,11 @@
 class_name TimeManagerType extends Node
 
 signal prereset()
-signal reset()
-signal time_advanced(new_hour: int)
+signal reset()  ## Called when the time loop does a time loopy
+signal time_advanced(new_hour: int)  ## Called when the time advances by an hour
 signal dev_time_speedup(enabled: bool)  ## For development only
 
-const MAX_TIME := 60  ## Real world seconds
+const MAX_TIME := 70  ## Real world seconds
 const START_PM := 1
 const END_PM := 7
 
@@ -27,17 +27,17 @@ func _process(delta: float) -> void:
 		time_advanced.emit(new_time)
 	time = new_time
 	
-	if counter > (MAX_TIME - 0.05) and not _called_prereset:
-		prereset.emit()
-		_called_prereset = true
-	
 	# Time reset
-	if time > END_PM:
+	if counter > MAX_TIME:
 		time = 0
 		counter = 0
 		(DialogManager as DialogManagerType).close()
 		reset.emit()
 		_called_prereset = false
+	elif counter > MAX_TIME - 5 and not _called_prereset:
+		prereset.emit()
+		_called_prereset = true
+		
 
 func _input(event: InputEvent) -> void:
 	if not OS.is_debug_build():

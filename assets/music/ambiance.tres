@@ -1,0 +1,39 @@
+[gd_resource type="AudioStreamInteractive" load_steps=6 format=3 uid="uid://bcprqbc5ccbuq"]
+
+[ext_resource type="AudioStream" uid="uid://h448nkbtd5d6" path="res://assets/music/ambiance/layer_1.mp3" id="1_rtr5d"]
+[ext_resource type="AudioStream" uid="uid://cug1tj8j48w8s" path="res://assets/music/ambiance/layer_2.mp3" id="2_31vko"]
+[ext_resource type="AudioStream" uid="uid://d3u4jmj2sfh" path="res://assets/music/ambiance/layer_3.mp3" id="3_tmy8h"]
+[ext_resource type="AudioStream" uid="uid://0vptpdtfstgl" path="res://assets/music/ambiance/layer_4.mp3" id="4_eij46"]
+[ext_resource type="AudioStream" uid="uid://cquw1786ysjlv" path="res://assets/music/ambiance/layer_5.mp3" id="5_31vko"]
+
+[resource]
+clip_count = 5
+clip_0/name = &"Layer 1"
+clip_0/stream = ExtResource("1_rtr5d")
+clip_0/auto_advance = 0
+clip_1/name = &"Layer 2"
+clip_1/stream = ExtResource("2_31vko")
+clip_1/auto_advance = 0
+clip_2/name = &"Layer 3"
+clip_2/stream = ExtResource("3_tmy8h")
+clip_2/auto_advance = 0
+clip_3/name = &"Layer 4"
+clip_3/stream = ExtResource("4_eij46")
+clip_3/auto_advance = 0
+clip_4/name = &"Layer 5"
+clip_4/stream = ExtResource("5_31vko")
+clip_4/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 0.1,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 1
+},
+Vector2i(4, 0): {
+"fade_beats": 1.0,
+"fade_mode": 0,
+"from_time": 0,
+"to_time": 1
+}
+}
