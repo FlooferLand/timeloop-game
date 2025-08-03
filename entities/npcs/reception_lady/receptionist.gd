@@ -29,12 +29,10 @@ func _ready() -> void:
 	dialog_comp.on_dialog_closed.connect(func():
 		ambient.play()
 		if gave_plushie:
-			var dialog := dialog_comp.dialog_comp
-			dialog.dialog_data = after_happy_dialog
+			dialog_comp.set_dialog_data(after_happy_dialog)
 	)
 	bob_prank.dude_got_pranked.connect(func():
-		var dialog := dialog_comp.dialog_comp
-		dialog.dialog_data = thank_player_dialog
+		dialog_comp.set_dialog_data(thank_player_dialog)
 		awaiting_gift = true
 		exclaim.enable()
 	)
@@ -46,7 +44,6 @@ func _ready() -> void:
 	)
 	time_manager.time_advanced.connect(func(new_hour: int):
 		if new_hour == TimeTable.BOB_GO_HARASS_RECEPTIONIST and not (awaiting_gift or gave_plushie):
-			var dialog := dialog_comp.dialog_comp
-			dialog.dialog_data = sad_dialog
+			dialog_comp.set_dialog_data(sad_dialog)
 	)
 	

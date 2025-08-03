@@ -102,5 +102,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 		warnings.append("You need to add a dialog component underneath")
 	return warnings
 
+func set_dialog_data(data: DialogData) -> void:
+	dialog_comp.dialog_data = data
+	dialog_index = 0
+	interact_counter = 0
+
 func set_sprite_postfix(postfix: String) -> void:
 	_sprite_postfix = postfix

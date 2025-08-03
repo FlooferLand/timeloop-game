@@ -11,7 +11,6 @@ extends Node2D
 @export var cant_talk_dialog: DialogData
 @export var walk_comp: PersonWalkComponent
 @export var person_dialog_comp: PersonDialogComponent
-@export var dialog_comp: DialogComponent
 @export var interact_comp: InteractComponent
 
 @onready var time_manager: TimeManagerType = TimeManager
@@ -23,22 +22,22 @@ var player_received_key := false
 func _ready() -> void:
 	interact_comp.interact_condition = func(player: Player) -> bool:
 		if player.inventory_comp.has_item(plushie_item.id) and can_receive_plushie and not player_received_key:
-			dialog_comp.dialog_data = received_plushie_dialog
+			person_dialog_comp.set_dialog_data(received_plushie_dialog)
 		return true
 	dialog_manager.action_event.connect(func(event_name: String):
-		if dialog_comp.active:
+		if person_dialog_comp.dialog_comp.active:
 			match event_name:
 				"steal_the_bnnuy":
 					interact_comp.current_player.inventory_comp.remove_item(plushie_item)
 				"give_elevator_keys":
 					interact_comp.current_player.inventory_comp.add_item(elevator_keys_item)
-					dialog_comp.dialog_data = after_thank_you_dialog
+					person_dialog_comp.set_dialog_data(after_thank_you_dialog)
 					player_received_key = true
 	)
 	time_manager.time_advanced.connect(func(new_hour: int):
 		if new_hour == TimeTable.MANAGER_GO_TO_DESK:
 			walk_comp.target = managers_desk_target
-			dialog_comp.dialog_data = cant_talk_dialog
+			person_dialog_comp.set_dialog_data(cant_talk_dialog)
 			can_receive_plushie = false
 	)
 

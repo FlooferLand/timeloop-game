@@ -35,6 +35,6 @@ func arrived_back(pranked: bool) -> void:
 	if pranked:
 		bob_sprite.animation = "at_desk_bucketed"
 		dialog_comp.set_sprite_postfix("bucketed")
-		dialog_comp.dialog_comp.dialog_data = after_prank_dialog
+		dialog_comp.set_dialog_data(after_prank_dialog)
 	else:
-		dialog_comp.dialog_comp.dialog_data = after_argument_dialog
+		dialog_comp.set_dialog_data(after_argument_dialog)

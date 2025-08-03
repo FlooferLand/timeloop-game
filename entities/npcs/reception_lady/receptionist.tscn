@@ -20,7 +20,7 @@
 
 [sub_resource type="Resource" id="Resource_pi4bl"]
 script = ExtResource("5_e0aoe")
-text = ".."
+text = "..."
 character = ExtResource("4_layea")
 additional = Array[ExtResource("3_layea")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
