@@ -1,5 +1,7 @@
 class_name BobPrank extends Area2D
 
+signal dude_got_pranked
+
 @export_group("Local")
 @export var item: InventoryItem
 @export var interact_comp: InteractComponent
@@ -26,3 +28,4 @@ func _enter_tree() -> void:
 ## Called by Bob when the prank is triggered
 func triggered() -> void:
 	content.visible = false
+	dude_got_pranked.emit()

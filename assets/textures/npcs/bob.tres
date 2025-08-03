@@ -77,7 +77,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -88,5 +88,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_bucketed",
-"speed": 5.0
+"speed": 3.0
 }]

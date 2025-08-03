@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://d1shglsfrg0mj"]
+
+[ext_resource type="Texture2D" uid="uid://br8xubv0tj2dn" path="res://assets/textures/props/bnnuy.png" id="1_xx55a"]
+[ext_resource type="Script" uid="uid://chw53fkpmev11" path="res://components/inventory/types/inventory_item.gd" id="2_d0l5y"]
+
+[resource]
+script = ExtResource("2_d0l5y")
+id = 3
+name = "Manager's Plushie"
+image = ExtResource("1_xx55a")
+metadata/_custom_type_script = "uid://chw53fkpmev11"

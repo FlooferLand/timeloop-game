@@ -9,6 +9,7 @@ class_name WalkingBob extends Node2D
 var desk_self: BobAtDesk
 
 func _ready() -> void:
+	position.y = 0  ## Hackiest fix known to alien-kind
 	anim_player.play("RESET")
 	anim_player.animation_finished.connect(func(anim_name: String):
 		if anim_name == "complain":

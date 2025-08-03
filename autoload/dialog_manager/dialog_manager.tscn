@@ -104,7 +104,7 @@ censor_audio_player = NodePath("CensorAudio")
 wait_time = 0.05
 
 [node name="CharAudio" type="AudioStreamPlayer" parent="Root/DialogBox/MarginContainer/Content"]
-volume_db = -10.0
+volume_db = -15.0
 max_polyphony = 2
 bus = &"Speech"
 

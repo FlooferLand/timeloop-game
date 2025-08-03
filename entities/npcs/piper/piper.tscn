@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://cuedwcqlfvub0" path="res://assets/resources/items/pipers_document/pipers_document.tres" id="2_hptnw"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_5s4qf"]
 [ext_resource type="Resource" uid="uid://bnm7jgo5k84kr" path="res://assets/resources/dialog/piper/would_you_like_papers.tres" id="3_8jtkn"]
-[ext_resource type="Resource" uid="uid://cmff68qwpcf5b" path="res://assets/resources/dialog/piper.tres" id="3_hkg0d"]
+[ext_resource type="Resource" uid="uid://cmff68qwpcf5b" path="res://assets/resources/dialog/piper/initial.tres" id="3_hkg0d"]
 [ext_resource type="SpriteFrames" uid="uid://kwdsanhac8kq" path="res://assets/textures/npcs/piper.tres" id="4_83hmt"]
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="5_60xdq"]
 [ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="6_g3rkf"]

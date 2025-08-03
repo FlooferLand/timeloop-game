@@ -3,7 +3,8 @@ class_name InventoryItem extends Resource
 enum Id {
 	None,
 	PipersDocument,
-	WaterBucket
+	WaterBucket,
+	ManagersPlushie
 }
 
 @export var id: Id

@@ -1,16 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfb4gv115aot7"]
+[gd_scene load_steps=17 format=3 uid="uid://dfb4gv115aot7"]
 
 [ext_resource type="Script" uid="uid://b66hs6dr71el0" path="res://entities/npcs/reception_lady/receptionist.gd" id="1_io615"]
+[ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="2_5h8mu"]
+[ext_resource type="Resource" uid="uid://bg0jc7csv1njn" path="res://assets/resources/dialog/receptionist/thank_player_dialog.tres" id="2_abkpk"]
+[ext_resource type="Resource" uid="uid://d1shglsfrg0mj" path="res://assets/resources/items/managers_plushie/managers_plushie.tres" id="2_h756q"]
 [ext_resource type="SpriteFrames" uid="uid://b8hnlut0v4ocq" path="res://assets/textures/npcs/receptionist.tres" id="2_ydaht"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="3_layea"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="3_qekmj"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_ynfe1"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="4_6837n"]
-[ext_resource type="Resource" uid="uid://cs0ncr7aau2f3" path="res://assets/resources/dialog/receptionist.tres" id="5_f535e"]
+[ext_resource type="Resource" uid="uid://b6652sj7d1hiv" path="res://assets/resources/characters/receptionist.tres" id="4_layea"]
+[ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="5_7smqe"]
+[ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="5_e0aoe"]
+[ext_resource type="Resource" uid="uid://dlkyo0251r1da" path="res://assets/resources/dialog/photoguy/initial.tres" id="5_f535e"]
 [ext_resource type="AudioStream" uid="uid://nth8mlj45vni" path="res://assets/sfx/char_ambient/reception_lady_ambient.mp3" id="6_3wyig"]
 
-[node name="Receptionist" type="Node2D" node_paths=PackedStringArray("dialog", "ambient")]
+[sub_resource type="Resource" id="Resource_7smqe"]
+script = ExtResource("5_e0aoe")
+text = "Thank you by the way, that was hilarious"
+character = ExtResource("4_layea")
+additional = Array[ExtResource("3_layea")]([])
+metadata/_custom_type_script = "uid://dusduojuy6ico"
+
+[sub_resource type="Resource" id="Resource_t5igk"]
+script = ExtResource("5_7smqe")
+entries = Array[ExtResource("2_5h8mu")]([SubResource("Resource_7smqe")])
+metadata/_custom_type_script = "uid://bljc8yqis8nnu"
+
+[node name="Receptionist" type="Node2D" node_paths=PackedStringArray("dialog_comp", "interact_comp", "ambient")]
 script = ExtResource("1_io615")
-dialog = NodePath("PersonDialogComponent")
+bnnuy_item = ExtResource("2_h756q")
+thank_player_dialog = ExtResource("2_abkpk")
+after_dialog = SubResource("Resource_t5igk")
+dialog_comp = NodePath("PersonDialogComponent")
+interact_comp = NodePath("PersonDialogComponent/InteractComponent")
 ambient = NodePath("Ambient")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
