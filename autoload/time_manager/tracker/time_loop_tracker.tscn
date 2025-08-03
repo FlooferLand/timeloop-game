@@ -337,6 +337,7 @@ bus = &"SFX"
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_1efh4")
 bus = &"Music"
+playback_type = 1
 
 [node name="Chime" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_yttw0")
