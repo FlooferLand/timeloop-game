@@ -18,7 +18,7 @@ var speaking := false
 func _ready() -> void:
 	set_process(false)
 	set_process_input(false)
-	manager.update_speaking.connect(func(speaking: bool):
+	manager.update_speaking.connect(func(speaking: bool) -> void:
 		self.speaking = speaking
 		hint_label.visible = not speaking
 	)
@@ -76,7 +76,7 @@ func advance() -> void:
 			manager.action_event.emit(action.event_name)
 	
 	# Looking at all the dialog content types
-	var pitch_variety = 1.0 if character == null else character.pitch_variety
+	var pitch_variety := 1.0 if character == null else character.pitch_variety
 	if current is DialogTextEntry:
 		var entry := current as DialogTextEntry
 		content_label.type(entry.text, entry.character.sound, pitch_variety)

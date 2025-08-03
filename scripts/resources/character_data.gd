@@ -8,4 +8,4 @@ class_name CharacterData extends Resource
 @export var sound: AudioStream
 
 ## The closer to 0, the more monotone their sound will sound
-@export var pitch_variety := 1.0
+@export var pitch_variety: float = 1.0

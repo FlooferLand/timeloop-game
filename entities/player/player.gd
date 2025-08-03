@@ -39,10 +39,10 @@ func _ready() -> void:
 		push_error("Footstep sounds is null!")
 	_initial_position = global_position
 	mouse_locked = true
-	change_direction.connect(func(facing: Facing):
+	change_direction.connect(func(facing: Facing) -> void:
 		sprite.flip_h = (facing == Facing.Left)
 	)
-	TimeManager.reset.connect(func():
+	TimeManager.reset.connect(func() -> void:
 		global_position = _initial_position
 	)
 

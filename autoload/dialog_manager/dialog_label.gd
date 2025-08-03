@@ -13,7 +13,7 @@ const CUSS_WORDS: Array[String] = ["fucker", "fuck", "shit", "bastard", "twat"]
 var cusses_in_text: Dictionary[int, String] = {}
 
 func _ready() -> void:
-	char_timer.timeout.connect(func():
+	char_timer.timeout.connect(func() -> void:
 		if visible_characters >= text.length():
 			visible_characters = -1
 			char_timer.stop()
@@ -44,7 +44,7 @@ func _ready() -> void:
 	)
 
 ## A char_sound of null usually means the character is not speaking (acting, etc)
-func type(what: String, char_sound: AudioStream = null, pitch_variety := 1.0) -> void:
+func type(what: String, char_sound: AudioStream = null, pitch_variety: float = 1.0) -> void:
 	cusses_in_text.clear()
 	visible_characters = 0
 	text = what

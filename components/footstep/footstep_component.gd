@@ -17,7 +17,7 @@ var _initial_wait_time: float
 func _ready() -> void:
 	_initial_wait_time = timer.wait_time
 	audio_player.stream = sounds
-	timer.timeout.connect(func():
+	timer.timeout.connect(func() -> void:
 		audio_player.play()
 	)
 	if is_local:
