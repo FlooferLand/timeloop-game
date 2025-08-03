@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://djfmkk5rkgrq1"]
 
 [ext_resource type="Script" uid="uid://mowpajkmp5b0" path="res://entities/player/inventory_ui/inventory_item_slot.gd" id="1_d5g8m"]
-[ext_resource type="Texture2D" uid="uid://bja427tgtjh50" path="res://icon.svg" id="2_f4euv"]
+[ext_resource type="Texture2D" uid="uid://bja427tgtjh50" path="res://assets/textures/godot.svg" id="2_f4euv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f4euv"]
 font_size = 20
