@@ -19,16 +19,18 @@ func _enter_tree() -> void:
 func present(data: DialogData) -> void:
 	dialog_box.present(data)
 	visible = true
-	player_ref.can_move = false
-	player_ref.is_looking = true
-	player_ref.mouse_locked = false
+	if player_ref != null:  # Required when not running in-game
+		player_ref.can_move = false
+		player_ref.is_looking = true
+		player_ref.mouse_locked = false
 	dialog_opened.emit()
 
 func close() -> void:
 	dialog_box.close()
 	visible = false
-	player_ref.can_move = true
-	player_ref.is_looking = false
-	player_ref.mouse_locked = true
+	if player_ref != null:  # Required when not running in-game
+		player_ref.can_move = true
+		player_ref.is_looking = false
+		player_ref.mouse_locked = true
 	dialog_closed.emit()
 	update_speaking.emit(false)

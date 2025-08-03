@@ -38,10 +38,7 @@ func _ready() -> void:
 	area.body_entered.connect(func(body):
 		if body is Player:
 			player = body
-			if locked:
-				redraw_lock.emit()
-				return
-			if has_door:
+			if has_door and not locked:
 				if not door_audio_player.playing:
 					door_audio_player.play()
 				door_audio_playback = door_audio_player.get_stream_playback()
@@ -49,6 +46,8 @@ func _ready() -> void:
 				door.visible = true
 				door.flip_h = to_local(player.global_position).x > 0
 				door.play("open")
+			if locked:
+				redraw_lock.emit()
 			set_process(true)
 	)
 	area.body_exited.connect(func(body):
@@ -56,8 +55,8 @@ func _ready() -> void:
 			player = null
 			if locked:
 				redraw_lock.emit()
-				return
-			anim_await_exit = true
+			else:
+				anim_await_exit = true
 			set_process(false)
 	)
 	if has_door:
@@ -78,11 +77,12 @@ func _editor_ready():
 
 ## Called while the player is in the transition
 func _process(delta: float) -> void:
-	var dir = player.move_direction.sign().x
-	if dir > 0 and manager.active != room_b:
-		manager.change(room_b)
-	elif dir < 0 and manager.active != room_a:
-		manager.change(room_a)
+	if not locked:
+		var dir = player.move_direction.sign().x
+		if dir > 0 and manager.active != room_b:
+			manager.change(room_b)
+		elif dir < 0 and manager.active != room_a:
+			manager.change(room_a)
 
 func _update_lock():
 	locking_body_collision.disabled = not locked

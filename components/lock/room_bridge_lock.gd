@@ -1,4 +1,4 @@
-@tool extends Node2D
+extends Node2D
 
 @export var unlock_item: InventoryItem = null
 
@@ -12,8 +12,6 @@ func _enter_tree() -> void:
 	set_process_input(false)
 	bridge = get_parent() as RoomBridge
 	bridge.locked = true
-	if Engine.is_editor_hint():
-		return
 	interact_comp.on_player_interact.connect(func(player: Player):
 		if player.inventory_comp.has_item(unlock_item.id):
 			bridge.locked = false
