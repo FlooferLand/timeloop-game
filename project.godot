@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Storms of Time"
+config/name="Time at the office"
 run/main_scene="uid://douk4eknvrii7"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false

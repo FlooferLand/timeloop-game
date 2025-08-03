@@ -120,7 +120,7 @@ offset_bottom = 664.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
-text = "Storms of Time"
+text = "Time at the office"
 label_settings = SubResource("LabelSettings_eff74")
 horizontal_alignment = 1
 vertical_alignment = 1
