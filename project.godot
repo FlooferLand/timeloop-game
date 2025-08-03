@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="Time at the office"
+config/description="An alien stumbles across an office building that is stuck in a time loop"
+config/version="1.0.0"
 run/main_scene="uid://cu638cpwjak4k"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
