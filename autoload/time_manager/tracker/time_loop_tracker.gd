@@ -39,10 +39,15 @@ func _ready() -> void:
 	time_manager.dev_time_speedup.connect(func(enabled: bool):
 		dev_time_speedup.visible = enabled
 	)
+	time_manager.time_stopped.connect(func():
+		music_playback.stop()
+		reset_layer.visible = false
+		visible = false
+	)
 
 func _process(delta: float) -> void:
 	var stage: int = remap(TimeManager.counter, 0, TimeManager.MAX_TIME, 0, music_stages)
-	if stage >= music_stages:
+	if stage >= music_stages or not music_playback.is_playing():
 		return
 	if music_playback.get_current_clip_index() != stage:
 		music_playback.switch_to_clip(stage)

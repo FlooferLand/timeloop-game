@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=17 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
@@ -70,6 +70,11 @@ shadow_size = 18
 shadow_color = Color(0.227451, 0, 1, 0.176471)
 shadow_offset = Vector2(4, 2)
 
+[sub_resource type="LabelSettings" id="LabelSettings_0u665"]
+font_size = 24
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.611765)
+
 [node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "radio_noise")]
 script = ExtResource("1_ypach")
 navcom_voice = NodePath("Navcom")
@@ -99,50 +104,79 @@ animation = &"idle"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="Background" type="TextureRect" parent="CanvasLayer"]
-visible = false
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_firn2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 offset_left = 80.0
 offset_top = 200.0
 offset_right = 568.0
 offset_bottom = 664.0
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 text = "Storms of Time"
 label_settings = SubResource("LabelSettings_eff74")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/VBoxContainer"]
+[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="PlayGame" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="PlayGame" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 48
 text = "Respond"
 flat = true
 
-[node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 48
 text = "Ignore"
 flat = true
 
+[node name="Credits" type="MarginContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -103.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Credits"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "
+2D art by DotMouse
+Game and music by FlooferLand
+Voice acting by Monsterwaill, VAR-MINT
+
+Made for the GMTK 2025 game jam"
+label_settings = SubResource("LabelSettings_0u665")
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="ClearColor" parent="." instance=ExtResource("2_eff74")]
 
 [node name="Navcom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ndbk7")
+volume_db = -4.0
 bus = &"Navcom"
 
 [node name="Noise" type="AudioStreamPlayer" parent="."]
@@ -155,5 +189,5 @@ volume_db = -2.0
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

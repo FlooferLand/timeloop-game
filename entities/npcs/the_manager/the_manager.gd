@@ -20,7 +20,7 @@ var can_receive_plushie := true
 
 func _ready() -> void:
 	interact_comp.interact_condition = func(player: Player) -> bool:
-		if player.inventory_comp.has_item(plushie_item.id):
+		if player.inventory_comp.has_item(plushie_item.id) and can_receive_plushie:
 			dialog_comp.dialog_data = received_plushie_dialog
 		return true
 	dialog_manager.action_event.connect(func(event_name: String):

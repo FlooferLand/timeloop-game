@@ -5,6 +5,7 @@ signal prereset()
 signal reset()  ## Called when the time loop does a time loopy
 signal time_advanced(new_hour: int)  ## Called when the time advances by an hour
 signal dev_time_speedup(enabled: bool)  ## For development only
+signal time_stopped()  ## Triggered by entering the elevator room
 
 const MAX_TIME := 75  ## Real world seconds
 const START_PM := 1
@@ -12,11 +13,14 @@ const END_PM := 7
 
 var counter: float = 0.0
 var time: int = 0  ## The time in hours from START_PM to END_PM
+var running := false
 
 var _called_prereset := false
 var _dev_time_speedup := false
 
 func _process(delta: float) -> void:
+	if not running:
+		return
 	counter += delta
 	if _dev_time_speedup:
 		counter += delta * 5
@@ -37,7 +41,6 @@ func _process(delta: float) -> void:
 	elif counter > MAX_TIME - 5 and not _called_prereset:
 		prereset.emit()
 		_called_prereset = true
-		
 
 func _input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
@@ -47,3 +50,12 @@ func _input(event: InputEvent) -> void:
 		if key.pressed and key.keycode == KEY_T:
 			_dev_time_speedup = not _dev_time_speedup
 			dev_time_speedup.emit(_dev_time_speedup)
+
+## Starts all time (real)
+func start() -> void:
+	running = true
+
+## Stops all time (real-
+func stop() -> void:
+	running = false
+	time_stopped.emit()

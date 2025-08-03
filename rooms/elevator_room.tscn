@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://8udsm8obdxsy"]
+
+[ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_ss1i7"]
+[ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_af8on"]
+[ext_resource type="Texture2D" uid="uid://n6o01xew4gqk" path="res://assets/textures/room/flat_floor.png" id="3_af8on"]
+[ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="4_rfj78"]
+[ext_resource type="PackedScene" uid="uid://cmxopnp7u5pfj" path="res://entities/elevator_doors/elevator_doors.tscn" id="5_6ggty"]
+[ext_resource type="Script" uid="uid://b5excc701a3fq" path="res://scripts/elevator_room_player_enter.gd" id="6_q5kue"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5kue"]
+shader = ExtResource("2_af8on")
+shader_parameter/tile = Vector2(0.78125, 0.925926)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h3wxf"]
+shader = ExtResource("2_af8on")
+shader_parameter/tile = Vector2(0.78125, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g317h"]
+shader = ExtResource("2_af8on")
+shader_parameter/tile = Vector2(0.78125, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3wxf"]
+resource_local_to_scene = true
+size = Vector2(153, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g317h"]
+resource_local_to_scene = true
+size = Vector2(153, 594)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5kue"]
+size = Vector2(224, 492)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7qqi"]
+size = Vector2(224, 492)
+
+[node name="ElevatorRoom" instance=ExtResource("1_ss1i7")]
+
+[node name="Bounds" parent="." index="0"]
+right = 1500
+
+[node name="AutoRoom" parent="." index="1"]
+size = Vector2(1500, 1000)
+closed_right = false
+
+[node name="Background" parent="AutoRoom" index="0"]
+modulate = Color(0.734733, 0.877948, 0.929577, 1)
+material = SubResource("ShaderMaterial_q5kue")
+scale = Vector2(0.78125, 0.925926)
+
+[node name="Ceiling" parent="AutoRoom" index="1"]
+modulate = Color(0.70173, 0.70173, 0.70173, 1)
+material = SubResource("ShaderMaterial_h3wxf")
+scale = Vector2(0.78125, 1)
+
+[node name="Floor" parent="AutoRoom" index="2"]
+modulate = Color(0.697578, 0.697578, 0.697578, 1)
+material = SubResource("ShaderMaterial_g317h")
+scale = Vector2(0.78125, 1)
+texture = ExtResource("3_af8on")
+
+[node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
+modulate = Color(0.61136, 0.61136, 0.61136, 1)
+
+[node name="Collision" parent="AutoRoom/LeftWall" index="1"]
+shape = SubResource("RectangleShape2D_h3wxf")
+
+[node name="Sprite" parent="AutoRoom/RightWall" index="0"]
+modulate = Color(0.819655, 0.819655, 0.819655, 1)
+position = Vector2(1347, -1000)
+texture = ExtResource("4_rfj78")
+
+[node name="Collision" parent="AutoRoom/RightWall" index="1"]
+position = Vector2(1423.5, -703)
+shape = SubResource("RectangleShape2D_g317h")
+
+[node name="ElevatorDoors" parent="Entities" index="0" instance=ExtResource("5_6ggty")]
+position = Vector2(504, -64)
+
+[node name="PlayerDetector" type="Area2D" parent="Entities" index="1" node_paths=PackedStringArray("blockade")]
+position = Vector2(1072, 0)
+script = ExtResource("6_q5kue")
+blockade = NodePath("../EscapeBlockade/CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/PlayerDetector" index="0"]
+position = Vector2(0, -244)
+shape = SubResource("RectangleShape2D_q5kue")
+
+[node name="EscapeBlockade" type="StaticBody2D" parent="Entities" index="2"]
+position = Vector2(1496, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/EscapeBlockade" index="0"]
+position = Vector2(0, -244)
+shape = SubResource("RectangleShape2D_x7qqi")
+debug_color = Color(0.993725, 0, 0.23325, 0.42)

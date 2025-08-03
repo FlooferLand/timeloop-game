@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhy8a74fxl1iw"]
+[gd_scene load_steps=14 format=3 uid="uid://dhy8a74fxl1iw"]
 
 [ext_resource type="Script" uid="uid://br8rjbtnetts7" path="res://levels/the_building/timeloop_container.gd" id="1_s5u2e"]
 [ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="2_tugbd"]
 [ext_resource type="PackedScene" uid="uid://bsgdbtff22sua" path="res://rooms/reception.tscn" id="3_i8olb"]
+[ext_resource type="PackedScene" uid="uid://8udsm8obdxsy" path="res://rooms/elevator_room.tscn" id="3_vvtyu"]
 [ext_resource type="PackedScene" uid="uid://dci7alk3h5rg2" path="res://entities/room_transition/room_bridge.tscn" id="4_fidhy"]
+[ext_resource type="PackedScene" uid="uid://bhpo3tsj8j3vr" path="res://components/lock/room_bridge_lock.tscn" id="5_8h0vr"]
 [ext_resource type="PackedScene" uid="uid://dcog8dn15y63q" path="res://rooms/office_area_1.tscn" id="5_rb8h4"]
 [ext_resource type="PackedScene" uid="uid://vhrg6s1mauso" path="res://rooms/office_area_2.tscn" id="6_lr6kg"]
+[ext_resource type="Resource" uid="uid://dr26l7u7mgcre" path="res://assets/resources/items/elevator_key/elevator_key.tres" id="6_tef80"]
 [ext_resource type="PackedScene" uid="uid://scrjmwipapoq" path="res://entities/npcs/the_manager/the_manager.tscn" id="8_12vld"]
 [ext_resource type="PackedScene" uid="uid://myo2rpycaysv" path="res://rooms/storage_closet.tscn" id="9_3qcp8"]
 [ext_resource type="PackedScene" uid="uid://bb68hsv18n5jd" path="res://rooms/managers_office.tscn" id="9_6mlxv"]
@@ -21,6 +24,17 @@ script = ExtResource("1_s5u2e")
 script = ExtResource("2_tugbd")
 default = NodePath("Reception")
 metadata/_edit_lock_ = true
+
+[node name="ElevatorRoom" parent="RoomManager" instance=ExtResource("3_vvtyu")]
+position = Vector2(-1496, -1)
+
+[node name="RoomBridgeElevator" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
+room_a = NodePath("../ElevatorRoom")
+room_b = NodePath("../Reception")
+locked = true
+
+[node name="RoomBridgeLock" parent="RoomManager/RoomBridgeElevator" instance=ExtResource("5_8h0vr")]
+unlock_item = ExtResource("6_tef80")
 
 [node name="Reception" parent="RoomManager" instance=ExtResource("3_i8olb")]
 

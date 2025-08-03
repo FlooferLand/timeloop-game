@@ -7,7 +7,8 @@ enum Type {
 	Unlock,
 	PickUp,
 	Place,
-	Give
+	Give,
+	Enter
 }
 
 signal on_player_interact(player: Player)
@@ -109,6 +110,8 @@ func _update_label() -> void:
 			text = "Place"
 		InteractComponent.Type.Give:
 			text = "Give"
+		InteractComponent.Type.Enter:
+			text = "Enter"
 	if not _postfix.is_empty():
 		text = "%s %s" % [text, _postfix]
 	label.position = info_offset - Vector2i(label.size.x / 2, label.size.y)

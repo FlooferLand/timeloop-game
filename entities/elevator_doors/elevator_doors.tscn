@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmxopnp7u5pfj"]
+
+[ext_resource type="Script" uid="uid://brk2w5bkutp8h" path="res://entities/elevator_doors/elevator_doors.gd" id="1_cw31t"]
+[ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="1_o2y2p"]
+[ext_resource type="Texture2D" uid="uid://b6yjqit5233yp" path="res://assets/textures/room/elevator_doors.png" id="2_raiqw"]
+
+[node name="ElevatorDoors" type="Node2D" node_paths=PackedStringArray("interact_comp")]
+script = ExtResource("1_cw31t")
+interact_comp = NodePath("InteractComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -448)
+texture = ExtResource("2_raiqw")
+
+[node name="InteractComponent" parent="." instance=ExtResource("1_o2y2p")]
+position = Vector2(0, -272)
+size = Vector2i(550, 555)
+type = 6

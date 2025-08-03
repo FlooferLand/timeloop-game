@@ -1,0 +1,332 @@
+[gd_scene load_steps=12 format=3 uid="uid://bg25346p0d2vh"]
+
+[ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="1_ue5om"]
+[ext_resource type="Script" uid="uid://dk0hw226c7pei" path="res://levels/ending/ending.gd" id="1_v4ub4"]
+[ext_resource type="AudioStream" uid="uid://d2uc776b6rryi" path="res://assets/sfx/typewrite.tres" id="3_slohg"]
+[ext_resource type="Script" uid="uid://d181yals40776" path="res://levels/ending/time_loop_switch.gd" id="3_t2d02"]
+[ext_resource type="SpriteFrames" uid="uid://c2blbeutihvlp" path="res://assets/textures/time_loop_switch.tres" id="4_meo4a"]
+[ext_resource type="AudioStream" uid="uid://bs6be7i5hnrf1" path="res://assets/sfx/ending_sound.mp3" id="6_4qn2m"]
+
+[sub_resource type="Animation" id="Animation_meo4a"]
+resource_name = "ending"
+length = 12.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 16, -0.25, 0, 0.25, 0, -2, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.77251, 8.7, 10.6667, 12)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-544, -0.25, 0, 0.25, 0, -544, -0.25, 0, 0.25, 0, 25, -0.25, 0, 0.256005, 58.5, 432, -0.25, 0, 0.25, 0, 536, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.77251, 8.7, 10.6667, 12)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -0.0872665, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4.77251, 8.33333, 12)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Top/MarginContainer/Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.2, 2.56667, 2.76667, 3.16667, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["You arrive to the first floor.", "", "You arrive to the first floor.
+You encounter someone, and with difficulty find your way to the off switch of the time", "You arrive to the first floor.
+You encounter someone, and with difficulty find your way to the off switch of the time lo", "You arrive to the first floor.
+You encounter someone, and with difficulty find your way to the off switch of the time loop", "You arrive to the first floor.
+You encounter someone, and with difficulty find your way to the off switch of the time loop ma", "You arrive to the first floor.
+You encounter someone, and with difficulty find your way to the off switch of the time loop machine"]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top/MarginContainer/Label:visible_ratio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Top/MarginContainer/Label:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.6)
+}
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("SFX")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_slohg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_slohg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_slohg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_slohg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_slohg")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_slohg")
+}],
+"times": PackedFloat32Array(1.8, 2.2, 2.56667, 2.76667, 3.16667, 3.5)
+}
+tracks/8/use_blend = true
+
+[sub_resource type="Animation" id="Animation_slohg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:zoom:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-544, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera2D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Top/MarginContainer/Label:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Top/MarginContainer/Label:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["You arrive to the first floor."]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_slohg"]
+_data = {
+&"RESET": SubResource("Animation_slohg"),
+&"ending": SubResource("Animation_meo4a")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_v4ub4"]
+font_size = 64
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meo4a"]
+size = Vector2(680, 680)
+
+[node name="Ending" type="Node2D" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("1_v4ub4")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="ClearColor" parent="." instance=ExtResource("1_ue5om")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_slohg")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -544)
+ignore_rotation = false
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="Top" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -1080.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Top"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="Top/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 2
+text = "You arrive to the first floor."
+label_settings = SubResource("LabelSettings_v4ub4")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Bottom" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_right = 960.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeLoopSwitch" type="Area2D" parent="Bottom" node_paths=PackedStringArray("anim_player", "sprite", "ending_sound_player", "black_screen")]
+position = Vector2(960, 512)
+script = ExtResource("3_t2d02")
+anim_player = NodePath("../../AnimationPlayer")
+sprite = NodePath("AnimatedSprite2D")
+ending_sound_player = NodePath("EndingSound")
+black_screen = NodePath("../../CanvasLayer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bottom/TimeLoopSwitch"]
+sprite_frames = ExtResource("4_meo4a")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/TimeLoopSwitch"]
+shape = SubResource("RectangleShape2D_meo4a")
+
+[node name="EndingSound" type="AudioStreamPlayer" parent="Bottom/TimeLoopSwitch"]
+stream = ExtResource("6_4qn2m")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = -12.0
+bus = &"SFX"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 10
+visible = false
+
+[node name="BlackScreen" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

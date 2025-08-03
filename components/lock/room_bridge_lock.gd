@@ -1,15 +1,32 @@
 @tool extends Node2D
 
-@export var bridge: RoomBridge
-@export var unlock_item: InventoryItem
+@export var unlock_item: InventoryItem = null
 
-@onready var interact_comp: InteractComponent = $InteractComponent
+@export_group("Local")
+@export var interact_comp: InteractComponent
+
+var bridge: RoomBridge
 
 func _enter_tree() -> void:
+	set_process(false)
+	set_process_input(false)
+	bridge = get_parent() as RoomBridge
 	bridge.locked = true
+	if Engine.is_editor_hint():
+		return
+	interact_comp.on_player_interact.connect(func(player: Player):
+		if player.inventory_comp.has_item(unlock_item.id):
+			bridge.locked = false
+			player.inventory_comp.remove_item(unlock_item)
+			queue_free()
+	)
+	bridge.redraw_lock.connect(_update_lock_display)
+	_update_lock_display()
 
 func _exit_tree() -> void:
 	bridge.locked = false
 
-func _process(delta: float) -> void:
-	pass
+func _update_lock_display() -> void:
+	if unlock_item == null:
+		return
+	interact_comp.set_postfix("(Requires %s)" % unlock_item.name)

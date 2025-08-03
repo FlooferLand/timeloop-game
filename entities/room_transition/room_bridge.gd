@@ -1,5 +1,7 @@
 @tool class_name RoomBridge extends Node2D
 
+signal redraw_lock
+
 @export var room_a: Room
 @export var room_b: Room
 @export var has_door: bool = true
@@ -14,7 +16,6 @@
 @export var door: AnimatedSprite2D
 @export var door_audio_player: AudioStreamPlayer2D
 @export var locking_body_collision: CollisionShape2D
-@export var drawer: RoomBridgeDraw
 
 var door_audio_playback: AudioStreamPlaybackInteractive
 var manager: RoomManager  # Injected by RoomManager
@@ -24,6 +25,7 @@ var anim_await_exit := false
 
 func _ready() -> void:
 	set_physics_process(false)
+	set_process_input(false)
 	set_process(false)
 	_update_lock()
 	door.animation = "open"
@@ -37,7 +39,7 @@ func _ready() -> void:
 		if body is Player:
 			player = body
 			if locked:
-				queue_redraw()
+				redraw_lock.emit()
 				return
 			if has_door:
 				if not door_audio_player.playing:
@@ -53,7 +55,7 @@ func _ready() -> void:
 		if body is Player:
 			player = null
 			if locked:
-				queue_redraw()
+				redraw_lock.emit()
 				return
 			anim_await_exit = true
 			set_process(false)
@@ -82,9 +84,6 @@ func _process(delta: float) -> void:
 	elif dir < 0 and manager.active != room_a:
 		manager.change(room_a)
 
-func _draw() -> void:
-	drawer.queue_redraw()
-
 func _update_lock():
 	locking_body_collision.disabled = not locked
-	queue_redraw()
+	redraw_lock.emit()

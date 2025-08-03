@@ -22,7 +22,7 @@ shader_parameter/tile = Vector2(1.11198, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyumd"]
 resource_local_to_scene = true
-size = Vector2(153, 1080)
+size = Vector2(153, 594)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_23kdh"]
 resource_local_to_scene = true
@@ -36,6 +36,7 @@ top = 1001
 
 [node name="AutoRoom" parent="." index="1"]
 size = Vector2(2135, 1001)
+closed_left = false
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
@@ -54,9 +55,10 @@ scale = Vector2(1.11198, 1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
 position = Vector2(0, -1001)
+texture = ExtResource("3_3j2cw")
 
 [node name="Collision" parent="AutoRoom/LeftWall" index="1"]
-position = Vector2(76.5, -461)
+position = Vector2(76.5, -704)
 shape = SubResource("RectangleShape2D_cyumd")
 
 [node name="Sprite" parent="AutoRoom/RightWall" index="0"]

@@ -3,6 +3,7 @@ extends Node2D
 const TimeLoopContainer := preload("uid://dhy8a74fxl1iw")
 
 func _ready() -> void:
+	TimeManager.start()
 	TimeManager.reset.connect(func():
 		await time_loop_reset()
 	)

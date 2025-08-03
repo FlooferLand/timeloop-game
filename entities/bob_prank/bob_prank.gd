@@ -20,6 +20,7 @@ func _enter_tree() -> void:
 		if not too_late:
 			player.inventory_comp.remove_item(item)
 			content.visible = true
+			interact_comp.hide_info()
 			armed = true
 		else:
 			dialog_comp.start()
