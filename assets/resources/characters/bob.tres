@@ -13,5 +13,4 @@ stream_0/stream = ExtResource("2_806tp")
 script = ExtResource("1_tti6g")
 name = "Bob"
 sound = SubResource("AudioStreamRandomizer_806tp")
-pitch_variety = 1.0
 metadata/_custom_type_script = "uid://cno0sr4oj821j"

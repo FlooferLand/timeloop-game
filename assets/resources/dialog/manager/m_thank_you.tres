@@ -16,7 +16,6 @@
 script = ExtResource("4_v2lny")
 text = "Oh my.. Is that my bunny Napkins Junior III??"
 character = ExtResource("3_gllix")
-additional = Array[ExtResource("2_ohv5f")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_igbn1"]
@@ -41,14 +40,12 @@ script = ExtResource("4_v2lny")
 text = "I've been looking for them everywhere.
 How can I thank you for this?"
 character = ExtResource("3_gllix")
-additional = Array[ExtResource("2_ohv5f")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_qe4m0"]
 script = ExtResource("4_v2lny")
 text = ".. Actually, I do have one thing."
 character = ExtResource("3_gllix")
-additional = Array[ExtResource("2_ohv5f")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_rxqay"]
@@ -73,7 +70,6 @@ script = ExtResource("10_qe4m0")
 texts = Array[String](["Now you may go and see the man upstairs, which is the boss of-course.", "I'm pretty sure you are an intern, so you may feel free to ask him for a pay raise now.
 Of-course, you should tell him I sent you."])
 character = ExtResource("3_gllix")
-additional = Array[ExtResource("2_ohv5f")]([])
 metadata/_custom_type_script = "uid://c2c64doslfxei"
 
 [resource]

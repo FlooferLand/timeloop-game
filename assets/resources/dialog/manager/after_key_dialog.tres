@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DialogData" load_steps=7 format=3 uid="uid://wyupod37dskk"]
 
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_g5h3l"]
-[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_87bk2"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_g5h3l"]
 [ext_resource type="Resource" uid="uid://cyv71gs3b0jwd" path="res://assets/resources/characters/manager.tres" id="3_2t7kw"]
 [ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="4_qft2a"]
 [ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="5_58mil"]
@@ -10,7 +10,6 @@
 script = ExtResource("4_qft2a")
 text = "I've already said thank you. Now go get that promotion."
 character = ExtResource("3_2t7kw")
-additional = Array[ExtResource("2_87bk2")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [resource]

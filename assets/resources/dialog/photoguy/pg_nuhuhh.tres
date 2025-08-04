@@ -12,7 +12,6 @@ text = "Anyway, did you think I'm being paid to copy my photos?
 Nuh uh, I'm copying me personal photos.
 This is far more important than my real job."
 character = ExtResource("3_1rvig")
-additional = Array[ExtResource("2_odbi6")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [resource]

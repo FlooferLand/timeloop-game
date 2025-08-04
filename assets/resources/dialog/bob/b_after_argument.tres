@@ -10,7 +10,6 @@
 script = ExtResource("4_ksxxr")
 text = "Man, I can't with this new receptionist anymore, what the fuck happened to the old one."
 character = ExtResource("3_l25gv")
-additional = Array[ExtResource("2_2ucpw")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [resource]

@@ -48,7 +48,6 @@ metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
 script = ExtResource("11_nu2qk")
 texts = Array[String](["The manager accidentally left it here at my desk and I kept forgetting to give it back cause I'm exhausted"])
 character = ExtResource("4_dhsue")
-additional = Array[ExtResource("2_ktde3")]([])
 metadata/_custom_type_script = "uid://c2c64doslfxei"
 
 [resource]

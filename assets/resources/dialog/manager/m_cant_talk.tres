@@ -10,7 +10,6 @@
 script = ExtResource("4_dwre2")
 texts = Array[String](["Can't you see that I'm busy?", "Talk to me while I'm on break, I can't be bothered to deal with any of you right now"])
 character = ExtResource("3_dx4ld")
-additional = Array[ExtResource("2_3khg2")]([])
 metadata/_custom_type_script = "uid://c2c64doslfxei"
 
 [resource]

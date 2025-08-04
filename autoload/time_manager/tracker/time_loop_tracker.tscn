@@ -315,7 +315,7 @@ color = Color(0, 0, 0, 0)
 [node name="Vortex" type="TextureRect" parent="Reset/UI"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -420.0

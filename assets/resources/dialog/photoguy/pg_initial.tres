@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DialogData" load_steps=8 format=3 uid="uid://dlkyo0251r1da"]
 
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_gqfgx"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_dx22l"]
 [ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_ef1w8"]
-[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_u35e6"]
 [ext_resource type="Resource" uid="uid://bme1mtxijpdam" path="res://assets/resources/characters/photocopy_guy.tres" id="3_e0178"]
 [ext_resource type="Script" uid="uid://dusduojuy6ico" path="res://components/dialog/resources/entries/dialog_text_entry.gd" id="4_5dt50"]
 
@@ -10,14 +10,12 @@
 script = ExtResource("4_5dt50")
 text = "Man I sure do love copying photos."
 character = ExtResource("3_e0178")
-additional = Array[ExtResource("2_u35e6")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_7xvka"]
 script = ExtResource("4_5dt50")
 text = "All my coworkers are getting replaced by robots, and copying photos is still a job more secure than theirs cause higherups are too lazy to copy photos themselves"
 character = ExtResource("3_e0178")
-additional = Array[ExtResource("2_u35e6")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [resource]
