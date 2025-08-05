@@ -30,8 +30,9 @@ size = Vector2(153, 1080)
 resource_local_to_scene = true
 size = Vector2(153, 1080)
 
-[node name="Room" type="Node2D"]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("bounds")]
 script = ExtResource("1_m1w56")
+bounds = NodePath("Bounds")
 
 [node name="Bounds" parent="." instance=ExtResource("2_4i010")]
 right = 1000

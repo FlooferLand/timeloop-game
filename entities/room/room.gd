@@ -1,7 +1,10 @@
 class_name Room
 extends Node2D
 
-var manager: RoomManager  # Injected by RoomManager
+@export_group("Local")
+@export var bounds: RoomBounds
+
+var manager: RoomManager  ## Injected by RoomManager
 var initially_active := false
 
 func _enter_tree() -> void:

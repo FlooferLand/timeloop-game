@@ -8,6 +8,7 @@ signal room_changed(old: Room, new: Room)
 var _active: Room
 var trans_old: Tween = null
 var trans_new: Tween = null
+var rooms: Array[Room] = []
 
 var active: Room:
 	get: return _active
@@ -16,7 +17,10 @@ var active: Room:
 func _enter_tree() -> void:
 	default.initially_active = true
 	for thing in get_children():
-		if thing is Room or RoomBridge:
+		if thing is Room:
+			rooms.push_back(thing)
+			thing.set("manager", self)
+		elif thing is RoomBridge:
 			thing.set("manager", self)
 	_active = default
 

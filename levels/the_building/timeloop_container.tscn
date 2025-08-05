@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhy8a74fxl1iw"]
+[gd_scene load_steps=15 format=3 uid="uid://dhy8a74fxl1iw"]
 
 [ext_resource type="Script" uid="uid://br8rjbtnetts7" path="res://levels/the_building/timeloop_container.gd" id="1_s5u2e"]
 [ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="2_tugbd"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://myo2rpycaysv" path="res://rooms/storage_closet.tscn" id="9_3qcp8"]
 [ext_resource type="PackedScene" uid="uid://bb68hsv18n5jd" path="res://rooms/managers_office.tscn" id="9_6mlxv"]
 [ext_resource type="PackedScene" uid="uid://dfxblen2v7nr3" path="res://entities/npcs/bob/at_desk/bob_at_desk.tscn" id="10_3qcp8"]
+[ext_resource type="Script" uid="uid://deskh66ba4q63" path="res://levels/the_building/entities.gd" id="13_tef80"]
 
 [node name="TimeLoopContainer" type="Node2D"]
 editor_description = "Everything inside is temporary and will be reset from the script once the timeloop resets"
@@ -81,7 +82,9 @@ position = Vector2(7575, 0)
 [node name="ManagersPlace" type="Marker2D" parent="RoomManager/ManagersOffice"]
 position = Vector2(761, 0)
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="." node_paths=PackedStringArray("room_manager")]
+script = ExtResource("13_tef80")
+room_manager = NodePath("../RoomManager")
 metadata/_edit_lock_ = true
 
 [node name="TheManager" parent="Entities" node_paths=PackedStringArray("managers_desk_target", "bridge_door") instance=ExtResource("8_12vld")]

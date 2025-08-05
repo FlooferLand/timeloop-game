@@ -19,6 +19,8 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="uid://0fbuntqttqsl"
 config/icon="uid://ounrywpdehy6"
 config/windows_native_icon="res://assets/textures/icon.ico"
+run/image="uid://0fbuntqttqsl"
+run/quality/screen_space_aa=0
 
 [audio]
 
