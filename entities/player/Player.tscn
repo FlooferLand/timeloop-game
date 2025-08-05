@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dytk4odemy15w"]
+[gd_scene load_steps=11 format=3 uid="uid://dytk4odemy15w"]
 
 [ext_resource type="Script" uid="uid://cmqr6suouga2w" path="res://entities/player/player.gd" id="1_453mm"]
 [ext_resource type="SpriteFrames" uid="uid://cr1jr04f0k0wn" path="res://assets/textures/player/with_arms.tres" id="2_eaotn"]
 [ext_resource type="AudioStream" uid="uid://dedfgkygu0wht" path="res://assets/sfx/footsteps/carpet.tres" id="2_g3lhm"]
 [ext_resource type="Script" uid="uid://crlgghljmgr5c" path="res://entities/player/player_interaction.gd" id="3_l3c03"]
 [ext_resource type="PackedScene" uid="uid://0fxhnnybdyae" path="res://components/footstep/FootstepComponent.tscn" id="4_eaotn"]
+[ext_resource type="Texture2D" uid="uid://fyb3wuw770hk" path="res://assets/textures/light/circle_light.png" id="4_rl6fg"]
 [ext_resource type="PackedScene" uid="uid://bab5ojxf5h83c" path="res://components/inventory/inventory_component.tscn" id="6_4pwj0"]
 [ext_resource type="Script" uid="uid://2veea5m8nnax" path="res://entities/player/inventory_ui/inventory_ui.gd" id="7_fmb3c"]
 
@@ -40,6 +41,13 @@ debug_color = Color(0, 0.6, 0.701961, 0.180392)
 position = Vector2(0, -450)
 process_callback = 0
 limit_enabled = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -172)
+color = Color(0.0015500508, 0.24229544, 0.580645, 1)
+energy = 0.6
+texture = ExtResource("4_rl6fg")
+texture_scale = 2.0
 
 [node name="PlayerInteraction" type="Area2D" parent="." node_paths=PackedStringArray("player", "collision")]
 collision_layer = 2

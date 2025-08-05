@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dnq052dj8057j" path="res://props/clock/clock.tscn" id="5_oigr5"]
 [ext_resource type="Texture2D" uid="uid://b2qmg3vyk0dhj" path="res://assets/textures/props/bin.png" id="6_memf8"]
 [ext_resource type="Texture2D" uid="uid://cbuw8on3ydiky" path="res://assets/textures/props/postit.png" id="7_u6lna"]
-[ext_resource type="Texture2D" uid="uid://3iv4mv1rj66w" path="res://assets/textures/props/desklamp.png" id="9_lkh5l"]
+[ext_resource type="PackedScene" uid="uid://8xdmrqq56ac8" path="res://props/desk_lamp/desk_lamp.tscn" id="9_a84dp"]
 [ext_resource type="Texture2D" uid="uid://dtk3yvovxhfe5" path="res://assets/textures/props/documents.png" id="11_fevpa"]
 [ext_resource type="Texture2D" uid="uid://dc0rcr77ud06t" path="res://assets/textures/decor/poster2.png" id="13_a84dp"]
 
@@ -45,15 +45,15 @@ closed_left = false
 
 [node name="Background" parent="AutoRoom" index="0"]
 material = SubResource("ShaderMaterial_ujqss")
-scale = Vector2(0.78125, 0.925926)
+scale = Vector2(0.78125, 0.9259259)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
 material = SubResource("ShaderMaterial_imxjw")
-scale = Vector2(0.78125, 1)
+scale = Vector2(0.78125, 2.1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
 material = SubResource("ShaderMaterial_brxlq")
-scale = Vector2(0.78125, 1)
+scale = Vector2(0.78125, 1.1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
 texture = ExtResource("3_o0yjw")
@@ -95,10 +95,8 @@ position = Vector2(808, -120)
 scale = Vector2(0.7, 1)
 texture = ExtResource("3_nwxry")
 
-[node name="Lamp" type="Sprite2D" parent="Decor" index="6"]
-position = Vector2(544, -272)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("9_lkh5l")
+[node name="DeskLamp" parent="Decor" index="6" instance=ExtResource("9_a84dp")]
+position = Vector2(540, -187)
 
 [node name="Computer" type="Sprite2D" parent="Decor" index="7"]
 position = Vector2(752, -264)

@@ -20,7 +20,7 @@ func _enter_tree() -> void:
 	
 	light = PointLight2D.new()
 	light.texture = LightTexture
-	light.texture_scale = 5.0
+	light.texture_scale = 3.0
 	light.color = Color.WHITE
 	root.add_child.call_deferred(light)
 		

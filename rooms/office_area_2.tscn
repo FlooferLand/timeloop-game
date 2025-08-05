@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b1cv7inyidclk" path="res://entities/npcs/piper/piper.tscn" id="4_uffxh"]
 [ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="5_nf4fi"]
 [ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="5_ypaot"]
+[ext_resource type="PackedScene" uid="uid://8xdmrqq56ac8" path="res://props/desk_lamp/desk_lamp.tscn" id="6_2ptjl"]
 [ext_resource type="Texture2D" uid="uid://cbuw8on3ydiky" path="res://assets/textures/props/postit.png" id="6_tliww"]
 [ext_resource type="Texture2D" uid="uid://b5jahel11rvsf" path="res://assets/textures/props/glass.png" id="7_2ptjl"]
-[ext_resource type="Texture2D" uid="uid://3iv4mv1rj66w" path="res://assets/textures/props/desklamp.png" id="8_tliww"]
 [ext_resource type="Texture2D" uid="uid://dtk3yvovxhfe5" path="res://assets/textures/props/documents.png" id="9_k5m35"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ptjl"]
@@ -83,10 +83,8 @@ position = Vector2(1448, -156)
 texture = ExtResource("5_ypaot")
 flip_h = true
 
-[node name="Glass2" type="Sprite2D" parent="Decor" index="3"]
-position = Vector2(976, -258)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("8_tliww")
+[node name="DeskLamp" parent="Decor" index="3" instance=ExtResource("6_2ptjl")]
+position = Vector2(984, -192)
 
 [node name="Table" type="Sprite2D" parent="Decor" index="4"]
 position = Vector2(1080, -120)

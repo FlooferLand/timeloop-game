@@ -8,19 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://7uhyh2mnjrtx" path="res://assets/textures/props/receptionist_desk.png" id="5_dnklr"]
 [ext_resource type="PackedScene" uid="uid://dfb4gv115aot7" path="res://entities/npcs/reception_lady/receptionist.tscn" id="5_kwhvp"]
 [ext_resource type="Texture2D" uid="uid://b5jahel11rvsf" path="res://assets/textures/props/glass.png" id="6_23kdh"]
-[ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="6_c1m58"]
 [ext_resource type="Texture2D" uid="uid://wfhsfyeyeis5" path="res://assets/textures/props/stapler.png" id="7_eue5r"]
 [ext_resource type="PackedScene" uid="uid://ca7bqqskfc2hn" path="res://entities/bob_prank/bob_prank.tscn" id="7_xv13q"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eue5r"]
-shader = ExtResource("2_ul1gn")
-shader_parameter/tile = Vector2(1.11198, 0.926852)
+[ext_resource type="PackedScene" uid="uid://dlka2wa038g4t" path="res://props/computer/computer_side.tscn" id="10_eue5r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63cxr"]
 shader = ExtResource("2_ul1gn")
-shader_parameter/tile = Vector2(1.11198, 1)
+shader_parameter/tile = Vector2(1.11198, 0.926852)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yoikn"]
+shader = ExtResource("2_ul1gn")
+shader_parameter/tile = Vector2(1.11198, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6elnv"]
 shader = ExtResource("2_ul1gn")
 shader_parameter/tile = Vector2(1.11198, 1)
 
@@ -44,18 +44,18 @@ closed_left = false
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_eue5r")
-position = Vector2(0, -1001)
-scale = Vector2(1.11198, 0.926852)
-
-[node name="Ceiling" parent="AutoRoom" index="1"]
 material = SubResource("ShaderMaterial_63cxr")
 position = Vector2(0, -1001)
-scale = Vector2(1.11198, 1)
+scale = Vector2(1.1119791, 0.92685187)
+
+[node name="Ceiling" parent="AutoRoom" index="1"]
+material = SubResource("ShaderMaterial_yoikn")
+position = Vector2(0, -1017.17)
+scale = Vector2(1.1119791, 2.1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_yoikn")
-scale = Vector2(1.11198, 1)
+material = SubResource("ShaderMaterial_6elnv")
+scale = Vector2(1.1119791, 1.1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
 position = Vector2(0, -1001)
@@ -99,10 +99,9 @@ bob_prank = NodePath("../BobPrank")
 position = Vector2(1464, -120)
 texture = ExtResource("5_dnklr")
 
-[node name="Sprite2D" type="Sprite2D" parent="Entities" index="2"]
-position = Vector2(1280, -296)
-texture = ExtResource("6_c1m58")
-flip_h = true
+[node name="ComputerSide" parent="Entities" index="2" instance=ExtResource("10_eue5r")]
+position = Vector2(1280, -200)
+scale = Vector2(-1, 1)
 
 [node name="BobPrank" parent="Entities" index="3" instance=ExtResource("7_xv13q")]
 position = Vector2(1920, 0)
