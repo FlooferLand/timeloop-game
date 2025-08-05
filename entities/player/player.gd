@@ -13,8 +13,10 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @export var sprite: AnimatedSprite2D
 @export var footstep_comp: FootstepComponent
 @export var inventory_comp: InventoryComponent
+@export var camera: Camera2D
 
 var _initial_position: Vector2
+var _initial_zoom: Vector2
 
 var move_direction := Vector2.ZERO
 var facing := Facing.Right
@@ -38,6 +40,7 @@ func _ready() -> void:
 	else:
 		push_error("Footstep sounds is null!")
 	_initial_position = global_position
+	_initial_zoom = camera.zoom
 	mouse_locked = true
 	change_direction.connect(func(facing: Facing) -> void:
 		sprite.flip_h = (facing == Facing.Left)
@@ -79,6 +82,10 @@ func _process(delta: float) -> void:
 	var body_tilt_amount := 0.03 if not sprinting else 0.05
 	var body_tilt := (PI * body_tilt_amount if walking else 0.0) * (1.0 if facing == Facing.Right else -1.0)
 	sprite.rotation = lerp(sprite.rotation, body_tilt, (4.0 if walking else 20.0) * delta)
+	
+	# Camera zoom
+	var cam_zoom_value := _initial_zoom - (Vector2.ONE * 0.04 if sprinting and walking else Vector2.ZERO)
+	camera.zoom = lerp(camera.zoom, cam_zoom_value, delta * 2)
 
 func _physics_process(delta: float) -> void:
 	var motion := Vector2.ZERO

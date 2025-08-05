@@ -14,7 +14,7 @@ var active: Room:
 	set(value): change(value)
 
 func _enter_tree() -> void:
-	default.active = true
+	default.initially_active = true
 	for thing in get_children():
 		if thing is Room or RoomBridge:
 			thing.set("manager", self)

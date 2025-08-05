@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bns2u7fmm5xg3" path="res://utility/room_bounds/room_bounds.gd" id="1_gtqkm"]
 
-[node name="RoomBounds" type="Node2D"]
+[node name="RoomBounds" type="Node2D" node_paths=PackedStringArray("screen_notifier")]
 z_index = 5
 script = ExtResource("1_gtqkm")
+screen_notifier = NodePath("VisibleOnScreenNotifier2D")
 metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-10, -10, 20, 57.18)

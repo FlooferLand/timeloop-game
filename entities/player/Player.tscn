@@ -15,13 +15,14 @@ height = 250.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_453mm"]
 size = Vector2(209, 294)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "footstep_comp", "inventory_comp")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "footstep_comp", "inventory_comp", "camera")]
 z_index = 2
 script = ExtResource("1_453mm")
 footstep_sounds = ExtResource("2_g3lhm")
 sprite = NodePath("Sprite")
 footstep_comp = NodePath("FootstepComponent")
 inventory_comp = NodePath("InventoryComponent")
+camera = NodePath("Camera2D")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4.76837e-07, 1.90735e-06)
@@ -36,7 +37,7 @@ shape = SubResource("CapsuleShape2D_453mm")
 debug_color = Color(0, 0.6, 0.701961, 0.180392)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -480)
+position = Vector2(0, -450)
 process_callback = 0
 limit_enabled = false
 
