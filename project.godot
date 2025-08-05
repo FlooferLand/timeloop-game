@@ -142,6 +142,7 @@ buffering/agile_event_flushing=true
 
 2d_physics/layer_2="Interacting"
 2d_physics/layer_3="Prank"
+2d_physics/layer_4="NPCs"
 
 [physics]
 

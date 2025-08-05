@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://scrjmwipapoq"]
+[gd_scene load_steps=14 format=3 uid="uid://scrjmwipapoq"]
 
 [ext_resource type="SpriteFrames" uid="uid://bdms1r5t6j7dy" path="res://assets/textures/npcs/manager.tres" id="1_6mplh"]
 [ext_resource type="Script" uid="uid://brstoeriyvsiv" path="res://entities/npcs/the_manager/the_manager.gd" id="1_8536a"]
@@ -13,6 +13,9 @@
 [ext_resource type="Resource" uid="uid://wyupod37dskk" path="res://assets/resources/dialog/manager/after_key_dialog.tres" id="5_2vr6a"]
 [ext_resource type="Resource" uid="uid://diucvgxnrjcoa" path="res://assets/resources/dialog/manager/m_wut.tres" id="5_sfnjn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vr6a"]
+size = Vector2(146, 506)
+
 [node name="TheManager" type="Node2D" node_paths=PackedStringArray("walk_comp", "person_dialog_comp", "interact_comp")]
 script = ExtResource("1_8536a")
 elevator_keys_item = ExtResource("2_6fut4")
@@ -25,6 +28,7 @@ person_dialog_comp = NodePath("PersonDialogComponent")
 interact_comp = NodePath("PersonDialogComponent/InteractComponent")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.5, -258)
 sprite_frames = ExtResource("1_6mplh")
 animation = &"idle"
 
@@ -34,11 +38,20 @@ parent = NodePath("..")
 
 [node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("walk_comp") instance=ExtResource("2_rvytt")]
 walk_comp = NodePath("../PersonWalkComponent")
-head_position = Vector2(-54.115, -34.39)
+head_position = Vector2(-68.655, -302.875)
 
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_sfnjn")]
+position = Vector2(0.5, -258)
 size = Vector2i(200, 515)
 type = 1
 
 [node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("4_68oo1")]
 dialog_data = ExtResource("5_sfnjn")
+
+[node name="NPCBody" type="Area2D" parent="."]
+position = Vector2(0.5, -258)
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCBody"]
+shape = SubResource("RectangleShape2D_2vr6a")

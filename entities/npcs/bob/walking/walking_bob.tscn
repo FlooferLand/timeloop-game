@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bf7rxnp4ms8us"]
+[gd_scene load_steps=22 format=3 uid="uid://bf7rxnp4ms8us"]
 
 [ext_resource type="Script" uid="uid://bcwrjmnhg01g" path="res://entities/npcs/bob/walking/walking_bob.gd" id="1_57x3b"]
 [ext_resource type="PackedScene" uid="uid://c03s31rm4w41p" path="res://components/npc/walk/person_walk_component.tscn" id="1_rf7k0"]
@@ -256,6 +256,9 @@ turbulence_influence_max = 1.0
 turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 1.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omrl1"]
+size = Vector2(126, 370)
+
 [node name="WalkingBob" type="Node2D" node_paths=PackedStringArray("walk_comp", "anim_player", "anger_mark", "prank_detector")]
 script = ExtResource("1_57x3b")
 walk_comp = NodePath("PersonWalkComponent")
@@ -321,3 +324,11 @@ one_shot = true
 explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_0n6av")
+
+[node name="NPCBody" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCBody"]
+position = Vector2(0, -187)
+shape = SubResource("RectangleShape2D_omrl1")

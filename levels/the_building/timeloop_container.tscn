@@ -88,6 +88,6 @@ room_manager = NodePath("../RoomManager")
 metadata/_edit_lock_ = true
 
 [node name="TheManager" parent="Entities" node_paths=PackedStringArray("managers_desk_target", "bridge_door") instance=ExtResource("8_12vld")]
-position = Vector2(4949, -264)
+position = Vector2(4949, 0)
 managers_desk_target = NodePath("../../RoomManager/ManagersOffice/ManagersPlace")
 bridge_door = NodePath("../../RoomManager/RoomBridge3")

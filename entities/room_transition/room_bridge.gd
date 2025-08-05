@@ -38,26 +38,25 @@ func _ready() -> void:
 	area.body_entered.connect(func(body: Node2D) -> void:
 		if body is Player:
 			player = body
-			if has_door and not locked:
-				if not door_audio_player.playing:
-					door_audio_player.play()
-				door_audio_playback = door_audio_player.get_stream_playback()
-				door_audio_playback.switch_to_clip_by_name("open")
-				door.visible = true
-				door.flip_h = to_local(player.global_position).x > 0
-				door.play("open")
-			if locked:
-				redraw_lock.emit()
 			set_process(true)
+		if locked:
+			redraw_lock.emit()
+		else:
+			_start_door_anim(body)
+	)
+	area.area_entered.connect(func(area: Area2D) -> void:
+		if area.get_collision_mask_value(4):   # NPCs
+			_start_door_anim(area)
 	)
 	area.body_exited.connect(func(body: Node2D) -> void:
 		if body is Player:
 			player = null
-			if locked:
-				redraw_lock.emit()
-			else:
-				anim_await_exit = true
 			set_process(false)
+			
+		if locked:
+			redraw_lock.emit()
+		else:
+			anim_await_exit = true
 	)
 	if has_door:
 		door.animation_finished.connect(func() -> void:
@@ -75,9 +74,19 @@ func _ready() -> void:
 func _editor_ready() -> void:
 	door.visible = has_door
 
+func _start_door_anim(entering_body: Node2D) -> void:
+	if has_door:
+		if not door_audio_player.playing:
+			door_audio_player.play()
+		door_audio_playback = door_audio_player.get_stream_playback()
+		door_audio_playback.switch_to_clip_by_name("open")
+		door.visible = true
+		door.flip_h = to_local(entering_body.global_position).x > 0
+		door.play("open")
+
 ## Called while the player is in the transition
 func _process(delta: float) -> void:
-	if not locked:
+	if not locked and player != null:
 		var dir: float = player.move_direction.sign().x
 		if dir > 0 and manager.active != room_b:
 			manager.change(room_b)

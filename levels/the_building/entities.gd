@@ -20,4 +20,4 @@ func _process(delta: float) -> void:
 					continue
 				elif node.global_position.x > room.global_position.x + room.bounds.right:
 					continue
-				node.modulate = room.modulate
+				node.modulate = node.modulate.lerp(room.modulate, 8 * delta)
