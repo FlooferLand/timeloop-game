@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5pwoudleripi"]
+
+[ext_resource type="Script" uid="uid://q8w8umo33im0" path="res://levels/init/init.gd" id="1_bvh36"]
+[ext_resource type="PackedScene" uid="uid://b126372syf2k6" path="res://levels/outside/scenes/spaceship_land_poof.tscn" id="2_0ifk7"]
+[ext_resource type="Texture2D" uid="uid://0fbuntqttqsl" path="res://assets/textures/loading.png" id="2_2r24f"]
+[ext_resource type="PackedScene" uid="uid://divqq41454uas" path="res://levels/outside/scenes/spaceship_ambient_poof.tscn" id="3_uhywf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu4rc"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Init" type="Node2D"]
+script = ExtResource("1_bvh36")
+
+[node name="Scene" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="SpaceshipLandPoof" parent="Scene" instance=ExtResource("2_0ifk7")]
+
+[node name="SpaceshipAmbientPoof" parent="Scene" instance=ExtResource("3_uhywf")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_enabled = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 1000
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tu4rc")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_2r24f")
+expand_mode = 2
+stretch_mode = 5

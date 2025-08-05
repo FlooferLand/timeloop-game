@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cjgtv4eflexi6"]
+[gd_scene load_steps=31 format=3 uid="uid://cjgtv4eflexi6"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_34vd1"]
 [ext_resource type="Texture2D" uid="uid://dbjitvlj33phh" path="res://assets/textures/outside/background_outside1.png" id="1_nl86o"]
@@ -20,7 +20,9 @@
 [ext_resource type="AudioStream" uid="uid://bfy30r4rmfmln" path="res://assets/sfx/door/door_close_1.wav" id="15_yvt5h"]
 [ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="17_wgj81"]
 [ext_resource type="Script" uid="uid://nsjrhdwswjjr" path="res://levels/outside/skippo.gd" id="18_u1cip"]
+[ext_resource type="PackedScene" uid="uid://divqq41454uas" path="res://levels/outside/scenes/spaceship_ambient_poof.tscn" id="19_rjd78"]
 [ext_resource type="AudioStream" uid="uid://d2uc776b6rryi" path="res://assets/sfx/random/typewrite.tres" id="19_y3yg3"]
+[ext_resource type="PackedScene" uid="uid://b126372syf2k6" path="res://levels/outside/scenes/spaceship_land_poof.tscn" id="20_d3c7x"]
 [ext_resource type="PackedScene" uid="uid://dgnguofpsk6jj" path="res://components/skip/skip_component.tscn" id="22_yvt5h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jqtv"]
@@ -552,75 +554,6 @@ _data = {
 &"intro_cutscene": SubResource("Animation_oqetn")
 }
 
-[sub_resource type="Curve" id="Curve_u1cip"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.302817, 0.918532), 0.56662, 0.56662, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_y3yg3"]
-curve = SubResource("Curve_u1cip")
-
-[sub_resource type="Curve" id="Curve_5q5nc"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.255869, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_yvt5h"]
-curve = SubResource("Curve_5q5nc")
-
-[sub_resource type="Curve" id="Curve_6mhyd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.171362, 0.93017), 0.774676, 0.774676, 0, 0, Vector2(0.673469, 0.715438), -1.40856, -1.40856, 0, 0, Vector2(1, 0.295882), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_5q5nc"]
-curve = SubResource("Curve_6mhyd")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvt5h"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(170, 200, 1)
-direction = Vector3(0, 1, 0)
-gravity = Vector3(0, 30, 0)
-scale_min = 0.5
-scale_max = 2.0
-scale_curve = SubResource("CurveTexture_5q5nc")
-color = Color(0.879885, 0.927937, 1, 0.352941)
-alpha_curve = SubResource("CurveTexture_y3yg3")
-emission_curve = SubResource("CurveTexture_yvt5h")
-hue_variation_min = -0.15
-hue_variation_max = 0.15
-turbulence_noise_speed = Vector3(1, 1, 1)
-turbulence_influence_max = 1.0
-turbulence_initial_displacement_min = 1.49012e-06
-turbulence_initial_displacement_max = 1.0
-
-[sub_resource type="Curve" id="Curve_wgj81"]
-_data = [Vector2(0.00583091, 1), 0.0, 0.0, 0, 0, Vector2(0.504373, 0.707949), -1.11962, -1.11962, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_u1cip"]
-curve = SubResource("Curve_wgj81")
-
-[sub_resource type="Curve" id="Curve_y3yg3"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.673469, 0.715438), -1.40856, -1.40856, 0, 0, Vector2(1, 0.460829), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_6mhyd"]
-curve = SubResource("Curve_y3yg3")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wgj81"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(180, 0.6, 1)
-direction = Vector3(0, 1, 0)
-gravity = Vector3(0, 30, 0)
-scale_max = 2.0
-scale_curve = SubResource("CurveTexture_6mhyd")
-color = Color(0.879885, 0.927937, 1, 0.352941)
-alpha_curve = SubResource("CurveTexture_u1cip")
-turbulence_noise_speed = Vector3(1, 1, 1)
-turbulence_influence_max = 1.0
-turbulence_initial_displacement_min = 1.49012e-06
-turbulence_initial_displacement_max = 1.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_wgj81"]
 font_size = 24
 font_color = Color(1, 1, 1, 0.3137255)
@@ -722,7 +655,7 @@ shape = SubResource("RectangleShape2D_cv2l2")
 position = Vector2(48, -944)
 
 [node name="OutsideCamera" type="Camera2D" parent="Camera" node_paths=PackedStringArray("target")]
-position = Vector2(47.99999, -944.0002)
+position = Vector2(48, -944)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_left = -1150
@@ -768,25 +701,10 @@ playback_type = 1
 volume_db = -7.0
 bus = &"SFX"
 
-[node name="SpaceshipAmbientPoof" type="GPUParticles2D" parent="Spaceship"]
+[node name="SpaceshipAmbientPoof" parent="Spaceship" instance=ExtResource("19_rjd78")]
 position = Vector2(0, -232)
-amount = 12
-texture = ExtResource("17_wgj81")
-lifetime = 2.0
-preprocess = 0.5
-explosiveness = 0.2
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_yvt5h")
 
-[node name="SpaceshipLandPoof" type="GPUParticles2D" parent="."]
-emitting = false
-amount = 12
-texture = ExtResource("17_wgj81")
-lifetime = 3.0
-one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-process_material = SubResource("ParticleProcessMaterial_wgj81")
+[node name="SpaceshipLandPoof" parent="." instance=ExtResource("20_d3c7x")]
 
 [node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("to_stop", "skip_component", "skip_label", "animator", "camera", "camera_target")]
 script = ExtResource("18_u1cip")

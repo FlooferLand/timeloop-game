@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b126372syf2k6"]
+
+[ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="1_drckj"]
+
+[sub_resource type="Curve" id="Curve_wgj81"]
+_data = [Vector2(0.00583091, 1), 0.0, 0.0, 0, 0, Vector2(0.504373, 0.707949), -1.11962, -1.11962, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u1cip"]
+curve = SubResource("Curve_wgj81")
+
+[sub_resource type="Curve" id="Curve_y3yg3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.673469, 0.715438), -1.40856, -1.40856, 0, 0, Vector2(1, 0.460829), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6mhyd"]
+curve = SubResource("Curve_y3yg3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wgj81"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(180, 0.6, 1)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 30, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_6mhyd")
+color = Color(0.879885, 0.927937, 1, 0.352941)
+alpha_curve = SubResource("CurveTexture_u1cip")
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.0
+
+[node name="SpaceshipLandPoof" type="GPUParticles2D"]
+emitting = false
+amount = 12
+texture = ExtResource("1_drckj")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_wgj81")

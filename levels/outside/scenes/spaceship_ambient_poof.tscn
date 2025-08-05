@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://divqq41454uas"]
+
+[ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="1_lsfcq"]
+
+[sub_resource type="Curve" id="Curve_u1cip"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.302817, 0.918532), 0.56662, 0.56662, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_y3yg3"]
+curve = SubResource("Curve_u1cip")
+
+[sub_resource type="Curve" id="Curve_5q5nc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.255869, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_yvt5h"]
+curve = SubResource("Curve_5q5nc")
+
+[sub_resource type="Curve" id="Curve_6mhyd"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.171362, 0.93017), 0.774676, 0.774676, 0, 0, Vector2(0.673469, 0.715438), -1.40856, -1.40856, 0, 0, Vector2(1, 0.295882), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5q5nc"]
+curve = SubResource("Curve_6mhyd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yvt5h"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(170, 200, 1)
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 30, 0)
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5q5nc")
+color = Color(0.879885, 0.927937, 1, 0.352941)
+alpha_curve = SubResource("CurveTexture_y3yg3")
+emission_curve = SubResource("CurveTexture_yvt5h")
+hue_variation_min = -0.15
+hue_variation_max = 0.15
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.0
+
+[node name="SpaceshipAmbientPoof" type="GPUParticles2D"]
+amount = 12
+texture = ExtResource("1_lsfcq")
+lifetime = 2.0
+preprocess = 0.5
+explosiveness = 0.2
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_yvt5h")
