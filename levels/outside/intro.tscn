@@ -788,11 +788,14 @@ explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_wgj81")
 
-[node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("to_stop", "skip_component", "skip_label")]
+[node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("to_stop", "skip_component", "skip_label", "animator", "camera", "camera_target")]
 script = ExtResource("18_u1cip")
 to_stop = [NodePath("../Spaceship/SpaceshipLandAudio"), NodePath("../Spaceship/DoorAudio"), NodePath("../Spaceship/IntroIntercom")]
 skip_component = NodePath("SkipComponent")
 skip_label = NodePath("Control/Label")
+animator = NodePath("../CutsceneAnimator")
+camera = NodePath("../Camera/OutsideCamera")
+camera_target = NodePath("../Camera/CutsceneTarget")
 
 [node name="Control" type="Control" parent="Skippo"]
 layout_mode = 3
