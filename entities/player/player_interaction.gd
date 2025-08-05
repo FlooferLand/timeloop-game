@@ -10,7 +10,7 @@ var hovering: InteractComponent = null
 
 func _ready() -> void:
 	initial_collision_pos = collision.position
-	player.change_direction.connect(func(direction: Player.Facing):
+	player.change_direction.connect(func(direction: Player.Facing) -> void:
 		if direction == Player.Facing.Right:
 			collision.position = initial_collision_pos
 		elif direction == Player.Facing.Left:
@@ -30,5 +30,9 @@ func _on_area_exited(area: Area2D) -> void:
 		hovering = null
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact") and hovering is InteractComponent and player.can_move:
+	if DialogManager.visible:
+		return
+	if hovering is not InteractComponent or not player.can_move:
+		return
+	if Input.is_action_just_pressed("interact"):
 		hovering.player_interact(player)

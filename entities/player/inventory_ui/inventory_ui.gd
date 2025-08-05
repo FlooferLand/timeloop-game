@@ -11,17 +11,17 @@ var in_dialog := false
 
 func _ready() -> void:
 	visible = inventory_comp.default.size() > 0
-	inventory_comp.item_added.connect(func(item: InventoryItem):
+	inventory_comp.item_added.connect(func(item: InventoryItem) -> void:
 		_rebuild_slots()
 	)
-	inventory_comp.item_removed.connect(func(item: InventoryItem):
+	inventory_comp.item_removed.connect(func(item: InventoryItem) -> void:
 		_rebuild_slots()
 	)
-	dialog_manager.dialog_opened.connect(func():
+	dialog_manager.dialog_opened.connect(func() -> void:
 		in_dialog = true
 		_update_visibility()
 	)
-	dialog_manager.dialog_closed.connect(func():
+	dialog_manager.dialog_closed.connect(func(closed_early: bool) -> void:
 		in_dialog = false
 		_update_visibility()
 	)

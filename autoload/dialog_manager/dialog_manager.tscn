@@ -44,17 +44,17 @@ offset_bottom = -280.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 3
 theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/normal_font_size = 38
+theme_override_font_sizes/bold_font_size = 38
 theme_override_font_sizes/bold_italics_font_size = 38
 theme_override_font_sizes/italics_font_size = 38
 theme_override_font_sizes/mono_font_size = 38
-theme_override_font_sizes/normal_font_size = 38
-theme_override_font_sizes/bold_font_size = 38
 text = "Error!!"
 script = ExtResource("2_41pd0")
 
-[node name="DialogBox" type="PanelContainer" parent="Root" node_paths=PackedStringArray("manager", "content_label", "char_name_label", "additional_audio_player", "hint_label")]
+[node name="DialogBox" type="PanelContainer" parent="Root" node_paths=PackedStringArray("manager", "content_label", "char_name_label", "additional_audio_player", "interaction_hint_label")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -72,7 +72,7 @@ manager = NodePath("../..")
 content_label = NodePath("MarginContainer/Content")
 char_name_label = NodePath("../CharacterName")
 additional_audio_player = NodePath("AdditionalAudio")
-hint_label = NodePath("../Hint")
+interaction_hint_label = NodePath("../InteractionHint")
 
 [node name="AdditionalAudio" type="AudioStreamPlayer" parent="Root/DialogBox"]
 bus = &"SFX"
@@ -88,11 +88,11 @@ theme_override_constants/margin_bottom = 10
 [node name="Content" type="RichTextLabel" parent="Root/DialogBox/MarginContainer" node_paths=PackedStringArray("char_timer", "char_audio_player", "censor_audio_player")]
 layout_mode = 2
 mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
 theme_override_font_sizes/bold_italics_font_size = 40
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/mono_font_size = 40
-theme_override_font_sizes/normal_font_size = 40
-theme_override_font_sizes/bold_font_size = 40
 bbcode_enabled = true
 text = "<null>"
 script = ExtResource("3_73toe")
@@ -113,20 +113,20 @@ stream = ExtResource("5_w4tom")
 volume_db = -8.0
 bus = &"SFX"
 
-[node name="Hint" type="Label" parent="Root"]
+[node name="InteractionHint" type="Label" parent="Root"]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 392.0
+offset_left = 275.0
 offset_top = -53.0
 offset_right = 792.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Press space to continue"
+text = "Press wawa to continue/skip/etc"
 label_settings = SubResource("LabelSettings_w4tom")
 horizontal_alignment = 2
 vertical_alignment = 1

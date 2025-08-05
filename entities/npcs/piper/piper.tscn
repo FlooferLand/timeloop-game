@@ -17,7 +17,6 @@
 script = ExtResource("9_g3rkf")
 text = "Struggles under the 50 ton business documents weighing on her head"
 character = ExtResource("7_g3rkf")
-additional = Array[ExtResource("6_g3rkf")]([])
 metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
 
 [sub_resource type="Resource" id="Resource_b4xg6"]

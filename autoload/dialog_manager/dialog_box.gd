@@ -5,7 +5,7 @@ class_name DialogBox extends PanelContainer
 @export var content_label: DialogContentLabel
 @export var char_name_label: DialogCharNameLabel
 @export var additional_audio_player: AudioStreamPlayer
-@export var hint_label: Label
+@export var interaction_hint_label: Label
 
 var entry_index: int = 0
 var inner_index: int = 0
@@ -13,6 +13,7 @@ var inner_index: int = 0
 var data: DialogData = null
 var current: DialogEntry = null
 
+var too_early_to_skip := true
 var speaking := false
 
 func _ready() -> void:
@@ -20,8 +21,10 @@ func _ready() -> void:
 	set_process_input(false)
 	manager.update_speaking.connect(func(speaking: bool) -> void:
 		self.speaking = speaking
-		hint_label.visible = not speaking
+		_update_hint_label()
 	)
+	JoypadManager.connect_state_changed(_update_hint_label)
+	_update_hint_label()
 	_reset()
 
 func _reset() -> void:
@@ -30,7 +33,6 @@ func _reset() -> void:
 	entry_index = 0
 	data = null
 	current = null
-	hint_label.visible = false
 
 func present(data: DialogData) -> void:
 	_reset()
@@ -38,6 +40,12 @@ func present(data: DialogData) -> void:
 	set_process(true)
 	set_process_input(true)
 	advance()
+	too_early_to_skip = true
+	interaction_hint_label.visible = false
+	get_tree().create_timer(0.1).timeout.connect(func() -> void:
+		too_early_to_skip = false
+		interaction_hint_label.visible = true
+	)
 
 func close() -> void:
 	_reset()
@@ -114,15 +122,25 @@ func _process(delta: float) -> void:
 	pass
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and not too_early_to_skip:
 		var button := event as InputEventMouseButton
 		if button.pressed and button.button_index == MOUSE_BUTTON_LEFT:
 			advance()
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("advance_dialog") and manager.visible:
+	var advance_dialog_input := event.is_action_pressed("advance_dialog") \
+		or event.is_action_pressed("interact")
+	
+	if advance_dialog_input and manager.visible and not too_early_to_skip:
 		if speaking:
 			content_label.skip_to_end()
 		else:
 			advance()
 #endregion
+
+func _update_hint_label() -> void:
+	var input_name := InputManager.get_input_name_from_list(["advance_dialog", "interact"])
+	if speaking:
+		interaction_hint_label.text = "Press %s to fast forward" % input_name
+	else:
+		interaction_hint_label.text = "Press %s to continue" % input_name

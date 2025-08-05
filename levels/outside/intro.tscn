@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cjgtv4eflexi6"]
+[gd_scene load_steps=41 format=3 uid="uid://cjgtv4eflexi6"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_34vd1"]
 [ext_resource type="Texture2D" uid="uid://dbjitvlj33phh" path="res://assets/textures/outside/background_outside1.png" id="1_nl86o"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="17_wgj81"]
 [ext_resource type="Script" uid="uid://nsjrhdwswjjr" path="res://levels/outside/skippo.gd" id="18_u1cip"]
 [ext_resource type="AudioStream" uid="uid://d2uc776b6rryi" path="res://assets/sfx/random/typewrite.tres" id="19_y3yg3"]
+[ext_resource type="PackedScene" uid="uid://dgnguofpsk6jj" path="res://components/skip/skip_component.tscn" id="22_yvt5h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jqtv"]
 normal = Vector2(0, -40)
@@ -622,7 +623,7 @@ turbulence_initial_displacement_max = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_wgj81"]
 font_size = 24
-font_color = Color(1, 1, 1, 0.192157)
+font_color = Color(1, 1, 1, 0.3137255)
 
 [node name="Intro" type="Node2D"]
 
@@ -754,10 +755,12 @@ animation = &"idle"
 [node name="SpaceshipLandAudio" type="AudioStreamPlayer2D" parent="Spaceship"]
 volume_db = 2.0
 bus = &"SFX"
+playback_type = 1
 
 [node name="IntroIntercom" type="AudioStreamPlayer" parent="Spaceship"]
 volume_db = -6.0
 bus = &"Navcom Reverbed"
+playback_type = 1
 
 [node name="DoorAudio" type="AudioStreamPlayer" parent="Spaceship"]
 volume_db = -7.0
@@ -783,10 +786,11 @@ explosiveness = 1.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_wgj81")
 
-[node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("skip_feedback", "to_stop")]
+[node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("to_stop", "skip_component", "skip_label")]
 script = ExtResource("18_u1cip")
-skip_feedback = NodePath("SkipFeedback")
 to_stop = [NodePath("../Spaceship/SpaceshipLandAudio"), NodePath("../Spaceship/DoorAudio"), NodePath("../Spaceship/IntroIntercom")]
+skip_component = NodePath("SkipComponent")
+skip_label = NodePath("Control/Label")
 
 [node name="Control" type="Control" parent="Skippo"]
 layout_mode = 3
@@ -799,7 +803,7 @@ metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="Skippo/Control"]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
@@ -815,6 +819,9 @@ vertical_alignment = 2
 stream = ExtResource("19_y3yg3")
 volume_db = -16.0
 bus = &"SFX"
+
+[node name="SkipComponent" parent="Skippo" node_paths=PackedStringArray("bound_label") instance=ExtResource("22_yvt5h")]
+bound_label = NodePath("../Control/Label")
 
 [node name="LightRod" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

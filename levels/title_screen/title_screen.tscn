@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=13 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://btk1lh5vs5ovv" path="res://levels/title_screen/spaceship.gd" id="3_me0mb"]
 [ext_resource type="SpriteFrames" uid="uid://bl1ulu1buo0pr" path="res://assets/textures/spaceship/spaceship.tres" id="3_xkaxa"]
 [ext_resource type="Theme" uid="uid://dr2r7k6nk8smc" path="res://assets/ui.theme" id="5_xkaxa"]
+[ext_resource type="Script" uid="uid://hfr3nxm2k0d0" path="res://scripts/button_container.gd" id="6_b3t8g"]
 [ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
 [ext_resource type="AudioStream" uid="uid://dybu3wnhekijb" path="res://assets/sfx/navcom/radio_quick_noise.wav" id="7_gw2jj"]
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
@@ -68,6 +69,7 @@ offset_top = 200.0
 offset_right = 568.0
 offset_bottom = 664.0
 theme_override_constants/separation = 30
+script = ExtResource("6_b3t8g")
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
@@ -83,20 +85,18 @@ layout_mode = 2
 [node name="PlayGame" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_mode = 0
 theme_override_font_sizes/font_size = 48
 text = "Respond"
 
 [node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_mode = 0
 theme_override_font_sizes/font_size = 48
 text = "Ignore"
 
 [node name="Credits" type="MarginContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

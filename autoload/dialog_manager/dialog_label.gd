@@ -91,4 +91,4 @@ func stop() -> void:
 	char_timer.stop()
 	dialog_manager.update_speaking.emit(false)
 	cusses_in_text.clear()
-	
+	censor_audio_player.stop()

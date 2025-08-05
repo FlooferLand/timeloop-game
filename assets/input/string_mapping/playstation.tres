@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="JoypadMapping" load_steps=2 format=3 uid="uid://d2gwfhyq6j3i5"]
+
+[ext_resource type="Script" uid="uid://u82yamlldioh" path="res://scripts/resources/string_input.gd" id="1_wx8sl"]
+
+[resource]
+script = ExtResource("1_wx8sl")
+mappings = Dictionary[int, String]({
+-1: "INVALID",
+0: "Cross",
+1: "Circle",
+2: "Square",
+3: "Triangle",
+4: "Select",
+5: "PS",
+7: "L3",
+8: "R3",
+9: "L1",
+10: "R1",
+15: "Microphone",
+20: "Touchpad"
+})
+metadata/_custom_type_script = "uid://u82yamlldioh"

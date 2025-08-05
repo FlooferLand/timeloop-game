@@ -15,7 +15,7 @@ const WalkingBobScene := preload("uid://bf7rxnp4ms8us")
 var walking_bob: WalkingBob = null
 
 func _ready() -> void:
-	TimeManager.time_advanced.connect(func(new_hour: int):
+	TimeManager.time_advanced.connect(func(new_hour: int) -> void:
 		match new_hour:
 			TimeTable.BOB_GO_HARASS_RECEPTIONIST:
 				get_tree().create_timer(2.0).timeout.connect(_get_up_and_leave)

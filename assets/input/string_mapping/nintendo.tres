@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="JoypadMapping" load_steps=2 format=3 uid="uid://b2pjdhufpa1v"]
+
+[ext_resource type="Script" uid="uid://u82yamlldioh" path="res://scripts/resources/string_input.gd" id="1_up27i"]
+
+[resource]
+script = ExtResource("1_up27i")
+mappings = Dictionary[int, String]({
+-1: "INVALID",
+0: "B",
+1: "A",
+2: "Y",
+3: "X",
+4: "Minus",
+6: "Plus"
+})
+metadata/_custom_type_script = "uid://u82yamlldioh"

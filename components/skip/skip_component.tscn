@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgnguofpsk6jj"]
+
+[ext_resource type="Script" uid="uid://db1oupu8j3urd" path="res://components/skip/skip_component.gd" id="1_nijc0"]
+[ext_resource type="AudioStream" uid="uid://eh63rnr3a5da" path="res://assets/sfx/random/typewrite_raw.wav" id="2_kljer"]
+
+[node name="SkipComponent" type="Node" node_paths=PackedStringArray("skip_feedback")]
+script = ExtResource("1_nijc0")
+skip_feedback = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kljer")
+mix_target = 2
+bus = &"SFX"
