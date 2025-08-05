@@ -24,6 +24,7 @@ config/windows_native_icon="res://assets/textures/icon.ico"
 
 buses/default_bus_layout="uid://bwk2y74m3iwl1"
 general/default_playback_type.web=0
+driver/driver=""
 
 [autoload]
 
@@ -31,6 +32,10 @@ DialogManager="*res://autoload/dialog_manager/dialog_manager.tscn"
 TimeManager="*res://autoload/time_manager/time_manager.gd"
 JoypadManager="*res://autoload/joypad_manager/joypad_manager.gd"
 InputManager="*res://autoload/input_manager/input_manager.gd"
+
+[compression]
+
+formats/zstd/compression_level=12
 
 [debug]
 
@@ -55,6 +60,15 @@ window/size/window_width_override=1366
 window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[filesystem]
+
+import/fbx2gltf/enabled=false
+import/blender/enabled=false
+
+[gui]
+
+theme/default_font_antialiasing=2
 
 [input]
 
@@ -117,6 +131,10 @@ skip={
 ]
 }
 
+[input_devices]
+
+buffering/agile_event_flushing=true
+
 [layer_names]
 
 2d_physics/layer_2="Interacting"
@@ -127,9 +145,15 @@ skip={
 2d/run_on_separate_thread=true
 common/physics_ticks_per_second=30
 3d/physics_engine="Dummy"
+2d/time_before_sleep=0.3
+2d/solver/solver_iterations=8
 common/physics_interpolation=true
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/shadow_atlas/size=512
+reflections/specular_occlusion/enabled=false
+driver/depth_prepass/enable=false
+anti_aliasing/quality/msaa_2d=1
