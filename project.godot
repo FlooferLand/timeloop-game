@@ -156,4 +156,3 @@ renderer/rendering_method.mobile="gl_compatibility"
 2d/shadow_atlas/size=512
 reflections/specular_occlusion/enabled=false
 driver/depth_prepass/enable=false
-anti_aliasing/quality/msaa_2d=1
