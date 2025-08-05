@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=17 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="2_eff74"]
 [ext_resource type="Script" uid="uid://btk1lh5vs5ovv" path="res://levels/title_screen/spaceship.gd" id="3_me0mb"]
 [ext_resource type="SpriteFrames" uid="uid://bl1ulu1buo0pr" path="res://assets/textures/spaceship/spaceship.tres" id="3_xkaxa"]
+[ext_resource type="PackedScene" uid="uid://b126372syf2k6" path="res://levels/outside/scenes/spaceship_land_poof.tscn" id="5_7v5jn"]
 [ext_resource type="Theme" uid="uid://dr2r7k6nk8smc" path="res://assets/ui.theme" id="5_xkaxa"]
 [ext_resource type="Script" uid="uid://hfr3nxm2k0d0" path="res://scripts/button_container.gd" id="6_b3t8g"]
 [ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
@@ -12,21 +13,180 @@
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eff74"]
-font_size = 64
+font_size = 80
 font_color = Color(0.360784, 0.584314, 1, 1)
 shadow_size = 18
 shadow_color = Color(0.227451, 0, 1, 0.462745)
 shadow_offset = Vector2(4, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0u665"]
-font_size = 24
+font_size = 32
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 0.611765)
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "radio_noise")]
+[sub_resource type="Animation" id="Animation_3agv4"]
+resource_name = "respond"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spaceship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(560, 798), Vector2(909.6002, 766.08215), Vector2(1261, 735.565)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spaceship:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.261799, 0.46251225, 0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spaceship:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.544693, 0.544693), Vector2(0.544693, 0.544693), Vector2(0.195, 0.195)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spaceship/SpaceshipLandPoof:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.96666664),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control/Fade:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.3970158, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Spaceship:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.0919905, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.69411767, 1, 1, 0.5254902)]
+}
+
+[sub_resource type="Animation" id="Animation_eq38v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spaceship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(560, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spaceship:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spaceship:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.544693, 0.544693)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spaceship/SpaceshipLandPoof:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control/Fade:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Spaceship:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iq1xj"]
+_data = {
+&"RESET": SubResource("Animation_eq38v"),
+&"respond": SubResource("Animation_3agv4")
+}
+
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "radio_noise", "anim_player", "respond_button")]
 script = ExtResource("1_ypach")
 navcom_voice = NodePath("Navcom")
 radio_noise = NodePath("Noise")
+anim_player = NodePath("AnimationPlayer")
+respond_button = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/PlayGame")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -47,12 +207,16 @@ animation = &"idle"
 frame_progress = 0.897128
 script = ExtResource("3_me0mb")
 child = NodePath("Spaceship2")
+metadata/_edit_group_ = true
 
 [node name="Spaceship2" type="AnimatedSprite2D" parent="Spaceship"]
 modulate = Color(0, 1, 1, 0.25098)
 z_as_relative = false
 sprite_frames = ExtResource("3_xkaxa")
 animation = &"idle"
+
+[node name="SpaceshipLandPoof" parent="Spaceship" instance=ExtResource("5_7v5jn")]
+position = Vector2(0.40015793, 235.57462)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
@@ -69,12 +233,12 @@ metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 200.0
-offset_right = 568.0
-offset_bottom = 664.0
+offset_left = 98.0
+offset_top = 90.0
+offset_right = 1018.0
+offset_bottom = 554.0
 theme_override_constants/separation = 30
-script = ExtResource("6_b3t8g")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
@@ -87,15 +251,36 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="PlayGame" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Info" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
+custom_minimum_size = Vector2(920, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 24
+bbcode_enabled = true
+text = "Time loop detected on planet [code][color=gray]48-41-4D-49[/color][/code], shortcode \"HAMI\".
+Would you like to pause flight and intervene?"
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+script = ExtResource("6_b3t8g")
+
+[node name="PlayGame" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "Respond"
 
-[node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "Ignore"
 
@@ -128,6 +313,17 @@ label_settings = SubResource("LabelSettings_0u665")
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[node name="Fade" type="ColorRect" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="ClearColor" parent="." instance=ExtResource("2_eff74")]
 color = Color(0.047058824, 0.07058824, 0.20784314, 1)
 
@@ -146,5 +342,10 @@ volume_db = -2.0
 autoplay = true
 bus = &"Music"
 
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_iq1xj")
+}
+
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
