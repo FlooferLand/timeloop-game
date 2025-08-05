@@ -96,6 +96,54 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../VortexLight/Light:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../VortexLight/Light:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../VortexLight/Light:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../VortexLight/Light:texture_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_1efh4"]
 resource_name = "time_loop_prereset"
@@ -146,6 +194,54 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.137255)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../VortexLight/Light:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../VortexLight/Light:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../VortexLight/Light:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.712389]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../VortexLight/Light:texture_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.25]
 }
 
 [sub_resource type="Animation" id="Animation_v6hoe"]
@@ -214,6 +310,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0, 4.88692]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../VortexLight/Light:energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../VortexLight/Light:enabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../VortexLight/Light:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.712389]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yttw0"]
 _data = {
@@ -222,7 +354,7 @@ _data = {
 &"time_loop_reset": SubResource("Animation_v6hoe")
 }
 
-[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "reset_layer", "reset_anim", "counter_label", "chime_audio_player", "dev_time_speedup")]
+[node name="TimeLoopTracker" type="CanvasLayer" node_paths=PackedStringArray("music", "reset_layer", "reset_anim", "counter_label", "chime_audio_player", "dev_time_speedup", "vortex_light")]
 layer = 20
 script = ExtResource("1_ncppg")
 music = NodePath("Music")
@@ -231,6 +363,17 @@ reset_anim = NodePath("Reset/AnimationPlayer")
 counter_label = NodePath("Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Counter")
 chime_audio_player = NodePath("Chime")
 dev_time_speedup = NodePath("Control/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/DevTimeSpeedup")
+vortex_light = NodePath("VortexLight")
+
+[node name="VortexLight" type="Node2D" parent="."]
+z_index = 10
+position = Vector2(960, 540)
+scale = Vector2(1.25, 1.25)
+
+[node name="Light" type="PointLight2D" parent="VortexLight"]
+enabled = false
+energy = 0.0
+texture = ExtResource("6_1efh4")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

@@ -9,6 +9,7 @@ extends CanvasLayer
 @export var counter_label: Label
 @export var chime_audio_player: AudioStreamPlayer
 @export var dev_time_speedup: Label
+@export var vortex_light: Node2D
 
 var music_stream: AudioStreamInteractive
 var music_playback: AudioStreamPlaybackInteractive
