@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bsgdbtff22sua"]
+[gd_scene load_steps=18 format=3 uid="uid://bsgdbtff22sua"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_ul1gn"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_ul1gn"]
@@ -10,19 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://b5jahel11rvsf" path="res://assets/textures/props/glass.png" id="6_23kdh"]
 [ext_resource type="Texture2D" uid="uid://wfhsfyeyeis5" path="res://assets/textures/props/stapler.png" id="7_eue5r"]
 [ext_resource type="PackedScene" uid="uid://ca7bqqskfc2hn" path="res://entities/bob_prank/bob_prank.tscn" id="7_xv13q"]
+[ext_resource type="PackedScene" uid="uid://d3n24sxjvp61u" path="res://props/ceiling_lamp/ceiling_lamp.tscn" id="8_63cxr"]
 [ext_resource type="PackedScene" uid="uid://dlka2wa038g4t" path="res://props/computer/computer_side.tscn" id="10_eue5r"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_63cxr"]
-shader = ExtResource("2_ul1gn")
-shader_parameter/tile = Vector2(1.11198, 0.926852)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yoikn"]
 shader = ExtResource("2_ul1gn")
-shader_parameter/tile = Vector2(1.11198, 1)
+shader_parameter/tile = Vector2(1.1119791, 0.92685187)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6elnv"]
 shader = ExtResource("2_ul1gn")
-shader_parameter/tile = Vector2(1.11198, 1)
+shader_parameter/tile = Vector2(1.1119791, 2.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13fky"]
+shader = ExtResource("2_ul1gn")
+shader_parameter/tile = Vector2(1.1119791, 1.1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyumd"]
 resource_local_to_scene = true
@@ -44,18 +45,18 @@ closed_left = false
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_63cxr")
+material = SubResource("ShaderMaterial_yoikn")
 position = Vector2(0, -1001)
 scale = Vector2(1.1119791, 0.92685187)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_yoikn")
-position = Vector2(0, -1017.17)
-scale = Vector2(1.1119791, 2.1)
+material = SubResource("ShaderMaterial_6elnv")
+position = Vector2(0, -1027.46)
+scale = Vector2(1.1119791, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_6elnv")
-scale = Vector2(1.1119791, 1.1)
+material = SubResource("ShaderMaterial_13fky")
+scale = Vector2(1.1119791, 1.15)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
 position = Vector2(0, -1001)
@@ -90,6 +91,12 @@ modulate = Color(1, 1, 1, 0.541176)
 position = Vector2(1168, -224)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("7_eue5r")
+
+[node name="CeilingLamp" parent="Decor" index="4" instance=ExtResource("8_63cxr")]
+position = Vector2(512, -744)
+
+[node name="CeilingLamp2" parent="Decor" index="5" instance=ExtResource("8_63cxr")]
+position = Vector2(1472, -904)
 
 [node name="Receptionist" parent="Entities" index="0" node_paths=PackedStringArray("bob_prank") instance=ExtResource("5_kwhvp")]
 position = Vector2(1472, -208)

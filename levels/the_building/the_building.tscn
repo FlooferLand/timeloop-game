@@ -36,7 +36,7 @@ autoplay = true
 bus = &"SFX"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.8324741, 0.8324741, 0.8324741, 1)
+color = Color(0.7476796, 0.7476796, 0.7476796, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("6_l6iex")

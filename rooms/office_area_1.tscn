@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dcog8dn15y63q"]
+[gd_scene load_steps=17 format=3 uid="uid://dcog8dn15y63q"]
 
 [ext_resource type="PackedScene" uid="uid://do43h1y6dwryp" path="res://entities/room/room.tscn" id="1_hvhyj"]
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_11oro"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_11oro"]
 [ext_resource type="Texture2D" uid="uid://p1g5jwonv7qd" path="res://assets/textures/props/photocopy.png" id="4_8vixk"]
+[ext_resource type="PackedScene" uid="uid://d3n24sxjvp61u" path="res://props/ceiling_lamp/ceiling_lamp.tscn" id="4_xr6xk"]
 [ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="5_l4tfm"]
 [ext_resource type="PackedScene" uid="uid://35ipjt80ngg6" path="res://entities/npcs/photocopy_guy/photocopy_guy.tscn" id="5_onjh0"]
 [ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="6_onjh0"]
@@ -11,15 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://dlka2wa038g4t" path="res://props/computer/computer_side.tscn" id="9_x4hpm"]
 [ext_resource type="Texture2D" uid="uid://b2qmg3vyk0dhj" path="res://assets/textures/props/bin.png" id="10_x4hpm"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4hpm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_50b35"]
 shader = ExtResource("2_11oro")
 shader_parameter/tile = Vector2(1.1614584, 0.9259259)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xr6xk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqahv"]
 shader = ExtResource("2_11oro")
 shader_parameter/tile = Vector2(1.1614584, 2.1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_50b35"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c52h5"]
 shader = ExtResource("2_11oro")
 shader_parameter/tile = Vector2(1.1614584, 1.1)
 
@@ -42,16 +43,16 @@ closed_left = false
 closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_x4hpm")
+material = SubResource("ShaderMaterial_50b35")
 scale = Vector2(1.1614584, 0.9259259)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_xr6xk")
-scale = Vector2(1.1614584, 2.1)
+material = SubResource("ShaderMaterial_iqahv")
+scale = Vector2(1.1614584, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_50b35")
-scale = Vector2(1.1614584, 1.1)
+material = SubResource("ShaderMaterial_c52h5")
+scale = Vector2(1.1614584, 1.15)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
 texture = ExtResource("3_11oro")
@@ -67,6 +68,9 @@ texture = ExtResource("3_11oro")
 [node name="Collision" parent="AutoRoom/RightWall" index="1"]
 position = Vector2(2153.5, -703)
 shape = SubResource("RectangleShape2D_xr6xk")
+
+[node name="CeilingLamp" parent="Decor" index="0" instance=ExtResource("4_xr6xk")]
+position = Vector2(1184, -1024)
 
 [node name="PhotocopyMachine" type="Node2D" parent="Entities" index="0"]
 position = Vector2(384, -7)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3n24sxjvp61u"]
+
+[ext_resource type="Texture2D" uid="uid://c0cjqp1x2fupm" path="res://assets/textures/light/area_light_long.png" id="1_jj7kk"]
+
+[node name="CeilingLamp" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 408)
+scale = Vector2(5.3161, 2.7124414)
+color = Color(0.85882354, 0.84705883, 0.5568628, 1)
+energy = 0.3
+texture = ExtResource("1_jj7kk")
