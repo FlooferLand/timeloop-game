@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name IntroSkippo extends CanvasLayer
 
 ## TODO: Make it not skip the ENTIRE cutscene
 
@@ -18,3 +18,7 @@ func _ready() -> void:
 				stopping.call("stop")
 		get_tree().change_scene_to_packed(BuildingScene)
 	)
+
+## Makes it so you can no longer skippo
+func remove() -> void:
+	queue_free()

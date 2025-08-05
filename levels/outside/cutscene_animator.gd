@@ -3,6 +3,7 @@ extends AnimationPlayer
 @export var player: Player
 @export var outside_camera: Camera2D
 @export var cutscene_target: Marker2D
+@export var skippo: IntroSkippo
 
 var following_player := false
 
@@ -16,6 +17,9 @@ func _physics_process(delta: float) -> void:
 
 func switch_to_player() -> void:
 	player.can_move = true
+	skippo.remove()
 
+## Called by the cutscene when the should switch to the player camera
+## Currently unused.
 func switch_camera_to_player() -> void:
-	following_player = true
+	pass  # following_player = true

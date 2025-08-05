@@ -722,7 +722,7 @@ shape = SubResource("RectangleShape2D_cv2l2")
 position = Vector2(48, -944)
 
 [node name="OutsideCamera" type="Camera2D" parent="Camera" node_paths=PackedStringArray("target")]
-position = Vector2(48, -944)
+position = Vector2(47.99999, -944.0002)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_left = -1150
@@ -732,7 +732,7 @@ limit_bottom = 70
 script = ExtResource("4_7jqtv")
 target = NodePath("../CutsceneTarget")
 
-[node name="CutsceneAnimator" type="AnimationPlayer" parent="." node_paths=PackedStringArray("player", "outside_camera", "cutscene_target")]
+[node name="CutsceneAnimator" type="AnimationPlayer" parent="." node_paths=PackedStringArray("player", "outside_camera", "cutscene_target", "skippo")]
 libraries = {
 &"": SubResource("AnimationLibrary_5vqf0")
 }
@@ -740,6 +740,7 @@ script = ExtResource("6_6s53q")
 player = NodePath("../Player")
 outside_camera = NodePath("../Camera/OutsideCamera")
 cutscene_target = NodePath("../Camera/CutsceneTarget")
+skippo = NodePath("../Skippo")
 
 [node name="ClearColor" parent="." instance=ExtResource("2_nl86o")]
 
