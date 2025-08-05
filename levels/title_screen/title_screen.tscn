@@ -24,6 +24,81 @@ font_size = 32
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 0.611765)
 
+[sub_resource type="Animation" id="Animation_eq38v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Spaceship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(560, 798)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spaceship:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spaceship:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.544693, 0.544693)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spaceship/SpaceshipLandPoof:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Control/Fade:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Spaceship:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_3agv4"]
 resource_name = "respond"
 length = 2.0
@@ -78,7 +153,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/Fade:modulate")
+tracks/4/path = NodePath("UI/Control/Fade:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -100,81 +175,6 @@ tracks/5/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.69411767, 1, 1, 0.5254902)]
 }
 
-[sub_resource type="Animation" id="Animation_eq38v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Spaceship:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(560, 798)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Spaceship:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.261799]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Spaceship:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.544693, 0.544693)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Spaceship/SpaceshipLandPoof:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/Fade:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Spaceship:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iq1xj"]
 _data = {
 &"RESET": SubResource("Animation_eq38v"),
@@ -186,18 +186,27 @@ script = ExtResource("1_ypach")
 navcom_voice = NodePath("Navcom")
 radio_noise = NodePath("Noise")
 anim_player = NodePath("AnimationPlayer")
-respond_button = NodePath("CanvasLayer/Control/VBoxContainer/HBoxContainer/PlayGame")
+respond_button = NodePath("UI/Control/VBoxContainer/HBoxContainer/PlayGame")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 process_callback = 0
 limit_enabled = false
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960, 540)
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_firn2")
+stretch_mode = 6
 
 [node name="Spaceship" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("child")]
+self_modulate = Color(1, 1, 1, 0.8)
 z_index = 1
 position = Vector2(560, 798)
 rotation = 0.261799
@@ -218,10 +227,10 @@ animation = &"idle"
 [node name="SpaceshipLandPoof" parent="Spaceship" instance=ExtResource("5_7v5jn")]
 position = Vector2(0.40015793, 235.57462)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -231,7 +240,7 @@ grow_vertical = 2
 theme = ExtResource("5_xkaxa")
 metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 90.0
@@ -240,18 +249,18 @@ offset_bottom = 554.0
 theme_override_constants/separation = 30
 metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/Control/VBoxContainer"]
 layout_mode = 2
 text = "Time at the office"
 label_settings = SubResource("LabelSettings_eff74")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Control" type="Control" parent="UI/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Info" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Info" type="RichTextLabel" parent="UI/Control/VBoxContainer"]
 custom_minimum_size = Vector2(920, 0)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 32
@@ -264,27 +273,27 @@ text = "Time loop detected on planet [code][color=gray]48-41-4D-49[/color][/code
 Would you like to pause flight and intervene?"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 script = ExtResource("6_b3t8g")
 
-[node name="PlayGame" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="PlayGame" type="Button" parent="UI/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "Respond"
 
-[node name="Quit" type="Button" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="Quit" type="Button" parent="UI/Control/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 text = "Ignore"
 
-[node name="Credits" type="MarginContainer" parent="CanvasLayer/Control"]
+[node name="Credits" type="MarginContainer" parent="UI/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -300,7 +309,7 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/Credits"]
+[node name="Label" type="Label" parent="UI/Control/Credits"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "
@@ -313,7 +322,7 @@ label_settings = SubResource("LabelSettings_0u665")
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Fade" type="ColorRect" parent="CanvasLayer/Control"]
+[node name="Fade" type="ColorRect" parent="UI/Control"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -347,5 +356,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_iq1xj")
 }
 
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/Control/VBoxContainer/HBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="UI/Control/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
