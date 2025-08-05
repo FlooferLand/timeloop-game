@@ -7,7 +7,7 @@ extends AnimationPlayer
 
 var following_player := false
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	player.can_move = false
 	play("intro_cutscene")
 
