@@ -12,7 +12,7 @@ func _enter_tree() -> void:
 	set_process_input(false)
 	bridge = get_parent() as RoomBridge
 	bridge.locked = true
-	interact_comp.on_player_interact.connect(func(player: Player):
+	interact_comp.on_player_interact.connect(func(player: Player) -> void:
 		if player.inventory_comp.has_item(unlock_item.id):
 			bridge.locked = false
 			player.inventory_comp.remove_item(unlock_item)

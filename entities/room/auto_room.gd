@@ -63,22 +63,22 @@ func recalculate() -> void:
 	var wall_side_size := Vector2(wall_tex_size.x / 2, wall_tex_size.y)
 	
 	# Left wall
-	var left_wall_rect = (left_wall_shape.shape as RectangleShape2D)
+	var left_wall_rect := (left_wall_shape.shape as RectangleShape2D)
 	left_wall_spr.position = Vector2(0, -size.y)
 	if closed_left:
 		left_wall_rect.size = wall_side_size
 		left_wall_shape.position = left_wall_spr.position + Vector2(wall_side_size.x / 2, wall_side_size.y / 2.0)
 	else:
 		left_wall_rect.size = Vector2(wall_side_size.x, wall_side_size.y * 0.55)
-		left_wall_shape.position = left_wall_spr.position + Vector2(wall_side_size.x / 2, left_wall_rect.size.y / 2)
+		left_wall_shape.position = left_wall_spr.position + Vector2(wall_side_size.x / 2, float(left_wall_rect.size.y / 2))
 	
 	# Right wall
-	var right_wall_rect = (right_wall_shape.shape as RectangleShape2D)
+	var right_wall_rect := (right_wall_shape.shape as RectangleShape2D)
 	right_wall_spr.position = Vector2(size.x - (wall_tex_size.x / 2), -size.y)
 	if closed_right:
 		right_wall_rect.size = wall_side_size
 		right_wall_shape.position = right_wall_spr.position + Vector2(wall_side_size.x / 2, wall_side_size.y / 2.0)
 	else:
 		right_wall_rect.size = Vector2(wall_side_size.x, wall_side_size.y * 0.55)
-		right_wall_shape.position = right_wall_spr.position + Vector2(wall_side_size.x / 2, right_wall_rect.size.y / 2)
+		right_wall_shape.position = right_wall_spr.position + Vector2(wall_side_size.x / 2, float(right_wall_rect.size.y / 2))
 	#endregion

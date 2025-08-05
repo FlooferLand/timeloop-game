@@ -247,12 +247,13 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -544)
 ignore_rotation = false
+process_callback = 0
+limit_enabled = false
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
 [node name="Top" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -960.0
@@ -286,7 +287,6 @@ autowrap_mode = 2
 
 [node name="Bottom" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -960.0

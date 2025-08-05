@@ -9,12 +9,12 @@ extends AudioStreamPlayer
 var told_about_reset := false
 
 func _ready() -> void:
-	time_manager.time_advanced.connect(func(new_hour: int):
+	time_manager.time_advanced.connect(func(new_hour: int) -> void:
 		if new_hour == TimeManagerType.END_PM - 1:
 			stream = time_loop_approaching
 			play()
 	)
-	time_manager.reset.connect(func():
+	time_manager.reset.connect(func() -> void:
 		if not told_about_reset:
 			await get_tree().create_timer(1.0).timeout
 			stream = time_loop_reset

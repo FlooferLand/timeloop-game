@@ -24,29 +24,29 @@ func _ready() -> void:
 	reset_layer.visible = false
 	dev_time_speedup.visible = false
 	time_manager = (TimeManager as TimeManagerType)
-	time_manager.prereset.connect(func():
+	time_manager.prereset.connect(func() -> void:
 		reset_anim.play("time_loop_prereset")
 	)
-	time_manager.reset.connect(func():
+	time_manager.reset.connect(func() -> void:
 		reset_anim.play("time_loop_reset")
 	)
-	time_manager.time_advanced.connect(func(new_hour: int):
+	time_manager.time_advanced.connect(func(new_hour: int) -> void:
 		if new_hour == time_manager.START_PM:
 			return
 		chime_audio_player.volume_linear = remap(new_hour, time_manager.START_PM+1, time_manager.END_PM, 0.15, 1.0)
 		chime_audio_player.play()
 	)
-	time_manager.dev_time_speedup.connect(func(enabled: bool):
+	time_manager.dev_time_speedup.connect(func(enabled: bool) -> void:
 		dev_time_speedup.visible = enabled
 	)
-	time_manager.time_stopped.connect(func():
+	time_manager.time_stopped.connect(func() -> void:
 		music_playback.stop()
 		reset_layer.visible = false
 		visible = false
 	)
 
 func _process(delta: float) -> void:
-	var stage: int = remap(TimeManager.counter, 0, TimeManager.MAX_TIME, 0, music_stages)
+	var stage := int(remap(TimeManager.counter, 0, TimeManager.MAX_TIME, 0, music_stages))
 	if stage >= music_stages or not music_playback.is_playing():
 		return
 	if music_playback.get_current_clip_index() != stage:

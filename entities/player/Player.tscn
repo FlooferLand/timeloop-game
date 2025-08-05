@@ -38,6 +38,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.180392)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -480)
 process_callback = 0
+limit_enabled = false
 
 [node name="PlayerInteraction" type="Area2D" parent="." node_paths=PackedStringArray("player", "collision")]
 collision_layer = 2
@@ -63,7 +64,7 @@ inventory_comp = NodePath("../InventoryComponent")
 slot_container = NodePath("MarginContainer/VBoxContainer/Slots")
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryUI"]
-anchors_preset = 2
+anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -184.0

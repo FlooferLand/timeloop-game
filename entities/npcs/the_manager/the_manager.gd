@@ -24,7 +24,7 @@ func _ready() -> void:
 		if player.inventory_comp.has_item(plushie_item.id) and can_receive_plushie and not player_received_key:
 			person_dialog_comp.set_dialog_data(received_plushie_dialog)
 		return true
-	dialog_manager.action_event.connect(func(event_name: String):
+	dialog_manager.action_event.connect(func(event_name: String) -> void:
 		if person_dialog_comp.dialog_comp.active:
 			match event_name:
 				"steal_the_bnnuy":
@@ -34,7 +34,7 @@ func _ready() -> void:
 					person_dialog_comp.set_dialog_data(after_thank_you_dialog)
 					player_received_key = true
 	)
-	time_manager.time_advanced.connect(func(new_hour: int):
+	time_manager.time_advanced.connect(func(new_hour: int) -> void:
 		if new_hour == TimeTable.MANAGER_GO_TO_DESK:
 			walk_comp.target = managers_desk_target
 			person_dialog_comp.set_dialog_data(cant_talk_dialog)

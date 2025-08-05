@@ -14,6 +14,5 @@ func _notification(what: int) -> void:
 			_update()
 
 func _update() -> void:
-	var size := texture.get_size()
 	var mat := material as ShaderMaterial
 	mat.set_shader_parameter("tile", scale)

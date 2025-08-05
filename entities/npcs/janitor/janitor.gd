@@ -11,7 +11,7 @@ var eeping := false
 
 func _ready() -> void:
 	sprite.play("idle")
-	time_manager.time_advanced.connect(func(new_hour: int):
+	time_manager.time_advanced.connect(func(new_hour: int) -> void:
 		if new_hour == TimeTable.JANITOR_FALL_ASLEEP:
 			eeping = true
 			sprite.play("asleep")

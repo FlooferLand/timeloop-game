@@ -6,7 +6,7 @@ extends Area2D
 
 func _ready() -> void:
 	blockade.disabled = true
-	body_entered.connect(func(body: Node2D):
+	body_entered.connect(func(body: Node2D) -> void:
 		if body is Player:
 			blockade.set_deferred("disabled", false)
 			time_manager.stop()

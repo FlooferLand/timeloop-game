@@ -16,7 +16,7 @@ func _enter_tree() -> void:
 	interact_comp.set_postfix(item.name)
 	interact_comp.interact_condition = func(player: Player) -> bool:
 		return player.inventory_comp.has_item(item.id) and not armed
-	interact_comp.on_player_interact.connect(func(player: Player):
+	interact_comp.on_player_interact.connect(func(player: Player) -> void:
 		if not too_late:
 			player.inventory_comp.remove_item(item)
 			content.visible = true

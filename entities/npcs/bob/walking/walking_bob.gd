@@ -12,7 +12,7 @@ var got_pranked := false
 func _ready() -> void:
 	position.y = 0  ## Hackiest fix known to alien-kind
 	anim_player.play("RESET")
-	anim_player.animation_finished.connect(func(anim_name: String):
+	anim_player.animation_finished.connect(func(anim_name: String) -> void:
 		if anim_name == "complain":
 			anim_player.play("RESET")
 			anger_mark.visible = true
@@ -22,7 +22,7 @@ func _ready() -> void:
 			walk_comp.target = desk_self.bob_desk_pos
 			walk_comp.paused = false
 	)
-	walk_comp.on_arrived.connect(func(target: Marker2D):
+	walk_comp.on_arrived.connect(func(target: Marker2D) -> void:
 		match target:
 			desk_self.bob_complain_target:
 				# Hehe..
@@ -33,7 +33,7 @@ func _ready() -> void:
 				desk_self.arrived_back(got_pranked)
 				queue_free()
 	)
-	prank_detector.area_entered.connect(func(area: Area2D):
+	prank_detector.area_entered.connect(func(area: Area2D) -> void:
 		if area is BobPrank:
 			var prank := area as BobPrank
 			prank.too_late = true

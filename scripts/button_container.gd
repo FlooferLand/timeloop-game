@@ -26,6 +26,7 @@ func _enter_tree() -> void:
 	)
 
 func _update_buttons() -> void:
+	await get_tree().process_frame
 	for i in range(buttons.size()):
 		var button: Button = buttons[i]
 		button.focus_mode = Control.FOCUS_ALL if controller_connected else Control.FOCUS_NONE

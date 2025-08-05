@@ -31,7 +31,7 @@ func change(new: Room) -> void:
 		trans_old = null
 	trans_old = old.create_tween()
 	trans_old.tween_property(old, "modulate", Color.BLACK, 0.1)
-	trans_old.tween_callback(func():
+	trans_old.tween_callback(func() -> void:
 		old.visible = false
 		room_changed.emit(old, new)
 		trans_old.kill()
@@ -45,7 +45,7 @@ func change(new: Room) -> void:
 		trans_new = null
 	trans_new = new.create_tween()
 	trans_new.tween_property(new, "modulate", Color.WHITE, 0.3)
-	trans_new.tween_callback(func():
+	trans_new.tween_callback(func() -> void:
 		new.visible = true
 		trans_new.kill()
 		trans_new = null

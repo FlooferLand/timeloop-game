@@ -10,7 +10,7 @@ const EndingScene := preload("uid://bg25346p0d2vh")
 func _ready() -> void:
 	camera.make_current()
 	anim_player.play("elevator_enter")
-	anim_player.animation_finished.connect(func(anim_name: String):
+	anim_player.animation_finished.connect(func(anim_name: String) -> void:
 		if anim_name == "elevator_enter":
 			anim_player.play("elevator_ride")
 		elif anim_name == "elevator_ride":

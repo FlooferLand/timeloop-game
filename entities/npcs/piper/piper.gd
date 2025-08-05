@@ -7,7 +7,7 @@ extends Node2D
 
 func _ready() -> void:
 	var dialog_manager := DialogManager as DialogManagerType
-	dialog_manager.action_event.connect(func(event_name: String):
+	dialog_manager.action_event.connect(func(event_name: String) -> void:
 		if event_name == "give_document" and dialog_comp.active:
 			interact_comp.current_player.inventory_comp.add_item(paper_item)
 	)

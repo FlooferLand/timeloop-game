@@ -35,7 +35,7 @@ func _ready() -> void:
 		return
 	
 	door.visible = false
-	area.body_entered.connect(func(body):
+	area.body_entered.connect(func(body: Node2D) -> void:
 		if body is Player:
 			player = body
 			if has_door and not locked:
@@ -50,7 +50,7 @@ func _ready() -> void:
 				redraw_lock.emit()
 			set_process(true)
 	)
-	area.body_exited.connect(func(body):
+	area.body_exited.connect(func(body: Node2D) -> void:
 		if body is Player:
 			player = null
 			if locked:
@@ -60,7 +60,7 @@ func _ready() -> void:
 			set_process(false)
 	)
 	if has_door:
-		door.animation_finished.connect(func():
+		door.animation_finished.connect(func() -> void:
 			if door.animation == "open" and anim_await_exit:
 				door_audio_playback.switch_to_clip_by_name("close")
 				door.play_backwards("open")
@@ -72,18 +72,18 @@ func _ready() -> void:
 		push_error("Room transition item is null (you stoopit)")
 
 ## _ready but for the editor
-func _editor_ready():
+func _editor_ready() -> void:
 	door.visible = has_door
 
 ## Called while the player is in the transition
 func _process(delta: float) -> void:
 	if not locked:
-		var dir = player.move_direction.sign().x
+		var dir: float = player.move_direction.sign().x
 		if dir > 0 and manager.active != room_b:
 			manager.change(room_b)
 		elif dir < 0 and manager.active != room_a:
 			manager.change(room_a)
 
-func _update_lock():
+func _update_lock() -> void:
 	locking_body_collision.disabled = not locked
 	redraw_lock.emit()

@@ -4,7 +4,7 @@ const TimeLoopContainer := preload("uid://dhy8a74fxl1iw")
 
 func _ready() -> void:
 	TimeManager.start()
-	TimeManager.reset.connect(func():
+	TimeManager.reset.connect(func() -> void:
 		await time_loop_reset()
 	)
 
@@ -18,5 +18,6 @@ func time_loop_reset() -> void:
 	var virtual := TimeLoopContainer.instantiate()
 	for child in virtual.get_children():
 		virtual.remove_child(child)
+		child.owner = null
 		add_child(child)
 	virtual.queue_free()
