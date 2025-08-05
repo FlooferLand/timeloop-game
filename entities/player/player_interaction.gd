@@ -7,6 +7,7 @@ extends Area2D
 
 var initial_collision_pos: Vector2
 var hovering: InteractComponent = null
+var interaction_cooldown: float = 0.0
 
 func _ready() -> void:
 	initial_collision_pos = collision.position
@@ -16,6 +17,12 @@ func _ready() -> void:
 		elif direction == Player.Facing.Left:
 			collision.position = Vector2(-initial_collision_pos.x, initial_collision_pos.y)
 	)
+
+func _process(delta: float) -> void:
+	if interaction_cooldown > 0.1:
+		interaction_cooldown -= delta
+	elif interaction_cooldown != 0.0:
+		interaction_cooldown = 0
 
 func _on_area_entered(area: Area2D) -> void:
 	var parent := area.get_parent()
@@ -34,5 +41,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if hovering is not InteractComponent or not player.can_move:
 		return
-	if Input.is_action_just_pressed("interact"):
-		hovering.player_interact(player)
+	if interaction_cooldown < 0.1:
+		if Input.is_action_just_pressed("interact"):
+			hovering.player_interact(player)
+			interaction_cooldown = 0.5
