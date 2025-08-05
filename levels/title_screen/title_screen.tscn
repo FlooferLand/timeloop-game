@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=19 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
 [ext_resource type="AudioStream" uid="uid://dybu3wnhekijb" path="res://assets/sfx/navcom/radio_quick_noise.wav" id="7_gw2jj"]
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
+[ext_resource type="AudioStream" uid="uid://bpas0ratewa8d" path="res://assets/music/silence.mp3" id="11_3agv4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eff74"]
 font_size = 80
@@ -23,6 +24,39 @@ shadow_offset = Vector2(4, 2)
 font_size = 32
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 0.611765)
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_7v5jn"]
+clip_count = 3
+clip_0/name = &"Silence In"
+clip_0/stream = ExtResource("11_3agv4")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Title Screen"
+clip_1/stream = ExtResource("8_0u665")
+clip_1/auto_advance = 0
+clip_2/name = &"Silence Out"
+clip_2/stream = ExtResource("11_3agv4")
+clip_2/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(0, 1): {
+"fade_beats": 0.2,
+"fade_mode": 1,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 1.6,
+"fade_mode": 2,
+"from_time": 0,
+"to_time": 0
+}
+}
 
 [sub_resource type="Animation" id="Animation_eq38v"]
 length = 0.001
@@ -181,9 +215,10 @@ _data = {
 &"respond": SubResource("Animation_3agv4")
 }
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "radio_noise", "anim_player", "respond_button")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "music", "radio_noise", "anim_player", "respond_button")]
 script = ExtResource("1_ypach")
 navcom_voice = NodePath("Navcom")
+music = NodePath("Music")
 radio_noise = NodePath("Noise")
 anim_player = NodePath("AnimationPlayer")
 respond_button = NodePath("UI/Control/VBoxContainer/HBoxContainer/PlayGame")
@@ -346,7 +381,7 @@ stream = ExtResource("7_gw2jj")
 bus = &"Navcom"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_0u665")
+stream = SubResource("AudioStreamInteractive_7v5jn")
 volume_db = -2.0
 autoplay = true
 bus = &"Music"
