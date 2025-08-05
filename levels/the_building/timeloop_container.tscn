@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhy8a74fxl1iw"]
+[gd_scene load_steps=16 format=3 uid="uid://dhy8a74fxl1iw"]
 
 [ext_resource type="Script" uid="uid://br8rjbtnetts7" path="res://levels/the_building/timeloop_container.gd" id="1_s5u2e"]
 [ext_resource type="Script" uid="uid://cfukos81yr5be" path="res://levels/the_building/room_manager.gd" id="2_tugbd"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://myo2rpycaysv" path="res://rooms/storage_closet.tscn" id="9_3qcp8"]
 [ext_resource type="PackedScene" uid="uid://bb68hsv18n5jd" path="res://rooms/managers_office.tscn" id="9_6mlxv"]
 [ext_resource type="PackedScene" uid="uid://dfxblen2v7nr3" path="res://entities/npcs/bob/at_desk/bob_at_desk.tscn" id="10_3qcp8"]
+[ext_resource type="PackedScene" uid="uid://dlka2wa038g4t" path="res://props/computer/computer_side.tscn" id="10_hev1u"]
 [ext_resource type="Script" uid="uid://deskh66ba4q63" path="res://levels/the_building/entities.gd" id="13_tef80"]
 
 [node name="TimeLoopContainer" type="Node2D"]
@@ -49,10 +50,15 @@ room_b = NodePath("../OfficeArea1")
 [node name="OfficeArea1" parent="RoomManager" instance=ExtResource("5_rb8h4")]
 position = Vector2(2135, 0)
 
-[node name="Bob at desk" parent="RoomManager/OfficeArea1" node_paths=PackedStringArray("bob_complain_target", "bob_container") instance=ExtResource("10_3qcp8")]
+[node name="Bob at desk" parent="RoomManager/OfficeArea1" node_paths=PackedStringArray("bob_complain_target", "bob_container", "bobputer") instance=ExtResource("10_3qcp8")]
 position = Vector2(1713, -31)
 bob_complain_target = NodePath("../../Reception/BobComplainTarget")
 bob_container = NodePath("../../../Entities")
+bobputer = NodePath("../Bobputer")
+
+[node name="Bobputer" parent="RoomManager/OfficeArea1" instance=ExtResource("10_hev1u")]
+z_index = 1
+position = Vector2(1769, -187)
 
 [node name="RoomBridge2" parent="RoomManager" node_paths=PackedStringArray("room_a", "room_b") instance=ExtResource("4_fidhy")]
 position = Vector2(4365, 0)

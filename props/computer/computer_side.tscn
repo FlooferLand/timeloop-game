@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlka2wa038g4t"]
+[gd_scene load_steps=4 format=3 uid="uid://dlka2wa038g4t"]
 
 [ext_resource type="Texture2D" uid="uid://bsawf5hmt5nc8" path="res://assets/textures/props/Computer2.png" id="1_gn7ol"]
+[ext_resource type="Script" uid="uid://c0vvhgj3h1dkp" path="res://props/computer/prop_computer.gd" id="1_u50gt"]
 [ext_resource type="Texture2D" uid="uid://c0cjqp1x2fupm" path="res://assets/textures/light/area_light_long.png" id="2_f82to"]
 
-[node name="ComputerSide" type="Node2D"]
+[node name="ComputerSide" type="Node2D" node_paths=PackedStringArray("light", "random_energy_timer")]
+script = ExtResource("1_u50gt")
+light = NodePath("PointLight2D")
+random_energy_timer = NodePath("RandomEnergy")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -97)
@@ -14,3 +18,7 @@ position = Vector2(-143, -81)
 rotation = -1.5707964
 energy = 0.4
 texture = ExtResource("2_f82to")
+
+[node name="RandomEnergy" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true

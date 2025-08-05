@@ -2,6 +2,7 @@ class_name BobAtDesk extends Node2D
 
 @export var bob_complain_target: Marker2D
 @export var bob_container: Node2D
+@export var bobputer: PropComputer
 
 @export_group("Local")
 @export var after_prank_dialog: DialogData
@@ -22,6 +23,9 @@ func _ready() -> void:
 	)
 
 func _get_up_and_leave() -> void:
+	bobputer.turn_off()
+	await get_tree().create_timer(0.2).timeout
+	
 	walking_bob = WalkingBobScene.instantiate()
 	walking_bob.global_position = bob_desk_pos.global_position
 	walking_bob.desk_self = self
@@ -38,3 +42,4 @@ func arrived_back(pranked: bool) -> void:
 		dialog_comp.set_dialog_data(after_prank_dialog)
 	else:
 		dialog_comp.set_dialog_data(after_argument_dialog)
+	bobputer.turn_on()
