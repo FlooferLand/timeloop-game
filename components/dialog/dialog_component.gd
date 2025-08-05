@@ -15,8 +15,9 @@ func start() -> void:
 	active = true
 
 func stop() -> void:
-	(DialogManager as DialogManagerType).close()
-	active = false
+	if active:
+		(DialogManager as DialogManagerType).close()
+		active = false
 
 func _ready() -> void:
 	var diag_manager := (DialogManager as DialogManagerType)
