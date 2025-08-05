@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cjgtv4eflexi6"]
+[gd_scene load_steps=32 format=3 uid="uid://cjgtv4eflexi6"]
 
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="1_34vd1"]
 [ext_resource type="Texture2D" uid="uid://dbjitvlj33phh" path="res://assets/textures/outside/background_outside1.png" id="1_nl86o"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://divqq41454uas" path="res://levels/outside/scenes/spaceship_ambient_poof.tscn" id="19_rjd78"]
 [ext_resource type="AudioStream" uid="uid://d2uc776b6rryi" path="res://assets/sfx/random/typewrite.tres" id="19_y3yg3"]
 [ext_resource type="PackedScene" uid="uid://b126372syf2k6" path="res://levels/outside/scenes/spaceship_land_poof.tscn" id="20_d3c7x"]
+[ext_resource type="Texture2D" uid="uid://c0cjqp1x2fupm" path="res://assets/textures/light/area_light_long.png" id="20_emdsu"]
 [ext_resource type="PackedScene" uid="uid://dgnguofpsk6jj" path="res://components/skip/skip_component.tscn" id="22_yvt5h"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7jqtv"]
@@ -247,6 +248,18 @@ tracks/18/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Spaceship/PointLight2D:energy")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_oqetn"]
@@ -547,6 +560,18 @@ tracks/23/keys = {
 "update": 0,
 "values": [Color(0.490196, 0.490196, 0.490196, 0.92549), Color(1, 1, 1, 1)]
 }
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Spaceship/PointLight2D:energy")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 0.97, 1.83, 4.12, 4.97, 5.23, 5.61, 5.7867413, 6.1666665, 6.508266, 7.15, 16.663233, 17.034626, 17.282223, 28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0, 1.0, 0.6, 0.0, 0.5, 0.2, 0.5, 0.2, 0.5, 0.5, 2.0, 0.8, 0.5]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5vqf0"]
 _data = {
@@ -655,7 +680,7 @@ shape = SubResource("RectangleShape2D_cv2l2")
 position = Vector2(48, -944)
 
 [node name="OutsideCamera" type="Camera2D" parent="Camera" node_paths=PackedStringArray("target")]
-position = Vector2(48, -944)
+position = Vector2(47.99999, -944.0002)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_left = -1150
@@ -704,6 +729,13 @@ bus = &"SFX"
 [node name="SpaceshipAmbientPoof" parent="Spaceship" instance=ExtResource("19_rjd78")]
 position = Vector2(0, -232)
 
+[node name="PointLight2D" type="PointLight2D" parent="Spaceship"]
+position = Vector2(0, -248.165)
+scale = Vector2(2.107, 2.107)
+color = Color(0.99833435, 0.86131954, 0.8426048, 1)
+texture = ExtResource("20_emdsu")
+texture_scale = 1.1
+
 [node name="SpaceshipLandPoof" parent="." instance=ExtResource("20_d3c7x")]
 
 [node name="Skippo" type="CanvasLayer" parent="." node_paths=PackedStringArray("to_stop", "skip_component", "skip_label", "animator", "camera", "camera_target")]
@@ -751,3 +783,4 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(9, -461.5)
 scale = Vector2(4.625, 21.5703)
 texture = ExtResource("17_wgj81")
+metadata/_edit_lock_ = true
