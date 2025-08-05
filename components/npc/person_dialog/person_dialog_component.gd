@@ -12,6 +12,15 @@ class RequiredAnimations extends Object:
 @export var sprite: AnimatedSprite2D = null
 @export var future_dialogs: Array[DialogData] = []
 @export var walk_comp: PersonWalkComponent = null
+@export var head_position: Vector2:
+	get(): return head_position
+	set(value):
+		head_position = value
+		if head_position_editor_col != null:
+			head_position_editor_col.position = head_position
+
+var head_position_editor_col: CollisionShape2D
+var head_position_editor_area: Area2D
 
 var active: bool:
 	get(): return dialog_comp.active
@@ -34,6 +43,21 @@ func _enter_tree() -> void:
 			interact_comp = child as InteractComponent
 		elif child is DialogComponent:
 			dialog_comp = child as DialogComponent
+	if Engine.is_editor_hint():
+		head_position_editor_area = Area2D.new()
+		
+		var shape := CircleShape2D.new()
+		shape.radius = 50
+		head_position_editor_col = CollisionShape2D.new()
+		head_position_editor_col.shape = shape
+		head_position_editor_col.debug_color = Color.AQUAMARINE.lerp(Color.TRANSPARENT, 0.8)
+		head_position_editor_col.position = head_position
+		head_position_editor_area.add_child(head_position_editor_col)
+		add_child(head_position_editor_area)
+
+func _exit_tree() -> void:
+	if Engine.is_editor_hint():
+		head_position_editor_area.queue_free()
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -50,6 +74,8 @@ func _ready() -> void:
 		incomplete_dialog = false
 		dialog_comp.start()
 		interact_comp.hide_info()
+		if head_position:
+			SpotlightManager.display_on(to_global(head_position))
 		if walk_comp != null:
 			walk_comp.paused = true
 	)
@@ -60,6 +86,7 @@ func _ready() -> void:
 			dialog_index += 1
 			interact_comp.set_postfix("again")
 		interact_comp.show_info()
+		SpotlightManager.remove()
 		if walk_comp != null:
 			walk_comp.paused = false
 	)
@@ -68,6 +95,7 @@ func _ready() -> void:
 		sprite_play(required_animations.idle)
 		interact_comp.show_info()
 		incomplete_dialog = true
+		SpotlightManager.remove()
 		if walk_comp != null:
 			walk_comp.paused = false
 	)

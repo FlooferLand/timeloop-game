@@ -20,7 +20,6 @@
 script = ExtResource("8_mihhc")
 text = ".."
 character = ExtResource("8_n2s6q")
-additional = Array[ExtResource("7_wamxo")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_wamxo"]
@@ -32,7 +31,6 @@ metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 script = ExtResource("8_mihhc")
 text = "I'm gonna bully you soon if you don't get out my face"
 character = ExtResource("8_n2s6q")
-additional = Array[ExtResource("7_wamxo")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_31jij"]
@@ -55,6 +53,7 @@ animation = &"at_desk"
 
 [node name="PersonDialogComponent" parent="Bob" instance=ExtResource("4_egl2v")]
 future_dialogs = Array[ExtResource("5_sx6u0")]([ExtResource("6_kt00c"), SubResource("Resource_wamxo"), SubResource("Resource_31jij")])
+head_position = Vector2(63.02, -11.35)
 
 [node name="InteractComponent" parent="Bob/PersonDialogComponent" instance=ExtResource("5_gsjqu")]
 size = Vector2i(225, 440)

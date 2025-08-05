@@ -13,15 +13,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ptjl"]
 shader = ExtResource("2_nn8ak")
-shader_parameter/tile = Vector2(1.04688, 0.925926)
+shader_parameter/tile = Vector2(1.046875, 0.9259259)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tliww"]
 shader = ExtResource("2_nn8ak")
-shader_parameter/tile = Vector2(1.04688, 1)
+shader_parameter/tile = Vector2(1.046875, 2.1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5m35"]
 shader = ExtResource("2_nn8ak")
-shader_parameter/tile = Vector2(1.04688, 1)
+shader_parameter/tile = Vector2(1.046875, 1.1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf4fi"]
 resource_local_to_scene = true
@@ -43,15 +43,15 @@ closed_right = false
 
 [node name="Background" parent="AutoRoom" index="0"]
 material = SubResource("ShaderMaterial_2ptjl")
-scale = Vector2(1.04688, 0.925926)
+scale = Vector2(1.046875, 0.9259259)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
 material = SubResource("ShaderMaterial_tliww")
-scale = Vector2(1.04688, 1)
+scale = Vector2(1.046875, 2.1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
 material = SubResource("ShaderMaterial_k5m35")
-scale = Vector2(1.04688, 1)
+scale = Vector2(1.046875, 1.1)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
 texture = ExtResource("3_nn8ak")

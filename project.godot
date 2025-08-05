@@ -34,6 +34,7 @@ DialogManager="*res://autoload/dialog_manager/dialog_manager.tscn"
 TimeManager="*res://autoload/time_manager/time_manager.gd"
 JoypadManager="*res://autoload/joypad_manager/joypad_manager.gd"
 InputManager="*res://autoload/input_manager/input_manager.gd"
+SpotlightManager="*res://autoload/spotlight_manager/spotlight_manager.gd"
 
 [compression]
 

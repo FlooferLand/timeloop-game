@@ -5,7 +5,6 @@
 [ext_resource type="Resource" uid="uid://bg0jc7csv1njn" path="res://assets/resources/dialog/receptionist/r_thank_player_dialog.tres" id="2_abkpk"]
 [ext_resource type="Resource" uid="uid://d1shglsfrg0mj" path="res://assets/resources/items/managers_plushie/managers_plushie.tres" id="2_h756q"]
 [ext_resource type="SpriteFrames" uid="uid://b8hnlut0v4ocq" path="res://assets/textures/npcs/receptionist.tres" id="2_ydaht"]
-[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="3_layea"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="3_qekmj"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_ynfe1"]
 [ext_resource type="Resource" uid="uid://satf46q53fo4" path="res://assets/resources/dialog/receptionist/r_after_prank_happy.tres" id="4_5h8mu"]
@@ -16,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://cs0ncr7aau2f3" path="res://assets/resources/dialog/receptionist/r_initial.tres" id="5_f535e"]
 [ext_resource type="Resource" uid="uid://flvaq02chr1e" path="res://assets/resources/dialog/receptionist/r_harassment.tres" id="5_layea"]
 [ext_resource type="AudioStream" uid="uid://nth8mlj45vni" path="res://assets/sfx/char_ambient/reception_lady_ambient.mp3" id="6_3wyig"]
+[ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="11_pi4bl"]
 [ext_resource type="PackedScene" uid="uid://brmrynj2yk7an" path="res://components/exclaim/exclaim_component.tscn" id="15_t5igk"]
 
 [sub_resource type="Resource" id="Resource_pi4bl"]
@@ -53,6 +53,7 @@ scale = Vector2(0.6, 0.6)
 [node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_qekmj")]
 sprite = NodePath("../AnimatedSprite2D")
 future_dialogs = Array[ExtResource("5_7smqe")]([SubResource("Resource_7fdwj")])
+head_position = Vector2(-41.635, -126.215)
 
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_ynfe1")]
 position = Vector2(0, -152)

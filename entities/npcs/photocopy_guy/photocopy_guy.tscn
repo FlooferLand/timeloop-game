@@ -18,7 +18,6 @@
 script = ExtResource("9_76n7d")
 text = "Anyway uhh.."
 character = ExtResource("8_qbixg")
-additional = Array[ExtResource("7_83ilc")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_qbixg"]
@@ -30,7 +29,6 @@ metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 script = ExtResource("10_83ilc")
 texts = Array[String](["They call me the photocopy guy, the way i uhh.. photo the copies..", ".. I meant copy the photos", "Fuck"])
 character = ExtResource("8_qbixg")
-additional = Array[ExtResource("7_83ilc")]([])
 metadata/_custom_type_script = "uid://c2c64doslfxei"
 
 [sub_resource type="Resource" id="Resource_ushtw"]
@@ -42,7 +40,6 @@ metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 script = ExtResource("9_76n7d")
 text = ".."
 character = ExtResource("8_qbixg")
-additional = Array[ExtResource("7_83ilc")]([])
 metadata/_custom_type_script = "uid://dusduojuy6ico"
 
 [sub_resource type="Resource" id="Resource_477qy"]
@@ -59,6 +56,7 @@ texture = ExtResource("7_5vfgo")
 
 [node name="PersonDialogComponent" parent="." instance=ExtResource("3_cjftj")]
 future_dialogs = Array[ExtResource("4_twje7")]([ExtResource("5_vjg1r"), SubResource("Resource_qbixg"), SubResource("Resource_ushtw"), SubResource("Resource_477qy")])
+head_position = Vector2(-51.92, -403.33)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
