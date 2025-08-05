@@ -44,17 +44,17 @@ func recalculate() -> void:
 	
 	# Ceiling
 	var ceil_tex_size := ceiling.texture.get_size()
-	var ceiling_height := 1.1
-	ceiling.position = Vector2(0, (-size.y - ((ceiling_height * ceil_tex_size.y) * 0.1)))
+	var ceiling_height := 1.2
+	ceiling.position = Vector2(0, (-size.y - ((ceiling_height * ceil_tex_size.y) * 0.15)))
 	ceiling.scale = Vector2(
 		size.x / ceil_tex_size.x,
-		1.0 + ceiling_height
+		1.0
 	)
 	
 	# Floor
-	var floor_height := 1.1
+	var floor_height := 1.15
 	var floor_tex_size := ceiling.texture.get_size()
-	floor.position = Vector2(0, -(floor_tex_size.y * (floor_height - 0.05)))
+	floor.position = Vector2(0, -(floor_tex_size.y * (floor_height - 0.2)))
 	floor.scale = Vector2(size.x / floor_tex_size.x, floor_height)
 	
 	# Background

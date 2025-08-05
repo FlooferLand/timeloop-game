@@ -38,7 +38,7 @@ shape = SubResource("CapsuleShape2D_453mm")
 debug_color = Color(0, 0.6, 0.701961, 0.180392)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -450)
+position = Vector2(0, -465)
 process_callback = 0
 limit_enabled = false
 

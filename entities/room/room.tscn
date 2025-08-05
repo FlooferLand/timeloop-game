@@ -16,11 +16,11 @@ shader_parameter/tile = Vector2(0.5208333, 0.9259259)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vouxh"]
 shader = ExtResource("4_vouxh")
-shader_parameter/tile = Vector2(0.5208333, 2.1)
+shader_parameter/tile = Vector2(0.5208333, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7we7q"]
 shader = ExtResource("4_vouxh")
-shader_parameter/tile = Vector2(0.5208333, 1.1)
+shader_parameter/tile = Vector2(0.5208333, 1.15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eocep"]
 resource_local_to_scene = true
@@ -56,17 +56,18 @@ metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Ceiling" type="Sprite2D" parent="AutoRoom"]
 material = SubResource("ShaderMaterial_vouxh")
-position = Vector2(0, -1016.17)
-scale = Vector2(0.5208333, 2.1)
+position = Vector2(0, -1026.46)
+scale = Vector2(0.5208333, 1)
 texture = ExtResource("7_hgt0f")
 centered = false
 script = ExtResource("6_oqp6b")
 metadata/_custom_type_script = "uid://c68vouwqotsv6"
 
 [node name="Floor" type="Sprite2D" parent="AutoRoom"]
+visible = false
 material = SubResource("ShaderMaterial_7we7q")
-position = Vector2(0, -154.35)
-scale = Vector2(0.5208333, 1.1)
+position = Vector2(0, -139.65)
+scale = Vector2(0.5208333, 1.15)
 texture = ExtResource("8_t3ekj")
 centered = false
 script = ExtResource("6_oqp6b")
