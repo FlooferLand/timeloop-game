@@ -29,15 +29,17 @@ navcom_voice = NodePath("Navcom")
 radio_noise = NodePath("Noise")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
 process_callback = 0
 limit_enabled = false
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
 texture = ExtResource("1_firn2")
 
 [node name="Spaceship" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("child")]
 z_index = 1
-position = Vector2(-400, 258)
+position = Vector2(560, 798)
 rotation = 0.261799
 scale = Vector2(0.544693, 0.544693)
 sprite_frames = ExtResource("3_xkaxa")
