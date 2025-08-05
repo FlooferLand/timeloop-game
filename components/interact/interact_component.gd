@@ -46,18 +46,18 @@ var can_interact := true:
 var _postfix := ""
 var interact_condition := func(player: Player) -> bool: return true
 
-func set_postfix(postfix: String = ""):
+func set_postfix(postfix: String = "") -> void:
 	_postfix = postfix
 
 ## Called by the player when interacting
-func player_interact(player: Player):
+func player_interact(player: Player) -> void:
 	if is_visible_in_tree() and can_interact and meets_condition(player):
 		on_player_interact.emit(player)
 		current_player = player
 		_update_label()
 
 ## Called by the player when they can interact with this component
-func player_enter(player: Player):
+func player_enter(player: Player) -> void:
 	if is_visible_in_tree() and can_interact and meets_condition(player):
 		player_hovering = true
 		displaying_info = true
@@ -65,24 +65,24 @@ func player_enter(player: Player):
 		_update_label()
 
 ## Called by the player when they can no longer interact with this component
-func player_leave(player: Player):
+func player_leave(player: Player) -> void:
 	player_hovering = false
 	displaying_info = false
 	current_player = null
 	_update_label()
 
-func show_info():
+func show_info() -> void:
 	displaying_info = true
 	_update_label()
 
-func hide_info():
+func hide_info() -> void:
 	displaying_info = false
 	_update_label()
 
 func meets_condition(player: Player) -> bool:
 	return interact_condition.call(player)
 
-func _update_size():
+func _update_size() -> void:
 	var shape := (collision.shape as RectangleShape2D)
 	shape.size = size
 
@@ -114,6 +114,6 @@ func _update_label() -> void:
 			text = "Enter"
 	if not _postfix.is_empty():
 		text = "%s %s" % [text, _postfix]
-	label.position = info_offset - Vector2i(label.size.x / 2, label.size.y)
+	label.position = Vector2(info_offset) - Vector2(label.size.x / 2, label.size.y)
 	label.text = text
 	label.visible = true
