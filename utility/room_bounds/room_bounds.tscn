@@ -9,4 +9,5 @@ screen_notifier = NodePath("VisibleOnScreenNotifier2D")
 metadata/_edit_lock_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-10, -10, 20, 57.18)
+rect = Rect2(0, 0, 0, 0)
+show_rect = false
