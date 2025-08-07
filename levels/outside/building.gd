@@ -1,6 +1,6 @@
 extends Node2D
 
-const BuildingScene := preload("uid://douk4eknvrii7")
+const BuildingScene := preload("res://levels/the_building/the_building.tscn")
 
 @export var interact_comp: InteractComponent
 

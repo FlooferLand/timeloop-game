@@ -37,7 +37,7 @@ func _on_area_exited(area: Area2D) -> void:
 		hovering = null
 
 func _input(event: InputEvent) -> void:
-	if DialogManager.visible:
+	if (DialogManager as DialogManagerType).visible:
 		return
 	if hovering is not InteractComponent or not player.can_move:
 		return

@@ -15,32 +15,33 @@ var active: Room:
 	set(value): change(value)
 
 func _enter_tree() -> void:
-	default.initially_active = true
 	for thing in get_children():
 		if thing is Room:
 			rooms.push_back(thing)
 			thing.set("manager", self)
 		elif thing is RoomBridge:
 			thing.set("manager", self)
-	_active = default
+	default.initially_active = true
+	active = default
 
 func change(new: Room) -> void:
 	var old := _active
 	_active = new
 	
-	if trans_old != null:
-		old.modulate = Color.WHITE
-		old.visible = true
-		trans_old.kill()
-		trans_old = null
-	trans_old = old.create_tween()
-	trans_old.tween_property(old, "modulate", Color.BLACK, 0.1)
-	trans_old.tween_callback(func() -> void:
-		old.visible = false
-		room_changed.emit(old, new)
-		trans_old.kill()
-		trans_old = null
-	)
+	if old != null:
+		if trans_old != null:
+			old.modulate = Color.WHITE
+			old.visible = true
+			trans_old.kill()
+			trans_old = null
+		trans_old = old.create_tween()
+		trans_old.tween_property(old, "modulate", Color.BLACK, 0.1)
+		trans_old.tween_callback(func() -> void:
+			old.visible = false
+			room_changed.emit(old, new)
+			trans_old.kill()
+			trans_old = null
+		)
 	
 	if trans_new != null:
 		new.modulate = Color.WHITE

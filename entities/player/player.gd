@@ -18,6 +18,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var _initial_position: Vector2
 var _initial_zoom: Vector2
 
+var current_room_id: StringName
 var move_direction := Vector2.ZERO
 var facing := Facing.Right
 var can_move := true
@@ -44,9 +45,6 @@ func _ready() -> void:
 	mouse_locked = true
 	change_direction.connect(func(facing: Facing) -> void:
 		sprite.flip_h = (facing == Facing.Left)
-	)
-	TimeManager.reset.connect(func() -> void:
-		global_position = _initial_position
 	)
 
 func _process(delta: float) -> void:

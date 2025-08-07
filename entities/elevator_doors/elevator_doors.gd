@@ -1,6 +1,6 @@
 extends Node2D
 
-const ElevatorRideScene := preload("uid://domjojwwk6q7d")
+const ElevatorRideScene := preload("res://levels/elevator_ride/elevator_ride.tscn")
 
 @export_group("Local")
 @export var interact_comp: InteractComponent

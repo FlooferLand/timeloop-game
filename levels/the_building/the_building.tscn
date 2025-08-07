@@ -12,7 +12,8 @@ normal = Vector2(0, -40)
 
 [node name="TheBuilding" type="Node2D"]
 
-[node name="TimeLoopContainer" parent="." instance=ExtResource("1_8k4rm")]
+[node name="TimeLoopContainer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_8k4rm")]
+player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("1_hixpo")]
 position = Vector2(500, 0)

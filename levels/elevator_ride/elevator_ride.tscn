@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://domjojwwk6q7d"]
+[gd_scene load_steps=21 format=3 uid="uid://domjojwwk6q7d"]
 
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="1_f44ss"]
 [ext_resource type="Texture2D" uid="uid://cimrlwpr1e36j" path="res://assets/textures/room/elevator_background.png" id="1_fh6it"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dn64b1m3s4eh3" path="res://levels/elevator_ride/elevator_ride.gd" id="1_x4l2d"]
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="3_fh6it"]
 [ext_resource type="Texture2D" uid="uid://b6yjqit5233yp" path="res://assets/textures/room/elevator_doors.png" id="4_xku71"]
+[ext_resource type="Texture2D" uid="uid://c0cjqp1x2fupm" path="res://assets/textures/light/area_light_long.png" id="5_ymjri"]
 [ext_resource type="SpriteFrames" uid="uid://cr1jr04f0k0wn" path="res://assets/textures/player/with_arms.tres" id="6_qhb31"]
 [ext_resource type="AudioStream" uid="uid://gfut33atohyx" path="res://assets/music/elevator_ride_once.mp3" id="7_vtdon"]
 [ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="8_lfvvc"]
@@ -575,6 +576,12 @@ position = Vector2(-16.35, -464)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("4_xku71")
 
+[node name="PointLight2D" type="PointLight2D" parent="Environment"]
+position = Vector2(0, -310)
+scale = Vector2(3.300813, 3.3008127)
+energy = 0.5
+texture = ExtResource("5_ymjri")
+
 [node name="Physics" type="Node2D" parent="."]
 
 [node name="Floor" type="StaticBody2D" parent="Physics"]
@@ -667,6 +674,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
 volume_db = -8.0

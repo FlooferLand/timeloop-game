@@ -1,7 +1,5 @@
 extends Area2D
 
-const TitleScreenScene := preload("uid://cu638cpwjak4k")
-
 @export var anim_player: AnimationPlayer
 @export var sprite: AnimatedSprite2D
 
@@ -19,7 +17,7 @@ func _enter_tree() -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	)
 	ending_sound_player.finished.connect(func() -> void:
-		get_tree().change_scene_to_packed(TitleScreenScene)
+		get_tree().change_scene_to_file("uid://cu638cpwjak4k")
 	)
 	anim_player.animation_finished.connect(func(anim_name: String) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

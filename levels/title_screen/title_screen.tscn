@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=20 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
@@ -18,6 +18,13 @@ font_size = 80
 font_color = Color(0.360784, 0.584314, 1, 1)
 shadow_size = 18
 shadow_color = Color(0.227451, 0, 1, 0.462745)
+shadow_offset = Vector2(4, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3agv4"]
+font_size = 40
+font_color = Color(0.8352941, 0.87058824, 0, 0.59607846)
+shadow_size = 8
+shadow_color = Color(0.227451, 0, 1, 0.36862746)
 shadow_offset = Vector2(4, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0u665"]
@@ -283,17 +290,39 @@ offset_right = 1018.0
 offset_bottom = 554.0
 theme_override_constants/separation = 30
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="UI/Control/VBoxContainer"]
+[node name="Title" type="Control" parent="UI/Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/Control/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Time at the office"
 label_settings = SubResource("LabelSettings_eff74")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="UI/Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
+[node name="Subtip" type="Label" parent="UI/Control/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -233.0
+offset_top = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Early Access"
+label_settings = SubResource("LabelSettings_3agv4")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Info" type="RichTextLabel" parent="UI/Control/VBoxContainer"]
 custom_minimum_size = Vector2(920, 0)
@@ -350,9 +379,7 @@ size_flags_vertical = 1
 text = "
 2D art by DotMouse
 Game and music by FlooferLand
-Voice acting by Monsterwaill, VAR-MINT
-
-Made for the GMTK 2025 game jam"
+Voice acting by Monsterwaill, VAR-MINT"
 label_settings = SubResource("LabelSettings_0u665")
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -367,6 +394,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="ClearColor" parent="." instance=ExtResource("2_eff74")]
 color = Color(0.047058824, 0.07058824, 0.20784314, 1)

@@ -90,8 +90,10 @@ func _process(delta: float) -> void:
 		var dir: float = player.move_direction.sign().x
 		if dir > 0 and manager.active != room_b:
 			manager.change(room_b)
+			player.current_room_id = room_b.name
 		elif dir < 0 and manager.active != room_a:
 			manager.change(room_a)
+			player.current_room_id = room_a.name
 
 func _update_lock() -> void:
 	locking_body_collision.disabled = not locked
