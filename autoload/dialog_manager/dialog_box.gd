@@ -82,6 +82,7 @@ func advance() -> void:
 		elif additional is DialogEventAction:
 			var action := additional as DialogEventAction
 			manager.action_event.emit(action.event_name)
+			manager.can_close_early = false  # Fixes item duplication
 	
 	# Looking at all the dialog content types
 	var pitch_variety := 1.0 if character == null else character.pitch_variety

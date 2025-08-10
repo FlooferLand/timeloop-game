@@ -704,7 +704,7 @@ shape = SubResource("RectangleShape2D_cv2l2")
 position = Vector2(48, -944)
 
 [node name="OutsideCamera" type="Camera2D" parent="Camera" node_paths=PackedStringArray("target")]
-position = Vector2(-199.99695, -1687.9908)
+position = Vector2(48, -944)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_left = -1150

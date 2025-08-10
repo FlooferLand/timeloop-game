@@ -246,6 +246,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_firn2")
 stretch_mode = 6
+metadata/_edit_lock_ = true
 
 [node name="Spaceship" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("child")]
 self_modulate = Color(1, 1, 1, 0.8)

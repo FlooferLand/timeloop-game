@@ -6,5 +6,6 @@ const BuildingScene := preload("res://levels/the_building/the_building.tscn")
 
 func _ready() -> void:
 	interact_comp.on_player_interact.connect(func(player: Player) -> void:
+		SpeedrunManager.start_timer()
 		get_tree().change_scene_to_packed(BuildingScene)
 	)

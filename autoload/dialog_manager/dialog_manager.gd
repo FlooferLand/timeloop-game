@@ -13,6 +13,7 @@ signal action_event(event_name: String)  ## Called by the event action
 
 var player_ref: Player = null  ## Filled in by Player
 var time_in_dialog: float = 0.0
+var can_close_early := true
 
 func _enter_tree() -> void:
 	visible = false
@@ -28,6 +29,8 @@ func present(data: DialogData) -> void:
 	dialog_opened.emit()
 
 func close(closed_early: bool = false) -> void:
+	if closed_early and not can_close_early:
+		return
 	dialog_box.close()
 	visible = false
 	if player_ref != null:  # Required when not running in-game
@@ -37,6 +40,7 @@ func close(closed_early: bool = false) -> void:
 	dialog_closed.emit(closed_early)
 	update_speaking.emit(false)
 	time_in_dialog = 0
+	can_close_early = true
 
 func _process(delta: float) -> void:
 	if visible:

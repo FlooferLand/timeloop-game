@@ -28,8 +28,8 @@ func _enter_tree() -> void:
 	if parent.collision_mask != 0:
 		push_warning("A collision layer is set for NPC '%s'! They should not collide with each other" % parent.name)
 	
-	if not parent.get_collision_mask_value(4) or not parent.get_collision_layer_value(4):
-		push_warning("NPC bit value disabled for NPC '%s'!" % parent.name)
+	if not parent.get_collision_layer_value(4) or parent.get_collision_mask_value(4):
+		push_warning("NPC bit values not set correctly for NPC '%s'! (layer 4 should be on, mask 4 should be off)" % parent.name)
 		parent.set_collision_layer_value(4, true)
 		parent.set_collision_mask_value(4, false)
 	

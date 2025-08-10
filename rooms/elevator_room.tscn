@@ -46,7 +46,7 @@ closed_right = false
 [node name="Background" parent="AutoRoom" index="0"]
 modulate = Color(0.734733, 0.877948, 0.929577, 1)
 material = SubResource("ShaderMaterial_h3wxf")
-scale = Vector2(0.78125, 0.925926)
+scale = Vector2(0.78125, 0.9259259)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
 modulate = Color(0.70173, 0.70173, 0.70173, 1)
@@ -56,7 +56,7 @@ scale = Vector2(0.78125, 1)
 [node name="Floor" parent="AutoRoom" index="2"]
 modulate = Color(0.697578, 0.697578, 0.697578, 1)
 material = SubResource("ShaderMaterial_x7qqi")
-scale = Vector2(0.78125, 1)
+scale = Vector2(0.78125, 1.15)
 texture = ExtResource("3_af8on")
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]

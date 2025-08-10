@@ -17,6 +17,8 @@
 size = Vector2(146, 506)
 
 [node name="TheManager" type="CharacterBody2D" node_paths=PackedStringArray("walk_comp", "person_dialog_comp", "interact_comp") groups=["living_entity"]]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_8536a")
 elevator_keys_item = ExtResource("2_6fut4")
 plushie_item = ExtResource("3_3xmoo")
@@ -41,8 +43,8 @@ sprite = NodePath("../Sprite")
 parent = NodePath("..")
 
 [node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("walk_comp") instance=ExtResource("2_rvytt")]
-walk_comp = NodePath("../PersonWalkComponent")
 head_position = Vector2(-68.655, -302.875)
+walk_comp = NodePath("../PersonWalkComponent")
 
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_sfnjn")]
 position = Vector2(0.5, -258)

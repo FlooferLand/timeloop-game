@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://domjojwwk6q7d"]
+[gd_scene load_steps=26 format=3 uid="uid://domjojwwk6q7d"]
 
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="1_f44ss"]
 [ext_resource type="Texture2D" uid="uid://cimrlwpr1e36j" path="res://assets/textures/room/elevator_background.png" id="1_fh6it"]
@@ -7,12 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://dytk4odemy15w" path="res://entities/player/Player.tscn" id="3_fh6it"]
 [ext_resource type="Texture2D" uid="uid://b6yjqit5233yp" path="res://assets/textures/room/elevator_doors.png" id="4_xku71"]
 [ext_resource type="Texture2D" uid="uid://c0cjqp1x2fupm" path="res://assets/textures/light/area_light_long.png" id="5_ymjri"]
+[ext_resource type="Texture2D" uid="uid://br8xubv0tj2dn" path="res://assets/textures/props/bnnuy.png" id="6_ojh5c"]
 [ext_resource type="SpriteFrames" uid="uid://cr1jr04f0k0wn" path="res://assets/textures/player/with_arms.tres" id="6_qhb31"]
+[ext_resource type="Script" uid="uid://ceiq2iplk6k2a" path="res://levels/elevator_ride/bnnuy_real.gd" id="7_1265l"]
 [ext_resource type="AudioStream" uid="uid://gfut33atohyx" path="res://assets/music/elevator_ride_once.mp3" id="7_vtdon"]
+[ext_resource type="AudioStream" uid="uid://0utmplsjxer7" path="res://assets/sfx/random/confetti.wav" id="8_47d1j"]
 [ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="8_lfvvc"]
 [ext_resource type="AudioStream" uid="uid://blaosq502k3vy" path="res://assets/music/elevator_climbing.mp3" id="8_o7onx"]
 [ext_resource type="AudioStream" uid="uid://b7d4hxmd5cvyh" path="res://assets/sfx/elevator/elevator_mechanical_arrived.wav" id="9_1g1s0"]
+[ext_resource type="Texture2D" uid="uid://fyb3wuw770hk" path="res://assets/textures/light/circle_light.png" id="9_1hu4k"]
 [ext_resource type="AudioStream" uid="uid://sd3dtbv14v5m" path="res://assets/music/elevator_bleep.wav" id="9_f40j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1265l"]
+size = Vector2(149.98291, 242.6752)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_x4l2d"]
 normal = Vector2(0, -30)
@@ -582,6 +589,25 @@ scale = Vector2(3.300813, 3.3008127)
 energy = 0.5
 texture = ExtResource("5_ymjri")
 
+[node name="Bnnuy" type="Area2D" parent="Environment" node_paths=PackedStringArray("squeak")]
+modulate = Color(0.8367553, 0.8367553, 0.8367551, 1)
+position = Vector2(417, -112)
+scale = Vector2(1.0934579, 1.0934579)
+script = ExtResource("7_1265l")
+squeak = NodePath("AudioStreamPlayer")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Bnnuy"]
+z_index = 1
+texture = ExtResource("6_ojh5c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Bnnuy"]
+position = Vector2(0, -11.431625)
+shape = SubResource("RectangleShape2D_1265l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Environment/Bnnuy"]
+stream = ExtResource("8_47d1j")
+
 [node name="Physics" type="Node2D" parent="."]
 
 [node name="Floor" type="StaticBody2D" parent="Physics"]
@@ -611,6 +637,13 @@ modulate = Color(1, 1, 1, 0.486274)
 z_index = 10
 sprite_frames = ExtResource("6_qhb31")
 animation = &"idle"
+
+[node name="PointLight2D" type="PointLight2D" parent="FakePlayer"]
+z_index = -2
+color = Color(0.0015500508, 0.24229544, 0.580645, 1)
+energy = 0.6
+texture = ExtResource("9_1hu4k")
+texture_scale = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -382)

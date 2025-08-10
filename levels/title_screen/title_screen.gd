@@ -21,6 +21,7 @@ func _ready() -> void:
 	)
 	anim_player.animation_finished.connect(func(anim_name: String) -> void:
 		if anim_name == "respond":
+			GameStorage.reset()
 			get_tree().change_scene_to_packed(IntroScene)
 	)
 

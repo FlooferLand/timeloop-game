@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bg25346p0d2vh"]
+[gd_scene load_steps=13 format=3 uid="uid://bg25346p0d2vh"]
 
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="1_ue5om"]
 [ext_resource type="Script" uid="uid://dk0hw226c7pei" path="res://levels/ending/ending.gd" id="1_v4ub4"]
@@ -233,9 +233,14 @@ font_size = 64
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_meo4a"]
 size = Vector2(680, 680)
 
-[node name="Ending" type="Node2D" node_paths=PackedStringArray("anim_player")]
+[sub_resource type="LabelSettings" id="LabelSettings_4qn2m"]
+font_size = 32
+font_color = Color(1, 1, 1, 0.44313726)
+
+[node name="Ending" type="Node2D" node_paths=PackedStringArray("anim_player", "speedrun_time")]
 script = ExtResource("1_v4ub4")
 anim_player = NodePath("AnimationPlayer")
+speedrun_time = NodePath("Bottom/Speedrun time")
 
 [node name="ClearColor" parent="." instance=ExtResource("1_ue5om")]
 
@@ -314,6 +319,23 @@ shape = SubResource("RectangleShape2D_meo4a")
 stream = ExtResource("6_4qn2m")
 volume_db = -6.0
 bus = &"SFX"
+
+[node name="Speedrun time" type="Label" parent="Bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -60.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Time: 0"
+label_settings = SubResource("LabelSettings_4qn2m")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 volume_db = -12.0

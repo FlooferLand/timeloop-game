@@ -35,6 +35,8 @@ TimeManager="*res://autoload/time_manager/time_manager.gd"
 JoypadManager="*res://autoload/joypad_manager/joypad_manager.gd"
 InputManager="*res://autoload/input_manager/input_manager.gd"
 SpotlightManager="*res://autoload/spotlight_manager/spotlight_manager.gd"
+SpeedrunManager="*res://autoload/speedrun_manager/speedrun_manager.gd"
+GameStorage="*res://autoload/game_storage/game_storage.gd"
 
 [compression]
 
@@ -159,8 +161,7 @@ common/physics_interpolation=true
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
 2d/shadow_atlas/size=512
 reflections/specular_occlusion/enabled=false
 driver/depth_prepass/enable=false

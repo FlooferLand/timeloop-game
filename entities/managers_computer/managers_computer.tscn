@@ -24,6 +24,7 @@ info_offset = Vector2i(-31, 46)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("parent", "shutdown_button")]
 layer = 10
+visible = false
 script = ExtResource("4_jd8n0")
 parent = NodePath("..")
 shutdown_button = NodePath("Control/Exit")
