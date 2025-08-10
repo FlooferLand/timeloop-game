@@ -23,13 +23,13 @@ signal on_player_interact(player: Player)
 	get(): return info_offset
 	set(value):
 		info_offset = value
-		_update_label()
+		update_label()
 
 @export var type: Type:
 	get(): return type
 	set(value):
 		type = value
-		_update_label()
+		update_label()
 
 @export_group("Local")
 @export var collision: CollisionShape2D
@@ -42,7 +42,7 @@ var can_interact := true:
 	get(): return can_interact
 	set(value):
 		can_interact = value
-		_update_label()
+		update_label()
 var _postfix := ""
 var interact_condition := func(player: Player) -> bool: return true
 
@@ -54,7 +54,7 @@ func player_interact(player: Player) -> void:
 	if is_visible_in_tree() and can_interact and meets_condition(player):
 		on_player_interact.emit(player)
 		current_player = player
-		_update_label()
+		update_label()
 
 ## Called by the player when they can interact with this component
 func player_enter(player: Player) -> void:
@@ -62,22 +62,22 @@ func player_enter(player: Player) -> void:
 		player_hovering = true
 		displaying_info = true
 		current_player = player
-		_update_label()
+		update_label()
 
 ## Called by the player when they can no longer interact with this component
 func player_leave(player: Player) -> void:
 	player_hovering = false
 	displaying_info = false
 	current_player = null
-	_update_label()
+	update_label()
 
 func show_info() -> void:
 	displaying_info = true
-	_update_label()
+	update_label()
 
 func hide_info() -> void:
 	displaying_info = false
-	_update_label()
+	update_label()
 
 func meets_condition(player: Player) -> bool:
 	return interact_condition.call(player)
@@ -86,12 +86,17 @@ func _update_size() -> void:
 	var shape := (collision.shape as RectangleShape2D)
 	shape.size = size
 
-func _update_label() -> void:
+## FIXME: There's a bug where after an interaction the label might not update properly
+##        This fixes it, but is annoying for performance
+func _process(delta: float) -> void:
+	update_label()
+
+func update_label() -> void:
 	if not is_inside_tree():
 		await tree_entered
 	await get_tree().process_frame
 	
-	var should_draw := (displaying_info and can_interact) or Engine.is_editor_hint()
+	var should_draw := ((displaying_info and can_interact) or Engine.is_editor_hint()) and (current_player != null and meets_condition(current_player))
 	if not should_draw:
 		label.visible = false
 		return

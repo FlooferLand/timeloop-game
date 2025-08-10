@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2vr6a"]
 size = Vector2(146, 506)
 
-[node name="TheManager" type="Node2D" node_paths=PackedStringArray("walk_comp", "person_dialog_comp", "interact_comp")]
+[node name="TheManager" type="CharacterBody2D" node_paths=PackedStringArray("walk_comp", "person_dialog_comp", "interact_comp") groups=["living_entity"]]
 script = ExtResource("1_8536a")
 elevator_keys_item = ExtResource("2_6fut4")
 plushie_item = ExtResource("3_3xmoo")
@@ -26,6 +26,10 @@ cant_talk_dialog = ExtResource("2_6lkop")
 walk_comp = NodePath("PersonWalkComponent")
 person_dialog_comp = NodePath("PersonDialogComponent")
 interact_comp = NodePath("PersonDialogComponent/InteractComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -258)
+shape = SubResource("RectangleShape2D_2vr6a")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.5, -258)
@@ -47,11 +51,3 @@ type = 1
 
 [node name="DialogComponent" parent="PersonDialogComponent" instance=ExtResource("4_68oo1")]
 dialog_data = ExtResource("5_sfnjn")
-
-[node name="NPCBody" type="Area2D" parent="."]
-position = Vector2(0.5, -258)
-collision_layer = 9
-collision_mask = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCBody"]
-shape = SubResource("RectangleShape2D_2vr6a")

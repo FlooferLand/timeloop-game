@@ -25,6 +25,8 @@ func _enter_tree() -> void:
 	active = default
 
 func change(new: Room) -> void:
+	if new == null:
+		return
 	var old := _active
 	_active = new
 	
@@ -55,3 +57,14 @@ func change(new: Room) -> void:
 		trans_new.kill()
 		trans_new = null
 	)
+
+## Called to move an entity from one room to the other
+func entity_move_room(entity: CharacterBody2D, new_room: Room) -> void:
+	var old_room := get_node_or_null(str(new_room.name))
+	if old_room is Room:
+		var old: Room = old_room
+		old.entity_exited.emit(entity)
+	
+	# Changing
+	entity.set_meta("current_room", new_room.name)
+	new_room.entity_entered.emit(entity)

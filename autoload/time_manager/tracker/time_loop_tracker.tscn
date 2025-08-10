@@ -467,6 +467,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.2, 1.2)
 pivot_offset = Vector2(960, 960)
+mouse_filter = 2
 texture = ExtResource("6_1efh4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Reset"]

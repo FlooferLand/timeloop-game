@@ -1,4 +1,4 @@
-extends Node2D
+class_name TheManagerEntity extends CharacterBody2D
 
 @export var managers_desk_target: Marker2D
 @export var bridge_door: RoomBridge

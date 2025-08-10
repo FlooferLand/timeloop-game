@@ -82,9 +82,12 @@ func _ready() -> void:
 	dialog_comp.on_dialog_closed.connect(func() -> void:
 		on_dialog_closed.emit()
 		sprite_play(required_animations.idle)
+		if interact_counter > 0 and not future_dialogs.is_empty():
+			interact_comp.set_postfix("more")
+		if dialog_index == future_dialogs.size()-1 and interact_counter > 1:
+			interact_comp.set_postfix("again")
 		if dialog_index + 1 < future_dialogs.size() and interact_counter > 1:
 			dialog_index += 1
-			interact_comp.set_postfix("again")
 		interact_comp.show_info()
 		SpotlightManager.remove()
 		if walk_comp != null:

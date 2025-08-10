@@ -19,7 +19,7 @@ signal redraw_lock
 
 var door_audio_playback: AudioStreamPlaybackInteractive
 var manager: RoomManager  # Injected by RoomManager
-var player: Player = null
+var entities: Dictionary[int, CharacterBody2D] = {}
 
 var anim_await_exit := false
 
@@ -36,8 +36,8 @@ func _ready() -> void:
 	
 	door.visible = false
 	area.body_entered.connect(func(body: Node2D) -> void:
-		if body is Player:
-			player = body
+		if body is Player or body.is_in_group("living_entity"):
+			entities[body.get_instance_id()] = body
 			set_process(true)
 		if locked:
 			redraw_lock.emit()
@@ -49,8 +49,8 @@ func _ready() -> void:
 			_start_door_anim(area)
 	)
 	area.body_exited.connect(func(body: Node2D) -> void:
-		if body is Player:
-			player = null
+		if body is CharacterBody2D and body in entities.values():
+			entities.erase(body.get_instance_id())
 			set_process(false)
 			
 		if locked:
@@ -86,14 +86,26 @@ func _start_door_anim(entering_body: Node2D) -> void:
 
 ## Called while the player is in the transition
 func _process(delta: float) -> void:
-	if not locked and player != null:
-		var dir: float = player.move_direction.sign().x
-		if dir > 0 and manager.active != room_b:
-			manager.change(room_b)
-			player.current_room_id = room_b.name
-		elif dir < 0 and manager.active != room_a:
-			manager.change(room_a)
-			player.current_room_id = room_a.name
+	if not locked and not entities.is_empty():
+		for entity: CharacterBody2D in entities.values():
+			if entity is Player:
+				var player: Player = entity as Player
+				var dir: float = player.move_direction.sign().x
+				if dir > 0 and manager.active != room_b:
+					manager.change(room_b)
+					player.current_room_id = room_b.name
+				elif dir < 0 and manager.active != room_a:
+					manager.change(room_a)
+					player.current_room_id = room_a.name
+			else:
+				var dir: float = entity.velocity.sign().x
+				if not entity.has_meta("current_room"):
+					entity.set_meta("current_room", room_a.name)
+				
+				if dir > 0 and entity.get_meta("current_room") != room_b.name:
+					manager.entity_move_room(entity, room_b)
+				elif dir < 0 and entity.get_meta("current_room") != room_a.name:
+					manager.entity_move_room(entity, room_a)
 
 func _update_lock() -> void:
 	locking_body_collision.disabled = not locked

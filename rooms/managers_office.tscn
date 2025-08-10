@@ -4,7 +4,6 @@
 [ext_resource type="Shader" uid="uid://be1s7apltixil" path="res://utility/tileable_sprite_2d/tileable_sprite_2d.gdshader" id="2_nwxry"]
 [ext_resource type="Texture2D" uid="uid://cvobd2j5ohrom" path="res://assets/textures/props/desk.png" id="3_nwxry"]
 [ext_resource type="Texture2D" uid="uid://3w4s4tny4h66" path="res://assets/textures/room/wall.png" id="3_o0yjw"]
-[ext_resource type="Texture2D" uid="uid://bsv0yaep3pwxa" path="res://assets/textures/props/Computer1.png" id="4_qiwgo"]
 [ext_resource type="Texture2D" uid="uid://b4djik8ohnxyr" path="res://assets/textures/decor/poster_saftey.png" id="4_xdvba"]
 [ext_resource type="Texture2D" uid="uid://capg5vx2sb1sc" path="res://assets/textures/props/chair.png" id="5_fic25"]
 [ext_resource type="PackedScene" uid="uid://dnq052dj8057j" path="res://props/clock/clock.tscn" id="5_oigr5"]
@@ -13,18 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://8xdmrqq56ac8" path="res://props/desk_lamp/desk_lamp.tscn" id="9_a84dp"]
 [ext_resource type="Texture2D" uid="uid://dtk3yvovxhfe5" path="res://assets/textures/props/documents.png" id="11_fevpa"]
 [ext_resource type="Texture2D" uid="uid://dc0rcr77ud06t" path="res://assets/textures/decor/poster2.png" id="13_a84dp"]
+[ext_resource type="PackedScene" uid="uid://pva7a0uoe0j3" path="res://entities/managers_computer/managers_computer.tscn" id="13_ujqss"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a84dp"]
+shader = ExtResource("2_nwxry")
+shader_parameter/tile = Vector2(0.78125, 0.9259259)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ujqss"]
 shader = ExtResource("2_nwxry")
-shader_parameter/tile = Vector2(0.78125, 0.925926)
+shader_parameter/tile = Vector2(0.78125, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_imxjw"]
 shader = ExtResource("2_nwxry")
-shader_parameter/tile = Vector2(0.78125, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_brxlq"]
-shader = ExtResource("2_nwxry")
-shader_parameter/tile = Vector2(0.78125, 1)
+shader_parameter/tile = Vector2(0.78125, 1.15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_memf8"]
 resource_local_to_scene = true
@@ -44,16 +44,16 @@ size = Vector2(1500, 1000)
 closed_left = false
 
 [node name="Background" parent="AutoRoom" index="0"]
-material = SubResource("ShaderMaterial_ujqss")
+material = SubResource("ShaderMaterial_a84dp")
 scale = Vector2(0.78125, 0.9259259)
 
 [node name="Ceiling" parent="AutoRoom" index="1"]
-material = SubResource("ShaderMaterial_imxjw")
-scale = Vector2(0.78125, 2.1)
+material = SubResource("ShaderMaterial_ujqss")
+scale = Vector2(0.78125, 1)
 
 [node name="Floor" parent="AutoRoom" index="2"]
-material = SubResource("ShaderMaterial_brxlq")
-scale = Vector2(0.78125, 1.1)
+material = SubResource("ShaderMaterial_imxjw")
+scale = Vector2(0.78125, 1.15)
 
 [node name="Sprite" parent="AutoRoom/LeftWall" index="0"]
 texture = ExtResource("3_o0yjw")
@@ -98,23 +98,23 @@ texture = ExtResource("3_nwxry")
 [node name="DeskLamp" parent="Decor" index="6" instance=ExtResource("9_a84dp")]
 position = Vector2(540, -187)
 
-[node name="Computer" type="Sprite2D" parent="Decor" index="7"]
-position = Vector2(752, -264)
-texture = ExtResource("4_qiwgo")
-
-[node name="Chair" type="Sprite2D" parent="Decor" index="8"]
+[node name="Chair" type="Sprite2D" parent="Decor" index="7"]
 position = Vector2(562, -133)
 scale = Vector2(1.09364, 1.09364)
 texture = ExtResource("5_fic25")
 
-[node name="Docs" type="Sprite2D" parent="Decor" index="9"]
+[node name="Docs" type="Sprite2D" parent="Decor" index="8"]
 position = Vector2(976, -208)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("11_fevpa")
 
-[node name="Poster" type="Sprite2D" parent="Decor" index="10"]
+[node name="Poster" type="Sprite2D" parent="Decor" index="9"]
 modulate = Color(1, 1, 1, 0.780392)
 position = Vector2(1181, -447)
 rotation = 0.00540727
 scale = Vector2(0.441187, 0.441187)
 texture = ExtResource("13_a84dp")
+
+[node name="ManagersComputer" parent="Entities" index="0" node_paths=PackedStringArray("room") instance=ExtResource("13_ujqss")]
+position = Vector2(752, -176)
+room = NodePath("../..")
