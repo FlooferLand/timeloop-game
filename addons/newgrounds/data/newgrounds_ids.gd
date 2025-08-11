@@ -6,16 +6,17 @@ class_name NewgroundsIds
 
 enum ScoreboardId {
 	None = 0,
-	BestSoup = 13693,
 
 }
 
 enum MedalId {
 	None = 0,
+	Bunny = 85903,
 
 }
 
 class MedalIdsToResource:
 	const medals = {
+		85903: "res://addons/newgrounds/imported_medals/bunny.tres",
 
 	}

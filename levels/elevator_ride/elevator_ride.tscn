@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://domjojwwk6q7d"]
+[gd_scene load_steps=27 format=3 uid="uid://domjojwwk6q7d"]
 
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="1_f44ss"]
 [ext_resource type="Texture2D" uid="uid://cimrlwpr1e36j" path="res://assets/textures/room/elevator_background.png" id="1_fh6it"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://b7d4hxmd5cvyh" path="res://assets/sfx/elevator/elevator_mechanical_arrived.wav" id="9_1g1s0"]
 [ext_resource type="Texture2D" uid="uid://fyb3wuw770hk" path="res://assets/textures/light/circle_light.png" id="9_1hu4k"]
 [ext_resource type="AudioStream" uid="uid://sd3dtbv14v5m" path="res://assets/music/elevator_bleep.wav" id="9_f40j1"]
+[ext_resource type="Script" uid="uid://dxu5nxiql0qyj" path="res://addons/newgrounds/newgrounds_medal_unlocker.gd" id="9_qdv2n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1265l"]
 size = Vector2(149.98291, 242.6752)
@@ -589,12 +590,13 @@ scale = Vector2(3.300813, 3.3008127)
 energy = 0.5
 texture = ExtResource("5_ymjri")
 
-[node name="Bnnuy" type="Area2D" parent="Environment" node_paths=PackedStringArray("squeak")]
+[node name="Bnnuy" type="Area2D" parent="Environment" node_paths=PackedStringArray("squeak", "medal_unlocker")]
 modulate = Color(0.8367553, 0.8367553, 0.8367551, 1)
 position = Vector2(417, -112)
 scale = Vector2(1.0934579, 1.0934579)
 script = ExtResource("7_1265l")
 squeak = NodePath("AudioStreamPlayer")
+medal_unlocker = NodePath("NewgroundsMedalUnlocker")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/Bnnuy"]
@@ -607,6 +609,11 @@ shape = SubResource("RectangleShape2D_1265l")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Environment/Bnnuy"]
 stream = ExtResource("8_47d1j")
+
+[node name="NewgroundsMedalUnlocker" type="Node" parent="Environment/Bnnuy"]
+script = ExtResource("9_qdv2n")
+medal_id = 85903
+metadata/_custom_type_script = "uid://dxu5nxiql0qyj"
 
 [node name="Physics" type="Node2D" parent="."]
 
