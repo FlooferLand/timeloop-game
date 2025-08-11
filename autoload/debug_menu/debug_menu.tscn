@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd05li18muhsn"]
+
+[ext_resource type="Script" uid="uid://cgr64fwgdals5" path="res://autoload/debug_menu/debug_menu.gd" id="1_j1rx8"]
+[ext_resource type="Theme" uid="uid://ba4drirtwlflu" path="res://autoload/debug_menu/debug_menu.theme" id="2_48o1p"]
+[ext_resource type="Script" uid="uid://7t8xxixtngho" path="res://autoload/debug_menu/get_item.gd" id="3_yacnb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j1rx8"]
+font_size = 38
+
+[node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("to_game_level_button")]
+layer = 500
+script = ExtResource("1_j1rx8")
+to_game_level_button = NodePath("Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/GoToGame")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_48o1p")
+metadata/_edit_lock_ = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Empty" type="Control" parent="Root/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Root/HSplitContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Root/HSplitContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Root/HSplitContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Debug menu :3"
+label_settings = SubResource("LabelSettings_j1rx8")
+
+[node name="GoToGame" type="Button" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go to game level"
+
+[node name="Space" type="Control" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GetItem" type="HBoxContainer" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer" node_paths=PackedStringArray("debug_menu", "options", "add_button")]
+layout_mode = 2
+script = ExtResource("3_yacnb")
+debug_menu = NodePath("../../../../../..")
+options = NodePath("OptionButton")
+add_button = NodePath("Add")
+
+[node name="OptionButton" type="OptionButton" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/GetItem"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Add" type="Button" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/GetItem"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Add"

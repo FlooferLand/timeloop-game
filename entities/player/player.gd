@@ -36,6 +36,7 @@ var sprinting := false
 
 func _ready() -> void:
 	(DialogManager as DialogManagerType).player_ref = self
+	(DebugMenu as DebugMenuType).player_ref = self
 	if footstep_sounds != null:
 		footstep_comp.sounds = footstep_sounds
 	else:

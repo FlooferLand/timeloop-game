@@ -20,9 +20,12 @@ func _ready() -> void:
 		## Reset everything.
 		await time_loop_reset()
 
-		var room := room_manager.get_node(str(old_room))
-		room_manager.default = room
-		room_manager.active = room
+		var room := room_manager.get_node_or_null(str(old_room))
+		if room != null:
+			room_manager.default = room
+			room_manager.active = room
+		else:
+			push_warning("Room with name %s not found while resetting." % str(old_room))
 	)
 
 ## Resets all of its contents

@@ -21,9 +21,16 @@ func _ready() -> void:
 	)
 	anim_player.animation_finished.connect(func(anim_name: String) -> void:
 		if anim_name == "respond":
-			GameStorage.reset()
-			get_tree().change_scene_to_packed(IntroScene)
+			_start_game()
 	)
+
+func _input(event: InputEvent) -> void:
+	if OS.is_debug_build() and event.is_action_pressed("skip"):
+		_start_game()
+
+func _start_game() -> void:
+	GameStorage.reset()
+	get_tree().change_scene_to_packed(IntroScene)
 
 func _on_play_game_pressed() -> void:
 	anim_player.play("respond")
