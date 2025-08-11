@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg25346p0d2vh"]
+[gd_scene load_steps=14 format=3 uid="uid://bg25346p0d2vh"]
 
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="1_ue5om"]
 [ext_resource type="Script" uid="uid://dk0hw226c7pei" path="res://levels/ending/ending.gd" id="1_v4ub4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://d181yals40776" path="res://levels/ending/time_loop_switch.gd" id="3_t2d02"]
 [ext_resource type="SpriteFrames" uid="uid://c2blbeutihvlp" path="res://assets/textures/time_loop_switch.tres" id="4_meo4a"]
 [ext_resource type="AudioStream" uid="uid://bs6be7i5hnrf1" path="res://assets/sfx/random/ending_sound.mp3" id="6_4qn2m"]
+[ext_resource type="Script" uid="uid://dadd0vv030ilm" path="res://addons/newgrounds/newgrounds_scoreboard.gd" id="7_nt15d"]
 
 [sub_resource type="Animation" id="Animation_slohg"]
 length = 0.001
@@ -237,10 +238,11 @@ size = Vector2(680, 680)
 font_size = 32
 font_color = Color(1, 1, 1, 0.44313726)
 
-[node name="Ending" type="Node2D" node_paths=PackedStringArray("anim_player", "speedrun_time")]
+[node name="Ending" type="Node2D" node_paths=PackedStringArray("anim_player", "speedrun_time", "speedrun_scoreboard")]
 script = ExtResource("1_v4ub4")
 anim_player = NodePath("AnimationPlayer")
 speedrun_time = NodePath("Bottom/Speedrun time")
+speedrun_scoreboard = NodePath("Bottom/SpeedrunScoreboard")
 
 [node name="ClearColor" parent="." instance=ExtResource("1_ue5om")]
 
@@ -336,6 +338,11 @@ text = "Time: 0"
 label_settings = SubResource("LabelSettings_4qn2m")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpeedrunScoreboard" type="Node" parent="Bottom"]
+script = ExtResource("7_nt15d")
+scoreboard_id = 15169
+metadata/_custom_type_script = "uid://dadd0vv030ilm"
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 volume_db = -12.0

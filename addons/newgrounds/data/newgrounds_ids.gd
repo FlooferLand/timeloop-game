@@ -6,6 +6,7 @@ class_name NewgroundsIds
 
 enum ScoreboardId {
 	None = 0,
+	CompletionTimes = 15169,
 
 }
 
