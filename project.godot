@@ -30,6 +30,7 @@ driver/driver=""
 
 [autoload]
 
+PlatformInit="*res://autoload/platform_init/platform_init.gd"
 DialogManager="*res://autoload/dialog_manager/dialog_manager.tscn"
 TimeManager="*res://autoload/time_manager/time_manager.gd"
 JoypadManager="*res://autoload/joypad_manager/joypad_manager.gd"
@@ -38,6 +39,8 @@ SpotlightManager="*res://autoload/spotlight_manager/spotlight_manager.gd"
 SpeedrunManager="*res://autoload/speedrun_manager/speedrun_manager.gd"
 GameStorage="*res://autoload/game_storage/game_storage.gd"
 DebugMenu="*res://autoload/debug_menu/debug_menu.tscn"
+NG="*res://addons/newgrounds/scripts/newgrounds.tscn"
+NGCloudSave="*res://addons/newgrounds/scripts/newgrounds_cloudsave.gd"
 
 [compression]
 
@@ -54,7 +57,7 @@ gdscript/warnings/shadowed_global_identifier=0
 gdscript/warnings/untyped_declaration=1
 gdscript/warnings/unsafe_property_access=2
 gdscript/warnings/unsafe_method_access=2
-gdscript/warnings/unsafe_cast=1
+gdscript/warnings/unsafe_cast=2
 gdscript/warnings/unsafe_call_argument=1
 gdscript/warnings/inference_on_variant=1
 
@@ -67,6 +70,10 @@ window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/newgrounds/plugin.cfg")
+
 [filesystem]
 
 import/fbx2gltf/enabled=false
@@ -75,6 +82,7 @@ import/blender/enabled=false
 [global_group]
 
 living_entity="An entity that can move around and stuff"
+CloudSave="Newgrounds Cloudsave"
 
 [gui]
 
@@ -155,6 +163,12 @@ buffering/agile_event_flushing=true
 2d_physics/layer_2="Interacting"
 2d_physics/layer_3="Prank"
 2d_physics/layer_4="NPCs"
+
+[newgrounds.io]
+
+opened_getting_started_page=true
+app_id="60680:g2nhcg1q"
+auto_init=false
 
 [physics]
 
