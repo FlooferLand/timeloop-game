@@ -35,7 +35,6 @@ var _result_field = ""
 
 func init(app_id: String, aes_key: String, session:NewgroundsSession = NewgroundsSession.new(), aes_context = AESContext.new()):
 	self.app_id = app_id;
-	
 	self.aes_key = aes_key;
 	
 	self.session = session;

@@ -6,11 +6,7 @@ extends HBoxContainer
 
 var items: Dictionary[InventoryItem.Id, InventoryItem] = {}
 
-func _enter_tree() -> void:
-	if not OS.is_debug_build():
-		queue_free()
-		return
-	
+func _enter_tree() -> void:	
 	var items_dir := "res://assets/resources/items/"
 	var items_dir_contents := ResourceLoader.list_directory(items_dir)
 	for item_dir in items_dir_contents:

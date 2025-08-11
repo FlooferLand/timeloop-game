@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 		_called_prereset = true
 
 func _input(event: InputEvent) -> void:
-	if not OS.is_debug_build():
+	if not EnvManager.can_debug():
 		return
 	if event is InputEventKey:
 		var key := event as InputEventKey

@@ -55,12 +55,9 @@ func _import_newgrounds():
 	
 	var app_id = ProjectSettings.get_setting(C.APP_ID_PROPERTY, "")
 	var aes_key = ProjectSettings.get_setting(C.AES_KEY_PROPERTY, "")
-	var config := ConfigFile.new()
-	if config.load("res://override.cfg") == OK:
-		var app_id_split = C.APP_ID_PROPERTY.split('/')
-		var aes_key_split = C.AES_KEY_PROPERTY.split('/')
-		app_id = config.get_value(app_id_split[0], app_id_split[1])
-		aes_key = config.get_value(aes_key_split[0], aes_key_split[1])
+	if EnvManager.SECRETS != null:
+		app_id = EnvManager.SECRETS.ng_app_id
+		aes_key = EnvManager.SECRETS.ng_aes_key
 	assert(app_id, "App ID not provided, configure it in the project settings")
 	assert(aes_key, "AES key not provided, configure it in the project settings")
 	

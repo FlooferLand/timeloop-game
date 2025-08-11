@@ -30,6 +30,7 @@ driver/driver=""
 
 [autoload]
 
+EnvManager="*res://autoload/env_manager/env_manager.gd"
 DialogManager="*res://autoload/dialog_manager/dialog_manager.tscn"
 TimeManager="*res://autoload/time_manager/time_manager.gd"
 JoypadManager="*res://autoload/joypad_manager/joypad_manager.gd"

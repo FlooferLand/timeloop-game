@@ -57,8 +57,11 @@ func _ready():
 	_load_session();
 	_init_medals();
 	
-	app_id = ProjectSettings.get_setting(C.APP_ID_PROPERTY, "")
-	aes_key = ProjectSettings.get_setting(C.AES_KEY_PROPERTY, "")
+	var app_id = ProjectSettings.get_setting(C.APP_ID_PROPERTY, "")
+	var aes_key = ProjectSettings.get_setting(C.AES_KEY_PROPERTY, "")
+	if EnvManager.SECRETS != null:
+		app_id = EnvManager.SECRETS.ng_app_id
+		aes_key = EnvManager.SECRETS.ng_aes_key
 	auto_init = ProjectSettings.get_setting(C.AUTO_INIT_PROPERTY, true);
 	
 	var aes_bytes = Marshalls.base64_to_raw(aes_key)

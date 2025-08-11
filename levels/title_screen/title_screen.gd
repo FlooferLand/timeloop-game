@@ -25,7 +25,7 @@ func _ready() -> void:
 	)
 
 func _input(event: InputEvent) -> void:
-	if OS.is_debug_build() and event.is_action_pressed("skip"):
+	if EnvManager.can_debug() and event.is_action_pressed("skip"):
 		_start_game()
 
 func _start_game() -> void:
