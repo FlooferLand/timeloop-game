@@ -539,7 +539,7 @@ color = Color(0.047058824, 0.07058824, 0.20784314, 1)
 
 [node name="Navcom" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ndbk7")
-volume_db = -4.0
+volume_db = -6.0
 bus = &"Navcom"
 
 [node name="Noise" type="AudioStreamPlayer" parent="."]
