@@ -39,17 +39,17 @@ env:
                  disable_3d=yes
                  disable_physics_2d=no
                  disable_navigation_2d=yes
-                 modules_enabled_by_default=yes
+                 modules_enabled_by_default=no
                  module_freetype_enabled=yes
                  module_gdscript_enabled=yes
-                 module_svg_enabled=no
+                 module_svg_enabled=yes
                  module_jpg_enabled=no
-                 module_webp_enabled=yes
+                 module_webp_enabled=no
                  module_text_server_fb_enabled=yes
-                 module_text_server_adv_enabled=yes
+                 module_text_server_adv_enabled=no
                  graphite=no
                  module_mbedtls_enabled=yes
-                 build_profile=../time_at_the_office/.github/disabled_classes.build
+  #               build_profile=../time_at_the_office/.github/disabled_classes.build
   # Links
   GODOT_REPO: https://github.com/godotengine/godot.git
   ANGLE_DOWNLOAD_BASE_URL: https://github.com/godotengine/godot-angle-static/releases/download/chromium%2F6601.2/godot-angle-static
