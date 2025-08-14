@@ -32,6 +32,13 @@ func _input(event: InputEvent) -> void:
 
 func _start_game() -> void:
 	GameStorage.reset()
+	SessionStorage.times_played += 1
+	if SessionStorage.times_played > 1:
+		NGTyped.instance.event_log("played_again_same_session")
+		for medal in await NGTyped.instance.medal_get_list():
+			if medal.id == NewgroundsIds.MedalId.BeatTheGame and medal.unlocked:
+				NGTyped.instance.event_log("played_again")
+	NGTyped.instance.event_log("times_played")
 	get_tree().change_scene_to_packed(IntroScene)
 
 func _on_play_game_pressed() -> void:
