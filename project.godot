@@ -182,6 +182,7 @@ common/physics_interpolation=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 2d/shadow_atlas/size=512
 reflections/specular_occlusion/enabled=false
 driver/depth_prepass/enable=false
