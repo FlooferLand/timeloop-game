@@ -5,10 +5,6 @@ name: export-optimized
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   # Which godot version to use for exporting (e.g., 4.4.1, 4.5)
