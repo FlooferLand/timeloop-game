@@ -40,6 +40,7 @@ func change(new: Room) -> void:
 		trans_old.tween_property(old, "modulate", Color.BLACK, 0.1)
 		trans_old.tween_callback(func() -> void:
 			old.visible = false
+			old.auto_room.particles.emitting = false
 			room_changed.emit(old, new)
 			trans_old.kill()
 			trans_old = null
@@ -54,6 +55,7 @@ func change(new: Room) -> void:
 	trans_new.tween_property(new, "modulate", Color.WHITE, 0.3)
 	trans_new.tween_callback(func() -> void:
 		new.visible = true
+		new.auto_room.particles.emitting = true
 		trans_new.kill()
 		trans_new = null
 	)

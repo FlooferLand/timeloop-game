@@ -1,9 +1,11 @@
-@tool extends Node
+@tool class_name AutoRoom extends Node
 
 const wall_closed_tex := preload("uid://ckp6mlimrl7qn")
 const wall_tex := preload("uid://3w4s4tny4h66")
 
 @export var bounds: RoomBounds
+
+@onready var particles: CPUParticles2D = $AmbientParticles
 
 @onready var background: TileableSprite2D = $Background
 @onready var ceiling: TileableSprite2D = $Ceiling
@@ -86,3 +88,8 @@ func recalculate() -> void:
 		right_wall_rect.size = Vector2(wall_side_size.x, wall_side_size.y * 0.55)
 		right_wall_shape.position = right_wall_spr.position + Vector2(wall_side_size.x / 2, float(right_wall_rect.size.y / 2))
 	#endregion
+	
+	# Ambient particles
+	const particles_up: int = 30
+	particles.position = Vector2(size.x / 2, -size.y / 2) + (Vector2.UP * particles_up)
+	particles.emission_rect_extents = (size / 2) + (Vector2.UP * particles_up)

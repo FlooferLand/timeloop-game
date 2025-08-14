@@ -257,7 +257,7 @@ _data = {
 &"respond": SubResource("Animation_3agv4")
 }
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "music", "radio_noise", "anim_player", "respond_button", "title_label", "version_label")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "music", "radio_noise", "anim_player", "respond_button", "title_label", "version_label", "background")]
 script = ExtResource("1_ypach")
 navcom_voice = NodePath("Navcom")
 music = NodePath("Music")
@@ -266,6 +266,7 @@ anim_player = NodePath("AnimationPlayer")
 respond_button = NodePath("UI/Control/VBoxContainer/HBoxContainer/PlayGame")
 title_label = NodePath("UI/Control/VBoxContainer/Title/Title")
 version_label = NodePath("UI/Control/VBoxContainer/Title/Version")
+background = NodePath("Background/Background")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -281,6 +282,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(960, 540)
 texture = ExtResource("1_firn2")
 stretch_mode = 6
 metadata/_edit_lock_ = true

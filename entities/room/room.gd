@@ -6,6 +6,7 @@ signal entity_exited(entity: CharacterBody2D)
 
 @export_group("Local")
 @export var bounds: RoomBounds
+@export var auto_room: AutoRoom
 
 var id: String:
 	get(): return name
@@ -25,3 +26,6 @@ func _enter_tree() -> void:
 	modulate = Color.WHITE if initially_active else Color.BLACK
 	visible = initially_active
 	#print("MY NAME IS %s, I MADE THE MIMIC. IT WAS DIFFICULT TO PUT THE ROOMS TOGETHER" % name)
+
+func _ready() -> void:
+	auto_room.particles.emitting = active

@@ -9,6 +9,7 @@ const IntroScene := preload("uid://cjgtv4eflexi6")
 @export var respond_button: Button
 @export var title_label: Label
 @export var version_label: Label
+@export var background: TextureRect
 
 var music_playback: AudioStreamPlaybackInteractive
 
@@ -30,6 +31,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var font := (title_label.label_settings.font as FontVariation)
 	font.variation_embolden = 0.85 + (sin(Time.get_ticks_msec() * 0.003) * 0.3)
+	
+	var bg_scale := 1.03 + (sin(Time.get_ticks_msec() * 0.001) * 0.02)
+	var bg_rotation := sin(Time.get_ticks_msec() * 0.002) * 0.1
+	background.scale = Vector2(bg_scale, bg_scale)
+	background.rotation_degrees = bg_rotation * 5
 
 func _input(event: InputEvent) -> void:
 	if EnvManager.can_debug() and event.is_action_pressed("skip"):
