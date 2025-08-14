@@ -29,8 +29,10 @@ func _ready() -> void:
 	)
 
 func _process(delta: float) -> void:
-	var font := (title_label.label_settings.font as FontVariation)
-	font.variation_embolden = 0.85 + (sin(Time.get_ticks_msec() * 0.003) * 0.3)
+	# This crashes Godot on web lmao
+	if not OS.has_feature("web"):
+		var font := (title_label.label_settings.font as FontVariation)
+		font.variation_embolden = 0.85 + (sin(Time.get_ticks_msec() * 0.003) * 0.3)
 	
 	var bg_scale := 1.03 + (sin(Time.get_ticks_msec() * 0.001) * 0.02)
 	var bg_rotation := sin(Time.get_ticks_msec() * 0.002) * 0.1

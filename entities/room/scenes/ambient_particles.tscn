@@ -1,28 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1kwj1jrs175x"]
+[gd_scene load_steps=7 format=3 uid="uid://d1kwj1jrs175x"]
 
 [ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="1_37kpi"]
-
-[sub_resource type="Curve" id="Curve_mooay"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.378882, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_mooay"]
 offsets = PackedFloat32Array(0, 0.38513514, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="AmbientParticles" type="CPUParticles2D"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_37kpi"]
+gradient = SubResource("Gradient_mooay")
+
+[sub_resource type="Curve" id="Curve_mooay"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.378882, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ne5bp"]
+curve = SubResource("Curve_mooay")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_02yfg"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 470, 0)
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_ne5bp")
+color = Color(0.90588236, 0.9254902, 1, 0.20784314)
+color_ramp = SubResource("GradientTexture1D_37kpi")
+
+[node name="AmbientParticles" type="GPUParticles2D"]
 amount = 32
 texture = ExtResource("1_37kpi")
 lifetime = 8.0
 preprocess = 1.0
 randomness = 1.0
-lifetime_randomness = 0.3
-emission_shape = 3
-emission_rect_extents = Vector2(500, 470)
-gravity = Vector2(0, 0)
-initial_velocity_max = 30.0
-scale_amount_min = 0.1
-scale_amount_max = 0.15
-scale_amount_curve = SubResource("Curve_mooay")
-color = Color(0.90588236, 0.9254902, 1, 0.20784314)
-color_ramp = SubResource("Gradient_mooay")
+fixed_fps = 0
+draw_order = 0
+process_material = SubResource("ParticleProcessMaterial_02yfg")

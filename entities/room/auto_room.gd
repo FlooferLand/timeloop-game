@@ -5,7 +5,7 @@ const wall_tex := preload("uid://3w4s4tny4h66")
 
 @export var bounds: RoomBounds
 
-@onready var particles: CPUParticles2D = $AmbientParticles
+@onready var particles: GPUParticles2D = $AmbientParticles
 
 @onready var background: TileableSprite2D = $Background
 @onready var ceiling: TileableSprite2D = $Ceiling
@@ -41,7 +41,8 @@ func _process(delta: float) -> void:
 	recalculate()
 
 func recalculate() -> void:
-	if bounds == null: return
+	if bounds == null:
+		return
 	size = Vector2(bounds.right, bounds.top)
 	
 	# Ceiling
@@ -91,5 +92,12 @@ func recalculate() -> void:
 	
 	# Ambient particles
 	const particles_up: int = 30
+	var particles_extent: Vector2 = (size / 2) + (Vector2.UP * particles_up)
+	var particle_mat := (particles.process_material as ParticleProcessMaterial)
 	particles.position = Vector2(size.x / 2, -size.y / 2) + (Vector2.UP * particles_up)
-	particles.emission_rect_extents = (size / 2) + (Vector2.UP * particles_up)
+	particles.visibility_rect = Rect2(
+		-(size.x / 2), -(size.y / 2),
+		size.x, size.y
+	)
+	particle_mat.emission_box_extents = Vector3(particles_extent.x, particles_extent.y, 0)
+	
