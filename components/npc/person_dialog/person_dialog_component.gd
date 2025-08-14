@@ -122,7 +122,7 @@ func _ready() -> void:
 		var first: DialogEntry = dialog_comp.dialog_data.entries.get(0)
 		if first != null and first is DialogEntryWithCharacter:
 			var diag := first as DialogEntryWithCharacter
-			_character_postfix = "with %s " % diag.character.name  # Space at end needed
+			_character_postfix = "to %s " % diag.character.name  # Space at end needed
 		interact_comp.set_postfix(_character_postfix)
 
 func sprite_play(anim_name: String) -> void:
