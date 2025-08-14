@@ -1,7 +1,7 @@
 class_name TheManagerEntity extends CharacterBody2D
 
 @export var managers_desk_target: Marker2D
-@export var bridge_door: RoomBridge
+@export var bridge_door_lock: RoomBridgeLock
 
 @export_group("Local")
 @export var elevator_keys_item: InventoryItem
@@ -42,5 +42,5 @@ func _ready() -> void:
 	)
 
 func _process(delta: float) -> void:
-	if global_position.x > bridge_door.global_position.x and bridge_door.locked:
-		bridge_door.locked = false
+	if global_position.x > bridge_door_lock.global_position.x and bridge_door_lock.enabled:
+		bridge_door_lock.enabled = false

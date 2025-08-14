@@ -8,7 +8,8 @@ enum Type {
 	PickUp,
 	Place,
 	Give,
-	Enter
+	Enter,
+	Locked
 }
 
 signal on_player_interact(player: Player)
@@ -70,6 +71,8 @@ func player_leave(player: Player) -> void:
 	displaying_info = false
 	current_player = null
 	update_label()
+	await get_tree().process_frame
+	update_label()
 
 func show_info() -> void:
 	displaying_info = true
@@ -120,6 +123,8 @@ func update_label() -> void:
 			text = "Give"
 		InteractComponent.Type.Enter:
 			text = "Enter"
+		InteractComponent.Type.Locked:
+			text = "Locked"
 	if not _postfix.is_empty():
 		text = "%s %s" % [text, _postfix]
 	label.position = Vector2(info_offset) - Vector2(label.size.x / 2, label.size.y - 30)

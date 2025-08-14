@@ -83,6 +83,8 @@ room_a = NodePath("../StorageCloset")
 room_b = NodePath("../ManagersOffice")
 locked = true
 
+[node name="RoomBridgeLock" parent="RoomManager/RoomBridge3" instance=ExtResource("5_8h0vr")]
+
 [node name="ManagersOffice" parent="RoomManager" instance=ExtResource("9_6mlxv")]
 position = Vector2(7575, 0)
 
@@ -94,7 +96,7 @@ script = ExtResource("13_tef80")
 room_manager = NodePath("../RoomManager")
 metadata/_edit_lock_ = true
 
-[node name="TheManager" parent="Entities" node_paths=PackedStringArray("managers_desk_target", "bridge_door") instance=ExtResource("8_12vld")]
+[node name="TheManager" parent="Entities" node_paths=PackedStringArray("managers_desk_target", "bridge_door_lock") instance=ExtResource("8_12vld")]
 position = Vector2(4949, 0)
 managers_desk_target = NodePath("../../RoomManager/ManagersOffice/ManagersPlace")
-bridge_door = NodePath("../../RoomManager/RoomBridge3")
+bridge_door_lock = NodePath("../../RoomManager/RoomBridge3/RoomBridgeLock")
