@@ -43,8 +43,8 @@ sprite = NodePath("../Sprite")
 parent = NodePath("..")
 
 [node name="PersonDialogComponent" parent="." node_paths=PackedStringArray("walk_comp") instance=ExtResource("2_rvytt")]
-head_position = Vector2(-68.655, -302.875)
 walk_comp = NodePath("../PersonWalkComponent")
+head_position = Vector2(-68.655, -302.875)
 
 [node name="InteractComponent" parent="PersonDialogComponent" instance=ExtResource("3_sfnjn")]
 position = Vector2(0.5, -258)

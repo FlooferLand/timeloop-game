@@ -16,12 +16,12 @@ class_name TheManagerEntity extends CharacterBody2D
 @onready var time_manager: TimeManagerType = TimeManager
 @onready var dialog_manager: DialogManagerType = DialogManager
 
-var can_receive_plushie := true
+var busy := false
 var player_received_key := false
 
 func _ready() -> void:
 	interact_comp.interact_condition = func(player: Player) -> bool:
-		if player.inventory_comp.has_item(plushie_item.id) and can_receive_plushie and not player_received_key:
+		if player.inventory_comp.has_item(plushie_item.id) and not busy and not player_received_key:
 			person_dialog_comp.set_dialog_data(received_plushie_dialog)
 		return true
 	dialog_manager.action_event.connect(func(event_name: String) -> void:
@@ -38,7 +38,7 @@ func _ready() -> void:
 		if new_hour == TimeTable.MANAGER_GO_TO_DESK:
 			walk_comp.target = managers_desk_target
 			person_dialog_comp.set_dialog_data(cant_talk_dialog)
-			can_receive_plushie = false
+			busy = true
 	)
 
 func _process(delta: float) -> void:

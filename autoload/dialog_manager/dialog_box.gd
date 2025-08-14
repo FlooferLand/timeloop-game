@@ -126,18 +126,31 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and not too_early_to_skip:
 		var button := event as InputEventMouseButton
 		if button.pressed and button.button_index == MOUSE_BUTTON_LEFT:
-			advance()
+			if not too_early_to_skip:
+				_trigger_early_skip_prevention()
+				if speaking:
+					content_label.skip_to_end()
+				else:
+					advance()
 
 func _input(event: InputEvent) -> void:
 	var advance_dialog_input := event.is_action_pressed("advance_dialog") \
 		or event.is_action_pressed("interact")
 	
 	if advance_dialog_input and manager.visible and not too_early_to_skip:
+		_trigger_early_skip_prevention()
 		if speaking:
 			content_label.skip_to_end()
 		else:
 			advance()
 #endregion
+
+func _trigger_early_skip_prevention() -> void:
+	too_early_to_skip = true
+	get_tree().create_timer(0.3).timeout.connect(func() -> void:
+		too_early_to_skip = false
+		interaction_hint_label.visible = true
+	)
 
 func _update_hint_label() -> void:
 	var input_name := InputManager.get_input_name_from_list(["advance_dialog", "interact"])

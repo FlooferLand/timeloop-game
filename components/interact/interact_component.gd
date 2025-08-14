@@ -80,6 +80,9 @@ func hide_info() -> void:
 	update_label()
 
 func meets_condition(player: Player) -> bool:
+	if interact_condition == null or player == null:
+		push_error("Interact condition (or player) was null, for some reason (player=%s, interact_condition=%s)" % [player, interact_condition])
+		return true
 	return interact_condition.call(player)
 
 func _update_size() -> void:
