@@ -104,6 +104,7 @@ position = Vector2(923.5, -460)
 shape = SubResource("RectangleShape2D_1drqm")
 
 [node name="AmbientParticles" parent="AutoRoom" instance=ExtResource("10_vouxh")]
+z_index = 2
 position = Vector2(500, -530)
 visibility_rect = Rect2(-500, -500, 1000, 1000)
 

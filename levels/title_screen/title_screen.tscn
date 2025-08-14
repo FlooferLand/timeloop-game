@@ -446,18 +446,6 @@ label_settings = SubResource("LabelSettings_0u665")
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Fade" type="ColorRect" parent="UI/Control"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
-
 [node name="NewgroundsLogin" type="PanelContainer" parent="UI/Control" node_paths=PackedStringArray("status_label", "login_button", "bg")]
 layout_mode = 1
 anchors_preset = -1
@@ -533,6 +521,18 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 10
 text = "Log in"
+
+[node name="Fade" type="ColorRect" parent="UI/Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="ClearColor" parent="." instance=ExtResource("2_eff74")]
 color = Color(0.047058824, 0.07058824, 0.20784314, 1)
