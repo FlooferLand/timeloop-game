@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5pwoudleripi"]
+[gd_scene load_steps=9 format=3 uid="uid://b5pwoudleripi"]
 
 [ext_resource type="Script" uid="uid://q8w8umo33im0" path="res://levels/init/init.gd" id="1_bvh36"]
 [ext_resource type="PackedScene" uid="uid://b126372syf2k6" path="res://levels/outside/scenes/spaceship_land_poof.tscn" id="2_0ifk7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://divqq41454uas" path="res://levels/outside/scenes/spaceship_ambient_poof.tscn" id="3_uhywf"]
 [ext_resource type="PackedScene" uid="uid://twopp3a4pysn" path="res://levels/title_screen/scenes/fading_stars.tscn" id="4_uhywf"]
 [ext_resource type="PackedScene" uid="uid://d1kwj1jrs175x" path="res://entities/room/scenes/ambient_particles.tscn" id="5_7i3fx"]
+[ext_resource type="PackedScene" uid="uid://275lbw1kcuhj" path="res://components/footstep/scenes/footstep_particles.tscn" id="7_070cp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu4rc"]
 bg_color = Color(0, 0, 0, 1)
@@ -23,6 +24,8 @@ metadata/_edit_lock_ = true
 [node name="FadingStars" parent="Scene" instance=ExtResource("4_uhywf")]
 
 [node name="AmbientParticles" parent="Scene" instance=ExtResource("5_7i3fx")]
+
+[node name="FootstepParticles" parent="Scene" instance=ExtResource("7_070cp")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0

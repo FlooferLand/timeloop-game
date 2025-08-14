@@ -1,38 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://0fxhnnybdyae"]
+[gd_scene load_steps=3 format=3 uid="uid://0fxhnnybdyae"]
 
 [ext_resource type="Script" uid="uid://2bxrq75lx3c4" path="res://components/footstep/footstep_component.gd" id="1_67fvk"]
-[ext_resource type="Texture2D" uid="uid://ctai58rgk4jp7" path="res://assets/textures/water_particle.png" id="2_c6dkf"]
-
-[sub_resource type="Gradient" id="Gradient_c6dkf"]
-offsets = PackedFloat32Array(0, 0.65234375)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ca1m2"]
-gradient = SubResource("Gradient_c6dkf")
-
-[sub_resource type="Curve" id="Curve_uwr6r"]
-_data = [Vector2(0, 0.8576642), 0.0, 0.69806373, 0, 0, Vector2(0.08865248, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_cajc0"]
-curve = SubResource("Curve_uwr6r")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ca1m2"]
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(50, 18, 1)
-gravity = Vector3(0, -20, 0)
-scale_min = 0.29999998
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_cajc0")
-color = Color(1, 1, 1, 0.25882354)
-color_ramp = SubResource("GradientTexture1D_ca1m2")
+[ext_resource type="PackedScene" uid="uid://275lbw1kcuhj" path="res://components/footstep/scenes/footstep_particles.tscn" id="2_c6dkf"]
 
 [node name="FootstepComponent" type="Node2D" node_paths=PackedStringArray("audio_player", "timer", "particles")]
 script = ExtResource("1_67fvk")
 audio_player = NodePath("AudioPlayer")
 timer = NodePath("Timer")
-particles = NodePath("Particles")
+particles = NodePath("FootstepParticles")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
 bus = &"SFX"
@@ -40,11 +15,5 @@ bus = &"SFX"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
 
-[node name="Particles" type="GPUParticles2D" parent="."]
-z_index = -1
+[node name="FootstepParticles" parent="." instance=ExtResource("2_c6dkf")]
 position = Vector2(0, -10)
-emitting = false
-texture = ExtResource("2_c6dkf")
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_ca1m2")

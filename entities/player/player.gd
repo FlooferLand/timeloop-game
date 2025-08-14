@@ -55,6 +55,12 @@ func _process(delta: float) -> void:
 		sprinting = Input.is_action_pressed("sprint")
 	walking = (move_direction.length() > 0 and velocity.length() > 0)
 	
+	# Sprint effects
+	#if Input.is_action_just_pressed("sprint") and can_move:
+		#sprint_particles.emitting = true
+	#elif Input.is_action_just_released("sprint"):
+		#sprint_particles.emitting = false
+	
 	# Footsteps
 	if walking and not footstep_comp.is_playing():
 		footstep_comp.play()
