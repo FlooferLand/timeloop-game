@@ -85,10 +85,6 @@ import/blender/enabled=false
 living_entity="An entity that can move around and stuff"
 CloudSave="Newgrounds Cloudsave"
 
-[gui]
-
-theme/default_font_antialiasing=2
-
 [input]
 
 ui_accept={
@@ -187,4 +183,5 @@ textures/vram_compression/import_etc2_astc=true
 2d/shadow_atlas/size=512
 reflections/specular_occlusion/enabled=false
 driver/depth_prepass/enable=false
+anti_aliasing/screen_space_roughness_limiter/enabled=false
 environment/defaults/default_environment="uid://coktsqx2ah0em"

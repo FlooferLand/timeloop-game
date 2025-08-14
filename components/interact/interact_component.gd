@@ -122,6 +122,6 @@ func update_label() -> void:
 			text = "Enter"
 	if not _postfix.is_empty():
 		text = "%s %s" % [text, _postfix]
-	label.position = Vector2(info_offset) - Vector2(label.size.x / 2, label.size.y)
+	label.position = Vector2(info_offset) - Vector2(label.size.x / 2, label.size.y - 30)
 	label.text = text
 	label.visible = true

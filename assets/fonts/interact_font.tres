@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bnbkebntwltyq"]
+
+[ext_resource type="FontFile" uid="uid://brbinrtoaold1" path="res://assets/fonts/open_sans.ttf" id="1_3rl1q"]
+
+[resource]
+base_font = ExtResource("1_3rl1q")
+variation_embolden = 1.5

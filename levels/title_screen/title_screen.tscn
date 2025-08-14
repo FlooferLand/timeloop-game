@@ -1,14 +1,16 @@
-[gd_scene load_steps=26 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=29 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
 [ext_resource type="PackedScene" uid="uid://bd0ri4elgqxxc" path="res://utility/clear_color/clear_color.tscn" id="2_eff74"]
+[ext_resource type="PackedScene" uid="uid://twopp3a4pysn" path="res://levels/title_screen/scenes/fading_stars.tscn" id="3_1tma4"]
 [ext_resource type="Script" uid="uid://btk1lh5vs5ovv" path="res://levels/title_screen/spaceship.gd" id="3_me0mb"]
 [ext_resource type="SpriteFrames" uid="uid://bl1ulu1buo0pr" path="res://assets/textures/spaceship/spaceship.tres" id="3_xkaxa"]
 [ext_resource type="PackedScene" uid="uid://b126372syf2k6" path="res://levels/outside/scenes/spaceship_land_poof.tscn" id="5_7v5jn"]
 [ext_resource type="Theme" uid="uid://dr2r7k6nk8smc" path="res://assets/ui.theme" id="5_xkaxa"]
 [ext_resource type="Script" uid="uid://hfr3nxm2k0d0" path="res://scripts/button_container.gd" id="6_b3t8g"]
 [ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
+[ext_resource type="FontFile" uid="uid://brbinrtoaold1" path="res://assets/fonts/open_sans.ttf" id="7_3565q"]
 [ext_resource type="AudioStream" uid="uid://dybu3wnhekijb" path="res://assets/sfx/navcom/radio_quick_noise.wav" id="7_gw2jj"]
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
 [ext_resource type="Texture2D" uid="uid://w2ib3bovp5g7" path="res://assets/textures/platform/ng_tank.png" id="8_eq38v"]
@@ -16,7 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://bgtdq580wjx5c" path="res://assets/textures/platform/ng_bg.png" id="9_fmbml"]
 [ext_resource type="AudioStream" uid="uid://bpas0ratewa8d" path="res://assets/music/silence.mp3" id="11_3agv4"]
 
+[sub_resource type="FontVariation" id="FontVariation_1tma4"]
+base_font = ExtResource("7_3565q")
+
 [sub_resource type="LabelSettings" id="LabelSettings_eff74"]
+font = SubResource("FontVariation_1tma4")
 font_size = 80
 font_color = Color(0.360784, 0.584314, 1, 1)
 shadow_size = 18
@@ -251,13 +257,14 @@ _data = {
 &"respond": SubResource("Animation_3agv4")
 }
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "music", "radio_noise", "anim_player", "respond_button", "version_label")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "music", "radio_noise", "anim_player", "respond_button", "title_label", "version_label")]
 script = ExtResource("1_ypach")
 navcom_voice = NodePath("Navcom")
 music = NodePath("Music")
 radio_noise = NodePath("Noise")
 anim_player = NodePath("AnimationPlayer")
 respond_button = NodePath("UI/Control/VBoxContainer/HBoxContainer/PlayGame")
+title_label = NodePath("UI/Control/VBoxContainer/Title/Title")
 version_label = NodePath("UI/Control/VBoxContainer/Title/Version")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -278,9 +285,12 @@ texture = ExtResource("1_firn2")
 stretch_mode = 6
 metadata/_edit_lock_ = true
 
+[node name="FadingStars" parent="." instance=ExtResource("3_1tma4")]
+z_index = -1
+position = Vector2(945, 544)
+
 [node name="Spaceship" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("child")]
 self_modulate = Color(1, 1, 1, 0.8)
-z_index = 1
 position = Vector2(560, 798)
 rotation = 0.261799
 scale = Vector2(0.544693, 0.544693)
@@ -293,11 +303,13 @@ metadata/_edit_group_ = true
 
 [node name="Spaceship2" type="AnimatedSprite2D" parent="Spaceship"]
 modulate = Color(0, 1, 1, 0.25098)
+z_index = -1
 z_as_relative = false
 sprite_frames = ExtResource("3_xkaxa")
 animation = &"idle"
 
 [node name="SpaceshipLandPoof" parent="Spaceship" instance=ExtResource("5_7v5jn")]
+z_index = -1
 position = Vector2(0.40015793, 235.57462)
 
 [node name="UI" type="CanvasLayer" parent="."]

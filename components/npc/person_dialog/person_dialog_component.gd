@@ -36,6 +36,7 @@ var interact_counter := 0
 var required_animations := RequiredAnimations.new()
 var _sprite_postfix := ""
 var incomplete_dialog := false
+var _character_postfix := ""
 
 func _enter_tree() -> void:
 	for child in get_children():
@@ -83,9 +84,9 @@ func _ready() -> void:
 		on_dialog_closed.emit()
 		sprite_play(required_animations.idle)
 		if interact_counter > 0 and not future_dialogs.is_empty():
-			interact_comp.set_postfix("more")
+			interact_comp.set_postfix(_character_postfix + "more")
 		if dialog_index == future_dialogs.size()-1 and interact_counter > 1:
-			interact_comp.set_postfix("again")
+			interact_comp.set_postfix(_character_postfix + "again")
 		if dialog_index + 1 < future_dialogs.size() and interact_counter > 1:
 			dialog_index += 1
 		interact_comp.show_info()
@@ -115,6 +116,14 @@ func _ready() -> void:
 			sprite_stop()
 			sprite.frame = 1
 	)
+	
+	# Getting the character name to display before interaction
+	if dialog_comp.dialog_data != null:
+		var first: DialogEntry = dialog_comp.dialog_data.entries.get(0)
+		if first != null and first is DialogEntryWithCharacter:
+			var diag := first as DialogEntryWithCharacter
+			_character_postfix = "with %s " % diag.character.name  # Space at end needed
+		interact_comp.set_postfix(_character_postfix)
 
 func sprite_play(anim_name: String) -> void:
 	if sprite != null:

@@ -7,6 +7,7 @@ const IntroScene := preload("uid://cjgtv4eflexi6")
 @export var radio_noise: AudioStreamPlayer
 @export var anim_player: AnimationPlayer
 @export var respond_button: Button
+@export var title_label: Label
 @export var version_label: Label
 
 var music_playback: AudioStreamPlaybackInteractive
@@ -25,6 +26,10 @@ func _ready() -> void:
 		if anim_name == "respond":
 			_start_game()
 	)
+
+func _process(delta: float) -> void:
+	var font := (title_label.label_settings.font as FontVariation)
+	font.variation_embolden = 0.85 + (sin(Time.get_ticks_msec() * 0.003) * 0.3)
 
 func _input(event: InputEvent) -> void:
 	if EnvManager.can_debug() and event.is_action_pressed("skip"):
