@@ -8,16 +8,15 @@ func _ready() -> void:
 	anim_player.play("ending")
 	
 	var time: float = SpeedrunManager.time
-	if EnvManager.can_debug():
-		time = 9_999_999
 	
 	## Showing the time to the user
 	speedrun_time.text = "Completed in %s seconds" % snappedf(time, 0.001)
 	SpeedrunManager.stop_timer()
 	
-	## Submitting the time
-	var id := NewgroundsIds.ScoreboardId.CompletionTimes
-	await NG.scoreboard_submit_time(id, time)
-	
-	## Medal
-	NGTyped.instance.medal_unlock(NewgroundsIds.MedalId.BeatTheGame)
+	if not EnvManager.can_debug():
+		## Submitting the time
+		var id := NewgroundsIds.ScoreboardId.CompletionTimes
+		await NG.scoreboard_submit_time(id, time)
+		
+		## Medal
+		NGTyped.instance.medal_unlock(NewgroundsIds.MedalId.BeatTheGame)
