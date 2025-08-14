@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dytk4odemy15w"]
+[gd_scene load_steps=13 format=3 uid="uid://dytk4odemy15w"]
 
 [ext_resource type="Script" uid="uid://cmqr6suouga2w" path="res://entities/player/player.gd" id="1_453mm"]
 [ext_resource type="SpriteFrames" uid="uid://cr1jr04f0k0wn" path="res://assets/textures/player/with_arms.tres" id="2_eaotn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://fyb3wuw770hk" path="res://assets/textures/light/circle_light.png" id="4_rl6fg"]
 [ext_resource type="PackedScene" uid="uid://bab5ojxf5h83c" path="res://components/inventory/inventory_component.tscn" id="6_4pwj0"]
 [ext_resource type="Script" uid="uid://2veea5m8nnax" path="res://entities/player/inventory_ui/inventory_ui.gd" id="7_fmb3c"]
+[ext_resource type="Script" uid="uid://pjd3ckwk20ht" path="res://entities/player/controller_hints.gd" id="9_q57vx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_453mm"]
 radius = 48.0
@@ -15,6 +16,12 @@ height = 250.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_453mm"]
 size = Vector2(63, 294)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q57vx"]
+font_size = 24
+font_color = Color(1, 1, 1, 0.7294118)
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 0.36078432)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite", "footstep_comp", "inventory_comp", "camera")]
 z_index = 2
@@ -90,6 +97,36 @@ layout_mode = 2
 [node name="Slots" type="HBoxContainer" parent="InventoryUI/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="ControllerHints" type="CanvasLayer" parent="." node_paths=PackedStringArray("label")]
+script = ExtResource("9_q57vx")
+label = NodePath("MarginContainer/HBoxContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="ControllerHints"]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 996.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ControllerHints/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ControllerHints/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Controller hints here!"
+label_settings = SubResource("LabelSettings_q57vx")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="area_entered" from="PlayerInteraction" to="PlayerInteraction" method="_on_area_entered"]
 [connection signal="area_exited" from="PlayerInteraction" to="PlayerInteraction" method="_on_area_exited"]

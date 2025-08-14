@@ -13,6 +13,7 @@ signal connection_state_changed(connected: bool)
 
 ## The state changed regarding the input method that is currently active
 ## Ex: User switched devices and is now playing on the keyboard, but the controller is still on
+## Note: This will also be called when the controller is connected/disconnected
 signal active_state_changed(controller_active: bool)
 
 const BRAND_KEYWORDS: Dictionary[Brand, PackedStringArray] = {
@@ -40,6 +41,7 @@ func _enter_tree() -> void:
 		connection_state_changed.emit(connected)
 		if connected:
 			_update_brand_name()
+		active_state_changed.emit(connected)
 	)
 
 func _input(event: InputEvent) -> void:
