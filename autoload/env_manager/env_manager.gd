@@ -12,9 +12,8 @@ func can_debug() -> bool:
 	if NGTyped.instance.session != null:
 		if NGTyped.instance.session.user != null:
 			if NGTyped.instance.session.user.name != null:
-				is_dev = NGTyped.instance.session.user.name.to_lower() == "flooferland"
-				print("your name: '%s'" % NGTyped.instance.session.user.name.to_lower())
-	return OS.is_debug_build() or is_dev or is_debug_via_cheatcode
+				is_dev = NGTyped.instance.session.user.name.to_lower() in ["flooferland", "mousedotexecutable"]
+	return OS.is_debug_build() or is_dev # or is_debug_via_cheatcode
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():

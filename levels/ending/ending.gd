@@ -18,3 +18,6 @@ func _ready() -> void:
 	## Submitting the time
 	var id := NewgroundsIds.ScoreboardId.CompletionTimes
 	await NG.scoreboard_submit_time(id, time)
+	
+	## Medal
+	NGTyped.instance.medal_unlock(NewgroundsIds.MedalId.BeatTheGame)

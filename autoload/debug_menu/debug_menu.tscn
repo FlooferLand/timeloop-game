@@ -7,10 +7,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_j1rx8"]
 font_size = 38
 
-[node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("to_game_level_button")]
+[node name="DebugMenu" type="CanvasLayer" node_paths=PackedStringArray("to_game_level_button", "ng_sign_out")]
 layer = 500
 script = ExtResource("1_j1rx8")
 to_game_level_button = NodePath("Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/GoToGame")
+ng_sign_out = NodePath("Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer/SignOut")
 
 [node name="Root" type="Control" parent="."]
 layout_mode = 3
@@ -47,6 +48,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Root/HSplitContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="Title" type="Label" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -56,6 +58,10 @@ label_settings = SubResource("LabelSettings_j1rx8")
 [node name="GoToGame" type="Button" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Go to game level"
+
+[node name="SignOut" type="Button" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "NG Sign Out"
 
 [node name="Space" type="Control" parent="Root/HSplitContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

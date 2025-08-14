@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MedalResource" load_steps=2 format=3 uid="uid://2jelb6g8rpfv"]
+
+[ext_resource type="Script" uid="uid://dmv5h7uw73ypf" path="res://addons/newgrounds/data/medal_resource.gd" id="1_rt4no"]
+
+[resource]
+script = ExtResource("1_rt4no")
+name = "Beat the game"
+description = "Completed the game"
+icon_url = "//apifiles.ngfiles.com/medals/60000/60680/85983_beatthegame.webp"
+id = 85983
+difficulty = 2

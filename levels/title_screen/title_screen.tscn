@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cu638cpwjak4k"]
+[gd_scene load_steps=26 format=3 uid="uid://cu638cpwjak4k"]
 
 [ext_resource type="Texture2D" uid="uid://b8bhvm00y6l8l" path="res://assets/textures/titlescreen.png" id="1_firn2"]
 [ext_resource type="Script" uid="uid://di6mqa5onspk8" path="res://levels/title_screen/title_screen.gd" id="1_ypach"]
@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://bcoykjqdrdtqg" path="res://assets/sfx/navcom/navcom_intervene.mp3" id="6_ndbk7"]
 [ext_resource type="AudioStream" uid="uid://dybu3wnhekijb" path="res://assets/sfx/navcom/radio_quick_noise.wav" id="7_gw2jj"]
 [ext_resource type="AudioStream" uid="uid://xwbnvktc25tr" path="res://assets/music/title_screen.mp3" id="8_0u665"]
+[ext_resource type="Texture2D" uid="uid://w2ib3bovp5g7" path="res://assets/textures/platform/ng_tank.png" id="8_eq38v"]
+[ext_resource type="Script" uid="uid://brjld7ykcxiob" path="res://levels/title_screen/newgrounds_login.gd" id="8_iq1xj"]
+[ext_resource type="Texture2D" uid="uid://bgtdq580wjx5c" path="res://assets/textures/platform/ng_bg.png" id="9_fmbml"]
 [ext_resource type="AudioStream" uid="uid://bpas0ratewa8d" path="res://assets/music/silence.mp3" id="11_3agv4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eff74"]
@@ -31,6 +34,32 @@ shadow_offset = Vector2(4, 2)
 font_size = 32
 shadow_size = 15
 shadow_color = Color(0, 0, 0, 0.611765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eq38v"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.18431373, 0.18431373, 0.3137255, 0.7019608)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.68235296, 0.5411765, 0.44705883)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_iq1xj"]
+font_size = 28
+font_color = Color(0.99999994, 0.4839335, 0.14300206, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fmbml"]
+font_size = 24
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_7v5jn"]
 clip_count = 3
@@ -222,13 +251,14 @@ _data = {
 &"respond": SubResource("Animation_3agv4")
 }
 
-[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "music", "radio_noise", "anim_player", "respond_button")]
+[node name="TitleScreen" type="Node2D" node_paths=PackedStringArray("navcom_voice", "music", "radio_noise", "anim_player", "respond_button", "version_label")]
 script = ExtResource("1_ypach")
 navcom_voice = NodePath("Navcom")
 music = NodePath("Music")
 radio_noise = NodePath("Noise")
 anim_player = NodePath("AnimationPlayer")
 respond_button = NodePath("UI/Control/VBoxContainer/HBoxContainer/PlayGame")
+version_label = NodePath("UI/Control/VBoxContainer/Title/Version")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -312,17 +342,34 @@ vertical_alignment = 1
 [node name="Subtip" type="Label" parent="UI/Control/VBoxContainer/Title"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -233.0
+offset_left = -116.5
 offset_top = -55.0
+offset_right = 116.5
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 text = "Early Access"
 label_settings = SubResource("LabelSettings_3agv4")
 horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Version" type="Label" parent="UI/Control/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 222.0
+offset_top = -55.0
+offset_right = 455.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "v1.0.0"
+label_settings = SubResource("LabelSettings_3agv4")
 vertical_alignment = 2
 
 [node name="Info" type="RichTextLabel" parent="UI/Control/VBoxContainer"]
@@ -396,6 +443,82 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
+
+[node name="NewgroundsLogin" type="PanelContainer" parent="UI/Control" node_paths=PackedStringArray("status_label", "login_button", "bg")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -433.0
+offset_top = 9.0
+offset_right = -9.0
+offset_bottom = 152.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eq38v")
+script = ExtResource("8_iq1xj")
+status_label = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Status")
+login_button = NodePath("MarginContainer/HBoxContainer/VBoxContainer/Log in")
+bg = NodePath("MarginContainer/HBoxContainer/NG/BG")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control/NewgroundsLogin"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/NewgroundsLogin/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="NG" type="Control" parent="UI/Control/NewgroundsLogin/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+
+[node name="BG" type="TextureRect" parent="UI/Control/NewgroundsLogin/MarginContainer/HBoxContainer/NG"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.78431374)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_fmbml")
+expand_mode = 3
+
+[node name="Logo" type="TextureRect" parent="UI/Control/NewgroundsLogin/MarginContainer/HBoxContainer/NG"]
+modulate = Color(1, 1, 1, 0.81960785)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_eq38v")
+expand_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/NewgroundsLogin/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Control/NewgroundsLogin/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Newgrounds"
+label_settings = SubResource("LabelSettings_iq1xj")
+
+[node name="Status" type="Label" parent="UI/Control/NewgroundsLogin/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+text = "Not logged in"
+label_settings = SubResource("LabelSettings_fmbml")
+autowrap_mode = 3
+
+[node name="Log in" type="Button" parent="UI/Control/NewgroundsLogin/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 10
+text = "Log in"
 
 [node name="ClearColor" parent="." instance=ExtResource("2_eff74")]
 color = Color(0.047058824, 0.07058824, 0.20784314, 1)

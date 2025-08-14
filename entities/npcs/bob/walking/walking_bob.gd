@@ -21,6 +21,7 @@ func _ready() -> void:
 			await get_tree().create_timer(2.0).timeout
 			walk_comp.target = desk_self.bob_desk_pos
 			walk_comp.paused = false
+			NGTyped.instance.medal_unlock(NewgroundsIds.MedalId.Bonk)
 	)
 	walk_comp.on_arrived.connect(func(target: Marker2D) -> void:
 		match target:

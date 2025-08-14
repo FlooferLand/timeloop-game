@@ -7,10 +7,12 @@ const IntroScene := preload("uid://cjgtv4eflexi6")
 @export var radio_noise: AudioStreamPlayer
 @export var anim_player: AnimationPlayer
 @export var respond_button: Button
+@export var version_label: Label
 
 var music_playback: AudioStreamPlaybackInteractive
 
 func _ready() -> void:
+	version_label.text = "v%s" % ProjectSettings.get_setting("application/config/version")
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	music_playback = music.get_stream_playback() as AudioStreamPlaybackInteractive
 	get_tree().create_timer(4.0).timeout.connect(func() -> void:
@@ -38,4 +40,5 @@ func _on_play_game_pressed() -> void:
 	music_playback.switch_to_clip(2)
 
 func _on_quit_pressed() -> void:
-	get_tree().quit()
+	if not OS.has_feature("web"):
+		get_tree().quit()

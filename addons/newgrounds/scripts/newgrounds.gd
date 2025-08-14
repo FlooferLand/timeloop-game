@@ -311,6 +311,7 @@ func medal_get_list(app_id_override: String="") -> Array[MedalResource]:
 ## Unlocks medal. emits on_medal_unlocked on success
 func medal_unlock(medal_id: int, silent: bool=false) -> bool:
 	if offline_mode:
+		print("Offline mode = true")
 		var medal = get_medal_resource(medal_id);
 		if medal:
 			medal.unlocked = true;
@@ -322,6 +323,7 @@ func medal_unlock(medal_id: int, silent: bool=false) -> bool:
 	var res = await components.medal_unlock(medal_id).on_response
 	
 	if res.error:
+		push_error("Error unlocking medal: %s" % res.error)
 		if res.error != NewgroundsRequest.ERR_MEDAL_NOT_FOUND:
 			var medal = get_medal_resource(medal_id);
 			if medal:
@@ -333,6 +335,7 @@ func medal_unlock(medal_id: int, silent: bool=false) -> bool:
 	
 	offline_data.set_medal_unlocked(medal_id, true)
 	
+	print("Unlocking now!")
 	var m = res.data;
 	var medal = get_medal_resource(medal_id);
 	if medal:
