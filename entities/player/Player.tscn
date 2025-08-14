@@ -74,7 +74,7 @@ is_local = true
 [node name="InventoryComponent" parent="." instance=ExtResource("6_4pwj0")]
 
 [node name="InventoryUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("inventory_comp", "slot_container")]
-layer = 10
+layer = 25
 script = ExtResource("7_fmb3c")
 inventory_comp = NodePath("../InventoryComponent")
 slot_container = NodePath("MarginContainer/VBoxContainer/Slots")

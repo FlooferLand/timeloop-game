@@ -8,14 +8,21 @@ const ItemSlotScene := preload("uid://djfmkk5rkgrq1")
 @export var slot_container: BoxContainer
 
 var in_dialog := false
+var in_dialog_awaiting_rebuild := false
 
 func _ready() -> void:
 	visible = inventory_comp.default.size() > 0
 	inventory_comp.item_added.connect(func(item: InventoryItem) -> void:
-		_rebuild_slots()
+		if in_dialog:
+			in_dialog_awaiting_rebuild = true
+		else:
+			_rebuild_slots()
 	)
 	inventory_comp.item_removed.connect(func(item: InventoryItem) -> void:
-		_rebuild_slots()
+		if in_dialog:
+			in_dialog_awaiting_rebuild = true
+		else:
+			_rebuild_slots()
 	)
 	dialog_manager.dialog_opened.connect(func() -> void:
 		in_dialog = true
@@ -23,6 +30,9 @@ func _ready() -> void:
 	)
 	dialog_manager.dialog_closed.connect(func(closed_early: bool) -> void:
 		in_dialog = false
+		if in_dialog_awaiting_rebuild:
+			_rebuild_slots()
+			in_dialog_awaiting_rebuild = false
 		_update_visibility()
 	)
 

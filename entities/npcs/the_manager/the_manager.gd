@@ -4,7 +4,6 @@ class_name TheManagerEntity extends CharacterBody2D
 @export var bridge_door_lock: RoomBridgeLock
 
 @export_group("Local")
-@export var elevator_keys_item: InventoryItem
 @export var plushie_item: InventoryItem
 @export var received_plushie_dialog: DialogData
 @export var after_thank_you_dialog: DialogData
@@ -27,10 +26,7 @@ func _ready() -> void:
 	dialog_manager.action_event.connect(func(event_name: String) -> void:
 		if person_dialog_comp.dialog_comp.active:
 			match event_name:
-				"steal_the_bnnuy":
-					interact_comp.current_player.inventory_comp.remove_item(plushie_item)
 				"give_elevator_keys":
-					interact_comp.current_player.inventory_comp.add_item(elevator_keys_item)
 					person_dialog_comp.set_dialog_data(after_thank_you_dialog)
 					player_received_key = true
 	)

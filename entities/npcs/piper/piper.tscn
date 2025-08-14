@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1cv7inyidclk"]
+[gd_scene load_steps=14 format=3 uid="uid://b1cv7inyidclk"]
 
 [ext_resource type="Script" uid="uid://drxu2ye338c12" path="res://entities/npcs/piper/piper.gd" id="1_1vr3r"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="1_pkrj1"]
 [ext_resource type="PackedScene" uid="uid://dixvuy0ma0nk6" path="res://components/dialog/DialogComponent.tscn" id="2_83hmt"]
 [ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="2_hkg0d"]
-[ext_resource type="Resource" uid="uid://cuedwcqlfvub0" path="res://assets/resources/items/pipers_document/pipers_document.tres" id="2_hptnw"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_5s4qf"]
 [ext_resource type="Resource" uid="uid://cmff68qwpcf5b" path="res://assets/resources/dialog/piper/p_initial.tres" id="3_hkg0d"]
 [ext_resource type="SpriteFrames" uid="uid://kwdsanhac8kq" path="res://assets/textures/npcs/piper.tres" id="4_83hmt"]
@@ -28,7 +27,6 @@ metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 script = ExtResource("1_1vr3r")
 dialog_comp = NodePath("PersonDialogComponent/DialogComponent")
 interact_comp = NodePath("PersonDialogComponent/InteractComponent")
-paper_item = ExtResource("2_hptnw")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -240)

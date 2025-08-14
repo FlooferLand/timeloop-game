@@ -3,7 +3,6 @@ extends Node2D
 @export var bob_prank: BobPrank
 
 @export_group("Local")
-@export var bnnuy_item: InventoryItem
 @export var thank_player_dialog: DialogData
 @export var after_happy_dialog: DialogData
 @export var sad_dialog: DialogData
@@ -38,7 +37,6 @@ func _ready() -> void:
 	)
 	dialog_manager.action_event.connect(func(event_name: String) -> void:
 		if event_name == "give_bnnuy" and dialog_comp.dialog_comp.active:
-			interact_comp.current_player.inventory_comp.add_item(bnnuy_item)
 			gave_plushie = true
 			awaiting_gift = false
 	)

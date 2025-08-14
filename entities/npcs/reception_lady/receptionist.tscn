@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfb4gv115aot7"]
+[gd_scene load_steps=19 format=3 uid="uid://dfb4gv115aot7"]
 
 [ext_resource type="Script" uid="uid://b66hs6dr71el0" path="res://entities/npcs/reception_lady/receptionist.gd" id="1_io615"]
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="2_5h8mu"]
 [ext_resource type="Resource" uid="uid://bg0jc7csv1njn" path="res://assets/resources/dialog/receptionist/r_thank_player_dialog.tres" id="2_abkpk"]
-[ext_resource type="Resource" uid="uid://d1shglsfrg0mj" path="res://assets/resources/items/managers_plushie/managers_plushie.tres" id="2_h756q"]
 [ext_resource type="SpriteFrames" uid="uid://b8hnlut0v4ocq" path="res://assets/textures/npcs/receptionist.tres" id="2_ydaht"]
 [ext_resource type="PackedScene" uid="uid://cs55pod1i0345" path="res://components/npc/person_dialog/PersonDialogComponent.tscn" id="3_qekmj"]
 [ext_resource type="PackedScene" uid="uid://dn1c1mniy4ja3" path="res://components/interact/interact_component.tscn" id="3_ynfe1"]
@@ -31,7 +30,6 @@ metadata/_custom_type_script = "uid://bljc8yqis8nnu"
 
 [node name="Receptionist" type="Node2D" node_paths=PackedStringArray("dialog_comp", "interact_comp", "ambient", "exclaim")]
 script = ExtResource("1_io615")
-bnnuy_item = ExtResource("2_h756q")
 thank_player_dialog = ExtResource("2_abkpk")
 after_happy_dialog = ExtResource("4_5h8mu")
 sad_dialog = ExtResource("5_layea")

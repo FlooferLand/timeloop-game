@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogData" load_steps=19 format=3 uid="uid://bg0jc7csv1njn"]
+[gd_resource type="Resource" script_class="DialogData" load_steps=22 format=3 uid="uid://bg0jc7csv1njn"]
 
 [ext_resource type="Script" uid="uid://cy1tkhpqsq3rh" path="res://components/dialog/resources/entries/base/dialog_entry.gd" id="1_k5nhk"]
 [ext_resource type="Script" uid="uid://b58bcr2p3lcds" path="res://components/dialog/resources/actions/base/dialog_action.gd" id="2_ktde3"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://507n7nsnlly4" path="res://components/dialog/resources/actions/dialog_event_action.gd" id="9_ktde3"]
 [ext_resource type="Script" uid="uid://bbph4e2hp6jcj" path="res://components/dialog/resources/entries/dialog_character_act_entry.gd" id="9_v24en"]
 [ext_resource type="Script" uid="uid://bljc8yqis8nnu" path="res://components/dialog/resources/dialog_data.gd" id="10_cht0j"]
+[ext_resource type="Resource" uid="uid://d1shglsfrg0mj" path="res://assets/resources/items/managers_plushie/managers_plushie.tres" id="10_x8x5p"]
 [ext_resource type="Script" uid="uid://c2c64doslfxei" path="res://components/dialog/resources/entries/dialog_text_collection.gd" id="11_nu2qk"]
+[ext_resource type="Script" uid="uid://cquhttqd20pdp" path="res://components/dialog/resources/actions/dialog_modify_item_action.gd" id="11_vncao"]
 
 [sub_resource type="Resource" id="Resource_7smqe"]
 script = ExtResource("5_0tdw7")
@@ -37,11 +39,16 @@ script = ExtResource("9_ktde3")
 event_name = "give_bnnuy"
 metadata/_custom_type_script = "uid://507n7nsnlly4"
 
+[sub_resource type="Resource" id="Resource_dwvoo"]
+script = ExtResource("11_vncao")
+item = ExtResource("10_x8x5p")
+metadata/_custom_type_script = "uid://cquhttqd20pdp"
+
 [sub_resource type="Resource" id="Resource_pi4bl"]
 script = ExtResource("9_v24en")
 text = "The receptionist gives you a plush bunny"
 character = ExtResource("4_dhsue")
-additional = Array[ExtResource("2_ktde3")]([SubResource("Resource_2unq0"), SubResource("Resource_nu2qk")])
+additional = Array[ExtResource("2_ktde3")]([SubResource("Resource_2unq0"), SubResource("Resource_nu2qk"), SubResource("Resource_dwvoo")])
 metadata/_custom_type_script = "uid://bbph4e2hp6jcj"
 
 [sub_resource type="Resource" id="Resource_dhsue"]

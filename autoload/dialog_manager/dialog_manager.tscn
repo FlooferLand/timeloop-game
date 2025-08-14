@@ -19,6 +19,7 @@ font_size = 32
 font_color = Color(1, 1, 1, 0.282353)
 
 [node name="DialogManager" type="CanvasLayer" node_paths=PackedStringArray("dialog_box")]
+layer = 15
 script = ExtResource("1_nq256")
 dialog_box = NodePath("Root/DialogBox")
 

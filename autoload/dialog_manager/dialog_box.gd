@@ -82,7 +82,16 @@ func advance() -> void:
 		elif additional is DialogEventAction:
 			var action := additional as DialogEventAction
 			manager.action_event.emit(action.event_name)
+			manager.can_close_early = false  # Fixes things not being disposed properly
+		elif additional is DialogModifyItemAction:
+			var action := additional as DialogModifyItemAction
+			var inventory := manager.player_ref.inventory_comp
 			manager.can_close_early = false  # Fixes item duplication
+			match action.operation:
+				DialogModifyItemAction.Operation.Add:
+					inventory.add_item(action.item)
+				DialogModifyItemAction.Operation.Remove:
+					inventory.remove_item(action.item)
 	
 	# Looking at all the dialog content types
 	var pitch_variety := 1.0 if character == null else character.pitch_variety
