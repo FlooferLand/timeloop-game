@@ -1,5 +1,5 @@
 ##  (Mostly for internal use) A node containing predefined API requests to Newgrounds.io
-extends Node
+class_name NewgroundsInternalComponents extends Node
 
 var aes_key: String
 var app_id: String
@@ -94,6 +94,22 @@ func cloudsave_get_data(slot_data_url: String) -> NewgroundsRequest:
 	add_child(request)
 	request.custom_request(slot_data_url)
 	return request
+
+## Events
+############
+func event_log(event_id: String) -> NewgroundsRequest:
+	var host := "localHost"
+	if OS.has_feature("web"):
+		var window := JavaScriptBridge.get_interface("window")
+		if window != null and window.location != null:
+			var host_raw: String = window.location.host
+			var split := host_raw.split('.', true, 1)
+			if len(split) > 1:
+				host = split[1]
+			else:
+				host = host_raw.replace("www.", "")
+	
+	return _request("Event.logEvent", { "event_name": event_id, "host": host })
 
 func _request(component, parameters, field_name: String = "") -> NewgroundsRequest:
 	#print('Newgrounds: Call %s' % component)

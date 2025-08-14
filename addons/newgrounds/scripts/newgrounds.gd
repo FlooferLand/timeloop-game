@@ -4,8 +4,8 @@ var app_id: String;
 var aes_key: String;
 var auto_init: bool;
 
-@onready var components = $Components
-@onready var offline_data = $OfflineData
+@onready var components: NewgroundsInternalComponents = $Components
+@onready var offline_data := $OfflineData
 
 ## will be true if user is not signed in or without internet
 var offline_mode: bool = true;
@@ -311,7 +311,6 @@ func medal_get_list(app_id_override: String="") -> Array[MedalResource]:
 ## Unlocks medal. emits on_medal_unlocked on success
 func medal_unlock(medal_id: int, silent: bool=false) -> bool:
 	if offline_mode:
-		print("Offline mode = true")
 		var medal = get_medal_resource(medal_id);
 		if medal:
 			medal.unlocked = true;
@@ -335,7 +334,6 @@ func medal_unlock(medal_id: int, silent: bool=false) -> bool:
 	
 	offline_data.set_medal_unlocked(medal_id, true)
 	
-	print("Unlocking now!")
 	var m = res.data;
 	var medal = get_medal_resource(medal_id);
 	if medal:
@@ -449,6 +447,17 @@ func cloudsave_get_data(slot_id: int) -> String:
 		return slot.data
 	
 	return ''
+	
+## Events
+############
+func event_log(event_name: String) -> void:
+	if offline_mode:
+		print("Event '%s' would've been logged" % event_name)
+		return
+	
+	var res = await components.event_log(event_name).on_response
+	if res.error:
+		push_error("Error sending event '%s': %s" % [event_name, res.error])
 	
 func _load_session():
 	var _session_id = "";
